@@ -1,0 +1,124 @@
+---
+import { Icon } from "astro-icon/components";
+import { navBarConfig, siteConfig } from "../config";
+import { config } from "../config/api";
+import { LinkPresets } from "../constants/link-presets";
+import { LinkPreset, type NavBarLink } from "../types/config";
+import { url } from "../utils/url-utils";
+import LightDarkSwitch from "./LightDarkSwitch.svelte";
+import Search from "./Search.svelte";
+import DisplaySettings from "./widget/DisplaySettings.svelte";
+import NavMenuPanel from "./widget/NavMenuPanel.astro";
+import { getAdaptedMainNavigation } from "../lib/custom-navigation";
+import StaticLogo from "./StaticLogo.astro";
+
+const className = Astro.props.class;
+
+// 获取导航链接
+const getStaticLinks = () => navBarConfig.links.map((item: NavBarLink | LinkPreset): NavBarLink => {
+  if (typeof item === "number") {
+    return LinkPresets[item];
+  }
+  return item;
+});
+
+let links: NavBarLink[] = [];
+
+if (config.features.useStrapi) {
+  try {
+    links = await getAdaptedMainNavigation();
+  } catch (error) {
+    console.error('获取动态导航失败，使用静态导航:', error);
+    links = getStaticLinks();
+  }
+} else {
+  links = getStaticLinks();
+}
+---
+<div id="navbar" class="z-50 onload-animation w-full fixed top-0 left-0 right-0">
+    <div class="absolute h-8 left-0 right-0 -top-8 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md transition"></div> <!-- used for onload animation -->
+    <div class:list={[
+        className,
+        "!overflow-visible w-full h-[4.5rem] !rounded-none flex items-center px-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/20 dark:border-gray-700/20"]}>
+
+        <!-- LOGO 固定在最左侧 -->
+        <div id="navbar-logo" class="logo-hover-container rounded-lg h-[3.25rem] px-5 font-bold flex-shrink-0">
+            <a href={url('/')} class="flex items-center h-full">
+                <StaticLogo />
+            </a>
+        </div>
+
+        <!-- 中间导航链接区域 - 在剩余空间中居中 -->
+        <div class="flex-1 flex justify-center" id="nav-center-container">
+            <div class="hidden md:flex">
+                {links.map((l) => {
+                    return <a aria-label={l.name} href={l.external ? l.url : url(l.url)} target={l.external ? "_blank" : null}
+                              class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"
+                    >
+                        <div class="flex items-center">
+                            {l.name}
+                            {l.external && <Icon name="fa6-solid:arrow-up-right-from-square" class="text-[0.875rem] transition -translate-y-[1px] ml-1 text-black/[0.2] dark:text-white/[0.2]"></Icon>}
+                        </div>
+                    </a>;
+                })}
+            </div>
+        </div>
+
+        <!-- 右侧控制按钮固定在最右侧 -->
+        <div class="flex items-center gap-2 flex-shrink-0">
+            <Search client:only="svelte"></Search>
+            {!siteConfig.themeColor.fixed && (
+                <button aria-label="Display Settings" class="btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90" id="display-settings-switch">
+                    <Icon name="material-symbols:palette-outline" class="text-[1.25rem]"></Icon>
+                </button>
+            )}
+            <LightDarkSwitch client:only="svelte"></LightDarkSwitch>
+            <button aria-label="Menu" name="Nav Menu" class="btn-plain scale-animation rounded-lg w-11 h-11 active:scale-90 md:!hidden" id="nav-menu-switch">
+                <Icon name="material-symbols:menu-rounded" class="text-[1.25rem]"></Icon>
+            </button>
+        </div>
+
+        <NavMenuPanel links={links}></NavMenuPanel>
+        <DisplaySettings client:only="svelte"></DisplaySettings>
+    </div>
+</div>
+
+<script>
+// 移除冲突的主题切换函数，让Svelte组件完全控制主题切换
+// function switchTheme() { ... }
+// function updateThemeButtonIcon(theme) { ... }
+
+function loadButtonScript() {
+    // 移除主题切换按钮的事件绑定，让Svelte组件处理
+    // let switchBtn = document.getElementById("scheme-switch");
+    // if (switchBtn) {
+    //     switchBtn.onclick = function () {
+    //         switchTheme()
+    //     };
+    // }
+
+    let settingBtn = document.getElementById("display-settings-switch");
+    if (settingBtn) {
+        settingBtn.onclick = function () {
+            let settingPanel = document.getElementById("display-setting");
+            if (settingPanel) {
+                settingPanel.classList.toggle("float-panel-closed");
+            }
+        };
+    }
+
+    let menuBtn = document.getElementById("nav-menu-switch");
+    if (menuBtn) {
+        menuBtn.onclick = function () {
+            let menuPanel = document.getElementById("nav-menu-panel");
+            if (menuPanel) {
+                menuPanel.classList.toggle("float-panel-closed");
+            }
+        };
+    }
+}
+
+loadButtonScript();
+</script>
+
+{import.meta.env.PROD && <script is:inline src="/js/pagefind-loader.js"></script>}
