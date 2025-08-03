@@ -1,1503 +1,1494 @@
-2025-08-03T08:12:16.040786Z	Cloning repository...
-2025-08-03T08:12:16.732611Z	From https://github.com/SparkDone/My_Astro
-2025-08-03T08:12:16.733042Z	 * branch            88457acc80b2d1bbb3e7e15e793fb3d978d47ec7 -> FETCH_HEAD
-2025-08-03T08:12:16.73354Z	
-2025-08-03T08:12:16.781311Z	HEAD is now at 88457ac  修复RSS文件的TypeScript类型错误
-2025-08-03T08:12:16.781772Z	
-2025-08-03T08:12:16.866906Z	
-2025-08-03T08:12:16.867388Z	Using v2 root directory strategy
-2025-08-03T08:12:16.892284Z	Success: Finished cloning repository files
-2025-08-03T08:12:18.883918Z	Checking for configuration in a Wrangler configuration file (BETA)
-2025-08-03T08:12:18.884528Z	
-2025-08-03T08:12:19.99395Z	No wrangler.toml file found. Continuing.
-2025-08-03T08:12:20.061554Z	Detected the following tools from environment: pnpm@9.14.4, nodejs@22.16.0
-2025-08-03T08:12:20.383635Z	Preparing pnpm@9.14.4 for immediate activation...
-2025-08-03T08:12:22.331936Z	Installing project dependencies: pnpm install
-2025-08-03T08:12:22.986673Z	Lockfile is up to date, resolution step is skipped
-2025-08-03T08:12:23.069383Z	Progress: resolved 1, reused 0, downloaded 0, added 0
-2025-08-03T08:12:23.368645Z	Packages: +1135
-2025-08-03T08:12:23.369238Z	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-2025-08-03T08:12:24.071236Z	Progress: resolved 1135, reused 0, downloaded 53, added 45
-2025-08-03T08:12:25.071395Z	Progress: resolved 1135, reused 0, downloaded 208, added 201
-2025-08-03T08:12:26.080956Z	Progress: resolved 1135, reused 0, downloaded 390, added 388
-2025-08-03T08:12:27.080795Z	Progress: resolved 1135, reused 0, downloaded 526, added 524
-2025-08-03T08:12:28.080858Z	Progress: resolved 1135, reused 0, downloaded 797, added 797
-2025-08-03T08:12:29.080896Z	Progress: resolved 1135, reused 0, downloaded 1015, added 1007
-2025-08-03T08:12:30.081249Z	Progress: resolved 1135, reused 0, downloaded 1134, added 1134
-2025-08-03T08:12:30.504248Z	Progress: resolved 1135, reused 0, downloaded 1135, added 1135, done
-2025-08-03T08:12:30.84089Z	.../sharp@0.33.5/node_modules/sharp install$ node install/check
-2025-08-03T08:12:30.841715Z	.../.pnpm/swup@4.8.2/node_modules/swup postinstall$ opencollective-postinstall || true
-2025-08-03T08:12:30.844304Z	.../esbuild@0.25.8/node_modules/esbuild postinstall$ node install.js
-2025-08-03T08:12:30.844856Z	.../esbuild@0.25.4/node_modules/esbuild postinstall$ node install.js
-2025-08-03T08:12:30.897274Z	.../node_modules/workerd postinstall$ node install.js
-2025-08-03T08:12:30.951254Z	.../.pnpm/swup@4.8.2/node_modules/swup postinstall: Done
-2025-08-03T08:12:30.985176Z	.../sharp@0.34.3/node_modules/sharp install$ node install/check.js
-2025-08-03T08:12:31.008527Z	.../sharp@0.33.5/node_modules/sharp install: Done
-2025-08-03T08:12:31.008884Z	.../esbuild@0.25.8/node_modules/esbuild postinstall: Done
-2025-08-03T08:12:31.052579Z	.../esbuild@0.25.4/node_modules/esbuild postinstall: Done
-2025-08-03T08:12:31.063302Z	.../node_modules/workerd postinstall: Done
-2025-08-03T08:12:31.145831Z	.../sharp@0.34.3/node_modules/sharp install: Done
-2025-08-03T08:12:31.689722Z	
-2025-08-03T08:12:31.689975Z	dependencies:
-2025-08-03T08:12:31.690115Z	+ @astrojs/check 0.9.4
-2025-08-03T08:12:31.69021Z	+ @astrojs/cloudflare 12.6.2
-2025-08-03T08:12:31.690293Z	+ @astrojs/node 9.3.3
-2025-08-03T08:12:31.690384Z	+ @astrojs/rss 4.0.12
-2025-08-03T08:12:31.690478Z	+ @astrojs/sitemap 3.4.2
-2025-08-03T08:12:31.690739Z	+ @astrojs/svelte 7.1.0
-2025-08-03T08:12:31.691062Z	+ @astrojs/tailwind 6.0.2
-2025-08-03T08:12:31.691249Z	+ @expressive-code/core 0.41.3
-2025-08-03T08:12:31.69152Z	+ @expressive-code/plugin-collapsible-sections 0.41.3
-2025-08-03T08:12:31.691919Z	+ @expressive-code/plugin-line-numbers 0.41.3
-2025-08-03T08:12:31.692462Z	+ @fontsource-variable/jetbrains-mono 5.2.6
-2025-08-03T08:12:31.6931Z	+ @fontsource/roboto 5.2.6
-2025-08-03T08:12:31.693327Z	+ @iconify-json/fa6-brands 1.2.6
-2025-08-03T08:12:31.693539Z	+ @iconify-json/fa6-regular 1.2.4
-2025-08-03T08:12:31.69363Z	+ @iconify-json/fa6-solid 1.2.4
-2025-08-03T08:12:31.693973Z	+ @iconify-json/heroicons 1.2.2
-2025-08-03T08:12:31.694122Z	+ @iconify-json/icon-park-outline 1.2.2
-2025-08-03T08:12:31.694248Z	+ @iconify-json/lucide 1.2.60
-2025-08-03T08:12:31.69446Z	+ @iconify-json/material-symbols 1.2.30
-2025-08-03T08:12:31.694636Z	+ @iconify-json/tabler 1.2.20
-2025-08-03T08:12:31.695224Z	+ @iconify/svelte 4.2.0
-2025-08-03T08:12:31.695416Z	+ @swup/astro 1.7.0
-2025-08-03T08:12:31.695492Z	+ @tailwindcss/typography 0.5.16
-2025-08-03T08:12:31.695571Z	+ astro 5.11.0
-2025-08-03T08:12:31.696006Z	+ astro-expressive-code 0.41.3
-2025-08-03T08:12:31.696123Z	+ astro-icon 1.1.5
-2025-08-03T08:12:31.69629Z	+ dotenv-cli 10.0.0
-2025-08-03T08:12:31.696406Z	+ hastscript 9.0.1
-2025-08-03T08:12:31.696515Z	+ katex 0.16.22
-2025-08-03T08:12:31.69673Z	+ markdown-it 14.1.0
-2025-08-03T08:12:31.696835Z	+ mdast-util-to-string 4.0.0
-2025-08-03T08:12:31.696935Z	+ overlayscrollbars 2.11.4
-2025-08-03T08:12:31.697144Z	+ pagefind 1.3.0
-2025-08-03T08:12:31.697305Z	+ photoswipe 5.4.4
-2025-08-03T08:12:31.697418Z	+ reading-time 1.5.0
-2025-08-03T08:12:31.697511Z	+ rehype-autolink-headings 7.1.0
-2025-08-03T08:12:31.697634Z	+ rehype-components 0.3.0
-2025-08-03T08:12:31.69775Z	+ rehype-katex 7.0.1
-2025-08-03T08:12:31.697849Z	+ rehype-slug 6.0.0
-2025-08-03T08:12:31.69795Z	+ remark-directive 3.0.1
-2025-08-03T08:12:31.698045Z	+ remark-directive-rehype 0.4.2
-2025-08-03T08:12:31.698136Z	+ remark-github-admonitions-to-directives 1.0.5
-2025-08-03T08:12:31.698238Z	+ remark-math 6.0.0
-2025-08-03T08:12:31.698323Z	+ remark-sectionize 2.1.0
-2025-08-03T08:12:31.698379Z	+ sanitize-html 2.17.0
-2025-08-03T08:12:31.698438Z	+ sharp 0.34.3
-2025-08-03T08:12:31.698495Z	+ svelte 5.37.3
-2025-08-03T08:12:31.698552Z	+ tailwindcss 3.4.17
-2025-08-03T08:12:31.698623Z	+ typescript 5.9.2
-2025-08-03T08:12:31.698678Z	+ unist-util-visit 5.0.0
-2025-08-03T08:12:31.698732Z	
-2025-08-03T08:12:31.698788Z	devDependencies:
-2025-08-03T08:12:31.698881Z	+ @astrojs/ts-plugin 1.10.4
-2025-08-03T08:12:31.698953Z	+ @biomejs/biome 2.0.6
-2025-08-03T08:12:31.699027Z	+ @rollup/plugin-yaml 4.1.2
-2025-08-03T08:12:31.699119Z	+ @types/hast 3.0.4
-2025-08-03T08:12:31.699236Z	+ @types/markdown-it 14.1.2
-2025-08-03T08:12:31.699315Z	+ @types/mdast 4.0.4
-2025-08-03T08:12:31.699393Z	+ @types/sanitize-html 2.16.0
-2025-08-03T08:12:31.699466Z	+ dotenv 17.2.1
-2025-08-03T08:12:31.699569Z	+ postcss-import 16.1.1
-2025-08-03T08:12:31.699656Z	+ postcss-nesting 13.0.2
-2025-08-03T08:12:31.699733Z	+ stylus 0.64.0
-2025-08-03T08:12:31.699822Z	+ wrangler 4.27.0
-2025-08-03T08:12:31.699894Z	
-2025-08-03T08:12:31.712639Z	Done in 9s
-2025-08-03T08:12:31.805061Z	Executing user command: pnpm build
-2025-08-03T08:12:32.428502Z	
-2025-08-03T08:12:32.428772Z	> AstroCMS@0.0.1 build /opt/buildhome/repo
-2025-08-03T08:12:32.428906Z	> node scripts/download-strapi-images.js && astro build && pagefind --site dist/client && node scripts/post-build.js && node scripts/optimize-html.js
-2025-08-03T08:12:32.429081Z	
-2025-08-03T08:12:32.480548Z	🖼️ 开始下载Strapi图片...
-2025-08-03T08:12:32.480884Z	📡 Strapi URL: https://api.sparkdone.com
-2025-08-03T08:12:32.481056Z	📁 输出目录: /opt/buildhome/repo/public/images/strapi
-2025-08-03T08:12:32.481222Z	📡 获取文章数据: https://api.sparkdone.com/api/articles?populate=*
-2025-08-03T08:12:32.688539Z	✅ 获取到 1 篇文章
-2025-08-03T08:12:32.688805Z	📡 获取配置数据: https://api.sparkdone.com/api/index?populate=*
-2025-08-03T08:12:32.805286Z	📡 获取配置数据: https://api.sparkdone.com/api/site-config?populate=*
-2025-08-03T08:12:32.865318Z	📡 获取配置数据: https://api.sparkdone.com/api/banners?populate=*
-2025-08-03T08:12:32.895809Z	🖼️ 发现 10 个图片URL
-2025-08-03T08:12:32.896116Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/logo1_2c27baca01.png
-2025-08-03T08:12:32.997732Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/logo1_2c27baca01-1754208752895.png
-2025-08-03T08:12:32.997959Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/large_logo1_2c27baca01.png
-2025-08-03T08:12:33.08467Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/large_logo1_2c27baca01-1754208752997.png
-2025-08-03T08:12:33.084934Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/small_logo1_2c27baca01.png
-2025-08-03T08:12:33.118413Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/small_logo1_2c27baca01-1754208753084.png
-2025-08-03T08:12:33.118693Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/medium_logo1_2c27baca01.png
-2025-08-03T08:12:33.157793Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/medium_logo1_2c27baca01-1754208753118.png
-2025-08-03T08:12:33.158023Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/thumbnail_logo1_2c27baca01.png
-2025-08-03T08:12:33.189148Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/thumbnail_logo1_2c27baca01-1754208753157.png
-2025-08-03T08:12:33.189525Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/LOGO_1c461133d8.png
-2025-08-03T08:12:33.248637Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/LOGO_1c461133d8-1754208753189.png
-2025-08-03T08:12:33.248905Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/large_LOGO_1c461133d8.png
-2025-08-03T08:12:33.290238Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/large_LOGO_1c461133d8-1754208753248.png
-2025-08-03T08:12:33.290491Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/small_LOGO_1c461133d8.png
-2025-08-03T08:12:33.321433Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/small_LOGO_1c461133d8-1754208753290.png
-2025-08-03T08:12:33.321693Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/medium_LOGO_1c461133d8.png
-2025-08-03T08:12:33.358045Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/medium_LOGO_1c461133d8-1754208753321.png
-2025-08-03T08:12:33.358341Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/thumbnail_LOGO_1c461133d8.png
-2025-08-03T08:12:33.388062Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/thumbnail_LOGO_1c461133d8-1754208753357.png
-2025-08-03T08:12:33.388341Z	✅ 保存映射文件: /opt/buildhome/repo/src/data/image-mapping.json
-2025-08-03T08:12:33.38844Z	🎉 图片下载完成！成功: 10/10
-2025-08-03T08:12:36.468309Z	08:12:36 [@astrojs/node] Enabling sessions with filesystem storage
-2025-08-03T08:12:36.726042Z	08:12:36 [vite] Forced re-optimization of dependencies
-2025-08-03T08:12:36.887584Z	08:12:36 [content] Syncing content
-2025-08-03T08:12:36.892701Z	08:12:36 [content] Synced content
-2025-08-03T08:12:36.893657Z	08:12:36 [types] Generated 229ms
-2025-08-03T08:12:36.89424Z	08:12:36 [build] output: "server"
-2025-08-03T08:12:36.894413Z	08:12:36 [build] mode: "server"
-2025-08-03T08:12:36.8945Z	08:12:36 [build] directory: /opt/buildhome/repo/dist/
-2025-08-03T08:12:36.894643Z	08:12:36 [build] adapter: @astrojs/node
-2025-08-03T08:12:36.894704Z	08:12:36 [build] Collecting build info...
-2025-08-03T08:12:36.895082Z	08:12:36 [build] ✓ Completed in 428ms.
-2025-08-03T08:12:36.896353Z	08:12:36 [build] Building server entrypoints...
-2025-08-03T08:12:44.285863Z	08:12:44 [vite] [32m✓ built in 7.34s[39m
-2025-08-03T08:12:44.286138Z	08:12:44 [build] ✓ Completed in 7.39s.
-2025-08-03T08:12:44.286628Z	
-2025-08-03T08:12:44.286812Z	 building client (vite) 
-2025-08-03T08:12:44.317838Z	08:12:44 [vite] transforming...
-2025-08-03T08:12:44.959488Z	08:12:44 [WARN] [vite] [33m[plugin vite:resolve] Module "node:path" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/src/components/misc/ImageWrapper.astro". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
-2025-08-03T08:12:45.596238Z	08:12:45 [WARN] [vite] [33m[plugin vite:resolve] Module "node:path" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/src/components/PostCard.astro". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
-2025-08-03T08:12:45.60246Z	08:12:45 [WARN] [vite] [33m[plugin vite:resolve] Module "node:path" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/src/components/UniversalPostList.astro". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
-2025-08-03T08:12:45.630634Z	08:12:45 [WARN] [vite] [33m[plugin vite:resolve] Module "node:path" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/src/pages/posts/[...slug].astro". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
-2025-08-03T08:12:45.814423Z	08:12:45 [WARN] [vite] [33m[plugin vite:resolve] Module "stream" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/reading-time@1.5.0/node_modules/reading-time/lib/stream.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
-2025-08-03T08:12:45.814768Z	08:12:45 [WARN] [vite] [33m[plugin vite:resolve] Module "util" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/reading-time@1.5.0/node_modules/reading-time/lib/stream.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
-2025-08-03T08:12:46.351261Z	08:12:46 [WARN] [vite] [33m[plugin vite:resolve] Module "node:util" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/sharp@0.33.5/node_modules/sharp/lib/constructor.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
-2025-08-03T08:12:46.351603Z	08:12:46 [WARN] [vite] [33m[plugin vite:resolve] Module "node:stream" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/sharp@0.33.5/node_modules/sharp/lib/constructor.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
-2025-08-03T08:12:46.359436Z	08:12:46 [WARN] [vite] [33m[plugin vite:resolve] Module "node:path" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/sharp@0.33.5/node_modules/sharp/lib/output.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
-2025-08-03T08:12:46.362154Z	08:12:46 [WARN] [vite] [33m[plugin vite:resolve] Module "node:events" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/sharp@0.33.5/node_modules/sharp/lib/utility.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
-2025-08-03T08:12:46.363376Z	08:12:46 [WARN] [vite] [33m[plugin vite:resolve] Module "node:os" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/sharp@0.33.5/node_modules/sharp/lib/utility.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
-2025-08-03T08:12:46.537555Z	08:12:46 [WARN] [vite] [33m[plugin vite:resolve] Module "child_process" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/detect-libc@2.0.4/node_modules/detect-libc/lib/detect-libc.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
-2025-08-03T08:12:46.949394Z	08:12:46 [WARN] [vite] [33m[plugin vite:resolve] Module "node:child_process" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/sharp@0.33.5/node_modules/sharp/lib/libvips.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
-2025-08-03T08:12:46.949798Z	08:12:46 [WARN] [vite] [33m[plugin vite:resolve] Module "node:crypto" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/sharp@0.33.5/node_modules/sharp/lib/libvips.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
-2025-08-03T08:12:47.048248Z	08:12:47 [WARN] [vite] [33m[plugin vite:resolve] Module "fs" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/detect-libc@2.0.4/node_modules/detect-libc/lib/filesystem.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
-2025-08-03T08:12:49.961321Z	08:12:49 [vite] [32m✓[39m 917 modules transformed.
-2025-08-03T08:12:50.257737Z	08:12:50 [WARN] [vite] [33mGenerated an empty chunk: "MainGridLayout.astro_astro_type_script_index_2_lang".[39m
-2025-08-03T08:12:50.263724Z	08:12:50 [WARN] [vite] [33mGenerated an empty chunk: "ResourceHints.astro_astro_type_script_index_0_lang".[39m
-2025-08-03T08:12:50.357775Z	08:12:50 [vite] rendering chunks...
-2025-08-03T08:12:51.31242Z	08:12:51 [vite] computing gzip size...
-2025-08-03T08:12:51.823196Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mec.g1fg5.js                                                      [39m[1m[2m     0.94 kB[22m[1m[22m
-2025-08-03T08:12:51.82353Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size3-Regular.CTq5MqoE.woff                                [39m[1m[2m     4.42 kB[22m[1m[22m
-2025-08-03T08:12:51.823707Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size4-Regular.Dl5lxZxV.woff2                               [39m[1m[2m     4.93 kB[22m[1m[22m
-2025-08-03T08:12:51.823897Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size2-Regular.Dy4dx90m.woff2                               [39m[1m[2m     5.21 kB[22m[1m[22m
-2025-08-03T08:12:51.823975Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-vietnamese-400-normal.BYP5tVVv.woff                       [39m[1m[2m     5.44 kB[22m[1m[22m
-2025-08-03T08:12:51.824056Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-vietnamese-700-normal.7YosmkaU.woff                       [39m[1m[2m     5.44 kB[22m[1m[22m
-2025-08-03T08:12:51.824286Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size1-Regular.mCD8mA8B.woff2                               [39m[1m[2m     5.47 kB[22m[1m[22m
-2025-08-03T08:12:51.824373Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-vietnamese-500-normal.CUzdRVXb.woff                       [39m[1m[2m     5.48 kB[22m[1m[22m
-2025-08-03T08:12:51.824665Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size4-Regular.BF-4gkZK.woff                                [39m[1m[2m     5.98 kB[22m[1m[22m
-2025-08-03T08:12:51.824881Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size2-Regular.oD1tc_U0.woff                                [39m[1m[2m     6.19 kB[22m[1m[22m
-2025-08-03T08:12:51.825059Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size1-Regular.C195tn64.woff                                [39m[1m[2m     6.50 kB[22m[1m[22m
-2025-08-03T08:12:51.825145Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Caligraphic-Regular.Di6jR-x-.woff2                         [39m[1m[2m     6.91 kB[22m[1m[22m
-2025-08-03T08:12:51.825261Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Caligraphic-Bold.Dq_IR9rO.woff2                            [39m[1m[2m     6.91 kB[22m[1m[22m
-2025-08-03T08:12:51.825436Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-greek-400-normal.DwVopRQH.woff                            [39m[1m[2m     7.47 kB[22m[1m[22m
-2025-08-03T08:12:51.825539Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-greek-700-normal.DXrPs8of.woff                            [39m[1m[2m     7.49 kB[22m[1m[22m
-2025-08-03T08:12:51.825609Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-vietnamese-wght-normal.Bt-aOZkq.woff2             [39m[1m[2m     7.50 kB[22m[1m[22m
-2025-08-03T08:12:51.825749Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-greek-500-normal.B0wzjI_J.woff                            [39m[1m[2m     7.51 kB[22m[1m[22m
-2025-08-03T08:12:51.825892Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size3-Regular.DgpXs0kz.ttf                                 [39m[1m[2m     7.59 kB[22m[1m[22m
-2025-08-03T08:12:51.826001Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Caligraphic-Regular.CTRA-rTL.woff                          [39m[1m[2m     7.66 kB[22m[1m[22m
-2025-08-03T08:12:51.826097Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Caligraphic-Bold.BEiXGLvX.woff                             [39m[1m[2m     7.72 kB[22m[1m[22m
-2025-08-03T08:12:51.826223Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-vietnamese-500-normal.HYpufUYk.woff2                      [39m[1m[2m     7.84 kB[22m[1m[22m
-2025-08-03T08:12:51.826392Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-vietnamese-400-normal.CDDxGrUb.woff2                      [39m[1m[2m     7.86 kB[22m[1m[22m
-2025-08-03T08:12:51.826499Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-vietnamese-700-normal.BFWtvCOj.woff2                      [39m[1m[2m     7.88 kB[22m[1m[22m
-2025-08-03T08:12:51.826621Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-vietnamese-wght-italic.Dcombn6O.woff2             [39m[1m[2m     8.06 kB[22m[1m[22m
-2025-08-03T08:12:51.826744Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-symbols-500-normal.B3xPS0M7.woff                          [39m[1m[2m     8.64 kB[22m[1m[22m
-2025-08-03T08:12:51.826905Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-symbols-400-normal.B2LMqLB2.woff                          [39m[1m[2m     8.66 kB[22m[1m[22m
-2025-08-03T08:12:51.827014Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-symbols-700-normal.D_8z4JZ9.woff                          [39m[1m[2m     8.68 kB[22m[1m[22m
-2025-08-03T08:12:51.827119Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-greek-wght-normal.Bw9x6K1M.woff2                  [39m[1m[2m     9.00 kB[22m[1m[22m
-2025-08-03T08:12:51.827259Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-greek-wght-italic.Dmq-fBVQ.woff2                  [39m[1m[2m     9.55 kB[22m[1m[22m
-2025-08-03T08:12:51.827379Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-greek-500-normal.BJMS0heP.woff2                           [39m[1m[2m     9.64 kB[22m[1m[22m
-2025-08-03T08:12:51.827488Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-greek-400-normal.jFM2czAU.woff2                           [39m[1m[2m     9.64 kB[22m[1m[22m
-2025-08-03T08:12:51.827594Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Script-Regular.D3wIWfF6.woff2                              [39m[1m[2m     9.64 kB[22m[1m[22m
-2025-08-03T08:12:51.827688Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-greek-700-normal.DpKAje7q.woff2                           [39m[1m[2m     9.68 kB[22m[1m[22m
-2025-08-03T08:12:51.827801Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-400-normal.C5q4FMUG.woff                         [39m[1m[2m     9.73 kB[22m[1m[22m
-2025-08-03T08:12:51.827959Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-500-normal.DhPqGoNQ.woff                         [39m[1m[2m     9.90 kB[22m[1m[22m
-2025-08-03T08:12:51.828086Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-700-normal.BmXeMSnZ.woff                         [39m[1m[2m     9.90 kB[22m[1m[22m
-2025-08-03T08:12:51.828222Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Regular.DDBCnlJ7.woff2                           [39m[1m[2m    10.34 kB[22m[1m[22m
-2025-08-03T08:12:51.828389Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size4-Regular.DWFBv043.ttf                                 [39m[1m[2m    10.36 kB[22m[1m[22m
-2025-08-03T08:12:51.828477Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-symbols-400-normal.fF1SLJBj.woff2                         [39m[1m[2m    10.58 kB[22m[1m[22m
-2025-08-03T08:12:51.828619Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Script-Regular.D5yQViql.woff                               [39m[1m[2m    10.59 kB[22m[1m[22m
-2025-08-03T08:12:51.828705Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-symbols-500-normal.BXFTxrNR.woff2                         [39m[1m[2m    10.73 kB[22m[1m[22m
-2025-08-03T08:12:51.828842Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-symbols-700-normal.DKkQdRpM.woff2                         [39m[1m[2m    10.80 kB[22m[1m[22m
-2025-08-03T08:12:51.828976Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Fraktur-Regular.CTYiF6lA.woff2                             [39m[1m[2m    11.32 kB[22m[1m[22m
-2025-08-03T08:12:51.829114Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Fraktur-Bold.CL6g_b3V.woff2                                [39m[1m[2m    11.35 kB[22m[1m[22m
-2025-08-03T08:12:51.829294Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size2-Regular.B7gKUWhC.ttf                                 [39m[1m[2m    11.51 kB[22m[1m[22m
-2025-08-03T08:12:51.829384Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-400-normal.DAIM1_dR.woff2                        [39m[1m[2m    11.84 kB[22m[1m[22m
-2025-08-03T08:12:51.829481Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-700-normal.CzEIZVQR.woff2                        [39m[1m[2m    11.97 kB[22m[1m[22m
-2025-08-03T08:12:51.829595Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-500-normal.hCeO1jFL.woff2                        [39m[1m[2m    11.98 kB[22m[1m[22m
-2025-08-03T08:12:51.82976Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Italic.C3H0VqGB.woff2                            [39m[1m[2m    12.03 kB[22m[1m[22m
-2025-08-03T08:12:51.829866Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-cyrillic-wght-normal.D73BlboJ.woff2               [39m[1m[2m    12.11 kB[22m[1m[22m
-2025-08-03T08:12:51.829969Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Bold.D1sUS0GD.woff2                              [39m[1m[2m    12.22 kB[22m[1m[22m
-2025-08-03T08:12:51.830064Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size1-Regular.Dbsnue_I.ttf                                 [39m[1m[2m    12.23 kB[22m[1m[22m
-2025-08-03T08:12:51.830169Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Regular.CS6fqUqJ.woff                            [39m[1m[2m    12.32 kB[22m[1m[22m
-2025-08-03T08:12:51.830284Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Caligraphic-Regular.wX97UBjC.ttf                           [39m[1m[2m    12.34 kB[22m[1m[22m
-2025-08-03T08:12:51.830398Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Caligraphic-Bold.ATXxdsX0.ttf                              [39m[1m[2m    12.37 kB[22m[1m[22m
-2025-08-03T08:12:51.830495Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-ext-400-normal.BG57dRWO.woff                        [39m[1m[2m    12.47 kB[22m[1m[22m
-2025-08-03T08:12:51.8306Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-ext-700-normal.DGcaX69F.woff                        [39m[1m[2m    12.48 kB[22m[1m[22m
-2025-08-03T08:12:51.830703Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-ext-500-normal.EUd9mLnZ.woff                        [39m[1m[2m    12.52 kB[22m[1m[22m
-2025-08-03T08:12:51.830795Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Fraktur-Regular.Dxdc4cR9.woff                              [39m[1m[2m    13.21 kB[22m[1m[22m
-2025-08-03T08:12:51.830919Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Fraktur-Bold.BsDP51OF.woff                                 [39m[1m[2m    13.30 kB[22m[1m[22m
-2025-08-03T08:12:51.831023Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-cyrillic-wght-italic.CfQkWpeR.woff2               [39m[1m[2m    13.35 kB[22m[1m[22m
-2025-08-03T08:12:51.831117Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Typewriter-Regular.CO6r4hn1.woff2                          [39m[1m[2m    13.57 kB[22m[1m[22m
-2025-08-03T08:12:51.83123Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-ext-400-normal.ZYmyxeOy.woff2                       [39m[1m[2m    13.74 kB[22m[1m[22m
-2025-08-03T08:12:51.83737Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-ext-700-normal.BNPgmEQS.woff2                       [39m[1m[2m    13.96 kB[22m[1m[22m
-2025-08-03T08:12:51.837557Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-ext-500-normal.C_ARlJGk.woff2                       [39m[1m[2m    13.98 kB[22m[1m[22m
-2025-08-03T08:12:51.837635Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Italic.DN2j7dab.woff                             [39m[1m[2m    14.11 kB[22m[1m[22m
-2025-08-03T08:12:51.837778Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Bold.DbIhKOiC.woff                               [39m[1m[2m    14.41 kB[22m[1m[22m
-2025-08-03T08:12:51.837875Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-latin-ext-wght-normal.DBQx-q_a.woff2              [39m[1m[2m    15.20 kB[22m[1m[22m
-2025-08-03T08:12:51.838013Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-ext-400-normal.5IDvadIC.woff                     [39m[1m[2m    15.40 kB[22m[1m[22m
-2025-08-03T08:12:51.838096Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-ext-700-normal.y_8Eg3F3.woff                     [39m[1m[2m    15.51 kB[22m[1m[22m
-2025-08-03T08:12:51.838175Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-ext-500-normal.aAFKCR76.woff                     [39m[1m[2m    15.52 kB[22m[1m[22m
-2025-08-03T08:12:51.838357Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Typewriter-Regular.C0xS9mPB.woff                           [39m[1m[2m    16.03 kB[22m[1m[22m
-2025-08-03T08:12:51.838498Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Math-BoldItalic.CZnvNsCZ.woff2                             [39m[1m[2m    16.40 kB[22m[1m[22m
-2025-08-03T08:12:51.838658Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Math-Italic.t53AETM-.woff2                                 [39m[1m[2m    16.44 kB[22m[1m[22m
-2025-08-03T08:12:51.838747Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-latin-ext-wght-italic.BrDczivE.woff2              [39m[1m[2m    16.52 kB[22m[1m[22m
-2025-08-03T08:12:51.838915Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Script-Regular.C5JkGWo-.ttf                                [39m[1m[2m    16.65 kB[22m[1m[22m
-2025-08-03T08:12:51.838995Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-BoldItalic.DxDJ3AOS.woff2                             [39m[1m[2m    16.78 kB[22m[1m[22m
-2025-08-03T08:12:51.839137Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-ext-400-normal.DzMWdK87.woff2                    [39m[1m[2m    16.85 kB[22m[1m[22m
-2025-08-03T08:12:51.839305Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Italic.NWA7e6Wa.woff2                                 [39m[1m[2m    16.99 kB[22m[1m[22m
-2025-08-03T08:12:51.839436Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-ext-700-normal.D_fA0fHY.woff2                    [39m[1m[2m    17.11 kB[22m[1m[22m
-2025-08-03T08:12:51.839589Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-ext-500-normal.B7rQpwPu.woff2                    [39m[1m[2m    17.16 kB[22m[1m[22m
-2025-08-03T08:12:51.839699Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-math-400-normal.BRMeFL5Z.woff                             [39m[1m[2m    18.28 kB[22m[1m[22m
-2025-08-03T08:12:51.839819Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-math-500-normal.nGmytUgK.woff                             [39m[1m[2m    18.36 kB[22m[1m[22m
-2025-08-03T08:12:51.839964Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-math-700-normal.yuY-ZMbs.woff                             [39m[1m[2m    18.42 kB[22m[1m[22m
-2025-08-03T08:12:51.840096Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Math-BoldItalic.iY-2wyZ7.woff                              [39m[1m[2m    18.67 kB[22m[1m[22m
-2025-08-03T08:12:51.840239Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Math-Italic.DA0__PXp.woff                                  [39m[1m[2m    18.75 kB[22m[1m[22m
-2025-08-03T08:12:51.840452Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-BoldItalic.SpSLRI95.woff                              [39m[1m[2m    19.41 kB[22m[1m[22m
-2025-08-03T08:12:51.840666Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Regular.BNo7hRIc.ttf                             [39m[1m[2m    19.44 kB[22m[1m[22m
-2025-08-03T08:12:51.840805Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-400-normal.BX2H0A0_.woff                            [39m[1m[2m    19.57 kB[22m[1m[22m
-2025-08-03T08:12:51.840931Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Fraktur-Regular.CB_wures.ttf                               [39m[1m[2m    19.57 kB[22m[1m[22m
-2025-08-03T08:12:51.84105Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Fraktur-Bold.BdnERNNW.ttf                                  [39m[1m[2m    19.58 kB[22m[1m[22m
-2025-08-03T08:12:51.841197Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-math-400-normal.B3wgz80t.woff2                            [39m[1m[2m    19.66 kB[22m[1m[22m
-2025-08-03T08:12:51.841326Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-500-normal.CoDN7ZW2.woff                            [39m[1m[2m    19.67 kB[22m[1m[22m
-2025-08-03T08:12:51.841442Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Italic.BMLOBm91.woff                                  [39m[1m[2m    19.68 kB[22m[1m[22m
-2025-08-03T08:12:51.841558Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-700-normal.D74k8Kh_.woff                            [39m[1m[2m    19.72 kB[22m[1m[22m
-2025-08-03T08:12:51.841664Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-math-500-normal.CFNaIMFC.woff2                            [39m[1m[2m    19.98 kB[22m[1m[22m
-2025-08-03T08:12:51.841771Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-math-700-normal.xbpggnJp.woff2                            [39m[1m[2m    19.98 kB[22m[1m[22m
-2025-08-03T08:12:51.841893Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-400-normal.CNwBRw8h.woff2                           [39m[1m[2m    20.61 kB[22m[1m[22m
-2025-08-03T08:12:51.841979Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-500-normal.CkrA1NAy.woff2                           [39m[1m[2m    20.93 kB[22m[1m[22m
-2025-08-03T08:12:51.842222Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-700-normal.DZr4b_KL.woff2                           [39m[1m[2m    21.00 kB[22m[1m[22m
-2025-08-03T08:12:51.842359Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Italic.YYjJ1zSn.ttf                              [39m[1m[2m    22.36 kB[22m[1m[22m
-2025-08-03T08:12:51.842498Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Bold.CFMepnvq.ttf                                [39m[1m[2m    24.50 kB[22m[1m[22m
-2025-08-03T08:12:51.842675Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Bold.Cx986IdX.woff2                                   [39m[1m[2m    25.32 kB[22m[1m[22m
-2025-08-03T08:12:51.842787Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Regular.B22Nviop.woff2                                [39m[1m[2m    26.27 kB[22m[1m[22m
-2025-08-03T08:12:51.842893Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Typewriter-Regular.D3Ib7_Hf.ttf                            [39m[1m[2m    27.56 kB[22m[1m[22m
-2025-08-03T08:12:51.842992Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_AMS-Regular.BQhdFMY1.woff2                                 [39m[1m[2m    28.08 kB[22m[1m[22m
-2025-08-03T08:12:51.843092Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Bold.Jm3AIy58.woff                                    [39m[1m[2m    29.91 kB[22m[1m[22m
-2025-08-03T08:12:51.843215Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Regular.Dr94JaBh.woff                                 [39m[1m[2m    30.77 kB[22m[1m[22m
-2025-08-03T08:12:51.843329Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Math-BoldItalic.B3XSjfu4.ttf                               [39m[1m[2m    31.20 kB[22m[1m[22m
-2025-08-03T08:12:51.84345Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Math-Italic.flOr_0UB.ttf                                   [39m[1m[2m    31.31 kB[22m[1m[22m
-2025-08-03T08:12:51.843567Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-BoldItalic.DzxPMmG6.ttf                               [39m[1m[2m    32.97 kB[22m[1m[22m
-2025-08-03T08:12:51.843686Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_AMS-Regular.DMm9YOAa.woff                                  [39m[1m[2m    33.52 kB[22m[1m[22m
-2025-08-03T08:12:51.843802Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Italic.3WenGoN9.ttf                                   [39m[1m[2m    33.58 kB[22m[1m[22m
-2025-08-03T08:12:51.843929Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-latin-wght-normal.B9CIFXIH.woff2                  [39m[1m[2m    40.40 kB[22m[1m[22m
-2025-08-03T08:12:51.844047Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-latin-wght-italic.B2M6KQje.woff2                  [39m[1m[2m    42.96 kB[22m[1m[22m
-2025-08-03T08:12:51.844147Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Bold.waoOVXN0.ttf                                     [39m[1m[2m    51.34 kB[22m[1m[22m
-2025-08-03T08:12:51.844275Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Regular.ypZvNtVU.ttf                                  [39m[1m[2m    53.58 kB[22m[1m[22m
-2025-08-03T08:12:51.84438Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_AMS-Regular.DRggAlZN.ttf                                   [39m[1m[2m    63.63 kB[22m[1m[22m
-2025-08-03T08:12:51.844521Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mlogo1.Bc-qrwah.png                                               [39m[1m[2m   386.60 kB[22m[1m[22m
-2025-08-03T08:12:51.844626Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mdemo-avatar.CxcI0ivM.png                                         [39m[1m[2m   416.18 kB[22m[1m[22m
-2025-08-03T08:12:51.844728Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[32mLOGO.NZTBEBKn.png                                                [39m[1m[2m   464.68 kB[22m[1m[22m
-2025-08-03T08:12:51.844834Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[35mLayout.DSulWsr7.css                                              [39m[1m[2m     4.42 kB[22m[1m[22m[2m │ gzip:     1.43 kB[22m
-2025-08-03T08:12:51.844976Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[35m_slug_.BtniRLn_.css                                              [39m[1m[2m     9.40 kB[22m[1m[22m[2m │ gzip:     4.94 kB[22m
-2025-08-03T08:12:51.845291Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[35m_category_.dOoORm-i.css                                          [39m[1m[2m    12.18 kB[22m[1m[22m[2m │ gzip:     2.21 kB[22m
-2025-08-03T08:12:51.845436Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[35mLayout.CFwGdNXj.css                                              [39m[1m[2m    13.82 kB[22m[1m[22m[2m │ gzip:     2.60 kB[22m
-2025-08-03T08:12:51.845593Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[35mec.d1dr8.css                                                     [39m[1m[2m    19.55 kB[22m[1m[22m[2m │ gzip:     4.37 kB[22m
-2025-08-03T08:12:51.84573Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[35m_category_.DETFcC6c.css                                          [39m[1m[2m   118.15 kB[22m[1m[22m[2m │ gzip:    33.41 kB[22m
-2025-08-03T08:12:51.845871Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[35m_category_.N3ClDrXz.css                                          [39m[1m[2m   174.69 kB[22m[1m[22m[2m │ gzip:    27.43 kB[22m
-2025-08-03T08:12:51.845998Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mdate-utils.Cz1_5Gjb.js                                           [39m[1m[2m     0.09 kB[22m[1m[22m[2m │ gzip:     0.10 kB[22m
-2025-08-03T08:12:51.846118Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLayoutSwitcher.astro_astro_type_script_index_0_lang.KnN0sprn.js  [39m[1m[2m     0.10 kB[22m[1m[22m[2m │ gzip:     0.11 kB[22m
-2025-08-03T08:12:51.846263Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLOGO.Ci6zvs1K.js                                                 [39m[1m[2m     0.10 kB[22m[1m[22m[2m │ gzip:     0.12 kB[22m
-2025-08-03T08:12:51.84639Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mlogo1.CpLML_t1.js                                                [39m[1m[2m     0.10 kB[22m[1m[22m[2m │ gzip:     0.12 kB[22m
-2025-08-03T08:12:51.846509Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mdemo-avatar.8a9Q8uQE.js                                          [39m[1m[2m     0.11 kB[22m[1m[22m[2m │ gzip:     0.12 kB[22m
-2025-08-03T08:12:51.846634Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mconfig.DcgJ2Nqr.js                                               [39m[1m[2m     0.11 kB[22m[1m[22m[2m │ gzip:     0.11 kB[22m
-2025-08-03T08:12:51.846754Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mtranslation.DCfSCUdZ.js                                          [39m[1m[2m     0.13 kB[22m[1m[22m[2m │ gzip:     0.13 kB[22m
-2025-08-03T08:12:51.846882Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mconstants.Cicic_jr.js                                            [39m[1m[2m     0.16 kB[22m[1m[22m[2m │ gzip:     0.15 kB[22m
-2025-08-03T08:12:51.846989Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mremark-excerpt.i8V8Ue6k.js                                       [39m[1m[2m     0.21 kB[22m[1m[22m[2m │ gzip:     0.18 kB[22m
-2025-08-03T08:12:51.847093Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mrobots.txt.D8fq98Zy.js                                           [39m[1m[2m     0.22 kB[22m[1m[22m[2m │ gzip:     0.20 kB[22m
-2025-08-03T08:12:51.847233Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mGlobalStyles.XHvvwUuN.js                                         [39m[1m[2m     0.27 kB[22m[1m[22m[2m │ gzip:     0.20 kB[22m
-2025-08-03T08:12:51.847353Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mcontent.Dh3HKss_.js                                              [39m[1m[2m     0.32 kB[22m[1m[22m[2m │ gzip:     0.17 kB[22m
-2025-08-03T08:12:51.847472Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mlink-presets.zkqONX3n.js                                         [39m[1m[2m     0.32 kB[22m[1m[22m[2m │ gzip:     0.23 kB[22m
-2025-08-03T08:12:51.847605Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mArchivePanel.B4qIGLM6.js                                         [39m[1m[2m     0.34 kB[22m[1m[22m[2m │ gzip:     0.23 kB[22m
-2025-08-03T08:12:51.847753Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLightDarkSwitch.Du3uMQDR.js                                      [39m[1m[2m     0.37 kB[22m[1m[22m[2m │ gzip:     0.24 kB[22m
-2025-08-03T08:12:51.84793Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mclsx.B-dksMZM.js                                                 [39m[1m[2m     0.37 kB[22m[1m[22m[2m │ gzip:     0.24 kB[22m
-2025-08-03T08:12:51.848117Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mscript.Ddket5BE.js                                               [39m[1m[2m     0.41 kB[22m[1m[22m[2m │ gzip:     0.27 kB[22m
-2025-08-03T08:12:51.848307Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mSearch.6dbebVUr.js                                               [39m[1m[2m     0.43 kB[22m[1m[22m[2m │ gzip:     0.27 kB[22m
-2025-08-03T08:12:51.848485Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mConfigCarrier.DaTjgfCI.js                                        [39m[1m[2m     0.44 kB[22m[1m[22m[2m │ gzip:     0.29 kB[22m
-2025-08-03T08:12:51.848653Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mremark-reading-time.DlR1lqDB.js                                  [39m[1m[2m     0.46 kB[22m[1m[22m[2m │ gzip:     0.31 kB[22m
-2025-08-03T08:12:51.84881Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mrehype-component-admonition.DxpUQCK2.js                          [39m[1m[2m     0.46 kB[22m[1m[22m[2m │ gzip:     0.34 kB[22m
-2025-08-03T08:12:51.848987Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36msitemap-index.xml.Dl-bMzch.js                                    [39m[1m[2m     0.48 kB[22m[1m[22m[2m │ gzip:     0.35 kB[22m
-2025-08-03T08:12:51.849139Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mDisplaySettings.B-JrC38_.js                                      [39m[1m[2m     0.51 kB[22m[1m[22m[2m │ gzip:     0.30 kB[22m
-2025-08-03T08:12:51.849307Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.C_aolqmU.js                                                [39m[1m[2m     0.51 kB[22m[1m[22m[2m │ gzip:     0.31 kB[22m
-2025-08-03T08:12:51.849464Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36m_category_.174bdc69.CR8piwjA.js                                  [39m[1m[2m     0.52 kB[22m[1m[22m[2m │ gzip:     0.15 kB[22m
-2025-08-03T08:12:51.849625Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36micon.CFdKaOBg.js                                                 [39m[1m[2m     0.58 kB[22m[1m[22m[2m │ gzip:     0.19 kB[22m
-2025-08-03T08:12:51.849761Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mi18nKey.B4fsdd7L.js                                              [39m[1m[2m     0.63 kB[22m[1m[22m[2m │ gzip:     0.29 kB[22m
-2025-08-03T08:12:51.84987Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mzh_CN.Do71a4f-.js                                                [39m[1m[2m     0.68 kB[22m[1m[22m[2m │ gzip:     0.44 kB[22m
-2025-08-03T08:12:51.849981Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36minput.D1I6NMu5.js                                                [39m[1m[2m     0.73 kB[22m[1m[22m[2m │ gzip:     0.42 kB[22m
-2025-08-03T08:12:51.850117Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mcategory-slugs.DGgjCaPq.js                                       [39m[1m[2m     0.75 kB[22m[1m[22m[2m │ gzip:     0.50 kB[22m
-2025-08-03T08:12:51.850304Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36m___vite-browser-external_commonjs-proxy.CjtYbPfa.js              [39m[1m[2m     0.79 kB[22m[1m[22m[2m │ gzip:     0.43 kB[22m
-2025-08-03T08:12:51.850551Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mMarkdown.CLn2SZAo.js                                             [39m[1m[2m     0.82 kB[22m[1m[22m[2m │ gzip:     0.44 kB[22m
-2025-08-03T08:12:51.85077Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mconfig.CZVdjOEh.js                                               [39m[1m[2m     0.85 kB[22m[1m[22m[2m │ gzip:     0.50 kB[22m
-2025-08-03T08:12:51.85092Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mButtonTag.JFIGvUCX.js                                            [39m[1m[2m     0.87 kB[22m[1m[22m[2m │ gzip:     0.51 kB[22m
-2025-08-03T08:12:51.851049Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36murl-utils.DA5f2zOr.js                                            [39m[1m[2m     0.91 kB[22m[1m[22m[2m │ gzip:     0.46 kB[22m
-2025-08-03T08:12:51.85116Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mimage-mapping.DXEK6kMB.js                                        [39m[1m[2m     0.98 kB[22m[1m[22m[2m │ gzip:     0.25 kB[22m
-2025-08-03T08:12:51.851286Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36m_...path_.DEfP5VJC.js                                            [39m[1m[2m     1.09 kB[22m[1m[22m[2m │ gzip:     0.61 kB[22m
-2025-08-03T08:12:51.85139Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mSwupScriptsPlugin.CRD5-C2F.js                                    [39m[1m[2m     1.10 kB[22m[1m[22m[2m │ gzip:     0.61 kB[22m
-2025-08-03T08:12:51.851498Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mcustom-navigation.4dDLIkbT.js                                    [39m[1m[2m     1.10 kB[22m[1m[22m[2m │ gzip:     0.69 kB[22m
-2025-08-03T08:12:51.85166Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.astro_astro_type_script_index_0_lang.DblWHDn1.js           [39m[1m[2m     1.11 kB[22m[1m[22m[2m │ gzip:     0.68 kB[22m
-2025-08-03T08:12:51.851778Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mpreload-helper.BlTxHScW.js                                       [39m[1m[2m     1.11 kB[22m[1m[22m[2m │ gzip:     0.65 kB[22m
-2025-08-03T08:12:51.852396Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mstrapi-pages.CZ6zEntP.js                                         [39m[1m[2m     1.13 kB[22m[1m[22m[2m │ gzip:     0.57 kB[22m
-2025-08-03T08:12:51.852556Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mclear.CHFy2GBC.js                                                [39m[1m[2m     1.16 kB[22m[1m[22m[2m │ gzip:     0.44 kB[22m
-2025-08-03T08:12:51.852657Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mclient.svelte.DW5k7Kk9.js                                        [39m[1m[2m     1.16 kB[22m[1m[22m[2m │ gzip:     0.65 kB[22m
-2025-08-03T08:12:51.852795Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mtheme-manager.CSlCCZLi.js                                        [39m[1m[2m     1.18 kB[22m[1m[22m[2m │ gzip:     0.50 kB[22m
-2025-08-03T08:12:51.852967Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36merror-handler.lmhWzt6X.js                                        [39m[1m[2m     1.18 kB[22m[1m[22m[2m │ gzip:     0.61 kB[22m
-2025-08-03T08:12:51.853088Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mPostPage.Cz6aeqEc.js                                             [39m[1m[2m     1.28 kB[22m[1m[22m[2m │ gzip:     0.74 kB[22m
-2025-08-03T08:12:51.853293Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36msitemap-categories.xml.CYSFR-io.js                               [39m[1m[2m     1.28 kB[22m[1m[22m[2m │ gzip:     0.69 kB[22m
-2025-08-03T08:12:51.85339Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mlogger.BvQXyG3u.js                                               [39m[1m[2m     1.31 kB[22m[1m[22m[2m │ gzip:     0.66 kB[22m
-2025-08-03T08:12:51.853568Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mStaticLogo.BJnJTueE.js                                           [39m[1m[2m     1.32 kB[22m[1m[22m[2m │ gzip:     0.65 kB[22m
-2025-08-03T08:12:51.853715Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36msitemap-posts.xml.C_X8Nr6q.js                                    [39m[1m[2m     1.36 kB[22m[1m[22m[2m │ gzip:     0.73 kB[22m
-2025-08-03T08:12:51.853881Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mlanguage-badge.BbjB2cra.js                                       [39m[1m[2m     1.36 kB[22m[1m[22m[2m │ gzip:     0.59 kB[22m
-2025-08-03T08:12:51.854071Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mfont-loader.DCvLFrWk.js                                          [39m[1m[2m     1.36 kB[22m[1m[22m[2m │ gzip:     0.53 kB[22m
-2025-08-03T08:12:51.854263Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36msetting-utils.CZvbBiY2.js                                        [39m[1m[2m     1.37 kB[22m[1m[22m[2m │ gzip:     0.65 kB[22m
-2025-08-03T08:12:51.854388Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.1FB8_vAn.js                                                [39m[1m[2m     1.40 kB[22m[1m[22m[2m │ gzip:     0.55 kB[22m
-2025-08-03T08:12:51.854491Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mdebug-strapi.vHhcRU46.js                                         [39m[1m[2m     1.43 kB[22m[1m[22m[2m │ gzip:     0.74 kB[22m
-2025-08-03T08:12:51.854592Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mTags.C6euXlCR.js                                                 [39m[1m[2m     1.49 kB[22m[1m[22m[2m │ gzip:     0.83 kB[22m
-2025-08-03T08:12:51.854722Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mrender.ClLWy2DR.js                                               [39m[1m[2m     1.55 kB[22m[1m[22m[2m │ gzip:     0.89 kB[22m
-2025-08-03T08:12:51.854806Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mNavMenuPanel.DckCDGPm.js                                         [39m[1m[2m     1.56 kB[22m[1m[22m[2m │ gzip:     0.84 kB[22m
-2025-08-03T08:12:51.854907Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mResourceHints.Bje9NdR7.js                                        [39m[1m[2m     1.57 kB[22m[1m[22m[2m │ gzip:     0.86 kB[22m
-2025-08-03T08:12:51.854969Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mBackToTop.DKfwsO5x.js                                            [39m[1m[2m     1.58 kB[22m[1m[22m[2m │ gzip:     0.71 kB[22m
-2025-08-03T08:12:51.855028Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36m_page_.tz1XcfK9.js                                               [39m[1m[2m     1.60 kB[22m[1m[22m[2m │ gzip:     0.82 kB[22m
-2025-08-03T08:12:51.855132Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mFooter.CogyHtSw.js                                               [39m[1m[2m     1.61 kB[22m[1m[22m[2m │ gzip:     0.89 kB[22m
-2025-08-03T08:12:51.855321Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLayoutSwitcher.DFrSzlR2.js                                       [39m[1m[2m     1.66 kB[22m[1m[22m[2m │ gzip:     0.74 kB[22m
-2025-08-03T08:12:51.855405Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mbanner-adapter.Ckxd7l7Z.js                                       [39m[1m[2m     1.67 kB[22m[1m[22m[2m │ gzip:     0.83 kB[22m
-2025-08-03T08:12:51.855505Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mapi.E1_LGI3W.js                                                  [39m[1m[2m     1.67 kB[22m[1m[22m[2m │ gzip:     0.96 kB[22m
-2025-08-03T08:12:51.855621Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mCategories.BAkcQ_dZ.js                                           [39m[1m[2m     1.68 kB[22m[1m[22m[2m │ gzip:     0.94 kB[22m
-2025-08-03T08:12:51.855755Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mButtonLink.AI9yJCtU.js                                           [39m[1m[2m     1.69 kB[22m[1m[22m[2m │ gzip:     0.79 kB[22m
-2025-08-03T08:12:51.855862Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mWidgetLayout.C7-qZXgx.js                                         [39m[1m[2m     1.70 kB[22m[1m[22m[2m │ gzip:     0.93 kB[22m
-2025-08-03T08:12:51.855977Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mcache.BpiwiMQC.js                                                [39m[1m[2m     1.76 kB[22m[1m[22m[2m │ gzip:     0.81 kB[22m
-2025-08-03T08:12:51.856064Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.modern.BC8Oj8jT.js                                         [39m[1m[2m     1.76 kB[22m[1m[22m[2m │ gzip:     0.91 kB[22m
-2025-08-03T08:12:51.856145Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36merrors.DEmqdOpm.js                                               [39m[1m[2m     1.78 kB[22m[1m[22m[2m │ gzip:     0.95 kB[22m
-2025-08-03T08:12:51.85624Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mSideBar.BISOFa7d.js                                              [39m[1m[2m     1.78 kB[22m[1m[22m[2m │ gzip:     0.88 kB[22m
-2025-08-03T08:12:51.856344Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mposts.json.BrXsrecS.js                                           [39m[1m[2m     1.80 kB[22m[1m[22m[2m │ gzip:     0.99 kB[22m
-2025-08-03T08:12:51.856447Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.CUOwBMdB.js                                                [39m[1m[2m     1.87 kB[22m[1m[22m[2m │ gzip:     0.99 kB[22m
-2025-08-03T08:12:51.85656Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mpage.qK6kRvNr.js                                                 [39m[1m[2m     1.88 kB[22m[1m[22m[2m │ gzip:     0.97 kB[22m
-2025-08-03T08:12:51.856676Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mcategory-preloader.CumqAf8y.js                                   [39m[1m[2m     1.95 kB[22m[1m[22m[2m │ gzip:     1.07 kB[22m
-2025-08-03T08:12:51.856783Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36msharp.23zTHq5a.js                                                [39m[1m[2m     1.97 kB[22m[1m[22m[2m │ gzip:     0.99 kB[22m
-2025-08-03T08:12:51.856887Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLicense.CGelJn8U.js                                              [39m[1m[2m     1.99 kB[22m[1m[22m[2m │ gzip:     0.94 kB[22m
-2025-08-03T08:12:51.85699Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36marticle-sorter.jMG7wuMc.js                                       [39m[1m[2m     2.04 kB[22m[1m[22m[2m │ gzip:     0.86 kB[22m
-2025-08-03T08:12:51.857105Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mcustom-copy-button.JvsH-R8Q.js                                   [39m[1m[2m     2.06 kB[22m[1m[22m[2m │ gzip:     0.89 kB[22m
-2025-08-03T08:12:51.857238Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mResponsiveImage.D-g9CzZq.js                                      [39m[1m[2m     2.07 kB[22m[1m[22m[2m │ gzip:     1.11 kB[22m
-2025-08-03T08:12:51.857363Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36marchive.hIsyNXg_.js                                              [39m[1m[2m     2.10 kB[22m[1m[22m[2m │ gzip:     1.05 kB[22m
-2025-08-03T08:12:51.857482Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mFontPreloader.F2NixAJl.js                                        [39m[1m[2m     2.11 kB[22m[1m[22m[2m │ gzip:     1.01 kB[22m
-2025-08-03T08:12:51.857602Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mfast-category-loader.CyN7STug.js                                 [39m[1m[2m     2.11 kB[22m[1m[22m[2m │ gzip:     1.08 kB[22m
-2025-08-03T08:12:51.857713Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mconfig-integration.H3uSHCDh.js                                   [39m[1m[2m     2.14 kB[22m[1m[22m[2m │ gzip:     0.98 kB[22m
-2025-08-03T08:12:51.857823Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mhealth.D4u9vEh1.js                                               [39m[1m[2m     2.15 kB[22m[1m[22m[2m │ gzip:     0.95 kB[22m
-2025-08-03T08:12:51.857953Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mProfile.PKVplKX3.js                                              [39m[1m[2m     2.17 kB[22m[1m[22m[2m │ gzip:     1.02 kB[22m
-2025-08-03T08:12:51.858077Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mremark-directive-rehype.xTvRW7wt.js                              [39m[1m[2m     2.25 kB[22m[1m[22m[2m │ gzip:     1.03 kB[22m
-2025-08-03T08:12:51.858205Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mPagination.CxSFVR6v.js                                           [39m[1m[2m     2.29 kB[22m[1m[22m[2m │ gzip:     1.08 kB[22m
-2025-08-03T08:12:51.858327Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mFriendLinks.CdIz-6ZS.js                                          [39m[1m[2m     2.30 kB[22m[1m[22m[2m │ gzip:     1.28 kB[22m
-2025-08-03T08:12:51.858444Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mstrapi-content-utils.Cf13IBvQ.js                                 [39m[1m[2m     2.34 kB[22m[1m[22m[2m │ gzip:     0.80 kB[22m
-2025-08-03T08:12:51.858569Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mtest-image.D-5OMsRJ.js                                           [39m[1m[2m     2.36 kB[22m[1m[22m[2m │ gzip:     0.89 kB[22m
-2025-08-03T08:12:51.858693Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mResponsiveImage.DUCK33Ec.js                                      [39m[1m[2m     2.37 kB[22m[1m[22m[2m │ gzip:     1.23 kB[22m
-2025-08-03T08:12:51.858811Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mDisplaySettings.CkSW4-lY.js                                      [39m[1m[2m     2.37 kB[22m[1m[22m[2m │ gzip:     1.27 kB[22m
-2025-08-03T08:12:51.858937Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLoadingSpinner.DN6ATiPR.js                                       [39m[1m[2m     2.42 kB[22m[1m[22m[2m │ gzip:     1.07 kB[22m
-2025-08-03T08:12:51.859059Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mSwupHeadPlugin.d6nb3Z__.js                                       [39m[1m[2m     2.57 kB[22m[1m[22m[2m │ gzip:     1.28 kB[22m
-2025-08-03T08:12:51.859171Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mhtml-optimizer.BVKvSiHY.js                                       [39m[1m[2m     2.58 kB[22m[1m[22m[2m │ gzip:     1.24 kB[22m
-2025-08-03T08:12:51.859301Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mSEOHead.DyySbKzV.js                                              [39m[1m[2m     2.61 kB[22m[1m[22m[2m │ gzip:     1.21 kB[22m
-2025-08-03T08:12:51.859423Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mPostMeta.pDzSbbGM.js                                             [39m[1m[2m     2.63 kB[22m[1m[22m[2m │ gzip:     1.09 kB[22m
-2025-08-03T08:12:51.859551Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mlazy-loader.D7RMx9hW.js                                          [39m[1m[2m     2.65 kB[22m[1m[22m[2m │ gzip:     1.10 kB[22m
-2025-08-03T08:12:51.859667Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mrehype-component-github-card.ejwH5wqk.js                         [39m[1m[2m     2.65 kB[22m[1m[22m[2m │ gzip:     1.11 kB[22m
-2025-08-03T08:12:51.859786Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36m_category_.adee8cd9.B6fbbmUh.js                                  [39m[1m[2m     2.72 kB[22m[1m[22m[2m │ gzip:     0.28 kB[22m
-2025-08-03T08:12:51.859902Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLightDarkSwitch.CozkqRAS.js                                      [39m[1m[2m     2.72 kB[22m[1m[22m[2m │ gzip:     1.39 kB[22m
-2025-08-03T08:12:51.860019Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mseo-optimizer.DnVcTq-Q.js                                        [39m[1m[2m     2.81 kB[22m[1m[22m[2m │ gzip:     1.51 kB[22m
-2025-08-03T08:12:51.860138Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36m_slug_.VJzqNCjH.js                                               [39m[1m[2m     3.02 kB[22m[1m[22m[2m │ gzip:     1.57 kB[22m
-2025-08-03T08:12:51.860267Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mcontent-manager.D1p5Ggeo.js                                      [39m[1m[2m     3.11 kB[22m[1m[22m[2m │ gzip:     1.28 kB[22m
-2025-08-03T08:12:51.860377Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mDynamicProfile.vzvc9naG.js                                       [39m[1m[2m     3.16 kB[22m[1m[22m[2m │ gzip:     1.53 kB[22m
-2025-08-03T08:12:51.860552Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36msearch.1VFsZ6vb.js                                               [39m[1m[2m     3.18 kB[22m[1m[22m[2m │ gzip:     1.66 kB[22m
-2025-08-03T08:12:51.860697Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mstrapi-adapter.BHgDC26f.js                                       [39m[1m[2m     3.24 kB[22m[1m[22m[2m │ gzip:     1.47 kB[22m
-2025-08-03T08:12:51.860818Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36msearch.Cu_LF_K6.js                                               [39m[1m[2m     3.47 kB[22m[1m[22m[2m │ gzip:     1.74 kB[22m
-2025-08-03T08:12:51.860929Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mabout.BF6I_GQh.js                                                [39m[1m[2m     3.48 kB[22m[1m[22m[2m │ gzip:     2.13 kB[22m
-2025-08-03T08:12:51.861036Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mbundle-optimizer.Cu0Ul67M.js                                     [39m[1m[2m     3.49 kB[22m[1m[22m[2m │ gzip:     1.53 kB[22m
-2025-08-03T08:12:51.86114Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36meach.Czejncrg.js                                                 [39m[1m[2m     3.75 kB[22m[1m[22m[2m │ gzip:     1.88 kB[22m
-2025-08-03T08:12:51.861267Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mArchivePanel.Y-VIXJJ2.js                                         [39m[1m[2m     3.79 kB[22m[1m[22m[2m │ gzip:     1.69 kB[22m
-2025-08-03T08:12:51.861408Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mErrorBoundary.C7idHfAz.js                                        [39m[1m[2m     4.02 kB[22m[1m[22m[2m │ gzip:     1.81 kB[22m
-2025-08-03T08:12:51.861536Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.dPOcGyXH.js                                                [39m[1m[2m     4.04 kB[22m[1m[22m[2m │ gzip:     2.12 kB[22m
-2025-08-03T08:12:51.861655Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mBannerCarousel.DQLa3cUH.js                                       [39m[1m[2m     4.09 kB[22m[1m[22m[2m │ gzip:     1.46 kB[22m
-2025-08-03T08:12:51.861769Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLayout.astro_astro_type_script_index_1_lang.DNNjKhTd.js          [39m[1m[2m     4.10 kB[22m[1m[22m[2m │ gzip:     1.45 kB[22m
-2025-08-03T08:12:51.861874Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mNavbar.Cdcc9BxF.js                                               [39m[1m[2m     4.20 kB[22m[1m[22m[2m │ gzip:     1.97 kB[22m
-2025-08-03T08:12:51.861969Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mBannerCarousel.astro_astro_type_script_index_0_lang.DYjBHZ6m.js  [39m[1m[2m     4.27 kB[22m[1m[22m[2m │ gzip:     1.26 kB[22m
-2025-08-03T08:12:51.862061Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36munified-data-fetcher.NCLzBkue.js                                 [39m[1m[2m     4.42 kB[22m[1m[22m[2m │ gzip:     1.85 kB[22m
-2025-08-03T08:12:51.862171Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mPostCard.BawDL1Np.js                                             [39m[1m[2m     4.61 kB[22m[1m[22m[2m │ gzip:     1.98 kB[22m
-2025-08-03T08:12:51.862305Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mMainGridLayout.B3opoqPB.js                                       [39m[1m[2m     4.63 kB[22m[1m[22m[2m │ gzip:     2.09 kB[22m
-2025-08-03T08:12:51.862414Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mUniversalPostList.DQv4PEsR.js                                    [39m[1m[2m     4.74 kB[22m[1m[22m[2m │ gzip:     2.21 kB[22m
-2025-08-03T08:12:51.862546Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36m404.ccRvpfIL.js                                                  [39m[1m[2m     4.81 kB[22m[1m[22m[2m │ gzip:     2.22 kB[22m
-2025-08-03T08:12:51.862668Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mSwupA11yPlugin.CD1FIEJN.js                                       [39m[1m[2m     5.24 kB[22m[1m[22m[2m │ gzip:     2.12 kB[22m
-2025-08-03T08:12:51.862782Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mstrapi.CHL8-_rj.js                                               [39m[1m[2m     5.37 kB[22m[1m[22m[2m │ gzip:     2.05 kB[22m
-2025-08-03T08:12:51.862895Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36msearch.astro_astro_type_script_index_0_lang.DntKHN2e.js          [39m[1m[2m     5.45 kB[22m[1m[22m[2m │ gzip:     2.35 kB[22m
-2025-08-03T08:12:51.863007Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mhybrid-content-utils.BRmsrC3H.js                                 [39m[1m[2m     5.55 kB[22m[1m[22m[2m │ gzip:     2.07 kB[22m
-2025-08-03T08:12:51.863117Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mmodule-manager.7urBmda4.js                                       [39m[1m[2m     5.75 kB[22m[1m[22m[2m │ gzip:     2.11 kB[22m
-2025-08-03T08:12:51.863264Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mMainGridLayout.astro_astro_type_script_index_0_lang.X2QOXYuy.js  [39m[1m[2m     6.18 kB[22m[1m[22m[2m │ gzip:     1.75 kB[22m
-2025-08-03T08:12:51.863392Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mbanners.CVBO4hld.js                                              [39m[1m[2m     6.46 kB[22m[1m[22m[2m │ gzip:     1.97 kB[22m
-2025-08-03T08:12:51.86351Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLayout.8_U2V3Cf.js                                               [39m[1m[2m     6.74 kB[22m[1m[22m[2m │ gzip:     3.02 kB[22m
-2025-08-03T08:12:51.86364Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mtags.aq5AZ62F.js                                                 [39m[1m[2m     6.78 kB[22m[1m[22m[2m │ gzip:     2.51 kB[22m
-2025-08-03T08:12:51.863777Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mdebug-images.BnHKNRdz.js                                         [39m[1m[2m     7.66 kB[22m[1m[22m[2m │ gzip:     2.36 kB[22m
-2025-08-03T08:12:51.863897Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mfriends.DRiAJZMR.js                                              [39m[1m[2m     7.82 kB[22m[1m[22m[2m │ gzip:     3.34 kB[22m
-2025-08-03T08:12:51.864008Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mMobileNavigation.CFC_BFBe.js                                     [39m[1m[2m     7.91 kB[22m[1m[22m[2m │ gzip:     3.01 kB[22m
-2025-08-03T08:12:51.86412Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mlayout-switcher.Sk3BRS4h.js                                      [39m[1m[2m     8.09 kB[22m[1m[22m[2m │ gzip:     2.10 kB[22m
-2025-08-03T08:12:51.864253Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mprops.Cr6z4CVY.js                                                [39m[1m[2m     8.68 kB[22m[1m[22m[2m │ gzip:     4.01 kB[22m
-2025-08-03T08:12:51.864359Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36m_category_.6GyYU_9G.js                                           [39m[1m[2m     9.32 kB[22m[1m[22m[2m │ gzip:     3.83 kB[22m
-2025-08-03T08:12:51.86449Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36m_...slug_.CCWTorfZ.js                                            [39m[1m[2m     9.41 kB[22m[1m[22m[2m │ gzip:     4.04 kB[22m
-2025-08-03T08:12:51.864616Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mSearch.C2R4jfZl.js                                               [39m[1m[2m    13.12 kB[22m[1m[22m[2m │ gzip:     4.61 kB[22m
-2025-08-03T08:12:51.864727Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLayout.astro_astro_type_script_index_0_lang.DAHrxWCB.js          [39m[1m[2m    16.69 kB[22m[1m[22m[2m │ gzip:     5.41 kB[22m
-2025-08-03T08:12:51.86484Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mIcon.jM7pJ1UY.js                                                 [39m[1m[2m    20.42 kB[22m[1m[22m[2m │ gzip:     8.24 kB[22m
-2025-08-03T08:12:51.864957Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.B44HtDPe.js                                                [39m[1m[2m    20.84 kB[22m[1m[22m[2m │ gzip:     7.18 kB[22m
-2025-08-03T08:12:51.865074Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mSwup.BJsODpJG.js                                                 [39m[1m[2m    21.60 kB[22m[1m[22m[2m │ gzip:     7.40 kB[22m
-2025-08-03T08:12:51.865206Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mutils.2JfKnrUw.js                                                [39m[1m[2m    23.37 kB[22m[1m[22m[2m │ gzip:     9.45 kB[22m
-2025-08-03T08:12:51.865344Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mREADME-BannerCarousel._uHr9Wcz.js                                [39m[1m[2m    42.39 kB[22m[1m[22m[2m │ gzip:     5.59 kB[22m
-2025-08-03T08:12:51.865475Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mpostcss.BFZh6e_X.js                                              [39m[1m[2m    51.69 kB[22m[1m[22m[2m │ gzip:    16.96 kB[22m
-2025-08-03T08:12:51.865618Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mphotoswipe.esm.CKV1Bsxh.js                                       [39m[1m[2m    60.41 kB[22m[1m[22m[2m │ gzip:    17.48 kB[22m
-2025-08-03T08:12:51.865727Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mImageWrapper.DcCbMXSz.js                                         [39m[1m[2m    72.83 kB[22m[1m[22m[2m │ gzip:    23.38 kB[22m
-2025-08-03T08:12:51.86584Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mtransition.uUFCmrj5.js                                           [39m[1m[2m    88.30 kB[22m[1m[22m[2m │ gzip:    25.39 kB[22m
-2025-08-03T08:12:51.865946Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.D-f2TAmh.js                                                [39m[1m[2m   103.88 kB[22m[1m[22m[2m │ gzip:    29.11 kB[22m
-2025-08-03T08:12:51.866066Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.CfnMqYFO.js                                                [39m[1m[2m   105.86 kB[22m[1m[22m[2m │ gzip:    31.34 kB[22m
-2025-08-03T08:12:51.866223Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mrss.xml.D5oN4YRD.js                                              [39m[1m[2m   272.35 kB[22m[1m[22m[2m │ gzip:   107.40 kB[22m
-2025-08-03T08:12:51.866363Z	08:12:51 [vite] [2mdist/client/[22m[2m_astro/[22m[36mIcon.DNSYESua.js                                                 [39m[1m[33m12,373.17 kB[39m[22m[2m │ gzip: 2,303.93 kB[22m
-2025-08-03T08:12:51.866494Z	08:12:51 [WARN] [vite] [33m
-2025-08-03T08:12:51.866653Z	(!) Some chunks are larger than 500 kB after minification. Consider:
-2025-08-03T08:12:51.866769Z	- Using dynamic import() to code-split the application
-2025-08-03T08:12:51.866878Z	- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
-2025-08-03T08:12:51.867012Z	- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
-2025-08-03T08:12:51.867143Z	08:12:51 [vite] [32m✓ built in 7.53s[39m
-2025-08-03T08:12:51.871722Z	
-2025-08-03T08:12:51.871881Z	 prerendering static routes 
-2025-08-03T08:12:52.030336Z	08:12:52 ▶ src/pages/404.astro
-2025-08-03T08:12:53.075405Z	08:12:52   └─ /404.html🏷️ Index Settings: {
-2025-08-03T08:12:53.075753Z	  data: {
-2025-08-03T08:12:53.075875Z	    id: 1,
-2025-08-03T08:12:53.075944Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
-2025-08-03T08:12:53.076118Z	    site_title: 'SparkDone',
-2025-08-03T08:12:53.076215Z	    site_subtitle: 'Power',
-2025-08-03T08:12:53.076276Z	    site_description: null,
-2025-08-03T08:12:53.076341Z	    createdAt: '2025-07-15T15:21:40.896Z',
-2025-08-03T08:12:53.076401Z	    updatedAt: '2025-08-03T06:52:28.868Z',
-2025-08-03T08:12:53.07646Z	    publishedAt: '2025-08-03T06:52:28.755Z',
-2025-08-03T08:12:53.07653Z	    show_author_section: false,
-2025-08-03T08:12:53.076596Z	    default_homepage_layout: 'grid',
-2025-08-03T08:12:53.07666Z	    enable_home_banner: true,
-2025-08-03T08:12:53.076725Z	    logo_light: {
-2025-08-03T08:12:53.076792Z	      id: 5,
-2025-08-03T08:12:53.076856Z	      name: 'logo1.png',
-2025-08-03T08:12:53.076911Z	      alternativeText: null,
-2025-08-03T08:12:53.076967Z	      caption: null,
-2025-08-03T08:12:53.077023Z	      width: 3401,
-2025-08-03T08:12:53.07708Z	      height: 697,
-2025-08-03T08:12:53.077134Z	      formats: [Object],
-2025-08-03T08:12:53.077205Z	      hash: 'logo1_2c27baca01',
-2025-08-03T08:12:53.077268Z	      ext: '.png',
-2025-08-03T08:12:53.077324Z	      mime: 'image/png',
-2025-08-03T08:12:53.077379Z	      size: 129.52,
-2025-08-03T08:12:53.077433Z	      url: '/uploads/logo1_2c27baca01.png',
-2025-08-03T08:12:53.077488Z	      previewUrl: null,
-2025-08-03T08:12:53.07755Z	      provider: 'local',
-2025-08-03T08:12:53.077605Z	      provider_metadata: null,
-2025-08-03T08:12:53.077659Z	      createdAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:53.077717Z	      updatedAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:53.077789Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
-2025-08-03T08:12:53.077845Z	      publishedAt: '2025-07-19T16:28:05.287Z'
-2025-08-03T08:12:53.077906Z	    },
-2025-08-03T08:12:53.077975Z	    logo_dark: {
-2025-08-03T08:12:53.07803Z	      id: 6,
-2025-08-03T08:12:53.078093Z	      name: 'LOGO.png',
-2025-08-03T08:12:53.078153Z	      alternativeText: null,
-2025-08-03T08:12:53.078224Z	      caption: null,
-2025-08-03T08:12:53.078282Z	      width: 3401,
-2025-08-03T08:12:53.078337Z	      height: 697,
-2025-08-03T08:12:53.078399Z	      formats: [Object],
-2025-08-03T08:12:53.078454Z	      hash: 'LOGO_1c461133d8',
-2025-08-03T08:12:53.078508Z	      ext: '.png',
-2025-08-03T08:12:53.078563Z	      mime: 'image/png',
-2025-08-03T08:12:53.078626Z	      size: 162.14,
-2025-08-03T08:12:53.078681Z	      url: '/uploads/LOGO_1c461133d8.png',
-2025-08-03T08:12:53.078736Z	      previewUrl: null,
-2025-08-03T08:12:53.078805Z	      provider: 'local',
-2025-08-03T08:12:53.078871Z	      provider_metadata: null,
-2025-08-03T08:12:53.078928Z	      createdAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:53.078982Z	      updatedAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:53.079036Z	      documentId: 'yuzljep3d6ppab8upa200de5',
-2025-08-03T08:12:53.079097Z	      publishedAt: '2025-07-19T16:28:05.336Z'
-2025-08-03T08:12:53.079161Z	    },
-2025-08-03T08:12:53.079235Z	    home_banners: [ [Object], [Object] ]
-2025-08-03T08:12:53.079301Z	  },
-2025-08-03T08:12:53.079365Z	  meta: {}
-2025-08-03T08:12:53.079421Z	}
-2025-08-03T08:12:53.079491Z	🏷️ Site Title: SparkDone
-2025-08-03T08:12:53.567638Z	 (+1.54s) 
-2025-08-03T08:12:53.569626Z	08:12:53 ▶ src/pages/about.astro
-2025-08-03T08:12:53.775828Z	08:12:53   └─ /about/index.html🏷️ Index Settings: {
-2025-08-03T08:12:53.776192Z	  data: {
-2025-08-03T08:12:53.776399Z	    id: 1,
-2025-08-03T08:12:53.776558Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
-2025-08-03T08:12:53.776641Z	    site_title: 'SparkDone',
-2025-08-03T08:12:53.776714Z	    site_subtitle: 'Power',
-2025-08-03T08:12:53.77679Z	    site_description: null,
-2025-08-03T08:12:53.776854Z	    createdAt: '2025-07-15T15:21:40.896Z',
-2025-08-03T08:12:53.776917Z	    updatedAt: '2025-08-03T06:52:28.868Z',
-2025-08-03T08:12:53.776974Z	    publishedAt: '2025-08-03T06:52:28.755Z',
-2025-08-03T08:12:53.777054Z	    show_author_section: false,
-2025-08-03T08:12:53.777117Z	    default_homepage_layout: 'grid',
-2025-08-03T08:12:53.777191Z	    enable_home_banner: true,
-2025-08-03T08:12:53.777269Z	    logo_light: {
-2025-08-03T08:12:53.777326Z	      id: 5,
-2025-08-03T08:12:53.777387Z	      name: 'logo1.png',
-2025-08-03T08:12:53.777462Z	      alternativeText: null,
-2025-08-03T08:12:53.777544Z	      caption: null,
-2025-08-03T08:12:53.777614Z	      width: 3401,
-2025-08-03T08:12:53.777679Z	      height: 697,
-2025-08-03T08:12:53.777735Z	      formats: [Object],
-2025-08-03T08:12:53.777792Z	      hash: 'logo1_2c27baca01',
-2025-08-03T08:12:53.777845Z	      ext: '.png',
-2025-08-03T08:12:53.777906Z	      mime: 'image/png',
-2025-08-03T08:12:53.77796Z	      size: 129.52,
-2025-08-03T08:12:53.778016Z	      url: '/uploads/logo1_2c27baca01.png',
-2025-08-03T08:12:53.778077Z	      previewUrl: null,
-2025-08-03T08:12:53.778132Z	      provider: 'local',
-2025-08-03T08:12:53.778229Z	      provider_metadata: null,
-2025-08-03T08:12:53.778296Z	      createdAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:53.778358Z	      updatedAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:53.778421Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
-2025-08-03T08:12:53.778481Z	      publishedAt: '2025-07-19T16:28:05.287Z'
-2025-08-03T08:12:53.778551Z	    },
-2025-08-03T08:12:53.778607Z	    logo_dark: {
-2025-08-03T08:12:53.778664Z	      id: 6,
-2025-08-03T08:12:53.778724Z	      name: 'LOGO.png',
-2025-08-03T08:12:53.778784Z	      alternativeText: null,
-2025-08-03T08:12:53.778844Z	      caption: null,
-2025-08-03T08:12:53.778902Z	      width: 3401,
-2025-08-03T08:12:53.778961Z	      height: 697,
-2025-08-03T08:12:53.779018Z	      formats: [Object],
-2025-08-03T08:12:53.77908Z	      hash: 'LOGO_1c461133d8',
-2025-08-03T08:12:53.779142Z	      ext: '.png',
-2025-08-03T08:12:53.779225Z	      mime: 'image/png',
-2025-08-03T08:12:53.779292Z	      size: 162.14,
-2025-08-03T08:12:53.779355Z	      url: '/uploads/LOGO_1c461133d8.png',
-2025-08-03T08:12:53.779417Z	      previewUrl: null,
-2025-08-03T08:12:53.779492Z	      provider: 'local',
-2025-08-03T08:12:53.77956Z	      provider_metadata: null,
-2025-08-03T08:12:53.779622Z	      createdAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:53.779685Z	      updatedAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:53.779744Z	      documentId: 'yuzljep3d6ppab8upa200de5',
-2025-08-03T08:12:53.779801Z	      publishedAt: '2025-07-19T16:28:05.336Z'
-2025-08-03T08:12:53.779861Z	    },
-2025-08-03T08:12:53.779918Z	    home_banners: [ [Object], [Object] ]
-2025-08-03T08:12:53.779979Z	  },
-2025-08-03T08:12:53.780033Z	  meta: {}
-2025-08-03T08:12:53.780099Z	}
-2025-08-03T08:12:53.780167Z	🏷️ Site Title: SparkDone
-2025-08-03T08:12:53.886151Z	 (+316ms) 
-2025-08-03T08:12:53.888047Z	08:12:53 ▶ src/pages/archive.astro
-2025-08-03T08:12:54.175235Z	08:12:53   └─ /archive/index.html🏷️ Index Settings: {
-2025-08-03T08:12:54.175577Z	  data: {
-2025-08-03T08:12:54.1757Z	    id: 1,
-2025-08-03T08:12:54.175787Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
-2025-08-03T08:12:54.175903Z	    site_title: 'SparkDone',
-2025-08-03T08:12:54.176175Z	    site_subtitle: 'Power',
-2025-08-03T08:12:54.176323Z	    site_description: null,
-2025-08-03T08:12:54.176399Z	    createdAt: '2025-07-15T15:21:40.896Z',
-2025-08-03T08:12:54.176635Z	    updatedAt: '2025-08-03T06:52:28.868Z',
-2025-08-03T08:12:54.176704Z	    publishedAt: '2025-08-03T06:52:28.755Z',
-2025-08-03T08:12:54.176769Z	    show_author_section: false,
-2025-08-03T08:12:54.176996Z	    default_homepage_layout: 'grid',
-2025-08-03T08:12:54.177093Z	    enable_home_banner: true,
-2025-08-03T08:12:54.17731Z	    logo_light: {
-2025-08-03T08:12:54.177443Z	      id: 5,
-2025-08-03T08:12:54.177679Z	      name: 'logo1.png',
-2025-08-03T08:12:54.177802Z	      alternativeText: null,
-2025-08-03T08:12:54.177934Z	      caption: null,
-2025-08-03T08:12:54.178032Z	      width: 3401,
-2025-08-03T08:12:54.178287Z	      height: 697,
-2025-08-03T08:12:54.178387Z	      formats: [Object],
-2025-08-03T08:12:54.178455Z	      hash: 'logo1_2c27baca01',
-2025-08-03T08:12:54.178635Z	      ext: '.png',
-2025-08-03T08:12:54.178744Z	      mime: 'image/png',
-2025-08-03T08:12:54.178855Z	      size: 129.52,
-2025-08-03T08:12:54.178969Z	      url: '/uploads/logo1_2c27baca01.png',
-2025-08-03T08:12:54.179057Z	      previewUrl: null,
-2025-08-03T08:12:54.179115Z	      provider: 'local',
-2025-08-03T08:12:54.179324Z	      provider_metadata: null,
-2025-08-03T08:12:54.17941Z	      createdAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:54.179472Z	      updatedAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:54.179531Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
-2025-08-03T08:12:54.179637Z	      publishedAt: '2025-07-19T16:28:05.287Z'
-2025-08-03T08:12:54.179783Z	    },
-2025-08-03T08:12:54.179855Z	    logo_dark: {
-2025-08-03T08:12:54.179912Z	      id: 6,
-2025-08-03T08:12:54.179999Z	      name: 'LOGO.png',
-2025-08-03T08:12:54.180097Z	      alternativeText: null,
-2025-08-03T08:12:54.180279Z	      caption: null,
-2025-08-03T08:12:54.180358Z	      width: 3401,
-2025-08-03T08:12:54.180428Z	      height: 697,
-2025-08-03T08:12:54.180575Z	      formats: [Object],
-2025-08-03T08:12:54.180648Z	      hash: 'LOGO_1c461133d8',
-2025-08-03T08:12:54.180724Z	      ext: '.png',
-2025-08-03T08:12:54.180872Z	      mime: 'image/png',
-2025-08-03T08:12:54.180974Z	      size: 162.14,
-2025-08-03T08:12:54.181076Z	      url: '/uploads/LOGO_1c461133d8.png',
-2025-08-03T08:12:54.181223Z	      previewUrl: null,
-2025-08-03T08:12:54.181334Z	      provider: 'local',
-2025-08-03T08:12:54.18144Z	      provider_metadata: null,
-2025-08-03T08:12:54.181525Z	      createdAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:54.181619Z	      updatedAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:54.181697Z	      documentId: 'yuzljep3d6ppab8upa200de5',
-2025-08-03T08:12:54.181782Z	      publishedAt: '2025-07-19T16:28:05.336Z'
-2025-08-03T08:12:54.181881Z	    },
-2025-08-03T08:12:54.181985Z	    home_banners: [ [Object], [Object] ]
-2025-08-03T08:12:54.182086Z	  },
-2025-08-03T08:12:54.182215Z	  meta: {}
-2025-08-03T08:12:54.182325Z	}
-2025-08-03T08:12:54.182432Z	🏷️ Site Title: SparkDone
-2025-08-03T08:12:54.20604Z	 (+318ms) 
-2025-08-03T08:12:54.211564Z	08:12:54 ▶ src/pages/categories/[category].astro
-2025-08-03T08:12:54.212204Z	🏗️ 生产模式：开始生成分类页面静态路径...
-2025-08-03T08:12:54.212869Z	🏗️ 找到 3 个分类（包括没有文章的分类）: [ 'Github项目(1篇)', '网赚项目(0篇)', '资源共享(0篇)' ]
-2025-08-03T08:12:54.213033Z	🔗 分类路径映射: "Github项目" -> "Github项目" (1篇文章)
-2025-08-03T08:12:54.21324Z	🔗 分类路径映射: "网赚项目" -> "网赚项目" (0篇文章)
-2025-08-03T08:12:54.213365Z	🔗 分类路径映射: "资源共享" -> "资源共享" (0篇文章)
-2025-08-03T08:12:54.21349Z	🏗️ 将生成 3 个静态分类页面（包括 2 个空分类）
-2025-08-03T08:12:54.215269Z	08:12:54   ├─ /categories/Github项目/index.html🏗️ 分类页面：强制静态预渲染模式
-2025-08-03T08:12:54.278793Z	🔍 getCategoryByName 被调用，name: Github项目
-2025-08-03T08:12:54.279061Z	📡 请求URL: /categories?filters[name][$eq]=Github%E9%A1%B9%E7%9B%AE
-2025-08-03T08:12:54.31713Z	✅ getCategoryByName 响应: {
-2025-08-03T08:12:54.317514Z	  data: [
-2025-08-03T08:12:54.317645Z	    {
-2025-08-03T08:12:54.317711Z	      id: 85,
-2025-08-03T08:12:54.31777Z	      name: 'Github项目',
-2025-08-03T08:12:54.317841Z	      slug: 'github-projects',
-2025-08-03T08:12:54.3179Z	      description: null,
-2025-08-03T08:12:54.317957Z	      color: null,
-2025-08-03T08:12:54.318017Z	      icon: null,
-2025-08-03T08:12:54.318091Z	      sortOrder: 7,
-2025-08-03T08:12:54.31815Z	      createdAt: '2025-07-13T04:22:11.457Z',
-2025-08-03T08:12:54.318281Z	      updatedAt: '2025-08-03T03:46:11.780Z',
-2025-08-03T08:12:54.318348Z	      publishedAt: '2025-08-03T03:46:11.861Z',
-2025-08-03T08:12:54.318405Z	      documentId: 'y829o6ymtkviqiv9o5zolcgf',
-2025-08-03T08:12:54.318462Z	      layout_type: 'grid',
-2025-08-03T08:12:54.318568Z	      enable_banner: false
-2025-08-03T08:12:54.31884Z	    }
-2025-08-03T08:12:54.318964Z	  ],
-2025-08-03T08:12:54.319074Z	  meta: { pagination: { page: 1, pageSize: 25, pageCount: 1, total: 1 } }
-2025-08-03T08:12:54.319197Z	}
-2025-08-03T08:12:54.502007Z	🏷️ Index Settings: {
-2025-08-03T08:12:54.502412Z	  data: {
-2025-08-03T08:12:54.502539Z	    id: 1,
-2025-08-03T08:12:54.502677Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
-2025-08-03T08:12:54.502923Z	    site_title: 'SparkDone',
-2025-08-03T08:12:54.503026Z	    site_subtitle: 'Power',
-2025-08-03T08:12:54.503312Z	    site_description: null,
-2025-08-03T08:12:54.503557Z	    createdAt: '2025-07-15T15:21:40.896Z',
-2025-08-03T08:12:54.503678Z	    updatedAt: '2025-08-03T06:52:28.868Z',
-2025-08-03T08:12:54.503884Z	    publishedAt: '2025-08-03T06:52:28.755Z',
-2025-08-03T08:12:54.504022Z	    show_author_section: false,
-2025-08-03T08:12:54.504202Z	    default_homepage_layout: 'grid',
-2025-08-03T08:12:54.504297Z	    enable_home_banner: true,
-2025-08-03T08:12:54.504391Z	    logo_light: {
-2025-08-03T08:12:54.504491Z	      id: 5,
-2025-08-03T08:12:54.504591Z	      name: 'logo1.png',
-2025-08-03T08:12:54.504687Z	      alternativeText: null,
-2025-08-03T08:12:54.504809Z	      caption: null,
-2025-08-03T08:12:54.504949Z	      width: 3401,
-2025-08-03T08:12:54.505054Z	      height: 697,
-2025-08-03T08:12:54.50516Z	      formats: [Object],
-2025-08-03T08:12:54.505277Z	      hash: 'logo1_2c27baca01',
-2025-08-03T08:12:54.505357Z	      ext: '.png',
-2025-08-03T08:12:54.505448Z	      mime: 'image/png',
-2025-08-03T08:12:54.505539Z	      size: 129.52,
-2025-08-03T08:12:54.505614Z	      url: '/uploads/logo1_2c27baca01.png',
-2025-08-03T08:12:54.505707Z	      previewUrl: null,
-2025-08-03T08:12:54.505816Z	      provider: 'local',
-2025-08-03T08:12:54.505897Z	      provider_metadata: null,
-2025-08-03T08:12:54.505986Z	      createdAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:54.506141Z	      updatedAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:54.506278Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
-2025-08-03T08:12:54.506382Z	      publishedAt: '2025-07-19T16:28:05.287Z'
-2025-08-03T08:12:54.506484Z	    },
-2025-08-03T08:12:54.506597Z	    logo_dark: {
-2025-08-03T08:12:54.506677Z	      id: 6,
-2025-08-03T08:12:54.506845Z	      name: 'LOGO.png',
-2025-08-03T08:12:54.507037Z	      alternativeText: null,
-2025-08-03T08:12:54.507199Z	      caption: null,
-2025-08-03T08:12:54.507362Z	      width: 3401,
-2025-08-03T08:12:54.507441Z	      height: 697,
-2025-08-03T08:12:54.507619Z	      formats: [Object],
-2025-08-03T08:12:54.507806Z	      hash: 'LOGO_1c461133d8',
-2025-08-03T08:12:54.507887Z	      ext: '.png',
-2025-08-03T08:12:54.508024Z	      mime: 'image/png',
-2025-08-03T08:12:54.508302Z	      size: 162.14,
-2025-08-03T08:12:54.508386Z	      url: '/uploads/LOGO_1c461133d8.png',
-2025-08-03T08:12:54.508486Z	      previewUrl: null,
-2025-08-03T08:12:54.508617Z	      provider: 'local',
-2025-08-03T08:12:54.508723Z	      provider_metadata: null,
-2025-08-03T08:12:54.508828Z	      createdAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:54.508928Z	      updatedAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:54.509017Z	      documentId: 'yuzljep3d6ppab8upa200de5',
-2025-08-03T08:12:54.509128Z	      publishedAt: '2025-07-19T16:28:05.336Z'
-2025-08-03T08:12:54.50925Z	    },
-2025-08-03T08:12:54.509523Z	    home_banners: [ [Object], [Object] ]
-2025-08-03T08:12:54.509635Z	  },
-2025-08-03T08:12:54.509821Z	  meta: {}
-2025-08-03T08:12:54.509913Z	}
-2025-08-03T08:12:54.509983Z	🏷️ Site Title: SparkDone
-2025-08-03T08:12:54.681008Z	 (+467ms) 
-2025-08-03T08:12:54.68171Z	08:12:54   ├─ /categories/网赚项目/index.html🏗️ 分类页面：强制静态预渲染模式
-2025-08-03T08:12:54.720822Z	🔍 getCategoryByName 被调用，name: 网赚项目
-2025-08-03T08:12:54.721104Z	📡 请求URL: /categories?filters[name][$eq]=%E7%BD%91%E8%B5%9A%E9%A1%B9%E7%9B%AE
-2025-08-03T08:12:54.768848Z	✅ getCategoryByName 响应: {
-2025-08-03T08:12:54.769115Z	  data: [
-2025-08-03T08:12:54.769286Z	    {
-2025-08-03T08:12:54.769405Z	      id: 50,
-2025-08-03T08:12:54.769513Z	      name: '网赚项目',
-2025-08-03T08:12:54.769613Z	      slug: 'moneyonline',
-2025-08-03T08:12:54.769709Z	      description: null,
-2025-08-03T08:12:54.769833Z	      color: null,
-2025-08-03T08:12:54.769934Z	      icon: 'icon-park-outline:arrow-right-up',
-2025-08-03T08:12:54.770032Z	      sortOrder: 1,
-2025-08-03T08:12:54.770128Z	      createdAt: '2025-07-13T04:22:35.514Z',
-2025-08-03T08:12:54.770249Z	      updatedAt: '2025-07-24T12:35:03.551Z',
-2025-08-03T08:12:54.770356Z	      publishedAt: '2025-07-24T12:35:03.563Z',
-2025-08-03T08:12:54.770458Z	      documentId: 'krdf2bmnf13ipmgzcfws4ji0',
-2025-08-03T08:12:54.770563Z	      layout_type: 'masonry',
-2025-08-03T08:12:54.770675Z	      enable_banner: null
-2025-08-03T08:12:54.770753Z	    }
-2025-08-03T08:12:54.770818Z	  ],
-2025-08-03T08:12:54.770884Z	  meta: { pagination: { page: 1, pageSize: 25, pageCount: 1, total: 1 } }
-2025-08-03T08:12:54.770954Z	}
-2025-08-03T08:12:54.980364Z	🏷️ Index Settings: {
-2025-08-03T08:12:54.980618Z	  data: {
-2025-08-03T08:12:54.98084Z	    id: 1,
-2025-08-03T08:12:54.980957Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
-2025-08-03T08:12:54.98103Z	    site_title: 'SparkDone',
-2025-08-03T08:12:54.981112Z	    site_subtitle: 'Power',
-2025-08-03T08:12:54.98119Z	    site_description: null,
-2025-08-03T08:12:54.981271Z	    createdAt: '2025-07-15T15:21:40.896Z',
-2025-08-03T08:12:54.981337Z	    updatedAt: '2025-08-03T06:52:28.868Z',
-2025-08-03T08:12:54.981398Z	    publishedAt: '2025-08-03T06:52:28.755Z',
-2025-08-03T08:12:54.981454Z	    show_author_section: false,
-2025-08-03T08:12:54.981525Z	    default_homepage_layout: 'grid',
-2025-08-03T08:12:54.98159Z	    enable_home_banner: true,
-2025-08-03T08:12:54.981647Z	    logo_light: {
-2025-08-03T08:12:54.981701Z	      id: 5,
-2025-08-03T08:12:54.981758Z	      name: 'logo1.png',
-2025-08-03T08:12:54.981821Z	      alternativeText: null,
-2025-08-03T08:12:54.98189Z	      caption: null,
-2025-08-03T08:12:54.981953Z	      width: 3401,
-2025-08-03T08:12:54.98201Z	      height: 697,
-2025-08-03T08:12:54.982073Z	      formats: [Object],
-2025-08-03T08:12:54.982128Z	      hash: 'logo1_2c27baca01',
-2025-08-03T08:12:54.982197Z	      ext: '.png',
-2025-08-03T08:12:54.982263Z	      mime: 'image/png',
-2025-08-03T08:12:54.982323Z	      size: 129.52,
-2025-08-03T08:12:54.982381Z	      url: '/uploads/logo1_2c27baca01.png',
-2025-08-03T08:12:54.982439Z	      previewUrl: null,
-2025-08-03T08:12:54.982497Z	      provider: 'local',
-2025-08-03T08:12:54.982574Z	      provider_metadata: null,
-2025-08-03T08:12:54.982643Z	      createdAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:54.98271Z	      updatedAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:54.98278Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
-2025-08-03T08:12:54.982839Z	      publishedAt: '2025-07-19T16:28:05.287Z'
-2025-08-03T08:12:54.98291Z	    },
-2025-08-03T08:12:54.98297Z	    logo_dark: {
-2025-08-03T08:12:54.983032Z	      id: 6,
-2025-08-03T08:12:54.983102Z	      name: 'LOGO.png',
-2025-08-03T08:12:54.983166Z	      alternativeText: null,
-2025-08-03T08:12:54.983244Z	      caption: null,
-2025-08-03T08:12:54.983303Z	      width: 3401,
-2025-08-03T08:12:54.983361Z	      height: 697,
-2025-08-03T08:12:54.983422Z	      formats: [Object],
-2025-08-03T08:12:54.983481Z	      hash: 'LOGO_1c461133d8',
-2025-08-03T08:12:54.983544Z	      ext: '.png',
-2025-08-03T08:12:54.983605Z	      mime: 'image/png',
-2025-08-03T08:12:54.983663Z	      size: 162.14,
-2025-08-03T08:12:54.983718Z	      url: '/uploads/LOGO_1c461133d8.png',
-2025-08-03T08:12:54.983877Z	      previewUrl: null,
-2025-08-03T08:12:54.984062Z	      provider: 'local',
-2025-08-03T08:12:54.98419Z	      provider_metadata: null,
-2025-08-03T08:12:54.98431Z	      createdAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:54.984433Z	      updatedAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:54.984557Z	      documentId: 'yuzljep3d6ppab8upa200de5',
-2025-08-03T08:12:54.984687Z	      publishedAt: '2025-07-19T16:28:05.336Z'
-2025-08-03T08:12:54.984823Z	    },
-2025-08-03T08:12:54.984969Z	    home_banners: [ [Object], [Object] ]
-2025-08-03T08:12:54.98509Z	  },
-2025-08-03T08:12:54.985213Z	  meta: {}
-2025-08-03T08:12:54.985335Z	}
-2025-08-03T08:12:54.985463Z	🏷️ Site Title: SparkDone
-2025-08-03T08:12:55.186919Z	 (+506ms) 
-2025-08-03T08:12:55.187639Z	08:12:55   └─ /categories/资源共享/index.html🏗️ 分类页面：强制静态预渲染模式
-2025-08-03T08:12:55.225027Z	🔍 getCategoryByName 被调用，name: 资源共享
-2025-08-03T08:12:55.225294Z	📡 请求URL: /categories?filters[name][$eq]=%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB
-2025-08-03T08:12:55.262461Z	✅ getCategoryByName 响应: {
-2025-08-03T08:12:55.262803Z	  data: [
-2025-08-03T08:12:55.262927Z	    {
-2025-08-03T08:12:55.262993Z	      id: 87,
-2025-08-03T08:12:55.263066Z	      name: '资源共享',
-2025-08-03T08:12:55.263127Z	      slug: 'ziyuan',
-2025-08-03T08:12:55.2632Z	      description: '资源共享',
-2025-08-03T08:12:55.263266Z	      color: '#6366f1',
-2025-08-03T08:12:55.263328Z	      icon: null,
-2025-08-03T08:12:55.2634Z	      sortOrder: 0,
-2025-08-03T08:12:55.263471Z	      createdAt: '2025-08-03T05:29:36.391Z',
-2025-08-03T08:12:55.26354Z	      updatedAt: '2025-08-03T05:29:38.469Z',
-2025-08-03T08:12:55.263609Z	      publishedAt: '2025-08-03T05:29:38.496Z',
-2025-08-03T08:12:55.263666Z	      documentId: 'gqit49chuzfawxkmjm1vkou8',
-2025-08-03T08:12:55.263726Z	      layout_type: 'grid',
-2025-08-03T08:12:55.263781Z	      enable_banner: true
-2025-08-03T08:12:55.263838Z	    }
-2025-08-03T08:12:55.263898Z	  ],
-2025-08-03T08:12:55.263971Z	  meta: { pagination: { page: 1, pageSize: 25, pageCount: 1, total: 1 } }
-2025-08-03T08:12:55.264029Z	}
-2025-08-03T08:12:55.400032Z	🏷️ Index Settings: {
-2025-08-03T08:12:55.400358Z	  data: {
-2025-08-03T08:12:55.400459Z	    id: 1,
-2025-08-03T08:12:55.400521Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
-2025-08-03T08:12:55.400586Z	    site_title: 'SparkDone',
-2025-08-03T08:12:55.400644Z	    site_subtitle: 'Power',
-2025-08-03T08:12:55.400699Z	    site_description: null,
-2025-08-03T08:12:55.400759Z	    createdAt: '2025-07-15T15:21:40.896Z',
-2025-08-03T08:12:55.400824Z	    updatedAt: '2025-08-03T06:52:28.868Z',
-2025-08-03T08:12:55.400979Z	    publishedAt: '2025-08-03T06:52:28.755Z',
-2025-08-03T08:12:55.401095Z	    show_author_section: false,
-2025-08-03T08:12:55.40116Z	    default_homepage_layout: 'grid',
-2025-08-03T08:12:55.401256Z	    enable_home_banner: true,
-2025-08-03T08:12:55.401323Z	    logo_light: {
-2025-08-03T08:12:55.40138Z	      id: 5,
-2025-08-03T08:12:55.401438Z	      name: 'logo1.png',
-2025-08-03T08:12:55.401494Z	      alternativeText: null,
-2025-08-03T08:12:55.401548Z	      caption: null,
-2025-08-03T08:12:55.401615Z	      width: 3401,
-2025-08-03T08:12:55.401672Z	      height: 697,
-2025-08-03T08:12:55.401725Z	      formats: [Object],
-2025-08-03T08:12:55.401779Z	      hash: 'logo1_2c27baca01',
-2025-08-03T08:12:55.401832Z	      ext: '.png',
-2025-08-03T08:12:55.401888Z	      mime: 'image/png',
-2025-08-03T08:12:55.401946Z	      size: 129.52,
-2025-08-03T08:12:55.402001Z	      url: '/uploads/logo1_2c27baca01.png',
-2025-08-03T08:12:55.402073Z	      previewUrl: null,
-2025-08-03T08:12:55.402138Z	      provider: 'local',
-2025-08-03T08:12:55.402217Z	      provider_metadata: null,
-2025-08-03T08:12:55.40228Z	      createdAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:55.402341Z	      updatedAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:55.402405Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
-2025-08-03T08:12:55.402466Z	      publishedAt: '2025-07-19T16:28:05.287Z'
-2025-08-03T08:12:55.40252Z	    },
-2025-08-03T08:12:55.402582Z	    logo_dark: {
-2025-08-03T08:12:55.402649Z	      id: 6,
-2025-08-03T08:12:55.402712Z	      name: 'LOGO.png',
-2025-08-03T08:12:55.402775Z	      alternativeText: null,
-2025-08-03T08:12:55.402837Z	      caption: null,
-2025-08-03T08:12:55.402893Z	      width: 3401,
-2025-08-03T08:12:55.402948Z	      height: 697,
-2025-08-03T08:12:55.403009Z	      formats: [Object],
-2025-08-03T08:12:55.403067Z	      hash: 'LOGO_1c461133d8',
-2025-08-03T08:12:55.403128Z	      ext: '.png',
-2025-08-03T08:12:55.403193Z	      mime: 'image/png',
-2025-08-03T08:12:55.403256Z	      size: 162.14,
-2025-08-03T08:12:55.403311Z	      url: '/uploads/LOGO_1c461133d8.png',
-2025-08-03T08:12:55.40337Z	      previewUrl: null,
-2025-08-03T08:12:55.403424Z	      provider: 'local',
-2025-08-03T08:12:55.403481Z	      provider_metadata: null,
-2025-08-03T08:12:55.403548Z	      createdAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:55.403621Z	      updatedAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:55.403683Z	      documentId: 'yuzljep3d6ppab8upa200de5',
-2025-08-03T08:12:55.403739Z	      publishedAt: '2025-07-19T16:28:05.336Z'
-2025-08-03T08:12:55.4038Z	    },
-2025-08-03T08:12:55.403857Z	    home_banners: [ [Object], [Object] ]
-2025-08-03T08:12:55.403911Z	  },
-2025-08-03T08:12:55.404004Z	  meta: {}
-2025-08-03T08:12:55.404107Z	}
-2025-08-03T08:12:55.404198Z	🏷️ Site Title: SparkDone
-2025-08-03T08:12:55.571614Z	 (+385ms) 
-2025-08-03T08:12:55.573512Z	08:12:55 ▶ src/pages/friends.astro
-2025-08-03T08:12:55.867586Z	08:12:55   └─ /friends/index.html🏷️ Index Settings: {
-2025-08-03T08:12:55.868051Z	  data: {
-2025-08-03T08:12:55.868147Z	    id: 1,
-2025-08-03T08:12:55.868246Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
-2025-08-03T08:12:55.868317Z	    site_title: 'SparkDone',
-2025-08-03T08:12:55.868375Z	    site_subtitle: 'Power',
-2025-08-03T08:12:55.868438Z	    site_description: null,
-2025-08-03T08:12:55.868502Z	    createdAt: '2025-07-15T15:21:40.896Z',
-2025-08-03T08:12:55.86872Z	    updatedAt: '2025-08-03T06:52:28.868Z',
-2025-08-03T08:12:55.868889Z	    publishedAt: '2025-08-03T06:52:28.755Z',
-2025-08-03T08:12:55.869034Z	    show_author_section: false,
-2025-08-03T08:12:55.869158Z	    default_homepage_layout: 'grid',
-2025-08-03T08:12:55.869279Z	    enable_home_banner: true,
-2025-08-03T08:12:55.869409Z	    logo_light: {
-2025-08-03T08:12:55.869534Z	      id: 5,
-2025-08-03T08:12:55.869648Z	      name: 'logo1.png',
-2025-08-03T08:12:55.869754Z	      alternativeText: null,
-2025-08-03T08:12:55.869907Z	      caption: null,
-2025-08-03T08:12:55.870252Z	      width: 3401,
-2025-08-03T08:12:55.870412Z	      height: 697,
-2025-08-03T08:12:55.870484Z	      formats: [Object],
-2025-08-03T08:12:55.870564Z	      hash: 'logo1_2c27baca01',
-2025-08-03T08:12:55.870622Z	      ext: '.png',
-2025-08-03T08:12:55.870682Z	      mime: 'image/png',
-2025-08-03T08:12:55.870746Z	      size: 129.52,
-2025-08-03T08:12:55.870976Z	      url: '/uploads/logo1_2c27baca01.png',
-2025-08-03T08:12:55.871087Z	      previewUrl: null,
-2025-08-03T08:12:55.871152Z	      provider: 'local',
-2025-08-03T08:12:55.871253Z	      provider_metadata: null,
-2025-08-03T08:12:55.871319Z	      createdAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:55.87145Z	      updatedAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:55.871516Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
-2025-08-03T08:12:55.871575Z	      publishedAt: '2025-07-19T16:28:05.287Z'
-2025-08-03T08:12:55.871636Z	    },
-2025-08-03T08:12:55.871694Z	    logo_dark: {
-2025-08-03T08:12:55.871753Z	      id: 6,
-2025-08-03T08:12:55.871813Z	      name: 'LOGO.png',
-2025-08-03T08:12:55.871881Z	      alternativeText: null,
-2025-08-03T08:12:55.871945Z	      caption: null,
-2025-08-03T08:12:55.872015Z	      width: 3401,
-2025-08-03T08:12:55.872075Z	      height: 697,
-2025-08-03T08:12:55.872141Z	      formats: [Object],
-2025-08-03T08:12:55.872229Z	      hash: 'LOGO_1c461133d8',
-2025-08-03T08:12:55.87233Z	      ext: '.png',
-2025-08-03T08:12:55.87239Z	      mime: 'image/png',
-2025-08-03T08:12:55.872459Z	      size: 162.14,
-2025-08-03T08:12:55.872535Z	      url: '/uploads/LOGO_1c461133d8.png',
-2025-08-03T08:12:55.872602Z	      previewUrl: null,
-2025-08-03T08:12:55.872658Z	      provider: 'local',
-2025-08-03T08:12:55.872714Z	      provider_metadata: null,
-2025-08-03T08:12:55.872773Z	      createdAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:55.872832Z	      updatedAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:55.872887Z	      documentId: 'yuzljep3d6ppab8upa200de5',
-2025-08-03T08:12:55.872951Z	      publishedAt: '2025-07-19T16:28:05.336Z'
-2025-08-03T08:12:55.873017Z	    },
-2025-08-03T08:12:55.873079Z	    home_banners: [ [Object], [Object] ]
-2025-08-03T08:12:55.873136Z	  },
-2025-08-03T08:12:55.873219Z	  meta: {}
-2025-08-03T08:12:55.87329Z	}
-2025-08-03T08:12:55.873356Z	🏷️ Site Title: SparkDone
-2025-08-03T08:12:55.896606Z	 (+323ms) 
-2025-08-03T08:12:55.899193Z	08:12:55 ▶ src/pages/page/[slug].astro
-2025-08-03T08:12:55.940886Z	08:12:55 ▶ src/pages/posts/[...slug].astro
-2025-08-03T08:12:55.942246Z	08:12:55   └─ /posts/article1/index.html🚀🚀🚀 [SLUG].ASTRO 文章页面开始执行，slug: article1
-2025-08-03T08:12:55.9425Z	🚀🚀🚀 当前时间: 2025-08-03T08:12:55.942Z
-2025-08-03T08:12:55.942664Z	🔍 从所有文章中找到的文章: Cloudflare Pages将自动触发构建
-2025-08-03T08:12:55.942824Z	🔍 entry.body 内容长度: 92
-2025-08-03T08:12:55.942948Z	🔍 entry.body 内容预览: Cloudflare Pages将自动触发构建Cloudflare Pages将自动触发构建Cloudflare Pages将自动触发构建Cloudflare Pages将自动触发构建
-2025-08-03T08:12:55.943076Z	🔍 entry.render 存在吗? true
-2025-08-03T08:12:55.943224Z	🔍 entry.body 内容: Cloudflare Pages将自动触发构建Cloudflare Pages将自动触发构建Cloudflare Pages将自动触发构建Cloudflare Pages将自动触发构建...
-2025-08-03T08:12:55.943572Z	📞 调用 entry.render() 函数...
-2025-08-03T08:12:55.943769Z	✅ render() 调用完成，Content 类型: function
-2025-08-03T08:12:55.943906Z	✅ remarkPluginFrontmatter: { words: 36, minutes: 1, excerpt: 'Cloudflare Pages将自动触发构建' }
-2025-08-03T08:12:55.944024Z	Author Debug in Article Page: {
-2025-08-03T08:12:55.944156Z	  'entry.data.author': {
-2025-08-03T08:12:55.944294Z	    name: 'SparkDone',
-2025-08-03T08:12:55.9444Z	    slug: 'SparkDone',
-2025-08-03T08:12:55.944511Z	    bio: null,
-2025-08-03T08:12:55.944622Z	    email: 'admin@sparkdone.com',
-2025-08-03T08:12:55.944722Z	    website: null,
-2025-08-03T08:12:55.944837Z	    github: 'admin',
-2025-08-03T08:12:55.944958Z	    twitter: 'admin',
-2025-08-03T08:12:55.945061Z	    linkedin: 'admin',
-2025-08-03T08:12:55.94515Z	    avatar: 'http://localhost:1337/uploads/shanghai_city_5083x3389_16563_686875de57.jpg'
-2025-08-03T08:12:55.945275Z	  },
-2025-08-03T08:12:55.945341Z	  'typeof entry.data.author': 'object',
-2025-08-03T08:12:55.945406Z	  'entry.data keys': [
-2025-08-03T08:12:55.945463Z	    'strapiId',     'documentId',
-2025-08-03T08:12:55.945542Z	    'title',        'published',
-2025-08-03T08:12:55.945606Z	    'updated',      'draft',
-2025-08-03T08:12:55.945675Z	    'description',  'image',
-2025-08-03T08:12:55.945743Z	    'tags',         'category',
-2025-08-03T08:12:55.945803Z	    'categorySlug', 'featured',
-2025-08-03T08:12:55.945857Z	    'metaTitle',    'metaDescription',
-2025-08-03T08:12:55.945917Z	    'keywords',     'author',
-2025-08-03T08:12:55.945972Z	    'prevTitle',    'prevSlug',
-2025-08-03T08:12:55.946029Z	    'nextTitle',    'nextSlug'
-2025-08-03T08:12:55.946084Z	  ]
-2025-08-03T08:12:55.946138Z	}
-2025-08-03T08:12:56.280853Z	🏷️ Index Settings: {
-2025-08-03T08:12:56.281121Z	  data: {
-2025-08-03T08:12:56.281226Z	    id: 1,
-2025-08-03T08:12:56.281313Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
-2025-08-03T08:12:56.281373Z	    site_title: 'SparkDone',
-2025-08-03T08:12:56.281429Z	    site_subtitle: 'Power',
-2025-08-03T08:12:56.281492Z	    site_description: null,
-2025-08-03T08:12:56.281581Z	    createdAt: '2025-07-15T15:21:40.896Z',
-2025-08-03T08:12:56.281646Z	    updatedAt: '2025-08-03T06:52:28.868Z',
-2025-08-03T08:12:56.281712Z	    publishedAt: '2025-08-03T06:52:28.755Z',
-2025-08-03T08:12:56.281768Z	    show_author_section: false,
-2025-08-03T08:12:56.281839Z	    default_homepage_layout: 'grid',
-2025-08-03T08:12:56.281903Z	    enable_home_banner: true,
-2025-08-03T08:12:56.281958Z	    logo_light: {
-2025-08-03T08:12:56.282016Z	      id: 5,
-2025-08-03T08:12:56.282077Z	      name: 'logo1.png',
-2025-08-03T08:12:56.282139Z	      alternativeText: null,
-2025-08-03T08:12:56.282213Z	      caption: null,
-2025-08-03T08:12:56.282271Z	      width: 3401,
-2025-08-03T08:12:56.282335Z	      height: 697,
-2025-08-03T08:12:56.282421Z	      formats: [Object],
-2025-08-03T08:12:56.282484Z	      hash: 'logo1_2c27baca01',
-2025-08-03T08:12:56.282553Z	      ext: '.png',
-2025-08-03T08:12:56.282614Z	      mime: 'image/png',
-2025-08-03T08:12:56.282673Z	      size: 129.52,
-2025-08-03T08:12:56.282732Z	      url: '/uploads/logo1_2c27baca01.png',
-2025-08-03T08:12:56.282789Z	      previewUrl: null,
-2025-08-03T08:12:56.282853Z	      provider: 'local',
-2025-08-03T08:12:56.282908Z	      provider_metadata: null,
-2025-08-03T08:12:56.28297Z	      createdAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:56.283027Z	      updatedAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:56.283095Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
-2025-08-03T08:12:56.283157Z	      publishedAt: '2025-07-19T16:28:05.287Z'
-2025-08-03T08:12:56.283228Z	    },
-2025-08-03T08:12:56.283293Z	    logo_dark: {
-2025-08-03T08:12:56.28335Z	      id: 6,
-2025-08-03T08:12:56.283405Z	      name: 'LOGO.png',
-2025-08-03T08:12:56.28346Z	      alternativeText: null,
-2025-08-03T08:12:56.283517Z	      caption: null,
-2025-08-03T08:12:56.283586Z	      width: 3401,
-2025-08-03T08:12:56.283641Z	      height: 697,
-2025-08-03T08:12:56.283695Z	      formats: [Object],
-2025-08-03T08:12:56.283757Z	      hash: 'LOGO_1c461133d8',
-2025-08-03T08:12:56.283822Z	      ext: '.png',
-2025-08-03T08:12:56.283882Z	      mime: 'image/png',
-2025-08-03T08:12:56.28394Z	      size: 162.14,
-2025-08-03T08:12:56.283996Z	      url: '/uploads/LOGO_1c461133d8.png',
-2025-08-03T08:12:56.284048Z	      previewUrl: null,
-2025-08-03T08:12:56.284101Z	      provider: 'local',
-2025-08-03T08:12:56.284156Z	      provider_metadata: null,
-2025-08-03T08:12:56.284229Z	      createdAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:56.284288Z	      updatedAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:56.28435Z	      documentId: 'yuzljep3d6ppab8upa200de5',
-2025-08-03T08:12:56.284404Z	      publishedAt: '2025-07-19T16:28:05.336Z'
-2025-08-03T08:12:56.284464Z	    },
-2025-08-03T08:12:56.284523Z	    home_banners: [ [Object], [Object] ]
-2025-08-03T08:12:56.284586Z	  },
-2025-08-03T08:12:56.284647Z	  meta: {}
-2025-08-03T08:12:56.284701Z	}
-2025-08-03T08:12:56.284765Z	🏷️ Site Title: SparkDone
-2025-08-03T08:12:56.312237Z	 (+371ms) 
-2025-08-03T08:12:56.313957Z	08:12:56 ▶ src/pages/search.astro
-2025-08-03T08:12:56.517037Z	08:12:56   └─ /search/index.html🏷️ Index Settings: {
-2025-08-03T08:12:56.517289Z	  data: {
-2025-08-03T08:12:56.517397Z	    id: 1,
-2025-08-03T08:12:56.517462Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
-2025-08-03T08:12:56.517531Z	    site_title: 'SparkDone',
-2025-08-03T08:12:56.517598Z	    site_subtitle: 'Power',
-2025-08-03T08:12:56.517659Z	    site_description: null,
-2025-08-03T08:12:56.517718Z	    createdAt: '2025-07-15T15:21:40.896Z',
-2025-08-03T08:12:56.517779Z	    updatedAt: '2025-08-03T06:52:28.868Z',
-2025-08-03T08:12:56.517844Z	    publishedAt: '2025-08-03T06:52:28.755Z',
-2025-08-03T08:12:56.517908Z	    show_author_section: false,
-2025-08-03T08:12:56.517964Z	    default_homepage_layout: 'grid',
-2025-08-03T08:12:56.518028Z	    enable_home_banner: true,
-2025-08-03T08:12:56.518093Z	    logo_light: {
-2025-08-03T08:12:56.51816Z	      id: 5,
-2025-08-03T08:12:56.518255Z	      name: 'logo1.png',
-2025-08-03T08:12:56.518323Z	      alternativeText: null,
-2025-08-03T08:12:56.518378Z	      caption: null,
-2025-08-03T08:12:56.518432Z	      width: 3401,
-2025-08-03T08:12:56.518488Z	      height: 697,
-2025-08-03T08:12:56.518546Z	      formats: [Object],
-2025-08-03T08:12:56.518608Z	      hash: 'logo1_2c27baca01',
-2025-08-03T08:12:56.518663Z	      ext: '.png',
-2025-08-03T08:12:56.518717Z	      mime: 'image/png',
-2025-08-03T08:12:56.51877Z	      size: 129.52,
-2025-08-03T08:12:56.518835Z	      url: '/uploads/logo1_2c27baca01.png',
-2025-08-03T08:12:56.518898Z	      previewUrl: null,
-2025-08-03T08:12:56.518961Z	      provider: 'local',
-2025-08-03T08:12:56.519017Z	      provider_metadata: null,
-2025-08-03T08:12:56.519072Z	      createdAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:56.519126Z	      updatedAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:56.519217Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
-2025-08-03T08:12:56.519284Z	      publishedAt: '2025-07-19T16:28:05.287Z'
-2025-08-03T08:12:56.519339Z	    },
-2025-08-03T08:12:56.519402Z	    logo_dark: {
-2025-08-03T08:12:56.519458Z	      id: 6,
-2025-08-03T08:12:56.519511Z	      name: 'LOGO.png',
-2025-08-03T08:12:56.519576Z	      alternativeText: null,
-2025-08-03T08:12:56.519633Z	      caption: null,
-2025-08-03T08:12:56.519695Z	      width: 3401,
-2025-08-03T08:12:56.519751Z	      height: 697,
-2025-08-03T08:12:56.519821Z	      formats: [Object],
-2025-08-03T08:12:56.519877Z	      hash: 'LOGO_1c461133d8',
-2025-08-03T08:12:56.519938Z	      ext: '.png',
-2025-08-03T08:12:56.519997Z	      mime: 'image/png',
-2025-08-03T08:12:56.520052Z	      size: 162.14,
-2025-08-03T08:12:56.520113Z	      url: '/uploads/LOGO_1c461133d8.png',
-2025-08-03T08:12:56.520167Z	      previewUrl: null,
-2025-08-03T08:12:56.520252Z	      provider: 'local',
-2025-08-03T08:12:56.520319Z	      provider_metadata: null,
-2025-08-03T08:12:56.520383Z	      createdAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:56.52044Z	      updatedAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:56.520553Z	      documentId: 'yuzljep3d6ppab8upa200de5',
-2025-08-03T08:12:56.520742Z	      publishedAt: '2025-07-19T16:28:05.336Z'
-2025-08-03T08:12:56.520888Z	    },
-2025-08-03T08:12:56.521006Z	    home_banners: [ [Object], [Object] ]
-2025-08-03T08:12:56.521106Z	  },
-2025-08-03T08:12:56.521239Z	  meta: {}
-2025-08-03T08:12:56.521365Z	}
-2025-08-03T08:12:56.521524Z	🏷️ Site Title: SparkDone
-2025-08-03T08:12:56.667307Z	 (+353ms) 
-2025-08-03T08:12:56.669331Z	08:12:56 ▶ src/pages/tags.astro
-2025-08-03T08:12:56.901168Z	08:12:56   └─ /tags/index.html🏷️ Index Settings: {
-2025-08-03T08:12:56.901512Z	  data: {
-2025-08-03T08:12:56.901641Z	    id: 1,
-2025-08-03T08:12:56.901715Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
-2025-08-03T08:12:56.901786Z	    site_title: 'SparkDone',
-2025-08-03T08:12:56.901844Z	    site_subtitle: 'Power',
-2025-08-03T08:12:56.90193Z	    site_description: null,
-2025-08-03T08:12:56.90201Z	    createdAt: '2025-07-15T15:21:40.896Z',
-2025-08-03T08:12:56.902071Z	    updatedAt: '2025-08-03T06:52:28.868Z',
-2025-08-03T08:12:56.902133Z	    publishedAt: '2025-08-03T06:52:28.755Z',
-2025-08-03T08:12:56.902211Z	    show_author_section: false,
-2025-08-03T08:12:56.902275Z	    default_homepage_layout: 'grid',
-2025-08-03T08:12:56.902331Z	    enable_home_banner: true,
-2025-08-03T08:12:56.902388Z	    logo_light: {
-2025-08-03T08:12:56.90245Z	      id: 5,
-2025-08-03T08:12:56.902505Z	      name: 'logo1.png',
-2025-08-03T08:12:56.902566Z	      alternativeText: null,
-2025-08-03T08:12:56.902626Z	      caption: null,
-2025-08-03T08:12:56.902686Z	      width: 3401,
-2025-08-03T08:12:56.902748Z	      height: 697,
-2025-08-03T08:12:56.902807Z	      formats: [Object],
-2025-08-03T08:12:56.902871Z	      hash: 'logo1_2c27baca01',
-2025-08-03T08:12:56.902934Z	      ext: '.png',
-2025-08-03T08:12:56.90299Z	      mime: 'image/png',
-2025-08-03T08:12:56.903053Z	      size: 129.52,
-2025-08-03T08:12:56.90311Z	      url: '/uploads/logo1_2c27baca01.png',
-2025-08-03T08:12:56.903166Z	      previewUrl: null,
-2025-08-03T08:12:56.903254Z	      provider: 'local',
-2025-08-03T08:12:56.90332Z	      provider_metadata: null,
-2025-08-03T08:12:56.903376Z	      createdAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:56.903432Z	      updatedAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:56.903493Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
-2025-08-03T08:12:56.903555Z	      publishedAt: '2025-07-19T16:28:05.287Z'
-2025-08-03T08:12:56.903616Z	    },
-2025-08-03T08:12:56.903672Z	    logo_dark: {
-2025-08-03T08:12:56.90373Z	      id: 6,
-2025-08-03T08:12:56.903783Z	      name: 'LOGO.png',
-2025-08-03T08:12:56.903843Z	      alternativeText: null,
-2025-08-03T08:12:56.903903Z	      caption: null,
-2025-08-03T08:12:56.903957Z	      width: 3401,
-2025-08-03T08:12:56.904012Z	      height: 697,
-2025-08-03T08:12:56.904066Z	      formats: [Object],
-2025-08-03T08:12:56.904124Z	      hash: 'LOGO_1c461133d8',
-2025-08-03T08:12:56.9042Z	      ext: '.png',
-2025-08-03T08:12:56.904275Z	      mime: 'image/png',
-2025-08-03T08:12:56.90433Z	      size: 162.14,
-2025-08-03T08:12:56.904405Z	      url: '/uploads/LOGO_1c461133d8.png',
-2025-08-03T08:12:56.904463Z	      previewUrl: null,
-2025-08-03T08:12:56.904518Z	      provider: 'local',
-2025-08-03T08:12:56.904572Z	      provider_metadata: null,
-2025-08-03T08:12:56.90463Z	      createdAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:56.904691Z	      updatedAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:56.904746Z	      documentId: 'yuzljep3d6ppab8upa200de5',
-2025-08-03T08:12:56.904799Z	      publishedAt: '2025-07-19T16:28:05.336Z'
-2025-08-03T08:12:56.90486Z	    },
-2025-08-03T08:12:56.904918Z	    home_banners: [ [Object], [Object] ]
-2025-08-03T08:12:56.904973Z	  },
-2025-08-03T08:12:56.905034Z	  meta: {}
-2025-08-03T08:12:56.90509Z	}
-2025-08-03T08:12:56.905157Z	🏷️ Site Title: SparkDone
-2025-08-03T08:12:56.988925Z	 (+320ms) 
-2025-08-03T08:12:56.992576Z	08:12:56 ▶ src/pages/index.astro
-2025-08-03T08:12:57.233052Z	08:12:56   └─ /index.html🔍 getCategoryByName 被调用，name: Github项目
-2025-08-03T08:12:57.233377Z	📡 请求URL: /categories?filters[name][$eq]=Github%E9%A1%B9%E7%9B%AE
-2025-08-03T08:12:57.268626Z	✅ getCategoryByName 响应: {
-2025-08-03T08:12:57.268897Z	  data: [
-2025-08-03T08:12:57.269005Z	    {
-2025-08-03T08:12:57.269277Z	      id: 85,
-2025-08-03T08:12:57.26937Z	      name: 'Github项目',
-2025-08-03T08:12:57.269441Z	      slug: 'github-projects',
-2025-08-03T08:12:57.269508Z	      description: null,
-2025-08-03T08:12:57.269585Z	      color: null,
-2025-08-03T08:12:57.269651Z	      icon: null,
-2025-08-03T08:12:57.269716Z	      sortOrder: 7,
-2025-08-03T08:12:57.269774Z	      createdAt: '2025-07-13T04:22:11.457Z',
-2025-08-03T08:12:57.269846Z	      updatedAt: '2025-08-03T03:46:11.780Z',
-2025-08-03T08:12:57.269915Z	      publishedAt: '2025-08-03T03:46:11.861Z',
-2025-08-03T08:12:57.269974Z	      documentId: 'y829o6ymtkviqiv9o5zolcgf',
-2025-08-03T08:12:57.270033Z	      layout_type: 'grid',
-2025-08-03T08:12:57.270098Z	      enable_banner: false
-2025-08-03T08:12:57.270158Z	    }
-2025-08-03T08:12:57.270241Z	  ],
-2025-08-03T08:12:57.270303Z	  meta: { pagination: { page: 1, pageSize: 25, pageCount: 1, total: 1 } }
-2025-08-03T08:12:57.270361Z	}
-2025-08-03T08:12:57.483692Z	🏷️ Index Settings: {
-2025-08-03T08:12:57.483943Z	  data: {
-2025-08-03T08:12:57.484059Z	    id: 1,
-2025-08-03T08:12:57.484134Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
-2025-08-03T08:12:57.484228Z	    site_title: 'SparkDone',
-2025-08-03T08:12:57.484303Z	    site_subtitle: 'Power',
-2025-08-03T08:12:57.484362Z	    site_description: null,
-2025-08-03T08:12:57.48442Z	    createdAt: '2025-07-15T15:21:40.896Z',
-2025-08-03T08:12:57.484478Z	    updatedAt: '2025-08-03T06:52:28.868Z',
-2025-08-03T08:12:57.484544Z	    publishedAt: '2025-08-03T06:52:28.755Z',
-2025-08-03T08:12:57.484601Z	    show_author_section: false,
-2025-08-03T08:12:57.484658Z	    default_homepage_layout: 'grid',
-2025-08-03T08:12:57.484715Z	    enable_home_banner: true,
-2025-08-03T08:12:57.484791Z	    logo_light: {
-2025-08-03T08:12:57.48485Z	      id: 5,
-2025-08-03T08:12:57.484908Z	      name: 'logo1.png',
-2025-08-03T08:12:57.484969Z	      alternativeText: null,
-2025-08-03T08:12:57.485026Z	      caption: null,
-2025-08-03T08:12:57.485088Z	      width: 3401,
-2025-08-03T08:12:57.485148Z	      height: 697,
-2025-08-03T08:12:57.485229Z	      formats: [Object],
-2025-08-03T08:12:57.485294Z	      hash: 'logo1_2c27baca01',
-2025-08-03T08:12:57.485359Z	      ext: '.png',
-2025-08-03T08:12:57.485423Z	      mime: 'image/png',
-2025-08-03T08:12:57.485485Z	      size: 129.52,
-2025-08-03T08:12:57.485573Z	      url: '/uploads/logo1_2c27baca01.png',
-2025-08-03T08:12:57.485635Z	      previewUrl: null,
-2025-08-03T08:12:57.485697Z	      provider: 'local',
-2025-08-03T08:12:57.485751Z	      provider_metadata: null,
-2025-08-03T08:12:57.48581Z	      createdAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:57.485869Z	      updatedAt: '2025-07-19T16:28:05.285Z',
-2025-08-03T08:12:57.485932Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
-2025-08-03T08:12:57.485987Z	      publishedAt: '2025-07-19T16:28:05.287Z'
-2025-08-03T08:12:57.486049Z	    },
-2025-08-03T08:12:57.486122Z	    logo_dark: {
-2025-08-03T08:12:57.486197Z	      id: 6,
-2025-08-03T08:12:57.48626Z	      name: 'LOGO.png',
-2025-08-03T08:12:57.486315Z	      alternativeText: null,
-2025-08-03T08:12:57.48637Z	      caption: null,
-2025-08-03T08:12:57.486427Z	      width: 3401,
-2025-08-03T08:12:57.486482Z	      height: 697,
-2025-08-03T08:12:57.486554Z	      formats: [Object],
-2025-08-03T08:12:57.486615Z	      hash: 'LOGO_1c461133d8',
-2025-08-03T08:12:57.48667Z	      ext: '.png',
-2025-08-03T08:12:57.486726Z	      mime: 'image/png',
-2025-08-03T08:12:57.486787Z	      size: 162.14,
-2025-08-03T08:12:57.486847Z	      url: '/uploads/LOGO_1c461133d8.png',
-2025-08-03T08:12:57.486903Z	      previewUrl: null,
-2025-08-03T08:12:57.486959Z	      provider: 'local',
-2025-08-03T08:12:57.487015Z	      provider_metadata: null,
-2025-08-03T08:12:57.48708Z	      createdAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:57.487138Z	      updatedAt: '2025-07-19T16:28:05.335Z',
-2025-08-03T08:12:57.487206Z	      documentId: 'yuzljep3d6ppab8upa200de5',
-2025-08-03T08:12:57.487264Z	      publishedAt: '2025-07-19T16:28:05.336Z'
-2025-08-03T08:12:57.487325Z	    },
-2025-08-03T08:12:57.487379Z	    home_banners: [ [Object], [Object] ]
-2025-08-03T08:12:57.487433Z	  },
-2025-08-03T08:12:57.487489Z	  meta: {}
-2025-08-03T08:12:57.487557Z	}
-2025-08-03T08:12:57.487621Z	🏷️ Site Title: SparkDone
-2025-08-03T08:12:57.575038Z	 (+582ms) 
-2025-08-03T08:12:57.575326Z	08:12:57 ✓ Completed in 5.72s.
-2025-08-03T08:12:57.575448Z	
-2025-08-03T08:12:57.580032Z	08:12:57 [build] Rearranging server assets...
-2025-08-03T08:12:57.602665Z	08:12:57 [@astrojs/sitemap] `sitemap-index.xml` created at `dist/client`
-2025-08-03T08:12:57.602978Z	08:12:57 [build] Server built in 21.14s
-2025-08-03T08:12:57.603104Z	08:12:57 [build] Complete!
-2025-08-03T08:12:57.753327Z	
-2025-08-03T08:12:57.753621Z	Running Pagefind v1.3.0 (Extended)
-2025-08-03T08:12:57.753742Z	Running from: "/opt/buildhome/repo"
-2025-08-03T08:12:57.753828Z	Source:       "dist/client"
-2025-08-03T08:12:57.753921Z	Output:       "dist/client/pagefind"
-2025-08-03T08:12:57.754019Z	
-2025-08-03T08:12:57.754108Z	[Walking source directory]
-2025-08-03T08:12:57.756351Z	Found 11 files matching **/*.{html}
-2025-08-03T08:12:57.756549Z	
-2025-08-03T08:12:57.756664Z	[Parsing files]
-2025-08-03T08:12:57.969509Z	Found a data-pagefind-body element on the site.
-2025-08-03T08:12:57.969787Z	↳ Ignoring pages without this tag.
-2025-08-03T08:12:57.969961Z	
-2025-08-03T08:12:57.970035Z	[Reading languages]
-2025-08-03T08:12:57.970095Z	Discovered 1 language: zh-cn
-2025-08-03T08:12:57.97016Z	
-2025-08-03T08:12:57.970239Z	[Building search indexes]
-2025-08-03T08:12:57.970306Z	Total: 
-2025-08-03T08:12:57.970362Z	  Indexed 1 language
-2025-08-03T08:12:57.97042Z	  Indexed 1 page
-2025-08-03T08:12:57.970478Z	  Indexed 6 words
-2025-08-03T08:12:57.970545Z	  Indexed 0 filters
-2025-08-03T08:12:57.970613Z	  Indexed 0 sorts
-2025-08-03T08:12:57.971224Z	Note: Pagefind doesn't support stemming for the language zh-cn. 
-2025-08-03T08:12:57.971482Z	Search will still work, but will not match across root words.
-2025-08-03T08:12:57.971677Z	Note: Pagefind doesn't support stemming for the language zh-cn. 
-2025-08-03T08:12:57.971765Z	Search will still work, but will not match across root words.
-2025-08-03T08:12:57.976023Z	
-2025-08-03T08:12:57.976236Z	Finished in 0.223 seconds
-2025-08-03T08:12:58.02829Z	🔧 开始构建后处理...
-2025-08-03T08:12:58.028855Z	🎨 检查 CSS 文件路径...
-2025-08-03T08:12:58.029024Z	✅ CSS 文件已正确打包到 _astro 目录
-2025-08-03T08:12:58.029478Z	⚙️ 生成服务器配置...
-2025-08-03T08:12:58.029604Z	⚠️ Pagefind 源目录不存在: /opt/buildhome/repo/dist/pagefind
-2025-08-03T08:12:58.029682Z	✅ 服务器配置已生成: /opt/buildhome/repo/dist/server-config.json
-2025-08-03T08:12:58.030166Z	🔍 验证构建结果...
-2025-08-03T08:12:58.030438Z	✅ dist/client/pagefind/pagefind.js
-2025-08-03T08:12:58.030625Z	✅ dist/server/entry.mjs
-2025-08-03T08:12:58.030815Z	🎉 构建验证通过！
-2025-08-03T08:12:58.030999Z	📋 生成部署信息...
-2025-08-03T08:12:58.031638Z	✅ 部署信息已生成: /opt/buildhome/repo/dist/deploy-info.json
-2025-08-03T08:12:58.0319Z	🎉 构建后处理完成！
-2025-08-03T08:12:58.031997Z	
-2025-08-03T08:12:58.032116Z	📦 部署准备就绪:
-2025-08-03T08:12:58.032257Z	  - 静态资源: dist/client/
-2025-08-03T08:12:58.032363Z	  - 服务器代码: dist/server/
-2025-08-03T08:12:58.032478Z	  - Pagefind 搜索: dist/client/pagefind/
-2025-08-03T08:12:58.032602Z	
-2025-08-03T08:12:58.032705Z	🚀 可以开始部署了！
-2025-08-03T08:12:58.080956Z	🚀 开始HTML优化...
-2025-08-03T08:12:58.08134Z	🌍 环境信息:
-2025-08-03T08:12:58.081575Z	   NODE_ENV: 未设置
-2025-08-03T08:12:58.081816Z	   STRAPI_URL: https://api.sparkdone.com
-2025-08-03T08:12:58.082096Z	   STRAPI_PUBLIC_URL: https://api.sparkdone.com
-2025-08-03T08:12:58.092823Z	📁 找到 11 个HTML文件
-2025-08-03T08:12:58.093196Z	
-2025-08-03T08:12:58.093317Z	🔧 优化文件: /opt/buildhome/repo/dist/client/404.html
-2025-08-03T08:12:58.093778Z	✅ 移除了 0 个重复的CSS样式块
-2025-08-03T08:12:58.094237Z	✅ 移除了 1 个调试相关的CSS块
-2025-08-03T08:12:58.094659Z	✅ 移除了 1 个空的样式块
-2025-08-03T08:12:58.094929Z	✅ 合并了 4 个内联样式块为 1 个
-2025-08-03T08:12:58.095106Z	✅ 添加了资源预加载提示
-2025-08-03T08:12:58.095347Z	✅ 优化了 2 个图片标签
-2025-08-03T08:12:58.097495Z	📊 优化结果:
-2025-08-03T08:12:58.097694Z	   原始大小: 42504 字节
-2025-08-03T08:12:58.097816Z	   优化后大小: 37762 字节
-2025-08-03T08:12:58.097916Z	   节省: 4742 字节 (11.16%)
-2025-08-03T08:12:58.098023Z	
-2025-08-03T08:12:58.098117Z	🔧 优化文件: /opt/buildhome/repo/dist/client/about/index.html
-2025-08-03T08:12:58.098249Z	✅ 移除了 0 个重复的CSS样式块
-2025-08-03T08:12:58.098379Z	✅ 移除了 1 个调试相关的CSS块
-2025-08-03T08:12:58.098507Z	✅ 移除了 1 个空的样式块
-2025-08-03T08:12:58.098643Z	✅ 合并了 5 个内联样式块为 1 个
-2025-08-03T08:12:58.09875Z	✅ 添加了资源预加载提示
-2025-08-03T08:12:58.098891Z	✅ 优化了 2 个图片标签
-2025-08-03T08:12:58.099455Z	📊 优化结果:
-2025-08-03T08:12:58.099966Z	   原始大小: 40755 字节
-2025-08-03T08:12:58.100123Z	   优化后大小: 36126 字节
-2025-08-03T08:12:58.100268Z	   节省: 4629 字节 (11.36%)
-2025-08-03T08:12:58.100399Z	
-2025-08-03T08:12:58.100543Z	🔧 优化文件: /opt/buildhome/repo/dist/client/archive/index.html
-2025-08-03T08:12:58.100665Z	✅ 移除了 0 个重复的CSS样式块
-2025-08-03T08:12:58.100761Z	✅ 移除了 1 个调试相关的CSS块
-2025-08-03T08:12:58.100846Z	✅ 移除了 1 个空的样式块
-2025-08-03T08:12:58.100943Z	✅ 合并了 5 个内联样式块为 1 个
-2025-08-03T08:12:58.10103Z	✅ 添加了资源预加载提示
-2025-08-03T08:12:58.101139Z	✅ 优化了 2 个图片标签
-2025-08-03T08:12:58.102339Z	📊 优化结果:
-2025-08-03T08:12:58.102511Z	   原始大小: 41694 字节
-2025-08-03T08:12:58.102645Z	   优化后大小: 37150 字节
-2025-08-03T08:12:58.102906Z	   节省: 4544 字节 (10.90%)
-2025-08-03T08:12:58.103031Z	
-2025-08-03T08:12:58.103136Z	🔧 优化文件: /opt/buildhome/repo/dist/client/categories/Github项目/index.html
-2025-08-03T08:12:58.103268Z	✅ 移除了 0 个重复的CSS样式块
-2025-08-03T08:12:58.103373Z	✅ 移除了 1 个调试相关的CSS块
-2025-08-03T08:12:58.103466Z	✅ 移除了 1 个空的样式块
-2025-08-03T08:12:58.1036Z	✅ 合并了 4 个内联样式块为 1 个
-2025-08-03T08:12:58.10371Z	✅ 添加了资源预加载提示
-2025-08-03T08:12:58.103822Z	✅ 优化了 2 个图片标签
-2025-08-03T08:12:58.104743Z	📊 优化结果:
-2025-08-03T08:12:58.105405Z	   原始大小: 44364 字节
-2025-08-03T08:12:58.105548Z	   优化后大小: 39366 字节
-2025-08-03T08:12:58.105625Z	   节省: 4998 字节 (11.27%)
-2025-08-03T08:12:58.105683Z	
-2025-08-03T08:12:58.105739Z	🔧 优化文件: /opt/buildhome/repo/dist/client/categories/网赚项目/index.html
-2025-08-03T08:12:58.105824Z	✅ 移除了 0 个重复的CSS样式块
-2025-08-03T08:12:58.10591Z	✅ 移除了 1 个调试相关的CSS块
-2025-08-03T08:12:58.106041Z	✅ 移除了 1 个空的样式块
-2025-08-03T08:12:58.106151Z	✅ 合并了 4 个内联样式块为 1 个
-2025-08-03T08:12:58.106537Z	✅ 添加了资源预加载提示
-2025-08-03T08:12:58.106622Z	✅ 优化了 2 个图片标签
-2025-08-03T08:12:58.107021Z	📊 优化结果:
-2025-08-03T08:12:58.107367Z	   原始大小: 41527 字节
-2025-08-03T08:12:58.107502Z	   优化后大小: 36513 字节
-2025-08-03T08:12:58.107625Z	   节省: 5014 字节 (12.07%)
-2025-08-03T08:12:58.107734Z	
-2025-08-03T08:12:58.107836Z	🔧 优化文件: /opt/buildhome/repo/dist/client/categories/资源共享/index.html
-2025-08-03T08:12:58.107974Z	✅ 移除了 0 个重复的CSS样式块
-2025-08-03T08:12:58.108111Z	✅ 移除了 1 个调试相关的CSS块
-2025-08-03T08:12:58.108266Z	✅ 移除了 1 个空的样式块
-2025-08-03T08:12:58.108346Z	✅ 合并了 4 个内联样式块为 1 个
-2025-08-03T08:12:58.108506Z	✅ 添加了资源预加载提示
-2025-08-03T08:12:58.108869Z	✅ 优化了 2 个图片标签
-2025-08-03T08:12:58.109858Z	📊 优化结果:
-2025-08-03T08:12:58.110264Z	   原始大小: 41527 字节
-2025-08-03T08:12:58.110394Z	   优化后大小: 36513 字节
-2025-08-03T08:12:58.110506Z	   节省: 5014 字节 (12.07%)
-2025-08-03T08:12:58.110627Z	
-2025-08-03T08:12:58.110714Z	🔧 优化文件: /opt/buildhome/repo/dist/client/friends/index.html
-2025-08-03T08:12:58.110871Z	✅ 移除了 0 个重复的CSS样式块
-2025-08-03T08:12:58.110989Z	✅ 移除了 1 个调试相关的CSS块
-2025-08-03T08:12:58.11109Z	✅ 移除了 1 个空的样式块
-2025-08-03T08:12:58.111214Z	✅ 合并了 6 个内联样式块为 1 个
-2025-08-03T08:12:58.111403Z	✅ 添加了资源预加载提示
-2025-08-03T08:12:58.111506Z	✅ 优化了 2 个图片标签
-2025-08-03T08:12:58.112018Z	📊 优化结果:
-2025-08-03T08:12:58.112145Z	   原始大小: 44832 字节
-2025-08-03T08:12:58.112326Z	   优化后大小: 39861 字节
-2025-08-03T08:12:58.112452Z	   节省: 4971 字节 (11.09%)
-2025-08-03T08:12:58.112585Z	
-2025-08-03T08:12:58.112697Z	🔧 优化文件: /opt/buildhome/repo/dist/client/index.html
-2025-08-03T08:12:58.112843Z	✅ 移除了 0 个重复的CSS样式块
-2025-08-03T08:12:58.11297Z	✅ 移除了 1 个调试相关的CSS块
-2025-08-03T08:12:58.113077Z	✅ 移除了 1 个空的样式块
-2025-08-03T08:12:58.113192Z	✅ 合并了 5 个内联样式块为 1 个
-2025-08-03T08:12:58.113301Z	✅ 添加了资源预加载提示
-2025-08-03T08:12:58.113392Z	✅ 优化了 4 个图片标签
-2025-08-03T08:12:58.114193Z	📊 优化结果:
-2025-08-03T08:12:58.114442Z	   原始大小: 45489 字节
-2025-08-03T08:12:58.114551Z	   优化后大小: 40832 字节
-2025-08-03T08:12:58.114859Z	   节省: 4657 字节 (10.24%)
-2025-08-03T08:12:58.11502Z	
-2025-08-03T08:12:58.115173Z	🔧 优化文件: /opt/buildhome/repo/dist/client/posts/article1/index.html
-2025-08-03T08:12:58.115331Z	✅ 移除了 0 个重复的CSS样式块
-2025-08-03T08:12:58.115415Z	✅ 移除了 2 个调试相关的CSS块
-2025-08-03T08:12:58.115542Z	✅ 合并了 6 个内联样式块为 1 个
-2025-08-03T08:12:58.115627Z	✅ 添加了资源预加载提示
-2025-08-03T08:12:58.115767Z	✅ 优化了 2 个图片标签
-2025-08-03T08:12:58.116569Z	📊 优化结果:
-2025-08-03T08:12:58.116971Z	   原始大小: 48687 字节
-2025-08-03T08:12:58.117101Z	   优化后大小: 43731 字节
-2025-08-03T08:12:58.117226Z	   节省: 4956 字节 (10.18%)
-2025-08-03T08:12:58.117348Z	
-2025-08-03T08:12:58.11746Z	🔧 优化文件: /opt/buildhome/repo/dist/client/search/index.html
-2025-08-03T08:12:58.117612Z	✅ 移除了 1 个重复的CSS样式块
-2025-08-03T08:12:58.117697Z	✅ 移除了 1 个调试相关的CSS块
-2025-08-03T08:12:58.117832Z	✅ 移除了 1 个空的样式块
-2025-08-03T08:12:58.117908Z	✅ 合并了 5 个内联样式块为 1 个
-2025-08-03T08:12:58.118039Z	✅ 添加了资源预加载提示
-2025-08-03T08:12:58.118134Z	✅ 优化了 2 个图片标签
-2025-08-03T08:12:58.119061Z	📊 优化结果:
-2025-08-03T08:12:58.11942Z	   原始大小: 48239 字节
-2025-08-03T08:12:58.119544Z	   优化后大小: 42188 字节
-2025-08-03T08:12:58.119656Z	   节省: 6051 字节 (12.54%)
-2025-08-03T08:12:58.119726Z	
-2025-08-03T08:12:58.119822Z	🔧 优化文件: /opt/buildhome/repo/dist/client/tags/index.html
-2025-08-03T08:12:58.119944Z	✅ 移除了 0 个重复的CSS样式块
-2025-08-03T08:12:58.120084Z	✅ 移除了 1 个调试相关的CSS块
-2025-08-03T08:12:58.120261Z	✅ 移除了 1 个空的样式块
-2025-08-03T08:12:58.120337Z	✅ 合并了 6 个内联样式块为 1 个
-2025-08-03T08:12:58.12045Z	✅ 添加了资源预加载提示
-2025-08-03T08:12:58.120518Z	✅ 优化了 2 个图片标签
-2025-08-03T08:12:58.120802Z	📊 优化结果:
-2025-08-03T08:12:58.121265Z	   原始大小: 43652 字节
-2025-08-03T08:12:58.121374Z	   优化后大小: 38769 字节
-2025-08-03T08:12:58.121526Z	   节省: 4883 字节 (11.19%)
-2025-08-03T08:12:58.121622Z	
-2025-08-03T08:12:58.12172Z	🎉 HTML优化完成！
-2025-08-03T08:12:58.121833Z	📊 总体优化结果:
-2025-08-03T08:12:58.121984Z	   处理文件: 11 个
-2025-08-03T08:12:58.122088Z	   原始总大小: 500812 字节
-2025-08-03T08:12:58.122201Z	   优化后总大小: 440689 字节
-2025-08-03T08:12:58.122303Z	   总节省: 60123 字节 (12.01%)
-2025-08-03T08:12:58.147048Z	Finished
-2025-08-03T08:12:59.019448Z	Checking for configuration in a Wrangler configuration file (BETA)
-2025-08-03T08:12:59.020135Z	
-2025-08-03T08:13:00.126148Z	No wrangler.toml file found. Continuing.
-2025-08-03T08:13:00.126991Z	Note: No functions dir at /functions found. Skipping.
-2025-08-03T08:13:00.127113Z	Validating asset output directory
-2025-08-03T08:13:03.207905Z	Deploying your site to Cloudflare's global network...
-2025-08-03T08:13:03.973443Z	Parsed 14 valid header rules.
-2025-08-03T08:13:05.347035Z	Uploading... (268/345)
-2025-08-03T08:13:06.427643Z	Uploading... (293/345)
-2025-08-03T08:13:06.591504Z	Uploading... (319/345)
-2025-08-03T08:13:08.328094Z	Uploading... (345/345)
-2025-08-03T08:13:08.328404Z	✨ Success! Uploaded 77 files (268 already uploaded) (3.27 sec)
-2025-08-03T08:13:08.328559Z	
-2025-08-03T08:13:08.631511Z	✨ Upload complete!
-2025-08-03T08:13:12.276422Z	Success: Assets published!
-2025-08-03T08:13:13.732484Z	Success: Your site was deployed!
+2025-08-03T08:17:36.489187Z	Cloning repository...
+2025-08-03T08:17:37.170269Z	From https://github.com/SparkDone/My_Astro
+2025-08-03T08:17:37.170789Z	 * branch            632c7715fcca6c235bc8ec4ce0869ff881db9a17 -> FETCH_HEAD
+2025-08-03T08:17:37.17092Z	
+2025-08-03T08:17:37.216329Z	HEAD is now at 632c771  尝试修复Cloudflare适配器配置
+2025-08-03T08:17:37.216737Z	
+2025-08-03T08:17:37.29458Z	
+2025-08-03T08:17:37.295005Z	Using v2 root directory strategy
+2025-08-03T08:17:37.315437Z	Success: Finished cloning repository files
+2025-08-03T08:17:38.975882Z	Checking for configuration in a Wrangler configuration file (BETA)
+2025-08-03T08:17:38.976607Z	
+2025-08-03T08:17:40.074771Z	No wrangler.toml file found. Continuing.
+2025-08-03T08:17:40.142013Z	Detected the following tools from environment: pnpm@9.14.4, nodejs@22.16.0
+2025-08-03T08:17:40.451684Z	Preparing pnpm@9.14.4 for immediate activation...
+2025-08-03T08:17:42.273416Z	Installing project dependencies: pnpm install
+2025-08-03T08:17:42.892608Z	Lockfile is up to date, resolution step is skipped
+2025-08-03T08:17:42.967453Z	Progress: resolved 1, reused 0, downloaded 0, added 0
+2025-08-03T08:17:43.236686Z	Packages: +1135
+2025-08-03T08:17:43.23719Z	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2025-08-03T08:17:43.974226Z	Progress: resolved 1135, reused 0, downloaded 56, added 49
+2025-08-03T08:17:44.974382Z	Progress: resolved 1135, reused 0, downloaded 228, added 221
+2025-08-03T08:17:45.979271Z	Progress: resolved 1135, reused 0, downloaded 403, added 400
+2025-08-03T08:17:46.979444Z	Progress: resolved 1135, reused 0, downloaded 560, added 555
+2025-08-03T08:17:47.979319Z	Progress: resolved 1135, reused 0, downloaded 856, added 850
+2025-08-03T08:17:48.989018Z	Progress: resolved 1135, reused 0, downloaded 1046, added 1040
+2025-08-03T08:17:49.989535Z	Progress: resolved 1135, reused 0, downloaded 1134, added 1134
+2025-08-03T08:17:50.207977Z	Progress: resolved 1135, reused 0, downloaded 1135, added 1135, done
+2025-08-03T08:17:50.540052Z	.../.pnpm/swup@4.8.2/node_modules/swup postinstall$ opencollective-postinstall || true
+2025-08-03T08:17:50.540721Z	.../esbuild@0.25.4/node_modules/esbuild postinstall$ node install.js
+2025-08-03T08:17:50.541285Z	.../node_modules/workerd postinstall$ node install.js
+2025-08-03T08:17:50.541791Z	.../esbuild@0.25.8/node_modules/esbuild postinstall$ node install.js
+2025-08-03T08:17:50.542356Z	.../sharp@0.33.5/node_modules/sharp install$ node install/check
+2025-08-03T08:17:50.632523Z	.../.pnpm/swup@4.8.2/node_modules/swup postinstall: Done
+2025-08-03T08:17:50.685132Z	.../sharp@0.34.3/node_modules/sharp install$ node install/check.js
+2025-08-03T08:17:50.703598Z	.../esbuild@0.25.8/node_modules/esbuild postinstall: Done
+2025-08-03T08:17:50.707029Z	.../node_modules/workerd postinstall: Done
+2025-08-03T08:17:50.816656Z	.../esbuild@0.25.4/node_modules/esbuild postinstall: Done
+2025-08-03T08:17:50.817471Z	.../sharp@0.33.5/node_modules/sharp install: Done
+2025-08-03T08:17:50.819297Z	.../sharp@0.34.3/node_modules/sharp install: Done
+2025-08-03T08:17:51.350678Z	
+2025-08-03T08:17:51.350924Z	dependencies:
+2025-08-03T08:17:51.351054Z	+ @astrojs/check 0.9.4
+2025-08-03T08:17:51.351185Z	+ @astrojs/cloudflare 12.6.2
+2025-08-03T08:17:51.351346Z	+ @astrojs/node 9.3.3
+2025-08-03T08:17:51.351465Z	+ @astrojs/rss 4.0.12
+2025-08-03T08:17:51.351658Z	+ @astrojs/sitemap 3.4.2
+2025-08-03T08:17:51.351851Z	+ @astrojs/svelte 7.1.0
+2025-08-03T08:17:51.352055Z	+ @astrojs/tailwind 6.0.2
+2025-08-03T08:17:51.352218Z	+ @expressive-code/core 0.41.3
+2025-08-03T08:17:51.35241Z	+ @expressive-code/plugin-collapsible-sections 0.41.3
+2025-08-03T08:17:51.35263Z	+ @expressive-code/plugin-line-numbers 0.41.3
+2025-08-03T08:17:51.352854Z	+ @fontsource-variable/jetbrains-mono 5.2.6
+2025-08-03T08:17:51.353008Z	+ @fontsource/roboto 5.2.6
+2025-08-03T08:17:51.353302Z	+ @iconify-json/fa6-brands 1.2.6
+2025-08-03T08:17:51.353523Z	+ @iconify-json/fa6-regular 1.2.4
+2025-08-03T08:17:51.353736Z	+ @iconify-json/fa6-solid 1.2.4
+2025-08-03T08:17:51.353964Z	+ @iconify-json/heroicons 1.2.2
+2025-08-03T08:17:51.354544Z	+ @iconify-json/icon-park-outline 1.2.2
+2025-08-03T08:17:51.354766Z	+ @iconify-json/lucide 1.2.60
+2025-08-03T08:17:51.354948Z	+ @iconify-json/material-symbols 1.2.30
+2025-08-03T08:17:51.355069Z	+ @iconify-json/tabler 1.2.20
+2025-08-03T08:17:51.355431Z	+ @iconify/svelte 4.2.0
+2025-08-03T08:17:51.35583Z	+ @swup/astro 1.7.0
+2025-08-03T08:17:51.356089Z	+ @tailwindcss/typography 0.5.16
+2025-08-03T08:17:51.356284Z	+ astro 5.11.0
+2025-08-03T08:17:51.356423Z	+ astro-expressive-code 0.41.3
+2025-08-03T08:17:51.356635Z	+ astro-icon 1.1.5
+2025-08-03T08:17:51.356751Z	+ dotenv-cli 10.0.0
+2025-08-03T08:17:51.356901Z	+ hastscript 9.0.1
+2025-08-03T08:17:51.357062Z	+ katex 0.16.22
+2025-08-03T08:17:51.357193Z	+ markdown-it 14.1.0
+2025-08-03T08:17:51.357335Z	+ mdast-util-to-string 4.0.0
+2025-08-03T08:17:51.357439Z	+ overlayscrollbars 2.11.4
+2025-08-03T08:17:51.357598Z	+ pagefind 1.3.0
+2025-08-03T08:17:51.357703Z	+ photoswipe 5.4.4
+2025-08-03T08:17:51.357762Z	+ reading-time 1.5.0
+2025-08-03T08:17:51.357818Z	+ rehype-autolink-headings 7.1.0
+2025-08-03T08:17:51.357872Z	+ rehype-components 0.3.0
+2025-08-03T08:17:51.357936Z	+ rehype-katex 7.0.1
+2025-08-03T08:17:51.358096Z	+ rehype-slug 6.0.0
+2025-08-03T08:17:51.358188Z	+ remark-directive 3.0.1
+2025-08-03T08:17:51.358302Z	+ remark-directive-rehype 0.4.2
+2025-08-03T08:17:51.358422Z	+ remark-github-admonitions-to-directives 1.0.5
+2025-08-03T08:17:51.35856Z	+ remark-math 6.0.0
+2025-08-03T08:17:51.358664Z	+ remark-sectionize 2.1.0
+2025-08-03T08:17:51.358768Z	+ sanitize-html 2.17.0
+2025-08-03T08:17:51.358829Z	+ sharp 0.34.3
+2025-08-03T08:17:51.358894Z	+ svelte 5.37.3
+2025-08-03T08:17:51.358999Z	+ tailwindcss 3.4.17
+2025-08-03T08:17:51.359167Z	+ typescript 5.9.2
+2025-08-03T08:17:51.359288Z	+ unist-util-visit 5.0.0
+2025-08-03T08:17:51.359393Z	
+2025-08-03T08:17:51.359498Z	devDependencies:
+2025-08-03T08:17:51.359625Z	+ @astrojs/ts-plugin 1.10.4
+2025-08-03T08:17:51.359734Z	+ @biomejs/biome 2.0.6
+2025-08-03T08:17:51.359827Z	+ @rollup/plugin-yaml 4.1.2
+2025-08-03T08:17:51.359923Z	+ @types/hast 3.0.4
+2025-08-03T08:17:51.360017Z	+ @types/markdown-it 14.1.2
+2025-08-03T08:17:51.360146Z	+ @types/mdast 4.0.4
+2025-08-03T08:17:51.360257Z	+ @types/sanitize-html 2.16.0
+2025-08-03T08:17:51.360351Z	+ dotenv 17.2.1
+2025-08-03T08:17:51.360505Z	+ postcss-import 16.1.1
+2025-08-03T08:17:51.360643Z	+ postcss-nesting 13.0.2
+2025-08-03T08:17:51.360748Z	+ stylus 0.64.0
+2025-08-03T08:17:51.360856Z	+ wrangler 4.27.0
+2025-08-03T08:17:51.360931Z	
+2025-08-03T08:17:51.372141Z	Done in 8.8s
+2025-08-03T08:17:51.470483Z	Executing user command: pnpm build
+2025-08-03T08:17:52.02576Z	
+2025-08-03T08:17:52.026045Z	> AstroCMS@0.0.1 build /opt/buildhome/repo
+2025-08-03T08:17:52.026212Z	> node scripts/download-strapi-images.js && astro build && pagefind --site dist/client && node scripts/post-build.js && node scripts/optimize-html.js
+2025-08-03T08:17:52.02636Z	
+2025-08-03T08:17:52.075551Z	🖼️ 开始下载Strapi图片...
+2025-08-03T08:17:52.075867Z	📡 Strapi URL: https://api.sparkdone.com
+2025-08-03T08:17:52.076041Z	📁 输出目录: /opt/buildhome/repo/public/images/strapi
+2025-08-03T08:17:52.07619Z	📡 获取文章数据: https://api.sparkdone.com/api/articles?populate=*
+2025-08-03T08:17:52.288576Z	✅ 获取到 1 篇文章
+2025-08-03T08:17:52.288926Z	📡 获取配置数据: https://api.sparkdone.com/api/index?populate=*
+2025-08-03T08:17:52.394692Z	📡 获取配置数据: https://api.sparkdone.com/api/site-config?populate=*
+2025-08-03T08:17:52.425128Z	📡 获取配置数据: https://api.sparkdone.com/api/banners?populate=*
+2025-08-03T08:17:52.454547Z	🖼️ 发现 10 个图片URL
+2025-08-03T08:17:52.455142Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/logo1_2c27baca01.png
+2025-08-03T08:17:52.556475Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/logo1_2c27baca01-1754209072454.png
+2025-08-03T08:17:52.556715Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/large_logo1_2c27baca01.png
+2025-08-03T08:17:52.641164Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/large_logo1_2c27baca01-1754209072556.png
+2025-08-03T08:17:52.641403Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/small_logo1_2c27baca01.png
+2025-08-03T08:17:52.674261Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/small_logo1_2c27baca01-1754209072641.png
+2025-08-03T08:17:52.674561Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/medium_logo1_2c27baca01.png
+2025-08-03T08:17:52.712791Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/medium_logo1_2c27baca01-1754209072674.png
+2025-08-03T08:17:52.712948Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/thumbnail_logo1_2c27baca01.png
+2025-08-03T08:17:52.744221Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/thumbnail_logo1_2c27baca01-1754209072712.png
+2025-08-03T08:17:52.744608Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/LOGO_1c461133d8.png
+2025-08-03T08:17:52.804705Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/LOGO_1c461133d8-1754209072744.png
+2025-08-03T08:17:52.804949Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/large_LOGO_1c461133d8.png
+2025-08-03T08:17:52.846965Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/large_LOGO_1c461133d8-1754209072804.png
+2025-08-03T08:17:52.847153Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/small_LOGO_1c461133d8.png
+2025-08-03T08:17:52.878051Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/small_LOGO_1c461133d8-1754209072846.png
+2025-08-03T08:17:52.878249Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/medium_LOGO_1c461133d8.png
+2025-08-03T08:17:52.914339Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/medium_LOGO_1c461133d8-1754209072878.png
+2025-08-03T08:17:52.914492Z	⬇️ 下载图片: https://api.sparkdone.com/uploads/thumbnail_LOGO_1c461133d8.png
+2025-08-03T08:17:52.945843Z	✅ 保存图片: /opt/buildhome/repo/public/images/strapi/thumbnail_LOGO_1c461133d8-1754209072914.png
+2025-08-03T08:17:52.945992Z	✅ 保存映射文件: /opt/buildhome/repo/src/data/image-mapping.json
+2025-08-03T08:17:52.946168Z	🎉 图片下载完成！成功: 10/10
+2025-08-03T08:17:55.872753Z	08:17:55 [@astrojs/node] Enabling sessions with filesystem storage
+2025-08-03T08:17:56.133842Z	08:17:56 [vite] Forced re-optimization of dependencies
+2025-08-03T08:17:56.299531Z	08:17:56 [content] Syncing content
+2025-08-03T08:17:56.304379Z	08:17:56 [content] Synced content
+2025-08-03T08:17:56.305231Z	08:17:56 [types] Generated 232ms
+2025-08-03T08:17:56.305825Z	08:17:56 [build] output: "server"
+2025-08-03T08:17:56.306152Z	08:17:56 [build] mode: "server"
+2025-08-03T08:17:56.306252Z	08:17:56 [build] directory: /opt/buildhome/repo/dist/
+2025-08-03T08:17:56.306319Z	08:17:56 [build] adapter: @astrojs/node
+2025-08-03T08:17:56.3066Z	08:17:56 [build] Collecting build info...
+2025-08-03T08:17:56.307243Z	08:17:56 [build] ✓ Completed in 435ms.
+2025-08-03T08:17:56.308449Z	08:17:56 [build] Building server entrypoints...
+2025-08-03T08:18:03.308651Z	08:18:03 [vite] [32m✓ built in 6.96s[39m
+2025-08-03T08:18:03.30898Z	08:18:03 [build] ✓ Completed in 7.00s.
+2025-08-03T08:18:03.309515Z	
+2025-08-03T08:18:03.309738Z	 building client (vite) 
+2025-08-03T08:18:03.338561Z	08:18:03 [vite] transforming...
+2025-08-03T08:18:03.95789Z	08:18:03 [WARN] [vite] [33m[plugin vite:resolve] Module "node:path" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/src/components/misc/ImageWrapper.astro". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
+2025-08-03T08:18:04.566164Z	08:18:04 [WARN] [vite] [33m[plugin vite:resolve] Module "node:path" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/src/components/PostCard.astro". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
+2025-08-03T08:18:04.571591Z	08:18:04 [WARN] [vite] [33m[plugin vite:resolve] Module "node:path" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/src/components/UniversalPostList.astro". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
+2025-08-03T08:18:04.598282Z	08:18:04 [WARN] [vite] [33m[plugin vite:resolve] Module "node:path" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/src/pages/posts/[...slug].astro". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
+2025-08-03T08:18:04.772973Z	08:18:04 [WARN] [vite] [33m[plugin vite:resolve] Module "stream" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/reading-time@1.5.0/node_modules/reading-time/lib/stream.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
+2025-08-03T08:18:04.773286Z	08:18:04 [WARN] [vite] [33m[plugin vite:resolve] Module "util" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/reading-time@1.5.0/node_modules/reading-time/lib/stream.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
+2025-08-03T08:18:05.255238Z	08:18:05 [WARN] [vite] [33m[plugin vite:resolve] Module "node:util" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/sharp@0.33.5/node_modules/sharp/lib/constructor.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
+2025-08-03T08:18:05.255519Z	08:18:05 [WARN] [vite] [33m[plugin vite:resolve] Module "node:stream" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/sharp@0.33.5/node_modules/sharp/lib/constructor.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
+2025-08-03T08:18:05.277499Z	08:18:05 [WARN] [vite] [33m[plugin vite:resolve] Module "node:path" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/sharp@0.33.5/node_modules/sharp/lib/output.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
+2025-08-03T08:18:05.280106Z	08:18:05 [WARN] [vite] [33m[plugin vite:resolve] Module "node:events" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/sharp@0.33.5/node_modules/sharp/lib/utility.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
+2025-08-03T08:18:05.28115Z	08:18:05 [WARN] [vite] [33m[plugin vite:resolve] Module "node:os" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/sharp@0.33.5/node_modules/sharp/lib/utility.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
+2025-08-03T08:18:05.793236Z	08:18:05 [WARN] [vite] [33m[plugin vite:resolve] Module "child_process" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/detect-libc@2.0.4/node_modules/detect-libc/lib/detect-libc.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
+2025-08-03T08:18:05.807082Z	08:18:05 [WARN] [vite] [33m[plugin vite:resolve] Module "node:child_process" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/sharp@0.33.5/node_modules/sharp/lib/libvips.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
+2025-08-03T08:18:05.807303Z	08:18:05 [WARN] [vite] [33m[plugin vite:resolve] Module "node:crypto" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/sharp@0.33.5/node_modules/sharp/lib/libvips.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
+2025-08-03T08:18:05.986697Z	08:18:05 [WARN] [vite] [33m[plugin vite:resolve] Module "fs" has been externalized for browser compatibility, imported by "/opt/buildhome/repo/node_modules/.pnpm/detect-libc@2.0.4/node_modules/detect-libc/lib/filesystem.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.[39m
+2025-08-03T08:18:08.676605Z	08:18:08 [vite] [32m✓[39m 917 modules transformed.
+2025-08-03T08:18:08.945424Z	08:18:08 [WARN] [vite] [33mGenerated an empty chunk: "MainGridLayout.astro_astro_type_script_index_2_lang".[39m
+2025-08-03T08:18:08.945828Z	08:18:08 [WARN] [vite] [33mGenerated an empty chunk: "ResourceHints.astro_astro_type_script_index_0_lang".[39m
+2025-08-03T08:18:09.031927Z	08:18:09 [vite] rendering chunks...
+2025-08-03T08:18:09.915864Z	08:18:09 [vite] computing gzip size...
+2025-08-03T08:18:10.398454Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mec.g1fg5.js                                                      [39m[1m[2m     0.94 kB[22m[1m[22m
+2025-08-03T08:18:10.398938Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size3-Regular.CTq5MqoE.woff                                [39m[1m[2m     4.42 kB[22m[1m[22m
+2025-08-03T08:18:10.399137Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size4-Regular.Dl5lxZxV.woff2                               [39m[1m[2m     4.93 kB[22m[1m[22m
+2025-08-03T08:18:10.399302Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size2-Regular.Dy4dx90m.woff2                               [39m[1m[2m     5.21 kB[22m[1m[22m
+2025-08-03T08:18:10.39943Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-vietnamese-400-normal.BYP5tVVv.woff                       [39m[1m[2m     5.44 kB[22m[1m[22m
+2025-08-03T08:18:10.399632Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-vietnamese-700-normal.7YosmkaU.woff                       [39m[1m[2m     5.44 kB[22m[1m[22m
+2025-08-03T08:18:10.399771Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size1-Regular.mCD8mA8B.woff2                               [39m[1m[2m     5.47 kB[22m[1m[22m
+2025-08-03T08:18:10.399946Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-vietnamese-500-normal.CUzdRVXb.woff                       [39m[1m[2m     5.48 kB[22m[1m[22m
+2025-08-03T08:18:10.40007Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size4-Regular.BF-4gkZK.woff                                [39m[1m[2m     5.98 kB[22m[1m[22m
+2025-08-03T08:18:10.400191Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size2-Regular.oD1tc_U0.woff                                [39m[1m[2m     6.19 kB[22m[1m[22m
+2025-08-03T08:18:10.400333Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size1-Regular.C195tn64.woff                                [39m[1m[2m     6.50 kB[22m[1m[22m
+2025-08-03T08:18:10.400483Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Caligraphic-Regular.Di6jR-x-.woff2                         [39m[1m[2m     6.91 kB[22m[1m[22m
+2025-08-03T08:18:10.400917Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Caligraphic-Bold.Dq_IR9rO.woff2                            [39m[1m[2m     6.91 kB[22m[1m[22m
+2025-08-03T08:18:10.401201Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-greek-400-normal.DwVopRQH.woff                            [39m[1m[2m     7.47 kB[22m[1m[22m
+2025-08-03T08:18:10.401332Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-greek-700-normal.DXrPs8of.woff                            [39m[1m[2m     7.49 kB[22m[1m[22m
+2025-08-03T08:18:10.401588Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-vietnamese-wght-normal.Bt-aOZkq.woff2             [39m[1m[2m     7.50 kB[22m[1m[22m
+2025-08-03T08:18:10.401732Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-greek-500-normal.B0wzjI_J.woff                            [39m[1m[2m     7.51 kB[22m[1m[22m
+2025-08-03T08:18:10.401837Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size3-Regular.DgpXs0kz.ttf                                 [39m[1m[2m     7.59 kB[22m[1m[22m
+2025-08-03T08:18:10.402028Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Caligraphic-Regular.CTRA-rTL.woff                          [39m[1m[2m     7.66 kB[22m[1m[22m
+2025-08-03T08:18:10.402183Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Caligraphic-Bold.BEiXGLvX.woff                             [39m[1m[2m     7.72 kB[22m[1m[22m
+2025-08-03T08:18:10.402289Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-vietnamese-500-normal.HYpufUYk.woff2                      [39m[1m[2m     7.84 kB[22m[1m[22m
+2025-08-03T08:18:10.40239Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-vietnamese-400-normal.CDDxGrUb.woff2                      [39m[1m[2m     7.86 kB[22m[1m[22m
+2025-08-03T08:18:10.402604Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-vietnamese-700-normal.BFWtvCOj.woff2                      [39m[1m[2m     7.88 kB[22m[1m[22m
+2025-08-03T08:18:10.402685Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-vietnamese-wght-italic.Dcombn6O.woff2             [39m[1m[2m     8.06 kB[22m[1m[22m
+2025-08-03T08:18:10.402859Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-symbols-500-normal.B3xPS0M7.woff                          [39m[1m[2m     8.64 kB[22m[1m[22m
+2025-08-03T08:18:10.403069Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-symbols-400-normal.B2LMqLB2.woff                          [39m[1m[2m     8.66 kB[22m[1m[22m
+2025-08-03T08:18:10.403167Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-symbols-700-normal.D_8z4JZ9.woff                          [39m[1m[2m     8.68 kB[22m[1m[22m
+2025-08-03T08:18:10.403235Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-greek-wght-normal.Bw9x6K1M.woff2                  [39m[1m[2m     9.00 kB[22m[1m[22m
+2025-08-03T08:18:10.403293Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-greek-wght-italic.Dmq-fBVQ.woff2                  [39m[1m[2m     9.55 kB[22m[1m[22m
+2025-08-03T08:18:10.403363Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-greek-500-normal.BJMS0heP.woff2                           [39m[1m[2m     9.64 kB[22m[1m[22m
+2025-08-03T08:18:10.403428Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-greek-400-normal.jFM2czAU.woff2                           [39m[1m[2m     9.64 kB[22m[1m[22m
+2025-08-03T08:18:10.403491Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Script-Regular.D3wIWfF6.woff2                              [39m[1m[2m     9.64 kB[22m[1m[22m
+2025-08-03T08:18:10.403591Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-greek-700-normal.DpKAje7q.woff2                           [39m[1m[2m     9.68 kB[22m[1m[22m
+2025-08-03T08:18:10.403655Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-400-normal.C5q4FMUG.woff                         [39m[1m[2m     9.73 kB[22m[1m[22m
+2025-08-03T08:18:10.40371Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-700-normal.BmXeMSnZ.woff                         [39m[1m[2m     9.90 kB[22m[1m[22m
+2025-08-03T08:18:10.403764Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-500-normal.DhPqGoNQ.woff                         [39m[1m[2m     9.90 kB[22m[1m[22m
+2025-08-03T08:18:10.403818Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Regular.DDBCnlJ7.woff2                           [39m[1m[2m    10.34 kB[22m[1m[22m
+2025-08-03T08:18:10.403878Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size4-Regular.DWFBv043.ttf                                 [39m[1m[2m    10.36 kB[22m[1m[22m
+2025-08-03T08:18:10.403932Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-symbols-400-normal.fF1SLJBj.woff2                         [39m[1m[2m    10.58 kB[22m[1m[22m
+2025-08-03T08:18:10.403991Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Script-Regular.D5yQViql.woff                               [39m[1m[2m    10.59 kB[22m[1m[22m
+2025-08-03T08:18:10.404044Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-symbols-500-normal.BXFTxrNR.woff2                         [39m[1m[2m    10.73 kB[22m[1m[22m
+2025-08-03T08:18:10.404105Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-symbols-700-normal.DKkQdRpM.woff2                         [39m[1m[2m    10.80 kB[22m[1m[22m
+2025-08-03T08:18:10.40416Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Fraktur-Regular.CTYiF6lA.woff2                             [39m[1m[2m    11.32 kB[22m[1m[22m
+2025-08-03T08:18:10.404213Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Fraktur-Bold.CL6g_b3V.woff2                                [39m[1m[2m    11.35 kB[22m[1m[22m
+2025-08-03T08:18:10.404268Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size2-Regular.B7gKUWhC.ttf                                 [39m[1m[2m    11.51 kB[22m[1m[22m
+2025-08-03T08:18:10.404326Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-400-normal.DAIM1_dR.woff2                        [39m[1m[2m    11.84 kB[22m[1m[22m
+2025-08-03T08:18:10.40438Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-700-normal.CzEIZVQR.woff2                        [39m[1m[2m    11.97 kB[22m[1m[22m
+2025-08-03T08:18:10.404434Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-500-normal.hCeO1jFL.woff2                        [39m[1m[2m    11.98 kB[22m[1m[22m
+2025-08-03T08:18:10.404487Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Italic.C3H0VqGB.woff2                            [39m[1m[2m    12.03 kB[22m[1m[22m
+2025-08-03T08:18:10.404577Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-cyrillic-wght-normal.D73BlboJ.woff2               [39m[1m[2m    12.11 kB[22m[1m[22m
+2025-08-03T08:18:10.404639Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Bold.D1sUS0GD.woff2                              [39m[1m[2m    12.22 kB[22m[1m[22m
+2025-08-03T08:18:10.404696Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Size1-Regular.Dbsnue_I.ttf                                 [39m[1m[2m    12.23 kB[22m[1m[22m
+2025-08-03T08:18:10.40475Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Regular.CS6fqUqJ.woff                            [39m[1m[2m    12.32 kB[22m[1m[22m
+2025-08-03T08:18:10.404804Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Caligraphic-Regular.wX97UBjC.ttf                           [39m[1m[2m    12.34 kB[22m[1m[22m
+2025-08-03T08:18:10.40486Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Caligraphic-Bold.ATXxdsX0.ttf                              [39m[1m[2m    12.37 kB[22m[1m[22m
+2025-08-03T08:18:10.404917Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-ext-400-normal.BG57dRWO.woff                        [39m[1m[2m    12.47 kB[22m[1m[22m
+2025-08-03T08:18:10.404981Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-ext-700-normal.DGcaX69F.woff                        [39m[1m[2m    12.48 kB[22m[1m[22m
+2025-08-03T08:18:10.40504Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-ext-500-normal.EUd9mLnZ.woff                        [39m[1m[2m    12.52 kB[22m[1m[22m
+2025-08-03T08:18:10.405097Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Fraktur-Regular.Dxdc4cR9.woff                              [39m[1m[2m    13.21 kB[22m[1m[22m
+2025-08-03T08:18:10.405153Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Fraktur-Bold.BsDP51OF.woff                                 [39m[1m[2m    13.30 kB[22m[1m[22m
+2025-08-03T08:18:10.405209Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-cyrillic-wght-italic.CfQkWpeR.woff2               [39m[1m[2m    13.35 kB[22m[1m[22m
+2025-08-03T08:18:10.405264Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Typewriter-Regular.CO6r4hn1.woff2                          [39m[1m[2m    13.57 kB[22m[1m[22m
+2025-08-03T08:18:10.405326Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-ext-400-normal.ZYmyxeOy.woff2                       [39m[1m[2m    13.74 kB[22m[1m[22m
+2025-08-03T08:18:10.405386Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-ext-700-normal.BNPgmEQS.woff2                       [39m[1m[2m    13.96 kB[22m[1m[22m
+2025-08-03T08:18:10.405441Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-ext-500-normal.C_ARlJGk.woff2                       [39m[1m[2m    13.98 kB[22m[1m[22m
+2025-08-03T08:18:10.405497Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Italic.DN2j7dab.woff                             [39m[1m[2m    14.11 kB[22m[1m[22m
+2025-08-03T08:18:10.405583Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Bold.DbIhKOiC.woff                               [39m[1m[2m    14.41 kB[22m[1m[22m
+2025-08-03T08:18:10.405642Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-latin-ext-wght-normal.DBQx-q_a.woff2              [39m[1m[2m    15.20 kB[22m[1m[22m
+2025-08-03T08:18:10.405698Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-ext-400-normal.5IDvadIC.woff                     [39m[1m[2m    15.40 kB[22m[1m[22m
+2025-08-03T08:18:10.405757Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-ext-700-normal.y_8Eg3F3.woff                     [39m[1m[2m    15.51 kB[22m[1m[22m
+2025-08-03T08:18:10.405813Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-ext-500-normal.aAFKCR76.woff                     [39m[1m[2m    15.52 kB[22m[1m[22m
+2025-08-03T08:18:10.405877Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Typewriter-Regular.C0xS9mPB.woff                           [39m[1m[2m    16.03 kB[22m[1m[22m
+2025-08-03T08:18:10.405935Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Math-BoldItalic.CZnvNsCZ.woff2                             [39m[1m[2m    16.40 kB[22m[1m[22m
+2025-08-03T08:18:10.40599Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Math-Italic.t53AETM-.woff2                                 [39m[1m[2m    16.44 kB[22m[1m[22m
+2025-08-03T08:18:10.406045Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-latin-ext-wght-italic.BrDczivE.woff2              [39m[1m[2m    16.52 kB[22m[1m[22m
+2025-08-03T08:18:10.406101Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Script-Regular.C5JkGWo-.ttf                                [39m[1m[2m    16.65 kB[22m[1m[22m
+2025-08-03T08:18:10.406166Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-BoldItalic.DxDJ3AOS.woff2                             [39m[1m[2m    16.78 kB[22m[1m[22m
+2025-08-03T08:18:10.406221Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-ext-400-normal.DzMWdK87.woff2                    [39m[1m[2m    16.85 kB[22m[1m[22m
+2025-08-03T08:18:10.406277Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Italic.NWA7e6Wa.woff2                                 [39m[1m[2m    16.99 kB[22m[1m[22m
+2025-08-03T08:18:10.406335Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-ext-700-normal.D_fA0fHY.woff2                    [39m[1m[2m    17.11 kB[22m[1m[22m
+2025-08-03T08:18:10.40639Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-cyrillic-ext-500-normal.B7rQpwPu.woff2                    [39m[1m[2m    17.16 kB[22m[1m[22m
+2025-08-03T08:18:10.406445Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-math-400-normal.BRMeFL5Z.woff                             [39m[1m[2m    18.28 kB[22m[1m[22m
+2025-08-03T08:18:10.406499Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-math-500-normal.nGmytUgK.woff                             [39m[1m[2m    18.36 kB[22m[1m[22m
+2025-08-03T08:18:10.40659Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-math-700-normal.yuY-ZMbs.woff                             [39m[1m[2m    18.42 kB[22m[1m[22m
+2025-08-03T08:18:10.406654Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Math-BoldItalic.iY-2wyZ7.woff                              [39m[1m[2m    18.67 kB[22m[1m[22m
+2025-08-03T08:18:10.406709Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Math-Italic.DA0__PXp.woff                                  [39m[1m[2m    18.75 kB[22m[1m[22m
+2025-08-03T08:18:10.406765Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-BoldItalic.SpSLRI95.woff                              [39m[1m[2m    19.41 kB[22m[1m[22m
+2025-08-03T08:18:10.406841Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Regular.BNo7hRIc.ttf                             [39m[1m[2m    19.44 kB[22m[1m[22m
+2025-08-03T08:18:10.4069Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-400-normal.BX2H0A0_.woff                            [39m[1m[2m    19.57 kB[22m[1m[22m
+2025-08-03T08:18:10.406955Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Fraktur-Regular.CB_wures.ttf                               [39m[1m[2m    19.57 kB[22m[1m[22m
+2025-08-03T08:18:10.407012Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Fraktur-Bold.BdnERNNW.ttf                                  [39m[1m[2m    19.58 kB[22m[1m[22m
+2025-08-03T08:18:10.40708Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-math-400-normal.B3wgz80t.woff2                            [39m[1m[2m    19.66 kB[22m[1m[22m
+2025-08-03T08:18:10.407142Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-500-normal.CoDN7ZW2.woff                            [39m[1m[2m    19.67 kB[22m[1m[22m
+2025-08-03T08:18:10.407206Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Italic.BMLOBm91.woff                                  [39m[1m[2m    19.68 kB[22m[1m[22m
+2025-08-03T08:18:10.407263Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-700-normal.D74k8Kh_.woff                            [39m[1m[2m    19.72 kB[22m[1m[22m
+2025-08-03T08:18:10.407319Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-math-500-normal.CFNaIMFC.woff2                            [39m[1m[2m    19.98 kB[22m[1m[22m
+2025-08-03T08:18:10.407374Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-math-700-normal.xbpggnJp.woff2                            [39m[1m[2m    19.98 kB[22m[1m[22m
+2025-08-03T08:18:10.407435Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-400-normal.CNwBRw8h.woff2                           [39m[1m[2m    20.61 kB[22m[1m[22m
+2025-08-03T08:18:10.407499Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-500-normal.CkrA1NAy.woff2                           [39m[1m[2m    20.93 kB[22m[1m[22m
+2025-08-03T08:18:10.407597Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mroboto-latin-700-normal.DZr4b_KL.woff2                           [39m[1m[2m    21.00 kB[22m[1m[22m
+2025-08-03T08:18:10.407658Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Italic.YYjJ1zSn.ttf                              [39m[1m[2m    22.36 kB[22m[1m[22m
+2025-08-03T08:18:10.407721Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_SansSerif-Bold.CFMepnvq.ttf                                [39m[1m[2m    24.50 kB[22m[1m[22m
+2025-08-03T08:18:10.407785Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Bold.Cx986IdX.woff2                                   [39m[1m[2m    25.32 kB[22m[1m[22m
+2025-08-03T08:18:10.407846Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Regular.B22Nviop.woff2                                [39m[1m[2m    26.27 kB[22m[1m[22m
+2025-08-03T08:18:10.407902Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Typewriter-Regular.D3Ib7_Hf.ttf                            [39m[1m[2m    27.56 kB[22m[1m[22m
+2025-08-03T08:18:10.407958Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_AMS-Regular.BQhdFMY1.woff2                                 [39m[1m[2m    28.08 kB[22m[1m[22m
+2025-08-03T08:18:10.408013Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Bold.Jm3AIy58.woff                                    [39m[1m[2m    29.91 kB[22m[1m[22m
+2025-08-03T08:18:10.408071Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Regular.Dr94JaBh.woff                                 [39m[1m[2m    30.77 kB[22m[1m[22m
+2025-08-03T08:18:10.408126Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Math-BoldItalic.B3XSjfu4.ttf                               [39m[1m[2m    31.20 kB[22m[1m[22m
+2025-08-03T08:18:10.408181Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Math-Italic.flOr_0UB.ttf                                   [39m[1m[2m    31.31 kB[22m[1m[22m
+2025-08-03T08:18:10.408242Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-BoldItalic.DzxPMmG6.ttf                               [39m[1m[2m    32.97 kB[22m[1m[22m
+2025-08-03T08:18:10.408302Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_AMS-Regular.DMm9YOAa.woff                                  [39m[1m[2m    33.52 kB[22m[1m[22m
+2025-08-03T08:18:10.408367Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Italic.3WenGoN9.ttf                                   [39m[1m[2m    33.58 kB[22m[1m[22m
+2025-08-03T08:18:10.408422Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-latin-wght-normal.B9CIFXIH.woff2                  [39m[1m[2m    40.40 kB[22m[1m[22m
+2025-08-03T08:18:10.408476Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mjetbrains-mono-latin-wght-italic.B2M6KQje.woff2                  [39m[1m[2m    42.96 kB[22m[1m[22m
+2025-08-03T08:18:10.408557Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Bold.waoOVXN0.ttf                                     [39m[1m[2m    51.34 kB[22m[1m[22m
+2025-08-03T08:18:10.408628Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_Main-Regular.ypZvNtVU.ttf                                  [39m[1m[2m    53.58 kB[22m[1m[22m
+2025-08-03T08:18:10.408686Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mKaTeX_AMS-Regular.DRggAlZN.ttf                                   [39m[1m[2m    63.63 kB[22m[1m[22m
+2025-08-03T08:18:10.408754Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mlogo1.Bc-qrwah.png                                               [39m[1m[2m   386.60 kB[22m[1m[22m
+2025-08-03T08:18:10.408813Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mdemo-avatar.CxcI0ivM.png                                         [39m[1m[2m   416.18 kB[22m[1m[22m
+2025-08-03T08:18:10.408869Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[32mLOGO.NZTBEBKn.png                                                [39m[1m[2m   464.68 kB[22m[1m[22m
+2025-08-03T08:18:10.408926Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[35mLayout.DSulWsr7.css                                              [39m[1m[2m     4.42 kB[22m[1m[22m[2m │ gzip:     1.43 kB[22m
+2025-08-03T08:18:10.408992Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[35m_slug_.BtniRLn_.css                                              [39m[1m[2m     9.40 kB[22m[1m[22m[2m │ gzip:     4.94 kB[22m
+2025-08-03T08:18:10.409066Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[35m_category_.dOoORm-i.css                                          [39m[1m[2m    12.18 kB[22m[1m[22m[2m │ gzip:     2.21 kB[22m
+2025-08-03T08:18:10.40913Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[35mLayout.CFwGdNXj.css                                              [39m[1m[2m    13.82 kB[22m[1m[22m[2m │ gzip:     2.60 kB[22m
+2025-08-03T08:18:10.409189Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[35mec.d1dr8.css                                                     [39m[1m[2m    19.55 kB[22m[1m[22m[2m │ gzip:     4.37 kB[22m
+2025-08-03T08:18:10.409246Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[35m_category_.DETFcC6c.css                                          [39m[1m[2m   118.15 kB[22m[1m[22m[2m │ gzip:    33.41 kB[22m
+2025-08-03T08:18:10.409304Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[35m_category_.N3ClDrXz.css                                          [39m[1m[2m   174.69 kB[22m[1m[22m[2m │ gzip:    27.43 kB[22m
+2025-08-03T08:18:10.409363Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mdate-utils.Cz1_5Gjb.js                                           [39m[1m[2m     0.09 kB[22m[1m[22m[2m │ gzip:     0.10 kB[22m
+2025-08-03T08:18:10.409422Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLayoutSwitcher.astro_astro_type_script_index_0_lang.KnN0sprn.js  [39m[1m[2m     0.10 kB[22m[1m[22m[2m │ gzip:     0.11 kB[22m
+2025-08-03T08:18:10.409704Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLOGO.Ci6zvs1K.js                                                 [39m[1m[2m     0.10 kB[22m[1m[22m[2m │ gzip:     0.12 kB[22m
+2025-08-03T08:18:10.410016Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mlogo1.CpLML_t1.js                                                [39m[1m[2m     0.10 kB[22m[1m[22m[2m │ gzip:     0.12 kB[22m
+2025-08-03T08:18:10.410151Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mdemo-avatar.8a9Q8uQE.js                                          [39m[1m[2m     0.11 kB[22m[1m[22m[2m │ gzip:     0.12 kB[22m
+2025-08-03T08:18:10.410265Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mconfig.DcgJ2Nqr.js                                               [39m[1m[2m     0.11 kB[22m[1m[22m[2m │ gzip:     0.11 kB[22m
+2025-08-03T08:18:10.410374Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mtranslation.DCfSCUdZ.js                                          [39m[1m[2m     0.13 kB[22m[1m[22m[2m │ gzip:     0.13 kB[22m
+2025-08-03T08:18:10.410465Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mconstants.Cicic_jr.js                                            [39m[1m[2m     0.16 kB[22m[1m[22m[2m │ gzip:     0.15 kB[22m
+2025-08-03T08:18:10.410563Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mremark-excerpt.i8V8Ue6k.js                                       [39m[1m[2m     0.21 kB[22m[1m[22m[2m │ gzip:     0.18 kB[22m
+2025-08-03T08:18:10.41065Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mrobots.txt.D8fq98Zy.js                                           [39m[1m[2m     0.22 kB[22m[1m[22m[2m │ gzip:     0.20 kB[22m
+2025-08-03T08:18:10.410712Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mGlobalStyles.XHvvwUuN.js                                         [39m[1m[2m     0.27 kB[22m[1m[22m[2m │ gzip:     0.20 kB[22m
+2025-08-03T08:18:10.410803Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mcontent.Dh3HKss_.js                                              [39m[1m[2m     0.32 kB[22m[1m[22m[2m │ gzip:     0.17 kB[22m
+2025-08-03T08:18:10.410884Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mlink-presets.zkqONX3n.js                                         [39m[1m[2m     0.32 kB[22m[1m[22m[2m │ gzip:     0.23 kB[22m
+2025-08-03T08:18:10.410967Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mArchivePanel.B4qIGLM6.js                                         [39m[1m[2m     0.34 kB[22m[1m[22m[2m │ gzip:     0.23 kB[22m
+2025-08-03T08:18:10.411067Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLightDarkSwitch.Du3uMQDR.js                                      [39m[1m[2m     0.37 kB[22m[1m[22m[2m │ gzip:     0.24 kB[22m
+2025-08-03T08:18:10.411199Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mclsx.B-dksMZM.js                                                 [39m[1m[2m     0.37 kB[22m[1m[22m[2m │ gzip:     0.24 kB[22m
+2025-08-03T08:18:10.411413Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mscript.Ddket5BE.js                                               [39m[1m[2m     0.41 kB[22m[1m[22m[2m │ gzip:     0.27 kB[22m
+2025-08-03T08:18:10.411498Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mSearch.6dbebVUr.js                                               [39m[1m[2m     0.43 kB[22m[1m[22m[2m │ gzip:     0.27 kB[22m
+2025-08-03T08:18:10.411636Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mConfigCarrier.DaTjgfCI.js                                        [39m[1m[2m     0.44 kB[22m[1m[22m[2m │ gzip:     0.29 kB[22m
+2025-08-03T08:18:10.411737Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mremark-reading-time.Cmonfkz9.js                                  [39m[1m[2m     0.46 kB[22m[1m[22m[2m │ gzip:     0.31 kB[22m
+2025-08-03T08:18:10.411856Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mrehype-component-admonition.DxpUQCK2.js                          [39m[1m[2m     0.46 kB[22m[1m[22m[2m │ gzip:     0.34 kB[22m
+2025-08-03T08:18:10.411993Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36msitemap-index.xml.Dl-bMzch.js                                    [39m[1m[2m     0.48 kB[22m[1m[22m[2m │ gzip:     0.35 kB[22m
+2025-08-03T08:18:10.412141Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mDisplaySettings.B-JrC38_.js                                      [39m[1m[2m     0.51 kB[22m[1m[22m[2m │ gzip:     0.30 kB[22m
+2025-08-03T08:18:10.412299Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.C_aolqmU.js                                                [39m[1m[2m     0.51 kB[22m[1m[22m[2m │ gzip:     0.31 kB[22m
+2025-08-03T08:18:10.41252Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36m_category_.174bdc69.CR8piwjA.js                                  [39m[1m[2m     0.52 kB[22m[1m[22m[2m │ gzip:     0.15 kB[22m
+2025-08-03T08:18:10.412617Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36micon.CFdKaOBg.js                                                 [39m[1m[2m     0.58 kB[22m[1m[22m[2m │ gzip:     0.19 kB[22m
+2025-08-03T08:18:10.412687Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mi18nKey.B4fsdd7L.js                                              [39m[1m[2m     0.63 kB[22m[1m[22m[2m │ gzip:     0.29 kB[22m
+2025-08-03T08:18:10.412744Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mzh_CN.Do71a4f-.js                                                [39m[1m[2m     0.68 kB[22m[1m[22m[2m │ gzip:     0.44 kB[22m
+2025-08-03T08:18:10.412809Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36minput.D1I6NMu5.js                                                [39m[1m[2m     0.73 kB[22m[1m[22m[2m │ gzip:     0.42 kB[22m
+2025-08-03T08:18:10.412871Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mcategory-slugs.DGgjCaPq.js                                       [39m[1m[2m     0.75 kB[22m[1m[22m[2m │ gzip:     0.50 kB[22m
+2025-08-03T08:18:10.412938Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36m___vite-browser-external_commonjs-proxy.DBBVn4w2.js              [39m[1m[2m     0.79 kB[22m[1m[22m[2m │ gzip:     0.43 kB[22m
+2025-08-03T08:18:10.412995Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mMarkdown.CLn2SZAo.js                                             [39m[1m[2m     0.82 kB[22m[1m[22m[2m │ gzip:     0.44 kB[22m
+2025-08-03T08:18:10.413055Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mconfig.CZVdjOEh.js                                               [39m[1m[2m     0.85 kB[22m[1m[22m[2m │ gzip:     0.50 kB[22m
+2025-08-03T08:18:10.41316Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mButtonTag.JFIGvUCX.js                                            [39m[1m[2m     0.87 kB[22m[1m[22m[2m │ gzip:     0.51 kB[22m
+2025-08-03T08:18:10.413289Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36murl-utils.DA5f2zOr.js                                            [39m[1m[2m     0.91 kB[22m[1m[22m[2m │ gzip:     0.46 kB[22m
+2025-08-03T08:18:10.413401Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mimage-mapping.B66ToHuZ.js                                        [39m[1m[2m     0.98 kB[22m[1m[22m[2m │ gzip:     0.25 kB[22m
+2025-08-03T08:18:10.413503Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36m_...path_.DEfP5VJC.js                                            [39m[1m[2m     1.09 kB[22m[1m[22m[2m │ gzip:     0.61 kB[22m
+2025-08-03T08:18:10.413622Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mSwupScriptsPlugin.CRD5-C2F.js                                    [39m[1m[2m     1.10 kB[22m[1m[22m[2m │ gzip:     0.61 kB[22m
+2025-08-03T08:18:10.413732Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mcustom-navigation.4dDLIkbT.js                                    [39m[1m[2m     1.10 kB[22m[1m[22m[2m │ gzip:     0.69 kB[22m
+2025-08-03T08:18:10.413845Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.astro_astro_type_script_index_0_lang.Dtr1NdcC.js           [39m[1m[2m     1.11 kB[22m[1m[22m[2m │ gzip:     0.68 kB[22m
+2025-08-03T08:18:10.413957Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mpreload-helper.BlTxHScW.js                                       [39m[1m[2m     1.11 kB[22m[1m[22m[2m │ gzip:     0.65 kB[22m
+2025-08-03T08:18:10.414057Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mstrapi-pages.CZ6zEntP.js                                         [39m[1m[2m     1.13 kB[22m[1m[22m[2m │ gzip:     0.57 kB[22m
+2025-08-03T08:18:10.414153Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mclear.CHFy2GBC.js                                                [39m[1m[2m     1.16 kB[22m[1m[22m[2m │ gzip:     0.44 kB[22m
+2025-08-03T08:18:10.414262Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mclient.svelte.DW5k7Kk9.js                                        [39m[1m[2m     1.16 kB[22m[1m[22m[2m │ gzip:     0.65 kB[22m
+2025-08-03T08:18:10.414369Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mtheme-manager.CSlCCZLi.js                                        [39m[1m[2m     1.18 kB[22m[1m[22m[2m │ gzip:     0.50 kB[22m
+2025-08-03T08:18:10.414477Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36merror-handler.lmhWzt6X.js                                        [39m[1m[2m     1.18 kB[22m[1m[22m[2m │ gzip:     0.61 kB[22m
+2025-08-03T08:18:10.414608Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mPostPage.brSUo7tX.js                                             [39m[1m[2m     1.28 kB[22m[1m[22m[2m │ gzip:     0.74 kB[22m
+2025-08-03T08:18:10.41472Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36msitemap-categories.xml.DvISvKW9.js                               [39m[1m[2m     1.28 kB[22m[1m[22m[2m │ gzip:     0.70 kB[22m
+2025-08-03T08:18:10.414837Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mlogger.BvQXyG3u.js                                               [39m[1m[2m     1.31 kB[22m[1m[22m[2m │ gzip:     0.66 kB[22m
+2025-08-03T08:18:10.414946Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mStaticLogo.B6DZmUIj.js                                           [39m[1m[2m     1.32 kB[22m[1m[22m[2m │ gzip:     0.65 kB[22m
+2025-08-03T08:18:10.415037Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36msitemap-posts.xml.DoI0BBvF.js                                    [39m[1m[2m     1.36 kB[22m[1m[22m[2m │ gzip:     0.73 kB[22m
+2025-08-03T08:18:10.415225Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mlanguage-badge.D0AKByp1.js                                       [39m[1m[2m     1.36 kB[22m[1m[22m[2m │ gzip:     0.59 kB[22m
+2025-08-03T08:18:10.415358Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mfont-loader.DCvLFrWk.js                                          [39m[1m[2m     1.36 kB[22m[1m[22m[2m │ gzip:     0.53 kB[22m
+2025-08-03T08:18:10.415521Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36msetting-utils.CZvbBiY2.js                                        [39m[1m[2m     1.37 kB[22m[1m[22m[2m │ gzip:     0.65 kB[22m
+2025-08-03T08:18:10.415635Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.1FB8_vAn.js                                                [39m[1m[2m     1.40 kB[22m[1m[22m[2m │ gzip:     0.55 kB[22m
+2025-08-03T08:18:10.415739Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mdebug-strapi.vHhcRU46.js                                         [39m[1m[2m     1.43 kB[22m[1m[22m[2m │ gzip:     0.74 kB[22m
+2025-08-03T08:18:10.415876Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mTags.BZmkcjME.js                                                 [39m[1m[2m     1.49 kB[22m[1m[22m[2m │ gzip:     0.83 kB[22m
+2025-08-03T08:18:10.415986Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mrender.ClLWy2DR.js                                               [39m[1m[2m     1.55 kB[22m[1m[22m[2m │ gzip:     0.89 kB[22m
+2025-08-03T08:18:10.416091Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mNavMenuPanel.BDhKjnoE.js                                         [39m[1m[2m     1.56 kB[22m[1m[22m[2m │ gzip:     0.84 kB[22m
+2025-08-03T08:18:10.41622Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mResourceHints.BmvyNtnY.js                                        [39m[1m[2m     1.57 kB[22m[1m[22m[2m │ gzip:     0.86 kB[22m
+2025-08-03T08:18:10.416319Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mBackToTop.nxwS9Ah2.js                                            [39m[1m[2m     1.58 kB[22m[1m[22m[2m │ gzip:     0.71 kB[22m
+2025-08-03T08:18:10.416441Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36m_page_.DmkBFYkL.js                                               [39m[1m[2m     1.60 kB[22m[1m[22m[2m │ gzip:     0.82 kB[22m
+2025-08-03T08:18:10.416564Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mFooter.CogyHtSw.js                                               [39m[1m[2m     1.61 kB[22m[1m[22m[2m │ gzip:     0.89 kB[22m
+2025-08-03T08:18:10.416671Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLayoutSwitcher.DFrSzlR2.js                                       [39m[1m[2m     1.66 kB[22m[1m[22m[2m │ gzip:     0.74 kB[22m
+2025-08-03T08:18:10.416736Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mbanner-adapter.Cu5AIMRW.js                                       [39m[1m[2m     1.67 kB[22m[1m[22m[2m │ gzip:     0.83 kB[22m
+2025-08-03T08:18:10.416844Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mapi.E1_LGI3W.js                                                  [39m[1m[2m     1.67 kB[22m[1m[22m[2m │ gzip:     0.96 kB[22m
+2025-08-03T08:18:10.416942Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mCategories.DOFckdDs.js                                           [39m[1m[2m     1.68 kB[22m[1m[22m[2m │ gzip:     0.94 kB[22m
+2025-08-03T08:18:10.41712Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mButtonLink.BjLeeedd.js                                           [39m[1m[2m     1.69 kB[22m[1m[22m[2m │ gzip:     0.78 kB[22m
+2025-08-03T08:18:10.417196Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mWidgetLayout.DY2woOE6.js                                         [39m[1m[2m     1.70 kB[22m[1m[22m[2m │ gzip:     0.92 kB[22m
+2025-08-03T08:18:10.417294Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mcache.BpiwiMQC.js                                                [39m[1m[2m     1.76 kB[22m[1m[22m[2m │ gzip:     0.81 kB[22m
+2025-08-03T08:18:10.417416Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.modern.BC8Oj8jT.js                                         [39m[1m[2m     1.76 kB[22m[1m[22m[2m │ gzip:     0.91 kB[22m
+2025-08-03T08:18:10.417616Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36merrors.DEmqdOpm.js                                               [39m[1m[2m     1.78 kB[22m[1m[22m[2m │ gzip:     0.95 kB[22m
+2025-08-03T08:18:10.417753Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mSideBar.DIo92Ue0.js                                              [39m[1m[2m     1.78 kB[22m[1m[22m[2m │ gzip:     0.88 kB[22m
+2025-08-03T08:18:10.417914Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mposts.json.Bt9PoQsZ.js                                           [39m[1m[2m     1.80 kB[22m[1m[22m[2m │ gzip:     0.99 kB[22m
+2025-08-03T08:18:10.418027Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.BFr2gIBt.js                                                [39m[1m[2m     1.87 kB[22m[1m[22m[2m │ gzip:     0.99 kB[22m
+2025-08-03T08:18:10.418138Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mpage.qK6kRvNr.js                                                 [39m[1m[2m     1.88 kB[22m[1m[22m[2m │ gzip:     0.97 kB[22m
+2025-08-03T08:18:10.418299Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mcategory-preloader.D1riLKEr.js                                   [39m[1m[2m     1.95 kB[22m[1m[22m[2m │ gzip:     1.07 kB[22m
+2025-08-03T08:18:10.418398Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36msharp.DuF9EvxV.js                                                [39m[1m[2m     1.97 kB[22m[1m[22m[2m │ gzip:     0.99 kB[22m
+2025-08-03T08:18:10.418578Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLicense.p02Opbvj.js                                              [39m[1m[2m     1.99 kB[22m[1m[22m[2m │ gzip:     0.94 kB[22m
+2025-08-03T08:18:10.418719Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36marticle-sorter.jMG7wuMc.js                                       [39m[1m[2m     2.04 kB[22m[1m[22m[2m │ gzip:     0.86 kB[22m
+2025-08-03T08:18:10.418838Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mcustom-copy-button.Vu22uKUo.js                                   [39m[1m[2m     2.06 kB[22m[1m[22m[2m │ gzip:     0.89 kB[22m
+2025-08-03T08:18:10.418966Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mResponsiveImage.D-g9CzZq.js                                      [39m[1m[2m     2.07 kB[22m[1m[22m[2m │ gzip:     1.11 kB[22m
+2025-08-03T08:18:10.419058Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36marchive.DKJwVm7t.js                                              [39m[1m[2m     2.10 kB[22m[1m[22m[2m │ gzip:     1.04 kB[22m
+2025-08-03T08:18:10.419205Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mFontPreloader.F2NixAJl.js                                        [39m[1m[2m     2.11 kB[22m[1m[22m[2m │ gzip:     1.01 kB[22m
+2025-08-03T08:18:10.419296Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mfast-category-loader.Byz4HiXQ.js                                 [39m[1m[2m     2.11 kB[22m[1m[22m[2m │ gzip:     1.08 kB[22m
+2025-08-03T08:18:10.419422Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mconfig-integration.C0VruYXS.js                                   [39m[1m[2m     2.14 kB[22m[1m[22m[2m │ gzip:     0.98 kB[22m
+2025-08-03T08:18:10.419549Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mhealth.D4u9vEh1.js                                               [39m[1m[2m     2.15 kB[22m[1m[22m[2m │ gzip:     0.95 kB[22m
+2025-08-03T08:18:10.419681Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mProfile.B93il4kx.js                                              [39m[1m[2m     2.17 kB[22m[1m[22m[2m │ gzip:     1.02 kB[22m
+2025-08-03T08:18:10.419816Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mremark-directive-rehype.xTvRW7wt.js                              [39m[1m[2m     2.25 kB[22m[1m[22m[2m │ gzip:     1.03 kB[22m
+2025-08-03T08:18:10.419975Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mPagination.BH1MdMsZ.js                                           [39m[1m[2m     2.29 kB[22m[1m[22m[2m │ gzip:     1.08 kB[22m
+2025-08-03T08:18:10.420087Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mFriendLinks.CWUvYrlo.js                                          [39m[1m[2m     2.30 kB[22m[1m[22m[2m │ gzip:     1.28 kB[22m
+2025-08-03T08:18:10.420208Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mstrapi-content-utils.hp-UnmJ1.js                                 [39m[1m[2m     2.34 kB[22m[1m[22m[2m │ gzip:     0.80 kB[22m
+2025-08-03T08:18:10.420383Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mtest-image.D-5OMsRJ.js                                           [39m[1m[2m     2.36 kB[22m[1m[22m[2m │ gzip:     0.89 kB[22m
+2025-08-03T08:18:10.420456Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mResponsiveImage.DUCK33Ec.js                                      [39m[1m[2m     2.37 kB[22m[1m[22m[2m │ gzip:     1.23 kB[22m
+2025-08-03T08:18:10.420656Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mDisplaySettings.CkSW4-lY.js                                      [39m[1m[2m     2.37 kB[22m[1m[22m[2m │ gzip:     1.27 kB[22m
+2025-08-03T08:18:10.420789Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLoadingSpinner.DN6ATiPR.js                                       [39m[1m[2m     2.42 kB[22m[1m[22m[2m │ gzip:     1.07 kB[22m
+2025-08-03T08:18:10.420925Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mSwupHeadPlugin.d6nb3Z__.js                                       [39m[1m[2m     2.57 kB[22m[1m[22m[2m │ gzip:     1.28 kB[22m
+2025-08-03T08:18:10.421042Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mhtml-optimizer.BVKvSiHY.js                                       [39m[1m[2m     2.58 kB[22m[1m[22m[2m │ gzip:     1.24 kB[22m
+2025-08-03T08:18:10.42122Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mSEOHead.DyySbKzV.js                                              [39m[1m[2m     2.61 kB[22m[1m[22m[2m │ gzip:     1.21 kB[22m
+2025-08-03T08:18:10.421529Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mPostMeta.DxUR_p0r.js                                             [39m[1m[2m     2.63 kB[22m[1m[22m[2m │ gzip:     1.09 kB[22m
+2025-08-03T08:18:10.421808Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mlazy-loader.D7RMx9hW.js                                          [39m[1m[2m     2.65 kB[22m[1m[22m[2m │ gzip:     1.10 kB[22m
+2025-08-03T08:18:10.421982Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mrehype-component-github-card.ejwH5wqk.js                         [39m[1m[2m     2.65 kB[22m[1m[22m[2m │ gzip:     1.11 kB[22m
+2025-08-03T08:18:10.422059Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36m_category_.adee8cd9.B6fbbmUh.js                                  [39m[1m[2m     2.72 kB[22m[1m[22m[2m │ gzip:     0.28 kB[22m
+2025-08-03T08:18:10.422363Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLightDarkSwitch.CozkqRAS.js                                      [39m[1m[2m     2.72 kB[22m[1m[22m[2m │ gzip:     1.39 kB[22m
+2025-08-03T08:18:10.422443Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mseo-optimizer.BHw3imii.js                                        [39m[1m[2m     2.81 kB[22m[1m[22m[2m │ gzip:     1.51 kB[22m
+2025-08-03T08:18:10.422575Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36m_slug_.CTAnZKU4.js                                               [39m[1m[2m     3.02 kB[22m[1m[22m[2m │ gzip:     1.56 kB[22m
+2025-08-03T08:18:10.422705Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mcontent-manager.gKSzqGjr.js                                      [39m[1m[2m     3.11 kB[22m[1m[22m[2m │ gzip:     1.28 kB[22m
+2025-08-03T08:18:10.422777Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mDynamicProfile.mTWNgOqT.js                                       [39m[1m[2m     3.16 kB[22m[1m[22m[2m │ gzip:     1.53 kB[22m
+2025-08-03T08:18:10.422838Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36msearch.BbPMioKJ.js                                               [39m[1m[2m     3.18 kB[22m[1m[22m[2m │ gzip:     1.66 kB[22m
+2025-08-03T08:18:10.422979Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mstrapi-adapter.BpvXMxqJ.js                                       [39m[1m[2m     3.24 kB[22m[1m[22m[2m │ gzip:     1.47 kB[22m
+2025-08-03T08:18:10.423052Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36msearch.C-cMLc0g.js                                               [39m[1m[2m     3.47 kB[22m[1m[22m[2m │ gzip:     1.74 kB[22m
+2025-08-03T08:18:10.423113Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mabout.B0pQNdyd.js                                                [39m[1m[2m     3.48 kB[22m[1m[22m[2m │ gzip:     2.12 kB[22m
+2025-08-03T08:18:10.423182Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mbundle-optimizer.Cu0Ul67M.js                                     [39m[1m[2m     3.49 kB[22m[1m[22m[2m │ gzip:     1.53 kB[22m
+2025-08-03T08:18:10.42324Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36meach.Czejncrg.js                                                 [39m[1m[2m     3.75 kB[22m[1m[22m[2m │ gzip:     1.88 kB[22m
+2025-08-03T08:18:10.4233Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mArchivePanel.Y-VIXJJ2.js                                         [39m[1m[2m     3.79 kB[22m[1m[22m[2m │ gzip:     1.69 kB[22m
+2025-08-03T08:18:10.423357Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mErrorBoundary.DbNiGZVx.js                                        [39m[1m[2m     4.02 kB[22m[1m[22m[2m │ gzip:     1.81 kB[22m
+2025-08-03T08:18:10.423414Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.BEs30xGL.js                                                [39m[1m[2m     4.04 kB[22m[1m[22m[2m │ gzip:     2.12 kB[22m
+2025-08-03T08:18:10.423483Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mBannerCarousel.C9D2HWBs.js                                       [39m[1m[2m     4.09 kB[22m[1m[22m[2m │ gzip:     1.45 kB[22m
+2025-08-03T08:18:10.423573Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLayout.astro_astro_type_script_index_1_lang.DNNjKhTd.js          [39m[1m[2m     4.10 kB[22m[1m[22m[2m │ gzip:     1.45 kB[22m
+2025-08-03T08:18:10.423642Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mNavbar.uoeofvfp.js                                               [39m[1m[2m     4.20 kB[22m[1m[22m[2m │ gzip:     1.96 kB[22m
+2025-08-03T08:18:10.4237Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mBannerCarousel.astro_astro_type_script_index_0_lang.DYjBHZ6m.js  [39m[1m[2m     4.27 kB[22m[1m[22m[2m │ gzip:     1.26 kB[22m
+2025-08-03T08:18:10.423758Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36munified-data-fetcher.DVKWVuzv.js                                 [39m[1m[2m     4.42 kB[22m[1m[22m[2m │ gzip:     1.84 kB[22m
+2025-08-03T08:18:10.423827Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mPostCard.ChTAtXHx.js                                             [39m[1m[2m     4.61 kB[22m[1m[22m[2m │ gzip:     1.97 kB[22m
+2025-08-03T08:18:10.423887Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mMainGridLayout.DeoX3pdi.js                                       [39m[1m[2m     4.63 kB[22m[1m[22m[2m │ gzip:     2.09 kB[22m
+2025-08-03T08:18:10.423945Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mUniversalPostList.CD9JVawC.js                                    [39m[1m[2m     4.74 kB[22m[1m[22m[2m │ gzip:     2.21 kB[22m
+2025-08-03T08:18:10.424006Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36m404.B3dgpI-d.js                                                  [39m[1m[2m     4.81 kB[22m[1m[22m[2m │ gzip:     2.22 kB[22m
+2025-08-03T08:18:10.424072Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mSwupA11yPlugin.CD1FIEJN.js                                       [39m[1m[2m     5.24 kB[22m[1m[22m[2m │ gzip:     2.12 kB[22m
+2025-08-03T08:18:10.42413Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mstrapi.CHL8-_rj.js                                               [39m[1m[2m     5.37 kB[22m[1m[22m[2m │ gzip:     2.05 kB[22m
+2025-08-03T08:18:10.424186Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36msearch.astro_astro_type_script_index_0_lang.DntKHN2e.js          [39m[1m[2m     5.45 kB[22m[1m[22m[2m │ gzip:     2.35 kB[22m
+2025-08-03T08:18:10.424243Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mhybrid-content-utils.BFoNBe1n.js                                 [39m[1m[2m     5.55 kB[22m[1m[22m[2m │ gzip:     2.07 kB[22m
+2025-08-03T08:18:10.424303Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mmodule-manager.DNVbPTrm.js                                       [39m[1m[2m     5.75 kB[22m[1m[22m[2m │ gzip:     2.11 kB[22m
+2025-08-03T08:18:10.424368Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mMainGridLayout.astro_astro_type_script_index_0_lang.X2QOXYuy.js  [39m[1m[2m     6.18 kB[22m[1m[22m[2m │ gzip:     1.75 kB[22m
+2025-08-03T08:18:10.424539Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mbanners.BQDpJNoN.js                                              [39m[1m[2m     6.46 kB[22m[1m[22m[2m │ gzip:     1.97 kB[22m
+2025-08-03T08:18:10.424763Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLayout.DIUtML46.js                                               [39m[1m[2m     6.74 kB[22m[1m[22m[2m │ gzip:     3.02 kB[22m
+2025-08-03T08:18:10.424929Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mtags.Mz1I4EEy.js                                                 [39m[1m[2m     6.78 kB[22m[1m[22m[2m │ gzip:     2.50 kB[22m
+2025-08-03T08:18:10.425027Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mdebug-images.DqYNpDRm.js                                         [39m[1m[2m     7.66 kB[22m[1m[22m[2m │ gzip:     2.36 kB[22m
+2025-08-03T08:18:10.425132Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mfriends.CpfB15fc.js                                              [39m[1m[2m     7.82 kB[22m[1m[22m[2m │ gzip:     3.34 kB[22m
+2025-08-03T08:18:10.42527Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mMobileNavigation.CFC_BFBe.js                                     [39m[1m[2m     7.91 kB[22m[1m[22m[2m │ gzip:     3.01 kB[22m
+2025-08-03T08:18:10.42537Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mlayout-switcher.Sk3BRS4h.js                                      [39m[1m[2m     8.09 kB[22m[1m[22m[2m │ gzip:     2.10 kB[22m
+2025-08-03T08:18:10.4255Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mprops.Cr6z4CVY.js                                                [39m[1m[2m     8.68 kB[22m[1m[22m[2m │ gzip:     4.01 kB[22m
+2025-08-03T08:18:10.425651Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36m_category_.Bzrw55nK.js                                           [39m[1m[2m     9.32 kB[22m[1m[22m[2m │ gzip:     3.83 kB[22m
+2025-08-03T08:18:10.425757Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36m_...slug_.C0_Oi9xl.js                                            [39m[1m[2m     9.41 kB[22m[1m[22m[2m │ gzip:     4.04 kB[22m
+2025-08-03T08:18:10.425894Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mSearch.C2R4jfZl.js                                               [39m[1m[2m    13.12 kB[22m[1m[22m[2m │ gzip:     4.61 kB[22m
+2025-08-03T08:18:10.426004Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mLayout.astro_astro_type_script_index_0_lang.DAHrxWCB.js          [39m[1m[2m    16.69 kB[22m[1m[22m[2m │ gzip:     5.41 kB[22m
+2025-08-03T08:18:10.426111Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mIcon.jM7pJ1UY.js                                                 [39m[1m[2m    20.42 kB[22m[1m[22m[2m │ gzip:     8.24 kB[22m
+2025-08-03T08:18:10.426241Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.B44HtDPe.js                                                [39m[1m[2m    20.84 kB[22m[1m[22m[2m │ gzip:     7.18 kB[22m
+2025-08-03T08:18:10.426521Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mSwup.BJsODpJG.js                                                 [39m[1m[2m    21.60 kB[22m[1m[22m[2m │ gzip:     7.40 kB[22m
+2025-08-03T08:18:10.426706Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mutils.2JfKnrUw.js                                                [39m[1m[2m    23.37 kB[22m[1m[22m[2m │ gzip:     9.45 kB[22m
+2025-08-03T08:18:10.426829Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mREADME-BannerCarousel._uHr9Wcz.js                                [39m[1m[2m    42.39 kB[22m[1m[22m[2m │ gzip:     5.59 kB[22m
+2025-08-03T08:18:10.426935Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mpostcss.CcfYtVb1.js                                              [39m[1m[2m    51.69 kB[22m[1m[22m[2m │ gzip:    16.96 kB[22m
+2025-08-03T08:18:10.427046Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mphotoswipe.esm.CKV1Bsxh.js                                       [39m[1m[2m    60.41 kB[22m[1m[22m[2m │ gzip:    17.48 kB[22m
+2025-08-03T08:18:10.427149Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mImageWrapper.DxFfiyfE.js                                         [39m[1m[2m    72.83 kB[22m[1m[22m[2m │ gzip:    23.38 kB[22m
+2025-08-03T08:18:10.427248Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mtransition.uUFCmrj5.js                                           [39m[1m[2m    88.30 kB[22m[1m[22m[2m │ gzip:    25.39 kB[22m
+2025-08-03T08:18:10.427364Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.DDZyqOzM.js                                                [39m[1m[2m   103.88 kB[22m[1m[22m[2m │ gzip:    29.11 kB[22m
+2025-08-03T08:18:10.427473Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mindex.DPI-O8R8.js                                                [39m[1m[2m   105.86 kB[22m[1m[22m[2m │ gzip:    31.34 kB[22m
+2025-08-03T08:18:10.427627Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mrss.xml.B9EZut3F.js                                              [39m[1m[2m   272.35 kB[22m[1m[22m[2m │ gzip:   107.40 kB[22m
+2025-08-03T08:18:10.427754Z	08:18:10 [vite] [2mdist/client/[22m[2m_astro/[22m[36mIcon.pfTJUOpR.js                                                 [39m[1m[33m12,373.17 kB[39m[22m[2m │ gzip: 2,303.93 kB[22m
+2025-08-03T08:18:10.427864Z	08:18:10 [WARN] [vite] [33m
+2025-08-03T08:18:10.427986Z	(!) Some chunks are larger than 500 kB after minification. Consider:
+2025-08-03T08:18:10.428091Z	- Using dynamic import() to code-split the application
+2025-08-03T08:18:10.428194Z	- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+2025-08-03T08:18:10.428302Z	- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+2025-08-03T08:18:10.428406Z	08:18:10 [vite] [32m✓ built in 7.08s[39m
+2025-08-03T08:18:10.44773Z	
+2025-08-03T08:18:10.447921Z	 prerendering static routes 
+2025-08-03T08:18:10.599487Z	08:18:10 ▶ src/pages/404.astro
+2025-08-03T08:18:11.777305Z	08:18:10   └─ /404.html🏷️ Index Settings: {
+2025-08-03T08:18:11.777665Z	  data: {
+2025-08-03T08:18:11.777805Z	    id: 1,
+2025-08-03T08:18:11.777918Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
+2025-08-03T08:18:11.778064Z	    site_title: 'SparkDone',
+2025-08-03T08:18:11.778196Z	    site_subtitle: 'Power',
+2025-08-03T08:18:11.778267Z	    site_description: null,
+2025-08-03T08:18:11.778443Z	    createdAt: '2025-07-15T15:21:40.896Z',
+2025-08-03T08:18:11.778549Z	    updatedAt: '2025-08-03T06:52:28.868Z',
+2025-08-03T08:18:11.778658Z	    publishedAt: '2025-08-03T06:52:28.755Z',
+2025-08-03T08:18:11.778765Z	    show_author_section: false,
+2025-08-03T08:18:11.77886Z	    default_homepage_layout: 'grid',
+2025-08-03T08:18:11.779045Z	    enable_home_banner: true,
+2025-08-03T08:18:11.779125Z	    logo_light: {
+2025-08-03T08:18:11.779301Z	      id: 5,
+2025-08-03T08:18:11.779428Z	      name: 'logo1.png',
+2025-08-03T08:18:11.779578Z	      alternativeText: null,
+2025-08-03T08:18:11.779684Z	      caption: null,
+2025-08-03T08:18:11.779746Z	      width: 3401,
+2025-08-03T08:18:11.7799Z	      height: 697,
+2025-08-03T08:18:11.780015Z	      formats: [Object],
+2025-08-03T08:18:11.780155Z	      hash: 'logo1_2c27baca01',
+2025-08-03T08:18:11.780287Z	      ext: '.png',
+2025-08-03T08:18:11.78042Z	      mime: 'image/png',
+2025-08-03T08:18:11.780579Z	      size: 129.52,
+2025-08-03T08:18:11.780659Z	      url: '/uploads/logo1_2c27baca01.png',
+2025-08-03T08:18:11.780796Z	      previewUrl: null,
+2025-08-03T08:18:11.78093Z	      provider: 'local',
+2025-08-03T08:18:11.781057Z	      provider_metadata: null,
+2025-08-03T08:18:11.781167Z	      createdAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:11.781276Z	      updatedAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:11.781385Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
+2025-08-03T08:18:11.781494Z	      publishedAt: '2025-07-19T16:28:05.287Z'
+2025-08-03T08:18:11.781626Z	    },
+2025-08-03T08:18:11.781729Z	    logo_dark: {
+2025-08-03T08:18:11.78208Z	      id: 6,
+2025-08-03T08:18:11.782161Z	      name: 'LOGO.png',
+2025-08-03T08:18:11.78222Z	      alternativeText: null,
+2025-08-03T08:18:11.782328Z	      caption: null,
+2025-08-03T08:18:11.782399Z	      width: 3401,
+2025-08-03T08:18:11.782516Z	      height: 697,
+2025-08-03T08:18:11.782633Z	      formats: [Object],
+2025-08-03T08:18:11.782856Z	      hash: 'LOGO_1c461133d8',
+2025-08-03T08:18:11.782948Z	      ext: '.png',
+2025-08-03T08:18:11.783183Z	      mime: 'image/png',
+2025-08-03T08:18:11.783413Z	      size: 162.14,
+2025-08-03T08:18:11.783515Z	      url: '/uploads/LOGO_1c461133d8.png',
+2025-08-03T08:18:11.783863Z	      previewUrl: null,
+2025-08-03T08:18:11.784083Z	      provider: 'local',
+2025-08-03T08:18:11.784178Z	      provider_metadata: null,
+2025-08-03T08:18:11.784417Z	      createdAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:11.784653Z	      updatedAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:11.784891Z	      documentId: 'yuzljep3d6ppab8upa200de5',
+2025-08-03T08:18:11.784978Z	      publishedAt: '2025-07-19T16:28:05.336Z'
+2025-08-03T08:18:11.785185Z	    },
+2025-08-03T08:18:11.785283Z	    home_banners: [ [Object], [Object] ]
+2025-08-03T08:18:11.785528Z	  },
+2025-08-03T08:18:11.785787Z	  meta: {}
+2025-08-03T08:18:11.786017Z	}
+2025-08-03T08:18:11.786261Z	🏷️ Site Title: SparkDone
+2025-08-03T08:18:11.8721Z	 (+1.27s) 
+2025-08-03T08:18:11.873982Z	08:18:11 ▶ src/pages/about.astro
+2025-08-03T08:18:12.280208Z	08:18:11   └─ /about/index.html🏷️ Index Settings: {
+2025-08-03T08:18:12.280598Z	  data: {
+2025-08-03T08:18:12.280797Z	    id: 1,
+2025-08-03T08:18:12.280883Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
+2025-08-03T08:18:12.28102Z	    site_title: 'SparkDone',
+2025-08-03T08:18:12.281138Z	    site_subtitle: 'Power',
+2025-08-03T08:18:12.281284Z	    site_description: null,
+2025-08-03T08:18:12.281355Z	    createdAt: '2025-07-15T15:21:40.896Z',
+2025-08-03T08:18:12.28148Z	    updatedAt: '2025-08-03T06:52:28.868Z',
+2025-08-03T08:18:12.281653Z	    publishedAt: '2025-08-03T06:52:28.755Z',
+2025-08-03T08:18:12.281784Z	    show_author_section: false,
+2025-08-03T08:18:12.281871Z	    default_homepage_layout: 'grid',
+2025-08-03T08:18:12.281933Z	    enable_home_banner: true,
+2025-08-03T08:18:12.28208Z	    logo_light: {
+2025-08-03T08:18:12.282189Z	      id: 5,
+2025-08-03T08:18:12.28233Z	      name: 'logo1.png',
+2025-08-03T08:18:12.282446Z	      alternativeText: null,
+2025-08-03T08:18:12.282583Z	      caption: null,
+2025-08-03T08:18:12.282708Z	      width: 3401,
+2025-08-03T08:18:12.282825Z	      height: 697,
+2025-08-03T08:18:12.282936Z	      formats: [Object],
+2025-08-03T08:18:12.283045Z	      hash: 'logo1_2c27baca01',
+2025-08-03T08:18:12.283155Z	      ext: '.png',
+2025-08-03T08:18:12.283263Z	      mime: 'image/png',
+2025-08-03T08:18:12.283355Z	      size: 129.52,
+2025-08-03T08:18:12.283438Z	      url: '/uploads/logo1_2c27baca01.png',
+2025-08-03T08:18:12.283625Z	      previewUrl: null,
+2025-08-03T08:18:12.283694Z	      provider: 'local',
+2025-08-03T08:18:12.283814Z	      provider_metadata: null,
+2025-08-03T08:18:12.283963Z	      createdAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:12.284035Z	      updatedAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:12.284171Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
+2025-08-03T08:18:12.284309Z	      publishedAt: '2025-07-19T16:28:05.287Z'
+2025-08-03T08:18:12.284431Z	    },
+2025-08-03T08:18:12.28459Z	    logo_dark: {
+2025-08-03T08:18:12.284708Z	      id: 6,
+2025-08-03T08:18:12.284828Z	      name: 'LOGO.png',
+2025-08-03T08:18:12.284939Z	      alternativeText: null,
+2025-08-03T08:18:12.28501Z	      caption: null,
+2025-08-03T08:18:12.28513Z	      width: 3401,
+2025-08-03T08:18:12.285263Z	      height: 697,
+2025-08-03T08:18:12.285411Z	      formats: [Object],
+2025-08-03T08:18:12.285561Z	      hash: 'LOGO_1c461133d8',
+2025-08-03T08:18:12.285639Z	      ext: '.png',
+2025-08-03T08:18:12.285842Z	      mime: 'image/png',
+2025-08-03T08:18:12.285921Z	      size: 162.14,
+2025-08-03T08:18:12.286031Z	      url: '/uploads/LOGO_1c461133d8.png',
+2025-08-03T08:18:12.286157Z	      previewUrl: null,
+2025-08-03T08:18:12.286241Z	      provider: 'local',
+2025-08-03T08:18:12.286374Z	      provider_metadata: null,
+2025-08-03T08:18:12.286443Z	      createdAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:12.2865Z	      updatedAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:12.286648Z	      documentId: 'yuzljep3d6ppab8upa200de5',
+2025-08-03T08:18:12.286775Z	      publishedAt: '2025-07-19T16:28:05.336Z'
+2025-08-03T08:18:12.286926Z	    },
+2025-08-03T08:18:12.286996Z	    home_banners: [ [Object], [Object] ]
+2025-08-03T08:18:12.287104Z	  },
+2025-08-03T08:18:12.287249Z	  meta: {}
+2025-08-03T08:18:12.287378Z	}
+2025-08-03T08:18:12.287498Z	🏷️ Site Title: SparkDone
+2025-08-03T08:18:12.696054Z	 (+822ms) 
+2025-08-03T08:18:12.69795Z	08:18:12 ▶ src/pages/archive.astro
+2025-08-03T08:18:12.986106Z	08:18:12   └─ /archive/index.html🏷️ Index Settings: {
+2025-08-03T08:18:12.986481Z	  data: {
+2025-08-03T08:18:12.9867Z	    id: 1,
+2025-08-03T08:18:12.986839Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
+2025-08-03T08:18:12.986951Z	    site_title: 'SparkDone',
+2025-08-03T08:18:12.987058Z	    site_subtitle: 'Power',
+2025-08-03T08:18:12.987142Z	    site_description: null,
+2025-08-03T08:18:12.987337Z	    createdAt: '2025-07-15T15:21:40.896Z',
+2025-08-03T08:18:12.987537Z	    updatedAt: '2025-08-03T06:52:28.868Z',
+2025-08-03T08:18:12.987631Z	    publishedAt: '2025-08-03T06:52:28.755Z',
+2025-08-03T08:18:12.9877Z	    show_author_section: false,
+2025-08-03T08:18:12.987758Z	    default_homepage_layout: 'grid',
+2025-08-03T08:18:12.987813Z	    enable_home_banner: true,
+2025-08-03T08:18:12.987868Z	    logo_light: {
+2025-08-03T08:18:12.987927Z	      id: 5,
+2025-08-03T08:18:12.987983Z	      name: 'logo1.png',
+2025-08-03T08:18:12.988044Z	      alternativeText: null,
+2025-08-03T08:18:12.988099Z	      caption: null,
+2025-08-03T08:18:12.988153Z	      width: 3401,
+2025-08-03T08:18:12.988208Z	      height: 697,
+2025-08-03T08:18:12.988271Z	      formats: [Object],
+2025-08-03T08:18:12.988334Z	      hash: 'logo1_2c27baca01',
+2025-08-03T08:18:12.988391Z	      ext: '.png',
+2025-08-03T08:18:12.988444Z	      mime: 'image/png',
+2025-08-03T08:18:12.988528Z	      size: 129.52,
+2025-08-03T08:18:12.988608Z	      url: '/uploads/logo1_2c27baca01.png',
+2025-08-03T08:18:12.988674Z	      previewUrl: null,
+2025-08-03T08:18:12.988758Z	      provider: 'local',
+2025-08-03T08:18:12.988824Z	      provider_metadata: null,
+2025-08-03T08:18:12.988888Z	      createdAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:12.98895Z	      updatedAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:12.989014Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
+2025-08-03T08:18:12.989072Z	      publishedAt: '2025-07-19T16:28:05.287Z'
+2025-08-03T08:18:12.989127Z	    },
+2025-08-03T08:18:12.989183Z	    logo_dark: {
+2025-08-03T08:18:12.989245Z	      id: 6,
+2025-08-03T08:18:12.989305Z	      name: 'LOGO.png',
+2025-08-03T08:18:12.989425Z	      alternativeText: null,
+2025-08-03T08:18:12.989558Z	      caption: null,
+2025-08-03T08:18:12.989651Z	      width: 3401,
+2025-08-03T08:18:12.989733Z	      height: 697,
+2025-08-03T08:18:12.989817Z	      formats: [Object],
+2025-08-03T08:18:12.989927Z	      hash: 'LOGO_1c461133d8',
+2025-08-03T08:18:12.990032Z	      ext: '.png',
+2025-08-03T08:18:12.990129Z	      mime: 'image/png',
+2025-08-03T08:18:12.990231Z	      size: 162.14,
+2025-08-03T08:18:12.990343Z	      url: '/uploads/LOGO_1c461133d8.png',
+2025-08-03T08:18:12.990443Z	      previewUrl: null,
+2025-08-03T08:18:12.990568Z	      provider: 'local',
+2025-08-03T08:18:12.990667Z	      provider_metadata: null,
+2025-08-03T08:18:12.990771Z	      createdAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:12.99085Z	      updatedAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:12.990911Z	      documentId: 'yuzljep3d6ppab8upa200de5',
+2025-08-03T08:18:12.990967Z	      publishedAt: '2025-07-19T16:28:05.336Z'
+2025-08-03T08:18:12.991022Z	    },
+2025-08-03T08:18:12.991077Z	    home_banners: [ [Object], [Object] ]
+2025-08-03T08:18:12.991133Z	  },
+2025-08-03T08:18:12.991186Z	  meta: {}
+2025-08-03T08:18:12.99124Z	}
+2025-08-03T08:18:12.991313Z	🏷️ Site Title: SparkDone
+2025-08-03T08:18:13.090434Z	 (+392ms) 
+2025-08-03T08:18:13.095365Z	08:18:13 ▶ src/pages/categories/[category].astro
+2025-08-03T08:18:13.095618Z	🏗️ 生产模式：开始生成分类页面静态路径...
+2025-08-03T08:18:13.096053Z	🏗️ 找到 3 个分类（包括没有文章的分类）: [ 'Github项目(1篇)', '网赚项目(0篇)', '资源共享(0篇)' ]
+2025-08-03T08:18:13.096208Z	🔗 分类路径映射: "Github项目" -> "Github项目" (1篇文章)
+2025-08-03T08:18:13.096285Z	🔗 分类路径映射: "网赚项目" -> "网赚项目" (0篇文章)
+2025-08-03T08:18:13.096555Z	🔗 分类路径映射: "资源共享" -> "资源共享" (0篇文章)
+2025-08-03T08:18:13.096776Z	🏗️ 将生成 3 个静态分类页面（包括 2 个空分类）
+2025-08-03T08:18:13.098397Z	08:18:13   ├─ /categories/Github项目/index.html🏗️ 分类页面：强制静态预渲染模式
+2025-08-03T08:18:13.136208Z	🔍 getCategoryByName 被调用，name: Github项目
+2025-08-03T08:18:13.136444Z	📡 请求URL: /categories?filters[name][$eq]=Github%E9%A1%B9%E7%9B%AE
+2025-08-03T08:18:13.17476Z	✅ getCategoryByName 响应: {
+2025-08-03T08:18:13.17498Z	  data: [
+2025-08-03T08:18:13.175134Z	    {
+2025-08-03T08:18:13.175255Z	      id: 85,
+2025-08-03T08:18:13.175385Z	      name: 'Github项目',
+2025-08-03T08:18:13.175504Z	      slug: 'github-projects',
+2025-08-03T08:18:13.175637Z	      description: null,
+2025-08-03T08:18:13.17575Z	      color: null,
+2025-08-03T08:18:13.17587Z	      icon: null,
+2025-08-03T08:18:13.176009Z	      sortOrder: 7,
+2025-08-03T08:18:13.176115Z	      createdAt: '2025-07-13T04:22:11.457Z',
+2025-08-03T08:18:13.176226Z	      updatedAt: '2025-08-03T03:46:11.780Z',
+2025-08-03T08:18:13.176403Z	      publishedAt: '2025-08-03T03:46:11.861Z',
+2025-08-03T08:18:13.176527Z	      documentId: 'y829o6ymtkviqiv9o5zolcgf',
+2025-08-03T08:18:13.176641Z	      layout_type: 'grid',
+2025-08-03T08:18:13.176753Z	      enable_banner: false
+2025-08-03T08:18:13.176853Z	    }
+2025-08-03T08:18:13.176954Z	  ],
+2025-08-03T08:18:13.177063Z	  meta: { pagination: { page: 1, pageSize: 25, pageCount: 1, total: 1 } }
+2025-08-03T08:18:13.177191Z	}
+2025-08-03T08:18:13.403645Z	🏷️ Index Settings: {
+2025-08-03T08:18:13.403976Z	  data: {
+2025-08-03T08:18:13.404079Z	    id: 1,
+2025-08-03T08:18:13.404185Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
+2025-08-03T08:18:13.404428Z	    site_title: 'SparkDone',
+2025-08-03T08:18:13.404532Z	    site_subtitle: 'Power',
+2025-08-03T08:18:13.404716Z	    site_description: null,
+2025-08-03T08:18:13.404829Z	    createdAt: '2025-07-15T15:21:40.896Z',
+2025-08-03T08:18:13.404914Z	    updatedAt: '2025-08-03T06:52:28.868Z',
+2025-08-03T08:18:13.405014Z	    publishedAt: '2025-08-03T06:52:28.755Z',
+2025-08-03T08:18:13.405116Z	    show_author_section: false,
+2025-08-03T08:18:13.405213Z	    default_homepage_layout: 'grid',
+2025-08-03T08:18:13.405302Z	    enable_home_banner: true,
+2025-08-03T08:18:13.405388Z	    logo_light: {
+2025-08-03T08:18:13.405495Z	      id: 5,
+2025-08-03T08:18:13.405642Z	      name: 'logo1.png',
+2025-08-03T08:18:13.405751Z	      alternativeText: null,
+2025-08-03T08:18:13.405821Z	      caption: null,
+2025-08-03T08:18:13.405915Z	      width: 3401,
+2025-08-03T08:18:13.406075Z	      height: 697,
+2025-08-03T08:18:13.406187Z	      formats: [Object],
+2025-08-03T08:18:13.406316Z	      hash: 'logo1_2c27baca01',
+2025-08-03T08:18:13.406436Z	      ext: '.png',
+2025-08-03T08:18:13.406565Z	      mime: 'image/png',
+2025-08-03T08:18:13.406666Z	      size: 129.52,
+2025-08-03T08:18:13.406825Z	      url: '/uploads/logo1_2c27baca01.png',
+2025-08-03T08:18:13.406904Z	      previewUrl: null,
+2025-08-03T08:18:13.407028Z	      provider: 'local',
+2025-08-03T08:18:13.40755Z	      provider_metadata: null,
+2025-08-03T08:18:13.407774Z	      createdAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:13.407871Z	      updatedAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:13.407934Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
+2025-08-03T08:18:13.407995Z	      publishedAt: '2025-07-19T16:28:05.287Z'
+2025-08-03T08:18:13.408059Z	    },
+2025-08-03T08:18:13.408122Z	    logo_dark: {
+2025-08-03T08:18:13.408185Z	      id: 6,
+2025-08-03T08:18:13.408241Z	      name: 'LOGO.png',
+2025-08-03T08:18:13.408295Z	      alternativeText: null,
+2025-08-03T08:18:13.408379Z	      caption: null,
+2025-08-03T08:18:13.408444Z	      width: 3401,
+2025-08-03T08:18:13.408518Z	      height: 697,
+2025-08-03T08:18:13.408619Z	      formats: [Object],
+2025-08-03T08:18:13.408737Z	      hash: 'LOGO_1c461133d8',
+2025-08-03T08:18:13.408834Z	      ext: '.png',
+2025-08-03T08:18:13.40894Z	      mime: 'image/png',
+2025-08-03T08:18:13.409053Z	      size: 162.14,
+2025-08-03T08:18:13.409154Z	      url: '/uploads/LOGO_1c461133d8.png',
+2025-08-03T08:18:13.40925Z	      previewUrl: null,
+2025-08-03T08:18:13.409359Z	      provider: 'local',
+2025-08-03T08:18:13.40946Z	      provider_metadata: null,
+2025-08-03T08:18:13.409588Z	      createdAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:13.409693Z	      updatedAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:13.409792Z	      documentId: 'yuzljep3d6ppab8upa200de5',
+2025-08-03T08:18:13.409892Z	      publishedAt: '2025-07-19T16:28:05.336Z'
+2025-08-03T08:18:13.409984Z	    },
+2025-08-03T08:18:13.410086Z	    home_banners: [ [Object], [Object] ]
+2025-08-03T08:18:13.410235Z	  },
+2025-08-03T08:18:13.410387Z	  meta: {}
+2025-08-03T08:18:13.410476Z	}
+2025-08-03T08:18:13.410605Z	🏷️ Site Title: SparkDone
+2025-08-03T08:18:13.514182Z	 (+417ms) 
+2025-08-03T08:18:13.51487Z	08:18:13   ├─ /categories/网赚项目/index.html🏗️ 分类页面：强制静态预渲染模式
+2025-08-03T08:18:13.575595Z	🔍 getCategoryByName 被调用，name: 网赚项目
+2025-08-03T08:18:13.575798Z	📡 请求URL: /categories?filters[name][$eq]=%E7%BD%91%E8%B5%9A%E9%A1%B9%E7%9B%AE
+2025-08-03T08:18:13.613339Z	✅ getCategoryByName 响应: {
+2025-08-03T08:18:13.613558Z	  data: [
+2025-08-03T08:18:13.613671Z	    {
+2025-08-03T08:18:13.613751Z	      id: 50,
+2025-08-03T08:18:13.613813Z	      name: '网赚项目',
+2025-08-03T08:18:13.613879Z	      slug: 'moneyonline',
+2025-08-03T08:18:13.613936Z	      description: null,
+2025-08-03T08:18:13.613991Z	      color: null,
+2025-08-03T08:18:13.614053Z	      icon: 'icon-park-outline:arrow-right-up',
+2025-08-03T08:18:13.614109Z	      sortOrder: 1,
+2025-08-03T08:18:13.614166Z	      createdAt: '2025-07-13T04:22:35.514Z',
+2025-08-03T08:18:13.61422Z	      updatedAt: '2025-07-24T12:35:03.551Z',
+2025-08-03T08:18:13.614276Z	      publishedAt: '2025-07-24T12:35:03.563Z',
+2025-08-03T08:18:13.614347Z	      documentId: 'krdf2bmnf13ipmgzcfws4ji0',
+2025-08-03T08:18:13.61441Z	      layout_type: 'masonry',
+2025-08-03T08:18:13.614473Z	      enable_banner: null
+2025-08-03T08:18:13.614551Z	    }
+2025-08-03T08:18:13.614624Z	  ],
+2025-08-03T08:18:13.614689Z	  meta: { pagination: { page: 1, pageSize: 25, pageCount: 1, total: 1 } }
+2025-08-03T08:18:13.61476Z	}
+2025-08-03T08:18:13.912345Z	🏷️ Index Settings: {
+2025-08-03T08:18:13.912642Z	  data: {
+2025-08-03T08:18:13.912754Z	    id: 1,
+2025-08-03T08:18:13.912832Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
+2025-08-03T08:18:13.913104Z	    site_title: 'SparkDone',
+2025-08-03T08:18:13.91329Z	    site_subtitle: 'Power',
+2025-08-03T08:18:13.91366Z	    site_description: null,
+2025-08-03T08:18:13.913761Z	    createdAt: '2025-07-15T15:21:40.896Z',
+2025-08-03T08:18:13.913944Z	    updatedAt: '2025-08-03T06:52:28.868Z',
+2025-08-03T08:18:13.914013Z	    publishedAt: '2025-08-03T06:52:28.755Z',
+2025-08-03T08:18:13.914116Z	    show_author_section: false,
+2025-08-03T08:18:13.914434Z	    default_homepage_layout: 'grid',
+2025-08-03T08:18:13.91473Z	    enable_home_banner: true,
+2025-08-03T08:18:13.915014Z	    logo_light: {
+2025-08-03T08:18:13.915152Z	      id: 5,
+2025-08-03T08:18:13.915282Z	      name: 'logo1.png',
+2025-08-03T08:18:13.915381Z	      alternativeText: null,
+2025-08-03T08:18:13.915555Z	      caption: null,
+2025-08-03T08:18:13.915671Z	      width: 3401,
+2025-08-03T08:18:13.915768Z	      height: 697,
+2025-08-03T08:18:13.915877Z	      formats: [Object],
+2025-08-03T08:18:13.916008Z	      hash: 'logo1_2c27baca01',
+2025-08-03T08:18:13.916112Z	      ext: '.png',
+2025-08-03T08:18:13.916233Z	      mime: 'image/png',
+2025-08-03T08:18:13.916333Z	      size: 129.52,
+2025-08-03T08:18:13.916436Z	      url: '/uploads/logo1_2c27baca01.png',
+2025-08-03T08:18:13.916591Z	      previewUrl: null,
+2025-08-03T08:18:13.916698Z	      provider: 'local',
+2025-08-03T08:18:13.916775Z	      provider_metadata: null,
+2025-08-03T08:18:13.916864Z	      createdAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:13.916964Z	      updatedAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:13.917066Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
+2025-08-03T08:18:13.917163Z	      publishedAt: '2025-07-19T16:28:05.287Z'
+2025-08-03T08:18:13.917266Z	    },
+2025-08-03T08:18:13.917378Z	    logo_dark: {
+2025-08-03T08:18:13.91747Z	      id: 6,
+2025-08-03T08:18:13.917638Z	      name: 'LOGO.png',
+2025-08-03T08:18:13.917739Z	      alternativeText: null,
+2025-08-03T08:18:13.917898Z	      caption: null,
+2025-08-03T08:18:13.918042Z	      width: 3401,
+2025-08-03T08:18:13.918144Z	      height: 697,
+2025-08-03T08:18:13.918249Z	      formats: [Object],
+2025-08-03T08:18:13.918363Z	      hash: 'LOGO_1c461133d8',
+2025-08-03T08:18:13.918461Z	      ext: '.png',
+2025-08-03T08:18:13.918569Z	      mime: 'image/png',
+2025-08-03T08:18:13.918701Z	      size: 162.14,
+2025-08-03T08:18:13.9188Z	      url: '/uploads/LOGO_1c461133d8.png',
+2025-08-03T08:18:13.918899Z	      previewUrl: null,
+2025-08-03T08:18:13.91899Z	      provider: 'local',
+2025-08-03T08:18:13.919087Z	      provider_metadata: null,
+2025-08-03T08:18:13.919182Z	      createdAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:13.919251Z	      updatedAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:13.919343Z	      documentId: 'yuzljep3d6ppab8upa200de5',
+2025-08-03T08:18:13.919416Z	      publishedAt: '2025-07-19T16:28:05.336Z'
+2025-08-03T08:18:13.919517Z	    },
+2025-08-03T08:18:13.919682Z	    home_banners: [ [Object], [Object] ]
+2025-08-03T08:18:13.91976Z	  },
+2025-08-03T08:18:13.919876Z	  meta: {}
+2025-08-03T08:18:13.920008Z	}
+2025-08-03T08:18:13.920167Z	🏷️ Site Title: SparkDone
+2025-08-03T08:18:14.009327Z	 (+495ms) 
+2025-08-03T08:18:14.010068Z	08:18:14   └─ /categories/资源共享/index.html🏗️ 分类页面：强制静态预渲染模式
+2025-08-03T08:18:14.073889Z	🔍 getCategoryByName 被调用，name: 资源共享
+2025-08-03T08:18:14.074127Z	📡 请求URL: /categories?filters[name][$eq]=%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB
+2025-08-03T08:18:14.109811Z	✅ getCategoryByName 响应: {
+2025-08-03T08:18:14.110065Z	  data: [
+2025-08-03T08:18:14.110203Z	    {
+2025-08-03T08:18:14.110301Z	      id: 87,
+2025-08-03T08:18:14.110399Z	      name: '资源共享',
+2025-08-03T08:18:14.110503Z	      slug: 'ziyuan',
+2025-08-03T08:18:14.110642Z	      description: '资源共享',
+2025-08-03T08:18:14.11074Z	      color: '#6366f1',
+2025-08-03T08:18:14.110863Z	      icon: null,
+2025-08-03T08:18:14.110981Z	      sortOrder: 0,
+2025-08-03T08:18:14.111103Z	      createdAt: '2025-08-03T05:29:36.391Z',
+2025-08-03T08:18:14.11121Z	      updatedAt: '2025-08-03T05:29:38.469Z',
+2025-08-03T08:18:14.111318Z	      publishedAt: '2025-08-03T05:29:38.496Z',
+2025-08-03T08:18:14.111434Z	      documentId: 'gqit49chuzfawxkmjm1vkou8',
+2025-08-03T08:18:14.11157Z	      layout_type: 'grid',
+2025-08-03T08:18:14.111676Z	      enable_banner: true
+2025-08-03T08:18:14.111776Z	    }
+2025-08-03T08:18:14.11188Z	  ],
+2025-08-03T08:18:14.111966Z	  meta: { pagination: { page: 1, pageSize: 25, pageCount: 1, total: 1 } }
+2025-08-03T08:18:14.112064Z	}
+2025-08-03T08:18:14.403007Z	🏷️ Index Settings: {
+2025-08-03T08:18:14.403344Z	  data: {
+2025-08-03T08:18:14.403461Z	    id: 1,
+2025-08-03T08:18:14.403544Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
+2025-08-03T08:18:14.403685Z	    site_title: 'SparkDone',
+2025-08-03T08:18:14.403801Z	    site_subtitle: 'Power',
+2025-08-03T08:18:14.403903Z	    site_description: null,
+2025-08-03T08:18:14.40401Z	    createdAt: '2025-07-15T15:21:40.896Z',
+2025-08-03T08:18:14.404114Z	    updatedAt: '2025-08-03T06:52:28.868Z',
+2025-08-03T08:18:14.404209Z	    publishedAt: '2025-08-03T06:52:28.755Z',
+2025-08-03T08:18:14.404303Z	    show_author_section: false,
+2025-08-03T08:18:14.404393Z	    default_homepage_layout: 'grid',
+2025-08-03T08:18:14.404468Z	    enable_home_banner: true,
+2025-08-03T08:18:14.404576Z	    logo_light: {
+2025-08-03T08:18:14.404697Z	      id: 5,
+2025-08-03T08:18:14.404943Z	      name: 'logo1.png',
+2025-08-03T08:18:14.405037Z	      alternativeText: null,
+2025-08-03T08:18:14.405277Z	      caption: null,
+2025-08-03T08:18:14.405479Z	      width: 3401,
+2025-08-03T08:18:14.405657Z	      height: 697,
+2025-08-03T08:18:14.405742Z	      formats: [Object],
+2025-08-03T08:18:14.405804Z	      hash: 'logo1_2c27baca01',
+2025-08-03T08:18:14.40586Z	      ext: '.png',
+2025-08-03T08:18:14.405915Z	      mime: 'image/png',
+2025-08-03T08:18:14.405971Z	      size: 129.52,
+2025-08-03T08:18:14.406034Z	      url: '/uploads/logo1_2c27baca01.png',
+2025-08-03T08:18:14.406109Z	      previewUrl: null,
+2025-08-03T08:18:14.40617Z	      provider: 'local',
+2025-08-03T08:18:14.406226Z	      provider_metadata: null,
+2025-08-03T08:18:14.406281Z	      createdAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:14.406338Z	      updatedAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:14.406395Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
+2025-08-03T08:18:14.406453Z	      publishedAt: '2025-07-19T16:28:05.287Z'
+2025-08-03T08:18:14.40655Z	    },
+2025-08-03T08:18:14.40665Z	    logo_dark: {
+2025-08-03T08:18:14.406721Z	      id: 6,
+2025-08-03T08:18:14.406783Z	      name: 'LOGO.png',
+2025-08-03T08:18:14.406838Z	      alternativeText: null,
+2025-08-03T08:18:14.406896Z	      caption: null,
+2025-08-03T08:18:14.406958Z	      width: 3401,
+2025-08-03T08:18:14.407012Z	      height: 697,
+2025-08-03T08:18:14.407067Z	      formats: [Object],
+2025-08-03T08:18:14.40712Z	      hash: 'LOGO_1c461133d8',
+2025-08-03T08:18:14.407172Z	      ext: '.png',
+2025-08-03T08:18:14.407226Z	      mime: 'image/png',
+2025-08-03T08:18:14.40728Z	      size: 162.14,
+2025-08-03T08:18:14.407341Z	      url: '/uploads/LOGO_1c461133d8.png',
+2025-08-03T08:18:14.407416Z	      previewUrl: null,
+2025-08-03T08:18:14.407482Z	      provider: 'local',
+2025-08-03T08:18:14.407598Z	      provider_metadata: null,
+2025-08-03T08:18:14.407714Z	      createdAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:14.407832Z	      updatedAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:14.407937Z	      documentId: 'yuzljep3d6ppab8upa200de5',
+2025-08-03T08:18:14.408035Z	      publishedAt: '2025-07-19T16:28:05.336Z'
+2025-08-03T08:18:14.408127Z	    },
+2025-08-03T08:18:14.408316Z	    home_banners: [ [Object], [Object] ]
+2025-08-03T08:18:14.408401Z	  },
+2025-08-03T08:18:14.40852Z	  meta: {}
+2025-08-03T08:18:14.40861Z	}
+2025-08-03T08:18:14.408693Z	🏷️ Site Title: SparkDone
+2025-08-03T08:18:14.481895Z	 (+472ms) 
+2025-08-03T08:18:14.483708Z	08:18:14 ▶ src/pages/friends.astro
+2025-08-03T08:18:14.766331Z	08:18:14   └─ /friends/index.html🏷️ Index Settings: {
+2025-08-03T08:18:14.766632Z	  data: {
+2025-08-03T08:18:14.766765Z	    id: 1,
+2025-08-03T08:18:14.766857Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
+2025-08-03T08:18:14.766952Z	    site_title: 'SparkDone',
+2025-08-03T08:18:14.767073Z	    site_subtitle: 'Power',
+2025-08-03T08:18:14.767175Z	    site_description: null,
+2025-08-03T08:18:14.767276Z	    createdAt: '2025-07-15T15:21:40.896Z',
+2025-08-03T08:18:14.76746Z	    updatedAt: '2025-08-03T06:52:28.868Z',
+2025-08-03T08:18:14.767657Z	    publishedAt: '2025-08-03T06:52:28.755Z',
+2025-08-03T08:18:14.767736Z	    show_author_section: false,
+2025-08-03T08:18:14.7678Z	    default_homepage_layout: 'grid',
+2025-08-03T08:18:14.767859Z	    enable_home_banner: true,
+2025-08-03T08:18:14.767917Z	    logo_light: {
+2025-08-03T08:18:14.767971Z	      id: 5,
+2025-08-03T08:18:14.768029Z	      name: 'logo1.png',
+2025-08-03T08:18:14.768087Z	      alternativeText: null,
+2025-08-03T08:18:14.76816Z	      caption: null,
+2025-08-03T08:18:14.768219Z	      width: 3401,
+2025-08-03T08:18:14.768287Z	      height: 697,
+2025-08-03T08:18:14.768345Z	      formats: [Object],
+2025-08-03T08:18:14.768398Z	      hash: 'logo1_2c27baca01',
+2025-08-03T08:18:14.768452Z	      ext: '.png',
+2025-08-03T08:18:14.768525Z	      mime: 'image/png',
+2025-08-03T08:18:14.768613Z	      size: 129.52,
+2025-08-03T08:18:14.768676Z	      url: '/uploads/logo1_2c27baca01.png',
+2025-08-03T08:18:14.768737Z	      previewUrl: null,
+2025-08-03T08:18:14.768791Z	      provider: 'local',
+2025-08-03T08:18:14.768849Z	      provider_metadata: null,
+2025-08-03T08:18:14.768916Z	      createdAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:14.768977Z	      updatedAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:14.769039Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
+2025-08-03T08:18:14.769102Z	      publishedAt: '2025-07-19T16:28:05.287Z'
+2025-08-03T08:18:14.769162Z	    },
+2025-08-03T08:18:14.769217Z	    logo_dark: {
+2025-08-03T08:18:14.76928Z	      id: 6,
+2025-08-03T08:18:14.769346Z	      name: 'LOGO.png',
+2025-08-03T08:18:14.769409Z	      alternativeText: null,
+2025-08-03T08:18:14.769464Z	      caption: null,
+2025-08-03T08:18:14.769547Z	      width: 3401,
+2025-08-03T08:18:14.769621Z	      height: 697,
+2025-08-03T08:18:14.769689Z	      formats: [Object],
+2025-08-03T08:18:14.769757Z	      hash: 'LOGO_1c461133d8',
+2025-08-03T08:18:14.769819Z	      ext: '.png',
+2025-08-03T08:18:14.76988Z	      mime: 'image/png',
+2025-08-03T08:18:14.769937Z	      size: 162.14,
+2025-08-03T08:18:14.76999Z	      url: '/uploads/LOGO_1c461133d8.png',
+2025-08-03T08:18:14.770045Z	      previewUrl: null,
+2025-08-03T08:18:14.770102Z	      provider: 'local',
+2025-08-03T08:18:14.770156Z	      provider_metadata: null,
+2025-08-03T08:18:14.77021Z	      createdAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:14.770264Z	      updatedAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:14.77035Z	      documentId: 'yuzljep3d6ppab8upa200de5',
+2025-08-03T08:18:14.770419Z	      publishedAt: '2025-07-19T16:28:05.336Z'
+2025-08-03T08:18:14.770475Z	    },
+2025-08-03T08:18:14.770568Z	    home_banners: [ [Object], [Object] ]
+2025-08-03T08:18:14.770631Z	  },
+2025-08-03T08:18:14.770693Z	  meta: {}
+2025-08-03T08:18:14.770758Z	}
+2025-08-03T08:18:14.770822Z	🏷️ Site Title: SparkDone
+2025-08-03T08:18:14.879031Z	 (+395ms) 
+2025-08-03T08:18:14.881752Z	08:18:14 ▶ src/pages/page/[slug].astro
+2025-08-03T08:18:14.92335Z	08:18:14 ▶ src/pages/posts/[...slug].astro
+2025-08-03T08:18:14.924643Z	08:18:14   └─ /posts/article1/index.html🚀🚀🚀 [SLUG].ASTRO 文章页面开始执行，slug: article1
+2025-08-03T08:18:14.924847Z	🚀🚀🚀 当前时间: 2025-08-03T08:18:14.924Z
+2025-08-03T08:18:14.924977Z	🔍 从所有文章中找到的文章: Cloudflare Pages将自动触发构建
+2025-08-03T08:18:14.925135Z	🔍 entry.body 内容长度: 92
+2025-08-03T08:18:14.925284Z	🔍 entry.body 内容预览: Cloudflare Pages将自动触发构建Cloudflare Pages将自动触发构建Cloudflare Pages将自动触发构建Cloudflare Pages将自动触发构建
+2025-08-03T08:18:14.925419Z	🔍 entry.render 存在吗? true
+2025-08-03T08:18:14.925556Z	🔍 entry.body 内容: Cloudflare Pages将自动触发构建Cloudflare Pages将自动触发构建Cloudflare Pages将自动触发构建Cloudflare Pages将自动触发构建...
+2025-08-03T08:18:14.92569Z	📞 调用 entry.render() 函数...
+2025-08-03T08:18:14.925816Z	✅ render() 调用完成，Content 类型: function
+2025-08-03T08:18:14.926075Z	✅ remarkPluginFrontmatter: { words: 36, minutes: 1, excerpt: 'Cloudflare Pages将自动触发构建' }
+2025-08-03T08:18:14.92637Z	Author Debug in Article Page: {
+2025-08-03T08:18:14.926624Z	  'entry.data.author': {
+2025-08-03T08:18:14.926858Z	    name: 'SparkDone',
+2025-08-03T08:18:14.927088Z	    slug: 'SparkDone',
+2025-08-03T08:18:14.927255Z	    bio: null,
+2025-08-03T08:18:14.927483Z	    email: 'admin@sparkdone.com',
+2025-08-03T08:18:14.927684Z	    website: null,
+2025-08-03T08:18:14.927882Z	    github: 'admin',
+2025-08-03T08:18:14.928076Z	    twitter: 'admin',
+2025-08-03T08:18:14.928272Z	    linkedin: 'admin',
+2025-08-03T08:18:14.928468Z	    avatar: 'http://localhost:1337/uploads/shanghai_city_5083x3389_16563_686875de57.jpg'
+2025-08-03T08:18:14.928781Z	  },
+2025-08-03T08:18:14.929041Z	  'typeof entry.data.author': 'object',
+2025-08-03T08:18:14.929168Z	  'entry.data keys': [
+2025-08-03T08:18:14.929271Z	    'strapiId',     'documentId',
+2025-08-03T08:18:14.929362Z	    'title',        'published',
+2025-08-03T08:18:14.929459Z	    'updated',      'draft',
+2025-08-03T08:18:14.929583Z	    'description',  'image',
+2025-08-03T08:18:14.929683Z	    'tags',         'category',
+2025-08-03T08:18:14.929794Z	    'categorySlug', 'featured',
+2025-08-03T08:18:14.929888Z	    'metaTitle',    'metaDescription',
+2025-08-03T08:18:14.929993Z	    'keywords',     'author',
+2025-08-03T08:18:14.930104Z	    'prevTitle',    'prevSlug',
+2025-08-03T08:18:14.930207Z	    'nextTitle',    'nextSlug'
+2025-08-03T08:18:14.930309Z	  ]
+2025-08-03T08:18:14.930406Z	}
+2025-08-03T08:18:15.292926Z	🏷️ Index Settings: {
+2025-08-03T08:18:15.293237Z	  data: {
+2025-08-03T08:18:15.293407Z	    id: 1,
+2025-08-03T08:18:15.293517Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
+2025-08-03T08:18:15.293689Z	    site_title: 'SparkDone',
+2025-08-03T08:18:15.29378Z	    site_subtitle: 'Power',
+2025-08-03T08:18:15.29386Z	    site_description: null,
+2025-08-03T08:18:15.294274Z	    createdAt: '2025-07-15T15:21:40.896Z',
+2025-08-03T08:18:15.294366Z	    updatedAt: '2025-08-03T06:52:28.868Z',
+2025-08-03T08:18:15.294428Z	    publishedAt: '2025-08-03T06:52:28.755Z',
+2025-08-03T08:18:15.294491Z	    show_author_section: false,
+2025-08-03T08:18:15.294765Z	    default_homepage_layout: 'grid',
+2025-08-03T08:18:15.294875Z	    enable_home_banner: true,
+2025-08-03T08:18:15.294983Z	    logo_light: {
+2025-08-03T08:18:15.295283Z	      id: 5,
+2025-08-03T08:18:15.295678Z	      name: 'logo1.png',
+2025-08-03T08:18:15.295813Z	      alternativeText: null,
+2025-08-03T08:18:15.295933Z	      caption: null,
+2025-08-03T08:18:15.296036Z	      width: 3401,
+2025-08-03T08:18:15.296129Z	      height: 697,
+2025-08-03T08:18:15.296198Z	      formats: [Object],
+2025-08-03T08:18:15.296254Z	      hash: 'logo1_2c27baca01',
+2025-08-03T08:18:15.296322Z	      ext: '.png',
+2025-08-03T08:18:15.296421Z	      mime: 'image/png',
+2025-08-03T08:18:15.296547Z	      size: 129.52,
+2025-08-03T08:18:15.296647Z	      url: '/uploads/logo1_2c27baca01.png',
+2025-08-03T08:18:15.296875Z	      previewUrl: null,
+2025-08-03T08:18:15.297056Z	      provider: 'local',
+2025-08-03T08:18:15.297186Z	      provider_metadata: null,
+2025-08-03T08:18:15.297292Z	      createdAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:15.297391Z	      updatedAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:15.297528Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
+2025-08-03T08:18:15.297646Z	      publishedAt: '2025-07-19T16:28:05.287Z'
+2025-08-03T08:18:15.297833Z	    },
+2025-08-03T08:18:15.297942Z	    logo_dark: {
+2025-08-03T08:18:15.298014Z	      id: 6,
+2025-08-03T08:18:15.298071Z	      name: 'LOGO.png',
+2025-08-03T08:18:15.298127Z	      alternativeText: null,
+2025-08-03T08:18:15.298189Z	      caption: null,
+2025-08-03T08:18:15.298255Z	      width: 3401,
+2025-08-03T08:18:15.298321Z	      height: 697,
+2025-08-03T08:18:15.298383Z	      formats: [Object],
+2025-08-03T08:18:15.298444Z	      hash: 'LOGO_1c461133d8',
+2025-08-03T08:18:15.298522Z	      ext: '.png',
+2025-08-03T08:18:15.298607Z	      mime: 'image/png',
+2025-08-03T08:18:15.298671Z	      size: 162.14,
+2025-08-03T08:18:15.29873Z	      url: '/uploads/LOGO_1c461133d8.png',
+2025-08-03T08:18:15.298787Z	      previewUrl: null,
+2025-08-03T08:18:15.298841Z	      provider: 'local',
+2025-08-03T08:18:15.298902Z	      provider_metadata: null,
+2025-08-03T08:18:15.298958Z	      createdAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:15.299011Z	      updatedAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:15.299065Z	      documentId: 'yuzljep3d6ppab8upa200de5',
+2025-08-03T08:18:15.299121Z	      publishedAt: '2025-07-19T16:28:05.336Z'
+2025-08-03T08:18:15.299182Z	    },
+2025-08-03T08:18:15.29925Z	    home_banners: [ [Object], [Object] ]
+2025-08-03T08:18:15.299305Z	  },
+2025-08-03T08:18:15.299361Z	  meta: {}
+2025-08-03T08:18:15.299423Z	}
+2025-08-03T08:18:15.299495Z	🏷️ Site Title: SparkDone
+2025-08-03T08:18:15.390501Z	 (+467ms) 
+2025-08-03T08:18:15.392801Z	08:18:15 ▶ src/pages/search.astro
+2025-08-03T08:18:15.68272Z	08:18:15   └─ /search/index.html🏷️ Index Settings: {
+2025-08-03T08:18:15.682952Z	  data: {
+2025-08-03T08:18:15.683049Z	    id: 1,
+2025-08-03T08:18:15.683171Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
+2025-08-03T08:18:15.683345Z	    site_title: 'SparkDone',
+2025-08-03T08:18:15.683429Z	    site_subtitle: 'Power',
+2025-08-03T08:18:15.683493Z	    site_description: null,
+2025-08-03T08:18:15.683566Z	    createdAt: '2025-07-15T15:21:40.896Z',
+2025-08-03T08:18:15.683627Z	    updatedAt: '2025-08-03T06:52:28.868Z',
+2025-08-03T08:18:15.68369Z	    publishedAt: '2025-08-03T06:52:28.755Z',
+2025-08-03T08:18:15.68375Z	    show_author_section: false,
+2025-08-03T08:18:15.683806Z	    default_homepage_layout: 'grid',
+2025-08-03T08:18:15.683865Z	    enable_home_banner: true,
+2025-08-03T08:18:15.683922Z	    logo_light: {
+2025-08-03T08:18:15.683977Z	      id: 5,
+2025-08-03T08:18:15.684049Z	      name: 'logo1.png',
+2025-08-03T08:18:15.684109Z	      alternativeText: null,
+2025-08-03T08:18:15.684165Z	      caption: null,
+2025-08-03T08:18:15.684229Z	      width: 3401,
+2025-08-03T08:18:15.684285Z	      height: 697,
+2025-08-03T08:18:15.684356Z	      formats: [Object],
+2025-08-03T08:18:15.684417Z	      hash: 'logo1_2c27baca01',
+2025-08-03T08:18:15.684479Z	      ext: '.png',
+2025-08-03T08:18:15.684561Z	      mime: 'image/png',
+2025-08-03T08:18:15.684618Z	      size: 129.52,
+2025-08-03T08:18:15.684679Z	      url: '/uploads/logo1_2c27baca01.png',
+2025-08-03T08:18:15.684738Z	      previewUrl: null,
+2025-08-03T08:18:15.684793Z	      provider: 'local',
+2025-08-03T08:18:15.684857Z	      provider_metadata: null,
+2025-08-03T08:18:15.684919Z	      createdAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:15.68498Z	      updatedAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:15.685033Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
+2025-08-03T08:18:15.685095Z	      publishedAt: '2025-07-19T16:28:05.287Z'
+2025-08-03T08:18:15.685155Z	    },
+2025-08-03T08:18:15.685212Z	    logo_dark: {
+2025-08-03T08:18:15.685267Z	      id: 6,
+2025-08-03T08:18:15.685335Z	      name: 'LOGO.png',
+2025-08-03T08:18:15.68539Z	      alternativeText: null,
+2025-08-03T08:18:15.685456Z	      caption: null,
+2025-08-03T08:18:15.685528Z	      width: 3401,
+2025-08-03T08:18:15.685589Z	      height: 697,
+2025-08-03T08:18:15.685648Z	      formats: [Object],
+2025-08-03T08:18:15.685708Z	      hash: 'LOGO_1c461133d8',
+2025-08-03T08:18:15.685763Z	      ext: '.png',
+2025-08-03T08:18:15.685823Z	      mime: 'image/png',
+2025-08-03T08:18:15.685877Z	      size: 162.14,
+2025-08-03T08:18:15.685937Z	      url: '/uploads/LOGO_1c461133d8.png',
+2025-08-03T08:18:15.686003Z	      previewUrl: null,
+2025-08-03T08:18:15.686068Z	      provider: 'local',
+2025-08-03T08:18:15.68614Z	      provider_metadata: null,
+2025-08-03T08:18:15.686197Z	      createdAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:15.686254Z	      updatedAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:15.686318Z	      documentId: 'yuzljep3d6ppab8upa200de5',
+2025-08-03T08:18:15.686379Z	      publishedAt: '2025-07-19T16:28:05.336Z'
+2025-08-03T08:18:15.686456Z	    },
+2025-08-03T08:18:15.686532Z	    home_banners: [ [Object], [Object] ]
+2025-08-03T08:18:15.686598Z	  },
+2025-08-03T08:18:15.686652Z	  meta: {}
+2025-08-03T08:18:15.686717Z	}
+2025-08-03T08:18:15.686787Z	🏷️ Site Title: SparkDone
+2025-08-03T08:18:15.786089Z	 (+393ms) 
+2025-08-03T08:18:15.787944Z	08:18:15 ▶ src/pages/tags.astro
+2025-08-03T08:18:16.070645Z	08:18:15   └─ /tags/index.html🏷️ Index Settings: {
+2025-08-03T08:18:16.070906Z	  data: {
+2025-08-03T08:18:16.071017Z	    id: 1,
+2025-08-03T08:18:16.071079Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
+2025-08-03T08:18:16.071141Z	    site_title: 'SparkDone',
+2025-08-03T08:18:16.071205Z	    site_subtitle: 'Power',
+2025-08-03T08:18:16.071266Z	    site_description: null,
+2025-08-03T08:18:16.071352Z	    createdAt: '2025-07-15T15:21:40.896Z',
+2025-08-03T08:18:16.071411Z	    updatedAt: '2025-08-03T06:52:28.868Z',
+2025-08-03T08:18:16.071481Z	    publishedAt: '2025-08-03T06:52:28.755Z',
+2025-08-03T08:18:16.071573Z	    show_author_section: false,
+2025-08-03T08:18:16.07164Z	    default_homepage_layout: 'grid',
+2025-08-03T08:18:16.071695Z	    enable_home_banner: true,
+2025-08-03T08:18:16.07175Z	    logo_light: {
+2025-08-03T08:18:16.071805Z	      id: 5,
+2025-08-03T08:18:16.07186Z	      name: 'logo1.png',
+2025-08-03T08:18:16.071924Z	      alternativeText: null,
+2025-08-03T08:18:16.071985Z	      caption: null,
+2025-08-03T08:18:16.072047Z	      width: 3401,
+2025-08-03T08:18:16.072109Z	      height: 697,
+2025-08-03T08:18:16.072168Z	      formats: [Object],
+2025-08-03T08:18:16.072231Z	      hash: 'logo1_2c27baca01',
+2025-08-03T08:18:16.072289Z	      ext: '.png',
+2025-08-03T08:18:16.07236Z	      mime: 'image/png',
+2025-08-03T08:18:16.072415Z	      size: 129.52,
+2025-08-03T08:18:16.072475Z	      url: '/uploads/logo1_2c27baca01.png',
+2025-08-03T08:18:16.072561Z	      previewUrl: null,
+2025-08-03T08:18:16.07263Z	      provider: 'local',
+2025-08-03T08:18:16.072688Z	      provider_metadata: null,
+2025-08-03T08:18:16.072743Z	      createdAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:16.072804Z	      updatedAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:16.072867Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
+2025-08-03T08:18:16.072922Z	      publishedAt: '2025-07-19T16:28:05.287Z'
+2025-08-03T08:18:16.072976Z	    },
+2025-08-03T08:18:16.073032Z	    logo_dark: {
+2025-08-03T08:18:16.073085Z	      id: 6,
+2025-08-03T08:18:16.073139Z	      name: 'LOGO.png',
+2025-08-03T08:18:16.073204Z	      alternativeText: null,
+2025-08-03T08:18:16.073264Z	      caption: null,
+2025-08-03T08:18:16.073332Z	      width: 3401,
+2025-08-03T08:18:16.073395Z	      height: 697,
+2025-08-03T08:18:16.073456Z	      formats: [Object],
+2025-08-03T08:18:16.073523Z	      hash: 'LOGO_1c461133d8',
+2025-08-03T08:18:16.073602Z	      ext: '.png',
+2025-08-03T08:18:16.073672Z	      mime: 'image/png',
+2025-08-03T08:18:16.073727Z	      size: 162.14,
+2025-08-03T08:18:16.073799Z	      url: '/uploads/LOGO_1c461133d8.png',
+2025-08-03T08:18:16.073863Z	      previewUrl: null,
+2025-08-03T08:18:16.07392Z	      provider: 'local',
+2025-08-03T08:18:16.073975Z	      provider_metadata: null,
+2025-08-03T08:18:16.074031Z	      createdAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:16.074091Z	      updatedAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:16.074152Z	      documentId: 'yuzljep3d6ppab8upa200de5',
+2025-08-03T08:18:16.074208Z	      publishedAt: '2025-07-19T16:28:05.336Z'
+2025-08-03T08:18:16.074262Z	    },
+2025-08-03T08:18:16.074326Z	    home_banners: [ [Object], [Object] ]
+2025-08-03T08:18:16.074382Z	  },
+2025-08-03T08:18:16.074443Z	  meta: {}
+2025-08-03T08:18:16.0745Z	}
+2025-08-03T08:18:16.074594Z	🏷️ Site Title: SparkDone
+2025-08-03T08:18:16.181995Z	 (+394ms) 
+2025-08-03T08:18:16.185076Z	08:18:16 ▶ src/pages/index.astro
+2025-08-03T08:18:16.378095Z	08:18:16   └─ /index.html🔍 getCategoryByName 被调用，name: Github项目
+2025-08-03T08:18:16.378345Z	📡 请求URL: /categories?filters[name][$eq]=Github%E9%A1%B9%E7%9B%AE
+2025-08-03T08:18:16.419164Z	✅ getCategoryByName 响应: {
+2025-08-03T08:18:16.419386Z	  data: [
+2025-08-03T08:18:16.419488Z	    {
+2025-08-03T08:18:16.419754Z	      id: 85,
+2025-08-03T08:18:16.419868Z	      name: 'Github项目',
+2025-08-03T08:18:16.419935Z	      slug: 'github-projects',
+2025-08-03T08:18:16.420006Z	      description: null,
+2025-08-03T08:18:16.420062Z	      color: null,
+2025-08-03T08:18:16.420124Z	      icon: null,
+2025-08-03T08:18:16.42018Z	      sortOrder: 7,
+2025-08-03T08:18:16.420233Z	      createdAt: '2025-07-13T04:22:11.457Z',
+2025-08-03T08:18:16.420288Z	      updatedAt: '2025-08-03T03:46:11.780Z',
+2025-08-03T08:18:16.420348Z	      publishedAt: '2025-08-03T03:46:11.861Z',
+2025-08-03T08:18:16.420408Z	      documentId: 'y829o6ymtkviqiv9o5zolcgf',
+2025-08-03T08:18:16.420468Z	      layout_type: 'grid',
+2025-08-03T08:18:16.42055Z	      enable_banner: false
+2025-08-03T08:18:16.420613Z	    }
+2025-08-03T08:18:16.420666Z	  ],
+2025-08-03T08:18:16.42072Z	  meta: { pagination: { page: 1, pageSize: 25, pageCount: 1, total: 1 } }
+2025-08-03T08:18:16.420778Z	}
+2025-08-03T08:18:16.604357Z	🏷️ Index Settings: {
+2025-08-03T08:18:16.604621Z	  data: {
+2025-08-03T08:18:16.604716Z	    id: 1,
+2025-08-03T08:18:16.604787Z	    documentId: 'ec1mkojdxory2v78f4pjgj2n',
+2025-08-03T08:18:16.604873Z	    site_title: 'SparkDone',
+2025-08-03T08:18:16.604939Z	    site_subtitle: 'Power',
+2025-08-03T08:18:16.605004Z	    site_description: null,
+2025-08-03T08:18:16.605061Z	    createdAt: '2025-07-15T15:21:40.896Z',
+2025-08-03T08:18:16.605119Z	    updatedAt: '2025-08-03T06:52:28.868Z',
+2025-08-03T08:18:16.605176Z	    publishedAt: '2025-08-03T06:52:28.755Z',
+2025-08-03T08:18:16.605232Z	    show_author_section: false,
+2025-08-03T08:18:16.605287Z	    default_homepage_layout: 'grid',
+2025-08-03T08:18:16.605354Z	    enable_home_banner: true,
+2025-08-03T08:18:16.605427Z	    logo_light: {
+2025-08-03T08:18:16.605493Z	      id: 5,
+2025-08-03T08:18:16.605569Z	      name: 'logo1.png',
+2025-08-03T08:18:16.605626Z	      alternativeText: null,
+2025-08-03T08:18:16.605689Z	      caption: null,
+2025-08-03T08:18:16.605749Z	      width: 3401,
+2025-08-03T08:18:16.605803Z	      height: 697,
+2025-08-03T08:18:16.605862Z	      formats: [Object],
+2025-08-03T08:18:16.605927Z	      hash: 'logo1_2c27baca01',
+2025-08-03T08:18:16.605983Z	      ext: '.png',
+2025-08-03T08:18:16.606045Z	      mime: 'image/png',
+2025-08-03T08:18:16.606098Z	      size: 129.52,
+2025-08-03T08:18:16.606151Z	      url: '/uploads/logo1_2c27baca01.png',
+2025-08-03T08:18:16.606204Z	      previewUrl: null,
+2025-08-03T08:18:16.606259Z	      provider: 'local',
+2025-08-03T08:18:16.606324Z	      provider_metadata: null,
+2025-08-03T08:18:16.606393Z	      createdAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:16.606454Z	      updatedAt: '2025-07-19T16:28:05.285Z',
+2025-08-03T08:18:16.606518Z	      documentId: 'f2h78t7tcgn6pax4ee75zwtr',
+2025-08-03T08:18:16.606577Z	      publishedAt: '2025-07-19T16:28:05.287Z'
+2025-08-03T08:18:16.606634Z	    },
+2025-08-03T08:18:16.606688Z	    logo_dark: {
+2025-08-03T08:18:16.606742Z	      id: 6,
+2025-08-03T08:18:16.606801Z	      name: 'LOGO.png',
+2025-08-03T08:18:16.606854Z	      alternativeText: null,
+2025-08-03T08:18:16.606906Z	      caption: null,
+2025-08-03T08:18:16.606968Z	      width: 3401,
+2025-08-03T08:18:16.607028Z	      height: 697,
+2025-08-03T08:18:16.607081Z	      formats: [Object],
+2025-08-03T08:18:16.607144Z	      hash: 'LOGO_1c461133d8',
+2025-08-03T08:18:16.607199Z	      ext: '.png',
+2025-08-03T08:18:16.607259Z	      mime: 'image/png',
+2025-08-03T08:18:16.607324Z	      size: 162.14,
+2025-08-03T08:18:16.60738Z	      url: '/uploads/LOGO_1c461133d8.png',
+2025-08-03T08:18:16.607434Z	      previewUrl: null,
+2025-08-03T08:18:16.607494Z	      provider: 'local',
+2025-08-03T08:18:16.607571Z	      provider_metadata: null,
+2025-08-03T08:18:16.607633Z	      createdAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:16.607697Z	      updatedAt: '2025-07-19T16:28:05.335Z',
+2025-08-03T08:18:16.607759Z	      documentId: 'yuzljep3d6ppab8upa200de5',
+2025-08-03T08:18:16.607816Z	      publishedAt: '2025-07-19T16:28:05.336Z'
+2025-08-03T08:18:16.607871Z	    },
+2025-08-03T08:18:16.607932Z	    home_banners: [ [Object], [Object] ]
+2025-08-03T08:18:16.607987Z	  },
+2025-08-03T08:18:16.608043Z	  meta: {}
+2025-08-03T08:18:16.608098Z	}
+2025-08-03T08:18:16.608159Z	🏷️ Site Title: SparkDone
+2025-08-03T08:18:16.695683Z	 (+511ms) 
+2025-08-03T08:18:16.69591Z	08:18:16 ✓ Completed in 6.27s.
+2025-08-03T08:18:16.695999Z	
+2025-08-03T08:18:16.70106Z	08:18:16 [build] Rearranging server assets...
+2025-08-03T08:18:16.722127Z	08:18:16 [@astrojs/sitemap] `sitemap-index.xml` created at `dist/client`
+2025-08-03T08:18:16.722302Z	08:18:16 [build] Server built in 20.85s
+2025-08-03T08:18:16.722387Z	08:18:16 [build] Complete!
+2025-08-03T08:18:16.859448Z	
+2025-08-03T08:18:16.859698Z	Running Pagefind v1.3.0 (Extended)
+2025-08-03T08:18:16.85979Z	Running from: "/opt/buildhome/repo"
+2025-08-03T08:18:16.859852Z	Source:       "dist/client"
+2025-08-03T08:18:16.85992Z	Output:       "dist/client/pagefind"
+2025-08-03T08:18:16.859983Z	
+2025-08-03T08:18:16.860047Z	[Walking source directory]
+2025-08-03T08:18:16.861931Z	Found 11 files matching **/*.{html}
+2025-08-03T08:18:16.862128Z	
+2025-08-03T08:18:16.862235Z	[Parsing files]
+2025-08-03T08:18:17.062848Z	Found a data-pagefind-body element on the site.
+2025-08-03T08:18:17.063576Z	↳ Ignoring pages without this tag.
+2025-08-03T08:18:17.063758Z	
+2025-08-03T08:18:17.063911Z	[Reading languages]
+2025-08-03T08:18:17.064126Z	Discovered 1 language: zh-cn
+2025-08-03T08:18:17.064233Z	
+2025-08-03T08:18:17.064318Z	[Building search indexes]
+2025-08-03T08:18:17.064387Z	Total: 
+2025-08-03T08:18:17.064477Z	  Indexed 1 language
+2025-08-03T08:18:17.064569Z	  Indexed 1 page
+2025-08-03T08:18:17.064651Z	  Indexed 6 words
+2025-08-03T08:18:17.064727Z	  Indexed 0 filters
+2025-08-03T08:18:17.064784Z	  Indexed 0 sorts
+2025-08-03T08:18:17.064843Z	Note: Pagefind doesn't support stemming for the language zh-cn. 
+2025-08-03T08:18:17.064899Z	Search will still work, but will not match across root words.
+2025-08-03T08:18:17.06496Z	Note: Pagefind doesn't support stemming for the language zh-cn. 
+2025-08-03T08:18:17.065018Z	Search will still work, but will not match across root words.
+2025-08-03T08:18:17.069655Z	
+2025-08-03T08:18:17.069866Z	Finished in 0.210 seconds
+2025-08-03T08:18:17.120149Z	🔧 开始构建后处理...
+2025-08-03T08:18:17.121008Z	🎨 检查 CSS 文件路径...
+2025-08-03T08:18:17.121163Z	✅ CSS 文件已正确打包到 _astro 目录
+2025-08-03T08:18:17.121258Z	⚠️ Pagefind 源目录不存在: /opt/buildhome/repo/dist/pagefind
+2025-08-03T08:18:17.121445Z	⚙️ 生成服务器配置...
+2025-08-03T08:18:17.121732Z	✅ 服务器配置已生成: /opt/buildhome/repo/dist/server-config.json
+2025-08-03T08:18:17.12195Z	🔍 验证构建结果...
+2025-08-03T08:18:17.122142Z	✅ dist/client/pagefind/pagefind.js
+2025-08-03T08:18:17.12229Z	✅ dist/server/entry.mjs
+2025-08-03T08:18:17.122582Z	🎉 构建验证通过！
+2025-08-03T08:18:17.122761Z	📋 生成部署信息...
+2025-08-03T08:18:17.12332Z	✅ 部署信息已生成: /opt/buildhome/repo/dist/deploy-info.json
+2025-08-03T08:18:17.123429Z	🎉 构建后处理完成！
+2025-08-03T08:18:17.123503Z	
+2025-08-03T08:18:17.12371Z	📦 部署准备就绪:
+2025-08-03T08:18:17.123812Z	  - 静态资源: dist/client/
+2025-08-03T08:18:17.123987Z	  - 服务器代码: dist/server/
+2025-08-03T08:18:17.124103Z	  - Pagefind 搜索: dist/client/pagefind/
+2025-08-03T08:18:17.124216Z	
+2025-08-03T08:18:17.124326Z	🚀 可以开始部署了！
+2025-08-03T08:18:17.169543Z	🚀 开始HTML优化...
+2025-08-03T08:18:17.169763Z	🌍 环境信息:
+2025-08-03T08:18:17.170003Z	   NODE_ENV: 未设置
+2025-08-03T08:18:17.170204Z	   STRAPI_URL: https://api.sparkdone.com
+2025-08-03T08:18:17.170328Z	   STRAPI_PUBLIC_URL: https://api.sparkdone.com
+2025-08-03T08:18:17.181119Z	📁 找到 11 个HTML文件
+2025-08-03T08:18:17.181464Z	
+2025-08-03T08:18:17.181709Z	🔧 优化文件: /opt/buildhome/repo/dist/client/404.html
+2025-08-03T08:18:17.18221Z	✅ 移除了 0 个重复的CSS样式块
+2025-08-03T08:18:17.182719Z	✅ 移除了 1 个调试相关的CSS块
+2025-08-03T08:18:17.183126Z	✅ 移除了 1 个空的样式块
+2025-08-03T08:18:17.183406Z	✅ 合并了 4 个内联样式块为 1 个
+2025-08-03T08:18:17.183525Z	✅ 添加了资源预加载提示
+2025-08-03T08:18:17.183881Z	✅ 优化了 2 个图片标签
+2025-08-03T08:18:17.185924Z	📊 优化结果:
+2025-08-03T08:18:17.186095Z	   原始大小: 42504 字节
+2025-08-03T08:18:17.186233Z	   优化后大小: 37762 字节
+2025-08-03T08:18:17.18635Z	   节省: 4742 字节 (11.16%)
+2025-08-03T08:18:17.186454Z	
+2025-08-03T08:18:17.186575Z	🔧 优化文件: /opt/buildhome/repo/dist/client/about/index.html
+2025-08-03T08:18:17.186692Z	✅ 移除了 0 个重复的CSS样式块
+2025-08-03T08:18:17.186804Z	✅ 移除了 1 个调试相关的CSS块
+2025-08-03T08:18:17.186923Z	✅ 移除了 1 个空的样式块
+2025-08-03T08:18:17.187039Z	✅ 合并了 5 个内联样式块为 1 个
+2025-08-03T08:18:17.187145Z	✅ 添加了资源预加载提示
+2025-08-03T08:18:17.187256Z	✅ 优化了 2 个图片标签
+2025-08-03T08:18:17.187875Z	📊 优化结果:
+2025-08-03T08:18:17.188266Z	   原始大小: 40755 字节
+2025-08-03T08:18:17.188425Z	   优化后大小: 36126 字节
+2025-08-03T08:18:17.188573Z	   节省: 4629 字节 (11.36%)
+2025-08-03T08:18:17.188705Z	
+2025-08-03T08:18:17.18882Z	🔧 优化文件: /opt/buildhome/repo/dist/client/archive/index.html
+2025-08-03T08:18:17.18895Z	✅ 移除了 0 个重复的CSS样式块
+2025-08-03T08:18:17.18906Z	✅ 移除了 1 个调试相关的CSS块
+2025-08-03T08:18:17.189187Z	✅ 移除了 1 个空的样式块
+2025-08-03T08:18:17.189287Z	✅ 合并了 5 个内联样式块为 1 个
+2025-08-03T08:18:17.18939Z	✅ 添加了资源预加载提示
+2025-08-03T08:18:17.189497Z	✅ 优化了 2 个图片标签
+2025-08-03T08:18:17.190243Z	📊 优化结果:
+2025-08-03T08:18:17.19064Z	   原始大小: 41694 字节
+2025-08-03T08:18:17.190766Z	   优化后大小: 37150 字节
+2025-08-03T08:18:17.19085Z	   节省: 4544 字节 (10.90%)
+2025-08-03T08:18:17.190912Z	
+2025-08-03T08:18:17.190971Z	🔧 优化文件: /opt/buildhome/repo/dist/client/categories/Github项目/index.html
+2025-08-03T08:18:17.19103Z	✅ 移除了 0 个重复的CSS样式块
+2025-08-03T08:18:17.191097Z	✅ 移除了 1 个调试相关的CSS块
+2025-08-03T08:18:17.191159Z	✅ 移除了 1 个空的样式块
+2025-08-03T08:18:17.191222Z	✅ 合并了 4 个内联样式块为 1 个
+2025-08-03T08:18:17.191281Z	✅ 添加了资源预加载提示
+2025-08-03T08:18:17.191545Z	✅ 优化了 2 个图片标签
+2025-08-03T08:18:17.192457Z	📊 优化结果:
+2025-08-03T08:18:17.192846Z	   原始大小: 44364 字节
+2025-08-03T08:18:17.192986Z	   优化后大小: 39366 字节
+2025-08-03T08:18:17.193112Z	   节省: 4998 字节 (11.27%)
+2025-08-03T08:18:17.19323Z	
+2025-08-03T08:18:17.193353Z	🔧 优化文件: /opt/buildhome/repo/dist/client/categories/网赚项目/index.html
+2025-08-03T08:18:17.193483Z	✅ 移除了 0 个重复的CSS样式块
+2025-08-03T08:18:17.193645Z	✅ 移除了 1 个调试相关的CSS块
+2025-08-03T08:18:17.193773Z	✅ 移除了 1 个空的样式块
+2025-08-03T08:18:17.193888Z	✅ 合并了 4 个内联样式块为 1 个
+2025-08-03T08:18:17.194001Z	✅ 添加了资源预加载提示
+2025-08-03T08:18:17.194102Z	✅ 优化了 2 个图片标签
+2025-08-03T08:18:17.194848Z	📊 优化结果:
+2025-08-03T08:18:17.19501Z	   原始大小: 41527 字节
+2025-08-03T08:18:17.19513Z	   优化后大小: 36513 字节
+2025-08-03T08:18:17.195316Z	   节省: 5014 字节 (12.07%)
+2025-08-03T08:18:17.195413Z	
+2025-08-03T08:18:17.195651Z	🔧 优化文件: /opt/buildhome/repo/dist/client/categories/资源共享/index.html
+2025-08-03T08:18:17.195758Z	✅ 移除了 0 个重复的CSS样式块
+2025-08-03T08:18:17.195868Z	✅ 移除了 1 个调试相关的CSS块
+2025-08-03T08:18:17.19598Z	✅ 移除了 1 个空的样式块
+2025-08-03T08:18:17.196148Z	✅ 合并了 4 个内联样式块为 1 个
+2025-08-03T08:18:17.196279Z	✅ 添加了资源预加载提示
+2025-08-03T08:18:17.196448Z	✅ 优化了 2 个图片标签
+2025-08-03T08:18:17.197664Z	📊 优化结果:
+2025-08-03T08:18:17.197865Z	   原始大小: 41527 字节
+2025-08-03T08:18:17.19795Z	   优化后大小: 36513 字节
+2025-08-03T08:18:17.198013Z	   节省: 5014 字节 (12.07%)
+2025-08-03T08:18:17.198164Z	
+2025-08-03T08:18:17.198294Z	🔧 优化文件: /opt/buildhome/repo/dist/client/friends/index.html
+2025-08-03T08:18:17.198376Z	✅ 移除了 0 个重复的CSS样式块
+2025-08-03T08:18:17.198436Z	✅ 移除了 1 个调试相关的CSS块
+2025-08-03T08:18:17.198587Z	✅ 移除了 1 个空的样式块
+2025-08-03T08:18:17.198662Z	✅ 合并了 6 个内联样式块为 1 个
+2025-08-03T08:18:17.198819Z	✅ 添加了资源预加载提示
+2025-08-03T08:18:17.198892Z	✅ 优化了 2 个图片标签
+2025-08-03T08:18:17.199449Z	📊 优化结果:
+2025-08-03T08:18:17.199795Z	   原始大小: 44832 字节
+2025-08-03T08:18:17.199906Z	   优化后大小: 39861 字节
+2025-08-03T08:18:17.200013Z	   节省: 4971 字节 (11.09%)
+2025-08-03T08:18:17.200098Z	
+2025-08-03T08:18:17.200173Z	🔧 优化文件: /opt/buildhome/repo/dist/client/index.html
+2025-08-03T08:18:17.200254Z	✅ 移除了 0 个重复的CSS样式块
+2025-08-03T08:18:17.200325Z	✅ 移除了 1 个调试相关的CSS块
+2025-08-03T08:18:17.200394Z	✅ 移除了 1 个空的样式块
+2025-08-03T08:18:17.200468Z	✅ 合并了 5 个内联样式块为 1 个
+2025-08-03T08:18:17.200558Z	✅ 添加了资源预加载提示
+2025-08-03T08:18:17.200801Z	✅ 优化了 4 个图片标签
+2025-08-03T08:18:17.201881Z	📊 优化结果:
+2025-08-03T08:18:17.202107Z	   原始大小: 45489 字节
+2025-08-03T08:18:17.202193Z	   优化后大小: 40832 字节
+2025-08-03T08:18:17.202299Z	   节省: 4657 字节 (10.24%)
+2025-08-03T08:18:17.20239Z	
+2025-08-03T08:18:17.202487Z	🔧 优化文件: /opt/buildhome/repo/dist/client/posts/article1/index.html
+2025-08-03T08:18:17.202615Z	✅ 移除了 0 个重复的CSS样式块
+2025-08-03T08:18:17.202737Z	✅ 移除了 2 个调试相关的CSS块
+2025-08-03T08:18:17.202844Z	✅ 合并了 6 个内联样式块为 1 个
+2025-08-03T08:18:17.202936Z	✅ 添加了资源预加载提示
+2025-08-03T08:18:17.203216Z	✅ 优化了 2 个图片标签
+2025-08-03T08:18:17.204019Z	📊 优化结果:
+2025-08-03T08:18:17.204353Z	   原始大小: 48687 字节
+2025-08-03T08:18:17.204489Z	   优化后大小: 43731 字节
+2025-08-03T08:18:17.204615Z	   节省: 4956 字节 (10.18%)
+2025-08-03T08:18:17.204751Z	
+2025-08-03T08:18:17.204857Z	🔧 优化文件: /opt/buildhome/repo/dist/client/search/index.html
+2025-08-03T08:18:17.204968Z	✅ 移除了 1 个重复的CSS样式块
+2025-08-03T08:18:17.205064Z	✅ 移除了 1 个调试相关的CSS块
+2025-08-03T08:18:17.205169Z	✅ 移除了 1 个空的样式块
+2025-08-03T08:18:17.205279Z	✅ 合并了 5 个内联样式块为 1 个
+2025-08-03T08:18:17.205377Z	✅ 添加了资源预加载提示
+2025-08-03T08:18:17.205525Z	✅ 优化了 2 个图片标签
+2025-08-03T08:18:17.206609Z	📊 优化结果:
+2025-08-03T08:18:17.206756Z	   原始大小: 48239 字节
+2025-08-03T08:18:17.206851Z	   优化后大小: 42188 字节
+2025-08-03T08:18:17.20704Z	   节省: 6051 字节 (12.54%)
+2025-08-03T08:18:17.207113Z	
+2025-08-03T08:18:17.207171Z	🔧 优化文件: /opt/buildhome/repo/dist/client/tags/index.html
+2025-08-03T08:18:17.207233Z	✅ 移除了 0 个重复的CSS样式块
+2025-08-03T08:18:17.20729Z	✅ 移除了 1 个调试相关的CSS块
+2025-08-03T08:18:17.207405Z	✅ 移除了 1 个空的样式块
+2025-08-03T08:18:17.207485Z	✅ 合并了 6 个内联样式块为 1 个
+2025-08-03T08:18:17.207635Z	✅ 添加了资源预加载提示
+2025-08-03T08:18:17.207755Z	✅ 优化了 2 个图片标签
+2025-08-03T08:18:17.208489Z	📊 优化结果:
+2025-08-03T08:18:17.208893Z	   原始大小: 43652 字节
+2025-08-03T08:18:17.209017Z	   优化后大小: 38769 字节
+2025-08-03T08:18:17.209114Z	   节省: 4883 字节 (11.19%)
+2025-08-03T08:18:17.209244Z	
+2025-08-03T08:18:17.209348Z	🎉 HTML优化完成！
+2025-08-03T08:18:17.209437Z	📊 总体优化结果:
+2025-08-03T08:18:17.209835Z	   处理文件: 11 个
+2025-08-03T08:18:17.209934Z	   原始总大小: 500812 字节
+2025-08-03T08:18:17.210179Z	   优化后总大小: 440689 字节
+2025-08-03T08:18:17.210274Z	   总节省: 60123 字节 (12.01%)
+2025-08-03T08:18:17.23648Z	Finished
+2025-08-03T08:18:18.055699Z	Checking for configuration in a Wrangler configuration file (BETA)
+2025-08-03T08:18:18.056369Z	
+2025-08-03T08:18:19.158304Z	No wrangler.toml file found. Continuing.
+2025-08-03T08:18:19.159105Z	Note: No functions dir at /functions found. Skipping.
+2025-08-03T08:18:19.159264Z	Validating asset output directory
+2025-08-03T08:18:31.432652Z	Success: Assets published!
+2025-08-03T08:18:33.174672Z	Success: Your site was deployed!
