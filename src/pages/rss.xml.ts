@@ -2,9 +2,9 @@ import rss from "@astrojs/rss";
 import type { APIContext } from "astro";
 import MarkdownIt from "markdown-it";
 import sanitizeHtml from "sanitize-html";
-import { siteConfig } from "../config";
-import { getIndexSettings } from "../lib/strapi";
-import { getSortedPosts } from "../utils/hybrid-content-utils";
+import { siteConfig } from "@/config";
+import { getIndexSettings } from "@/lib/strapi";
+import { getSortedPosts } from "@/utils/hybrid-content-utils";
 
 const parser = new MarkdownIt();
 
