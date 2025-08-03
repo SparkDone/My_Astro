@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { getSortedPosts } from '../utils/hybrid-content-utils';
+import { getSortedPosts } from '@/utils/hybrid-content-utils';
 
 export const GET: APIRoute = async ({ site }) => {
   try {

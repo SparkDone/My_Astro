@@ -56,6 +56,29 @@
   grid-template-columns: none !important; /* 覆盖网格布局 */
 }
 
+/* 单篇文章时的特殊处理 */
+.universal-post-list[data-center="true"][data-layout="grid"] .post-item {
+  width: calc(25% - 1.125rem) !important; /* 4栏布局中的单个宽度 */
+  max-width: 300px;
+  min-width: 250px;
+  flex-shrink: 0;
+}
+
+/* 响应式调整单篇文章宽度 */
+@media (max-width: 1023px) {
+  .universal-post-list[data-center="true"][data-layout="grid"] .post-item {
+    width: calc(33.333% - 1rem) !important; /* 3栏布局 */
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 639px) {
+  .universal-post-list[data-center="true"][data-layout="grid"] .post-item {
+    width: calc(50% - 0.75rem) !important; /* 2栏布局 */
+    max-width: 250px;
+  }
+}
+
 /* 瀑布流布局现在默认就是居中的，不需要特殊处理 */
 .universal-post-list[data-center="true"][data-layout="masonry"] {
   /* 继承默认的瀑布流样式 */
@@ -197,23 +220,40 @@
   contain: layout style;
 }
 
-/* 网格文章卡片高度 - 与原来的样式保持一致 */
+/* 网格文章卡片高度 - 自适应内容 */
 @media (max-width: 639px) {
   .universal-post-list[data-layout="grid"] .post-item {
-    min-height: 250px;
+    min-height: auto;
+    height: auto;
   }
 }
 
 @media (min-width: 640px) and (max-width: 1023px) {
   .universal-post-list[data-layout="grid"] .post-item {
-    min-height: 280px;
+    min-height: auto;
+    height: auto;
   }
 }
 
 @media (min-width: 1024px) {
   .universal-post-list[data-layout="grid"] .post-item {
-    min-height: 320px;
+    min-height: auto;
+    height: auto;
   }
+}
+
+/* 没有图片时的特殊处理 */
+.universal-post-list[data-layout="grid"] .post-item[data-has-cover="false"] {
+  min-height: auto;
+  height: auto;
+}
+
+.universal-post-list[data-layout="grid"] .post-item[data-has-cover="false"] .post-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 1rem;
 }
 
 .universal-post-list[data-layout="grid"] .post-item:hover {
