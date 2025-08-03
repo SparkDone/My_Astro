@@ -22,7 +22,7 @@ export async function GET(context: APIContext) {
 
 		// 获取 Strapi 中的站点设置
 		let rssTitle = siteConfig.title;
-		let rssDesc = siteConfig.description;
+		let rssDesc = siteConfig.subtitle || "No description";
 
 		try {
 			const indexSettings = await getIndexSettings();
@@ -31,6 +31,8 @@ export async function GET(context: APIContext) {
 			}
 			if (indexSettings?.data?.site_description) {
 				rssDesc = indexSettings.data.site_description;
+			} else if (indexSettings?.data?.site_subtitle) {
+				rssDesc = indexSettings.data.site_subtitle;
 			}
 		} catch (error) {
 			console.warn("Failed to fetch index settings:", error);
@@ -67,17 +69,20 @@ export async function GET(context: APIContext) {
 				});
 
 				return {
-					title: stripInvalidXmlChars(post.title),
-					pubDate: post.publishedAt ? new Date(post.publishedAt) : new Date(),
-					description: stripInvalidXmlChars(post.excerpt || ""),
-					link: post.slug ? `/${post.slug}/` : "/",
+					title: stripInvalidXmlChars(post.data.title),
+					pubDate: post.data.published,
+					description: stripInvalidXmlChars(
+						post.data.description || post.data.title,
+					),
+					link: `/posts/${post.slug}/`,
 					content: stripInvalidXmlChars(cleanContent),
-					author: post.author?.name || siteConfig.author,
-					categories: post.categories?.map((cat) => cat.name) || [],
-					...(post.cover && {
+					author: post.data.author || "SparkDone",
+					categories: post.data.tags || [],
+					...(post.data.image && {
 						enclosure: {
-							url: new URL(post.cover.url, context.site!).href,
-							type: post.cover.mime || "image/jpeg",
+							url: new URL(post.data.image, context.site!).href,
+							type: "image/jpeg",
+							length: 0, // 添加必需的length属性
 						},
 					}),
 				};
