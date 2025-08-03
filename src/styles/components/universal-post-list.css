@@ -422,6 +422,23 @@
   /* 确保尺寸计算一致 */
   box-sizing: border-box;
   contain: layout style;
+  /* 自适应高度 */
+  min-height: auto;
+  height: auto;
+}
+
+/* 没有图片时的特殊处理 */
+.universal-post-list[data-layout="masonry"] .post-item[data-has-cover="false"] {
+  min-height: auto;
+  height: auto;
+}
+
+.universal-post-list[data-layout="masonry"] .post-item[data-has-cover="false"] .post-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 1rem;
 }
 
 .universal-post-list[data-layout="masonry"] .post-item:hover {

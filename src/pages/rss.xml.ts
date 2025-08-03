@@ -1,10 +1,10 @@
 import rss from "@astrojs/rss";
-import { getSortedPosts } from "@/utils/hybrid-content-utils";
 import type { APIContext } from "astro";
 import MarkdownIt from "markdown-it";
 import sanitizeHtml from "sanitize-html";
-import { siteConfig } from "@/config";
-import { getIndexSettings } from "@/lib/strapi";
+import { siteConfig } from "../config";
+import { getIndexSettings } from "../lib/strapi";
+import { getSortedPosts } from "../utils/hybrid-content-utils";
 
 const parser = new MarkdownIt();
 
@@ -36,7 +36,7 @@ export async function GET(context: APIContext) {
 			}
 		}
 	} catch (error) {
-		console.error('获取RSS设置失败，使用默认配置:', error);
+		console.error("获取RSS设置失败，使用默认配置:", error);
 	}
 
 	return rss({
@@ -50,12 +50,13 @@ export async function GET(context: APIContext) {
 
 			// 获取作者信息
 			const getAuthorName = (author: any) => {
-				if (typeof author === 'string') {
+				if (typeof author === "string") {
 					return author;
-				} else if (author && typeof author === 'object' && author.name) {
+				}
+				if (author && typeof author === "object" && author.name) {
 					return author.name;
 				}
-				return 'SparkDone';
+				return "SparkDone";
 			};
 
 			return {
@@ -70,15 +71,18 @@ export async function GET(context: APIContext) {
 				categories: post.data.tags || [],
 				customData: [
 					post.data.category && `<category>${post.data.category}</category>`,
-					post.data.updated && `<updated>${post.data.updated.toISOString()}</updated>`,
-				].filter(Boolean).join(''),
+					post.data.updated &&
+						`<updated>${post.data.updated.toISOString()}</updated>`,
+				]
+					.filter(Boolean)
+					.join(""),
 			};
 		}),
 		customData: `
 			<language>${siteConfig.lang}</language>
 			<managingEditor>admin@sparkdone.com (SparkDone)</managingEditor>
 			<webMaster>admin@sparkdone.com (SparkDone)</webMaster>
-			<generator>Astro v${process.env.npm_package_version || '4.0.0'}</generator>
+			<generator>Astro v${process.env.npm_package_version || "4.0.0"}</generator>
 			<docs>https://www.rssboard.org/rss-specification</docs>
 			<ttl>60</ttl>
 		`,
