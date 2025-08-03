@@ -279,7 +279,11 @@ export async function getPublishedArticles(): Promise<StrapiResponse<StrapiArtic
 
   return apiCache.get(cacheKey, async () => {
     const fetchFunction = async () => {
-      const result = await fetchAPI(`${API_ENDPOINTS.articles}?populate[0]=image&populate[1]=category&populate[2]=tags&populate[3]=author.avatar&filters[draft][$eq]=false&sort=published:desc`);
+      // 在开发环境下包含草稿文章，生产环境只获取已发布的文章
+      const isDev = import.meta.env.DEV;
+      const draftFilter = isDev ? '' : '&filters[draft][$eq]=false';
+      
+      const result = await fetchAPI(`${API_ENDPOINTS.articles}?populate[0]=image&populate[1]=category&populate[2]=tags&populate[3]=author.avatar${draftFilter}&sort=published:desc`);
 
       // 调试：检查第一篇文章的 SEO 字段
       if (result.data && result.data.length > 0 && config.development.enableDebugLogs) {
@@ -289,7 +293,8 @@ export async function getPublishedArticles(): Promise<StrapiResponse<StrapiArtic
           metaDescription: firstArticle.metaDescription,
           keywords: firstArticle.keywords,
           slug: firstArticle.slug,
-          title: firstArticle.title
+          title: firstArticle.title,
+          draft: firstArticle.draft
         });
       }
 
@@ -321,7 +326,11 @@ export async function getArticlesByCategory(category: string): Promise<StrapiRes
 
   return apiCache.get(cacheKey, async () => {
     const fetchFunction = async () => {
-      return fetchAPI(`/articles?populate[0]=image&populate[1]=category&populate[2]=tags&populate[3]=author.avatar&filters[category][$eq]=${category}&filters[draft][$eq]=false&sort=published:desc`);
+      // 在开发环境下包含草稿文章，生产环境只获取已发布的文章
+      const isDev = import.meta.env.DEV;
+      const draftFilter = isDev ? '' : '&filters[draft][$eq]=false';
+      
+      return fetchAPI(`/articles?populate[0]=image&populate[1]=category&populate[2]=tags&populate[3]=author.avatar&filters[category][$eq]=${category}${draftFilter}&sort=published:desc`);
     };
 
     if (!config.features.enableRetry) {
@@ -338,7 +347,11 @@ export async function getArticlesByCategory(category: string): Promise<StrapiRes
 
 // 根据标签获取文章
 export async function getArticlesByTag(tag: string): Promise<StrapiResponse<StrapiArticle[]>> {
-  return fetchAPI(`/articles?populate=*&filters[tags][$contains]=${tag}&filters[draft][$eq]=false&sort=published:desc`);
+  // 在开发环境下包含草稿文章，生产环境只获取已发布的文章
+  const isDev = import.meta.env.DEV;
+  const draftFilter = isDev ? '' : '&filters[draft][$eq]=false';
+  
+  return fetchAPI(`/articles?populate=*&filters[tags][$contains]=${tag}${draftFilter}&sort=published:desc`);
 }
 
 // 获取所有分类 - 添加缓存
