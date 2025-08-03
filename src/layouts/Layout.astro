@@ -9,7 +9,6 @@ import "../styles/components/layout.css";
 
 import ConfigCarrier from "@components/ConfigCarrier.astro";
 import ResourceHints from "@components/ResourceHints.astro";
-import SecurityHeaders from "@components/SecurityHeaders.astro";
 import FontPreloader from "@components/FontPreloader.astro";
 import { profileConfig, siteConfig } from "@/config";
 import {
@@ -108,8 +107,6 @@ const siteLang = lang.replace("_", "-");
 >
 	<head>
 		<!-- 安全头 - 必须在最前面 -->
-		<SecurityHeaders />
-
 		<!-- 字体预加载 - 关键性能优化 -->
 		<FontPreloader />
 
@@ -226,9 +223,6 @@ const siteLang = lang.replace("_", "-");
 
 		<!-- 初始化管理器 - 必须最先加载 -->
 		<script is:inline src="/js/init-manager.js"></script>
-
-		<!-- WebAssembly兼容性检查 -->
-		<script is:inline src="/js/wasm-compatibility.js"></script>
 
 		<!-- 全局错误过滤器（优先加载） -->
 		<script is:inline src="/js/error-filter.js"></script>

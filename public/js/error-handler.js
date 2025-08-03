@@ -39,10 +39,9 @@
         'Added non-passive event listener to a scroll-blocking',
         'Consider marking event handler as \'passive\'',
 
-        // WebAssembly/Pagefind相关（在CSP修复前可能出现）
+        // WebAssembly/Pagefind相关
         'Failed to load the Pagefind WASM',
-        'WebAssembly.instantiate(): Refused to compile',
-        'unsafe-eval\' is not an allowed source'
+        'WebAssembly.instantiate(): Refused to compile'
     ];
     
     // 需要忽略的错误来源

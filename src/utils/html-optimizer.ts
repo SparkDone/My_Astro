@@ -171,24 +171,6 @@ export function optimizeImages(html: string): string {
 }
 
 /**
- * 添加安全相关的meta标签
- */
-export function addSecurityHeaders(html: string): string {
-  const securityMetas = [
-    '<meta http-equiv="X-Content-Type-Options" content="nosniff">',
-    '<meta http-equiv="X-Frame-Options" content="DENY">',
-    '<meta http-equiv="X-XSS-Protection" content="1; mode=block">',
-    '<meta name="referrer" content="strict-origin-when-cross-origin">',
-  ];
-  
-  // 在现有meta标签后添加安全标签
-  return html.replace(
-    /<meta name="viewport"[^>]*>/,
-    `$&\n${securityMetas.join('\n')}`
-  );
-}
-
-/**
  * 完整的HTML优化流程
  */
 export function optimizeHTML(html: string, options: {
@@ -196,7 +178,6 @@ export function optimizeHTML(html: string, options: {
   removeDebug?: boolean;
   compress?: boolean;
   addResourceHints?: boolean;
-  addSecurity?: boolean;
   optimizeImages?: boolean;
 } = {}): string {
   let optimizedHtml = html;
@@ -206,7 +187,6 @@ export function optimizeHTML(html: string, options: {
     removeDebug = true,
     compress = false, // 默认关闭，因为可能影响可读性
     addResourceHints = true,
-    addSecurity = true,
     optimizeImages = true
   } = options;
   
@@ -220,10 +200,6 @@ export function optimizeHTML(html: string, options: {
   
   if (addResourceHints) {
     optimizedHtml = addResourceHints(optimizedHtml);
-  }
-  
-  if (addSecurity) {
-    optimizedHtml = addSecurityHeaders(optimizedHtml);
   }
   
   if (optimizeImages) {
@@ -269,10 +245,6 @@ export function generateOptimizationReport(
   
   if (optimizedHtml.includes('rel="preload"')) {
     optimizations.push('添加资源预加载');
-  }
-  
-  if (optimizedHtml.includes('X-Content-Type-Options')) {
-    optimizations.push('添加安全头');
   }
   
   return {

@@ -106,14 +106,8 @@ pnpm build
 
 # 预览构建
 pnpm preview
-
-# 安全检查
-pnpm security-check
-
-# 部署前检查
-pnpm pre-deploy
 ```
 
-## 📄 许可证
+## �� 许可证
 
 MIT License
