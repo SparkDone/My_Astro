@@ -1,14 +1,14 @@
+import cloudflare from "@astrojs/cloudflare";
+import node from "@astrojs/node";
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import tailwind from "@astrojs/tailwind";
-import node from "@astrojs/node";
-import cloudflare from "@astrojs/cloudflare";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import swup from "@swup/astro";
+import { defineConfig } from "astro/config";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
-import { defineConfig } from "astro/config";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeComponents from "rehype-components"; /* Render the custom directive content */
 import rehypeKatex from "rehype-katex";
@@ -18,25 +18,25 @@ import remarkGithubAdmonitionsToDirectives from "remark-github-admonitions-to-di
 import remarkMath from "remark-math";
 import remarkSectionize from "remark-sectionize";
 import { expressiveCodeConfig } from "./src/config.ts";
+import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-copy-button.js";
 import { pluginLanguageBadge } from "./src/plugins/expressive-code/language-badge.ts";
 import { AdmonitionComponent } from "./src/plugins/rehype-component-admonition.mjs";
 import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.mjs";
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
-import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-copy-button.js";
 
 // https://astro.build/config
 // 根据环境选择适配器
-const isCloudflare = process.env.CF_PAGES === 'true';
+const isCloudflare = process.env.CF_PAGES === "true";
 const adapter = isCloudflare
 	? cloudflare({
-		mode: "directory",
-		functionPerRoute: true
-	})
+			mode: "directory",
+			functionPerRoute: false,
+		})
 	: node({
-		mode: "standalone"
-	});
+			mode: "standalone",
+		});
 
 export default defineConfig({
 	site: "https://sparkdone.com/", // 主站域名
@@ -44,13 +44,6 @@ export default defineConfig({
 	trailingSlash: "ignore", // 允许有无尾部斜杠的URL
 	output: "server", // 混合模式：服务器基础 + 页面级prerender
 	adapter: adapter, // API路由需要适配器
-	// 开发环境配置
-	vite: {
-		define: {
-			// 在开发环境中禁用某些错误显示
-			'import.meta.env.SUPPRESS_STRAPI_ERRORS': true
-		}
-	},
 	integrations: [
 		tailwind({
 			nesting: true,
@@ -64,7 +57,7 @@ export default defineConfig({
 			preload: false, // 禁用预加载，减少不必要的请求
 			accessibility: {
 				// 自定义 A11y 插件配置，减少 h1 警告
-				headingSelector: 'h1, .sr-only h1, [role="heading"][aria-level="1"]'
+				headingSelector: 'h1, .sr-only h1, [role="heading"][aria-level="1"]',
 			},
 			updateHead: true,
 			updateBodyClass: false,
@@ -87,12 +80,12 @@ export default defineConfig({
 				pluginCollapsibleSections(),
 				pluginLineNumbers(),
 				pluginLanguageBadge(),
-				pluginCustomCopyButton()
+				pluginCustomCopyButton(),
 			],
 			defaultProps: {
 				wrap: true,
 				overridesByLang: {
-					'shellsession': {
+					shellsession: {
 						showLineNumbers: false,
 					},
 				},
@@ -102,7 +95,8 @@ export default defineConfig({
 				borderRadius: "0.75rem",
 				borderColor: "none",
 				codeFontSize: "0.875rem",
-				codeFontFamily: "'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+				codeFontFamily:
+					"'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
 				codeLineHeight: "1.5rem",
 				frames: {
 					editorBackground: "var(--codeblock-bg)",
@@ -113,33 +107,35 @@ export default defineConfig({
 					editorActiveTabIndicatorBottomColor: "var(--primary)",
 					editorActiveTabIndicatorTopColor: "none",
 					editorTabBarBorderBottomColor: "var(--codeblock-topbar-bg)",
-					terminalTitlebarBorderBottomColor: "none"
+					terminalTitlebarBorderBottomColor: "none",
 				},
 				textMarkers: {
 					delHue: 0,
 					insHue: 180,
-					markHue: 250
-				}
+					markHue: 250,
+				},
 			},
 			frames: {
 				showCopyToClipboardButton: false,
-			}
+			},
 		}),
-        svelte(),
+		svelte(),
 		sitemap({
 			filter: (page) => {
 				// 排除管理页面和 API 端点
-				return !page.includes('/admin/') &&
-				       !page.includes('/api/') &&
-				       !page.includes('/_astro/') &&
-				       !page.includes('/health');
+				return (
+					!page.includes("/admin/") &&
+					!page.includes("/api/") &&
+					!page.includes("/_astro/") &&
+					!page.includes("/health")
+				);
 			},
 			customPages: [
-				'https://sparkdone.com/',
-				'https://sparkdone.com/about/',
-				'https://sparkdone.com/archive/',
+				"https://sparkdone.com/",
+				"https://sparkdone.com/about/",
+				"https://sparkdone.com/archive/",
 			],
-			changefreq: 'weekly',
+			changefreq: "weekly",
 			priority: 0.7,
 			lastmod: new Date(),
 		}),
@@ -195,6 +191,8 @@ export default defineConfig({
 			],
 		],
 	},
+	// 开发环境配置
+
 	vite: {
 		optimizeDeps: {
 			exclude: [
@@ -206,12 +204,12 @@ export default defineConfig({
 				"@swup/astro/client/SwupPreloadPlugin",
 				"@swup/astro/client/SwupScrollPlugin",
 				"@swup/astro/client/SwupHeadPlugin",
-				"@swup/astro/client/SwupScriptsPlugin"
+				"@swup/astro/client/SwupScriptsPlugin",
 			],
 		},
 		build: {
 			// 性能优化
-			minify: 'esbuild',
+			minify: "esbuild",
 			cssMinify: true,
 			rollupOptions: {
 				onwarn(warning, warn) {
@@ -227,49 +225,52 @@ export default defineConfig({
 				output: {
 					// 代码分割优化
 					manualChunks: {
-						'vendor': ['svelte', '@astrojs/svelte'],
-						'swup': ['@swup/astro'],
-						'icons': ['astro-icon']
-					}
-				}
+						vendor: ["svelte", "@astrojs/svelte"],
+						swup: ["@swup/astro"],
+						icons: ["astro-icon"],
+					},
+				},
 			},
 		},
 		// 开发服务器优化
 		server: {
 			fs: {
-				strict: false
+				strict: false,
 			},
 			// 添加代理，解决CORS问题
 			proxy: {
-				'/api/strapi-uploads': {
-					target: process.env.STRAPI_PUBLIC_URL || process.env.STRAPI_URL || 'https://api.sparkdone.com',
+				"/api/strapi-uploads": {
+					target:
+						process.env.STRAPI_PUBLIC_URL ||
+						process.env.STRAPI_URL ||
+						"https://api.sparkdone.com",
 					changeOrigin: true,
-					rewrite: (path) => path.replace(/^\/api\/strapi-uploads/, '/uploads'),
+					rewrite: (path) => path.replace(/^\/api\/strapi-uploads/, "/uploads"),
 					configure: (proxy, _options) => {
-						proxy.on('error', (err, _req, _res) => {
-							console.log('🔴 代理错误:', err);
+						proxy.on("error", (err, _req, _res) => {
+							console.log("🔴 代理错误:", err);
 						});
-						proxy.on('proxyReq', (proxyReq, req, _res) => {
-							console.log('🔄 代理请求:', req.method, req.url);
+						proxy.on("proxyReq", (_proxyReq, req, _res) => {
+							console.log("🔄 代理请求:", req.method, req.url);
 						});
-						proxy.on('proxyRes', (proxyRes, req, _res) => {
-							console.log('✅ 代理响应:', proxyRes.statusCode, req.url);
+						proxy.on("proxyRes", (proxyRes, req, _res) => {
+							console.log("✅ 代理响应:", proxyRes.statusCode, req.url);
 						});
-					}
-				}
+					},
+				},
 			},
 			// Docker + Windows 文件监听优化
 			watch: {
 				usePolling: true,
 				interval: 100,
 				binaryInterval: 100,
-				ignored: ['**/node_modules/**', '**/.git/**'],
+				ignored: ["**/node_modules/**", "**/.git/**"],
 				// 强制启用轮询
 				awaitWriteFinish: {
 					stabilityThreshold: 100,
-					pollInterval: 100
-				}
-			}
-		}
+					pollInterval: 100,
+				},
+			},
+		},
 	},
 });
