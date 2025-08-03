@@ -31,7 +31,7 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 const isCloudflare = process.env.CF_PAGES === "true";
 const adapter = isCloudflare
 	? cloudflare({
-			mode: "directory",
+			mode: "standalone",
 			functionPerRoute: false,
 		})
 	: node({

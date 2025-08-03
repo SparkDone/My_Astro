@@ -1,20 +1,11 @@
 import rss from "@astrojs/rss";
 import type { APIContext } from "astro";
-import MarkdownIt from "markdown-it";
-import sanitizeHtml from "sanitize-html";
 import { siteConfig } from "@/config";
 import { getIndexSettings } from "@/lib/strapi";
 import { getSortedPosts } from "@/utils/hybrid-content-utils";
 
-const parser = new MarkdownIt();
-
-function stripInvalidXmlChars(str: string): string {
-	return str.replace(
-		// biome-ignore lint/suspicious/noControlCharactersInRegex: https://www.w3.org/TR/xml/#charsets
-		/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F\uFDD0-\uFDEF\uFFFE\uFFFF]/g,
-		"",
-	);
-}
+// 启用预渲染，确保RSS文件在构建时生成
+export const prerender = true;
 
 export async function GET(context: APIContext) {
 	try {
@@ -38,55 +29,19 @@ export async function GET(context: APIContext) {
 			console.warn("Failed to fetch index settings:", error);
 		}
 
+		// 生成RSS项目
+		const items = blog.map((post) => ({
+			title: post.data.title,
+			description: post.data.description || post.data.title,
+			pubDate: post.data.published,
+			link: `/posts/${post.slug}/`,
+		}));
+
 		return rss({
 			title: rssTitle,
 			description: rssDesc,
 			site: context.site!,
-			items: blog.map((post) => {
-				const content = post.body ? parser.render(post.body) : "";
-				const cleanContent = sanitizeHtml(content, {
-					allowedTags: sanitizeHtml.defaults.allowedTags.concat([
-						"img",
-						"video",
-						"audio",
-						"source",
-						"track",
-						"figure",
-						"figcaption",
-						"picture",
-					]),
-					allowedAttributes: {
-						...sanitizeHtml.defaults.allowedAttributes,
-						img: ["src", "alt", "title", "width", "height"],
-						video: ["src", "controls", "width", "height"],
-						audio: ["src", "controls"],
-						source: ["src", "type"],
-						track: ["src", "kind", "srclang", "label"],
-						figure: ["class"],
-						figcaption: ["class"],
-						picture: ["class"],
-					},
-				});
-
-				return {
-					title: stripInvalidXmlChars(post.data.title),
-					pubDate: post.data.published,
-					description: stripInvalidXmlChars(
-						post.data.description || post.data.title,
-					),
-					link: `/posts/${post.slug}/`,
-					content: stripInvalidXmlChars(cleanContent),
-					author: post.data.author || "SparkDone",
-					categories: post.data.tags || [],
-					...(post.data.image && {
-						enclosure: {
-							url: new URL(post.data.image, context.site!).href,
-							type: "image/jpeg",
-							length: 0, // 添加必需的length属性
-						},
-					}),
-				};
-			}),
+			items: items,
 		});
 	} catch (error) {
 		console.error("RSS generation error:", error);
