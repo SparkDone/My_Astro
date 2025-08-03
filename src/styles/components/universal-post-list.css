@@ -46,6 +46,13 @@
   padding-top: 2rem;
 }
 
+/* 瀑布流模式下的居中显示特殊处理 */
+.universal-post-list[data-center="true"][data-layout="masonry"] {
+  /* 瀑布流模式不需要强制最小高度，让内容自适应 */
+  min-height: auto;
+  padding-top: 1rem;
+}
+
 .universal-post-list[data-center="true"][data-layout="grid"] {
   display: flex !important;
   flex-wrap: wrap;
@@ -89,6 +96,12 @@
   .universal-post-list[data-center="true"] {
     min-height: 50vh;
     padding-top: 1rem;
+  }
+
+  /* 瀑布流模式在移动端也不强制最小高度 */
+  .universal-post-list[data-center="true"][data-layout="masonry"] {
+    min-height: auto;
+    padding-top: 0.5rem;
   }
 
   .universal-post-list[data-center="true"][data-layout="grid"] {
@@ -399,6 +412,11 @@
   width: 100%; /* 与网格视图保持一致的宽度 */
   margin: 0 auto;
   column-count: auto !important; /* 覆盖任何可能的列布局 */
+  /* 移除所有可能导致空白的设置 */
+  padding: 0;
+  min-height: auto;
+  /* 确保容器不会产生额外空白 */
+  line-height: 1;
 }
 
 /* 响应式调整 */
@@ -422,15 +440,35 @@
   /* 确保尺寸计算一致 */
   box-sizing: border-box;
   contain: layout style;
-  /* 自适应高度 */
-  min-height: auto;
-  height: auto;
+  /* 彻底移除高度限制 */
+  min-height: auto !important;
+  height: auto !important;
+  /* 移除所有可能导致空白的margin和padding */
+  margin: 0;
+  /* 确保行高不会产生额外空白 */
+  line-height: 1.4;
+}
+
+/* 瀑布流模式下的特殊动画处理 */
+.universal-post-list[data-layout="masonry"] .post-item.onload-animation {
+  /* 移除初始的向下偏移，避免产生空白 */
+  transform: translate3d(0, 0, 0) !important;
+  opacity: 1;
+  /* 确保动画不会影响布局 */
+  animation: none !important;
 }
 
 /* 没有图片时的特殊处理 */
 .universal-post-list[data-layout="masonry"] .post-item[data-has-cover="false"] {
-  min-height: auto;
-  height: auto;
+  min-height: auto !important;
+  height: auto !important;
+  /* 移除所有可能导致空白的设置 */
+  margin: 0;
+  padding: 0;
+  /* 确保动画不会产生额外空白 */
+  transform: translate3d(0, 0, 0) !important;
+  /* 确保内容从顶部开始 */
+  align-items: flex-start;
 }
 
 .universal-post-list[data-layout="masonry"] .post-item[data-has-cover="false"] .post-content {
@@ -438,12 +476,92 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 1rem;
+  /* 移除顶部padding，让内容从顶部开始 */
+  padding: 1rem;
+  margin: 0;
+  /* 确保内容区域不会产生额外空白 */
+  min-height: auto;
+  height: auto;
+}
+
+/* 瀑布流模式下的图片容器 */
+.universal-post-list[data-layout="masonry"] .post-image {
+  width: 100%;
+  overflow: hidden;
+  /* 确保图片容器不会产生额外空白 */
+  margin: 0;
+  padding: 0;
+  /* 确保图片容器高度自适应 */
+  height: auto;
+  min-height: auto;
+}
+
+.universal-post-list[data-layout="masonry"] .post-cover-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  /* 确保图片不会产生额外空白 */
+  margin: 0;
+  padding: 0;
+  /* 确保图片高度自适应 */
+  min-height: auto;
+}
+
+.universal-post-list[data-layout="masonry"] .image-link:hover .post-cover-image {
+  transform: scale(1.05);
+}
+
+.universal-post-list[data-layout="masonry"] .post-content {
+  padding: 1rem;
+  /* 移除所有可能导致空白的设置 */
+  margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* 确保内容区域高度自适应 */
+  min-height: auto;
+  height: auto;
 }
 
 .universal-post-list[data-layout="masonry"] .post-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.universal-post-list[data-layout="masonry"] .post-title {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.universal-post-list[data-layout="masonry"] .post-description {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+/* 瀑布流布局的元数据样式 */
+.universal-post-list[data-layout="masonry"] .post-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-50);
+  margin-top: 0.5rem;
+}
+
+.universal-post-list[data-layout="masonry"] .title-chevron {
+  display: none;
+}
+
+.universal-post-list[data-layout="masonry"] .post-enter-btn {
+  display: none;
+}
+
+.universal-post-list[data-layout="masonry"] .post-separator {
+  display: none;
 }
 
 /* 列表模式专用元数据 */
@@ -505,62 +623,6 @@
   .universal-post-list[data-layout="masonry"] .masonry-only-meta .meta-separator {
     display: none;
   }
-}
-
-
-
-.universal-post-list[data-layout="masonry"] .post-image {
-  width: 100%;
-  overflow: hidden;
-}
-
-.universal-post-list[data-layout="masonry"] .post-cover-image {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.universal-post-list[data-layout="masonry"] .image-link:hover .post-cover-image {
-  transform: scale(1.05);
-}
-
-.universal-post-list[data-layout="masonry"] .post-content {
-  padding: 1rem;
-}
-
-.universal-post-list[data-layout="masonry"] .post-title {
-  font-size: 1rem;
-  line-height: 1.4;
-  margin-bottom: 0.5rem;
-}
-
-.universal-post-list[data-layout="masonry"] .post-description {
-  font-size: 0.875rem;
-  line-height: 1.5;
-  margin-bottom: 0.75rem;
-}
-
-/* 瀑布流布局的元数据样式 */
-.universal-post-list[data-layout="masonry"] .post-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.75rem;
-  color: var(--text-50);
-  margin-top: 0.5rem;
-}
-
-.universal-post-list[data-layout="masonry"] .title-chevron {
-  display: none;
-}
-
-.universal-post-list[data-layout="masonry"] .post-enter-btn {
-  display: none;
-}
-
-.universal-post-list[data-layout="masonry"] .post-separator {
-  display: none;
 }
 
 /* ===== 通用样式 ===== */

@@ -68,35 +68,45 @@
   justify-content: center !important; /* 垂直居中 */
   align-items: flex-start !important; /* 水平左对齐 */
 
-  /* 默认隐藏文字和背景 */
-  background-color: transparent !important;
-  opacity: 0 !important; /* 默认完全隐藏 */
+  /* 一直显示文字和背景 */
+  background-color: rgba(0, 0, 0, 0.3) !important; /* 默认显示半透明黑色背景 */
+  opacity: 1 !important; /* 一直显示 */
 
   /* 平滑过渡效果 */
   transition: opacity 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease !important;
 
-  /* 默认无模糊效果 */
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+  /* 默认有轻微模糊效果 */
+  backdrop-filter: blur(1px) !important;
+  -webkit-backdrop-filter: blur(1px) !important;
 }
 
-/* Banner悬停时显示文字和背景 */
+/* Banner悬停时增强文字和背景效果 */
 .banner-carousel:hover .slide-content {
-  opacity: 1 !important; /* 悬停时显示文字 */
-  background-color: rgba(0, 0, 0, 0.05) !important; /* 悬停时显示背景 */
+  opacity: 1 !important; /* 保持显示 */
+  background-color: rgba(0, 0, 0, 0.5) !important; /* 悬停时加深背景 */
   backdrop-filter: blur(2px) !important;
   -webkit-backdrop-filter: blur(2px) !important;
 }
 
-/* 动态文字颜色支持 - 悬停时的色块效果 */
+/* 动态文字颜色支持 - 默认和悬停时的色块效果 */
+.banner-carousel .slide-content[data-text-color="light"] {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important; /* 默认显示黑色背景 */
+}
+
+.banner-carousel .slide-content[data-text-color="dark"] {
+  color: #1a1a1a !important;
+  background-color: rgba(255, 255, 255, 0.3) !important; /* 默认显示白色背景 */
+}
+
 .banner-carousel:hover .slide-content[data-text-color="light"] {
   color: white !important;
-  background-color: rgba(0, 0, 0, 0.05) !important; /* 悬停时显示黑色背景 */
+  background-color: rgba(0, 0, 0, 0.5) !important; /* 悬停时加深黑色背景 */
 }
 
 .banner-carousel:hover .slide-content[data-text-color="dark"] {
   color: #1a1a1a !important;
-  background-color: rgba(255, 255, 255, 0.05) !important; /* 悬停时显示白色背景 */
+  background-color: rgba(255, 255, 255, 0.5) !important; /* 悬停时加深白色背景 */
 }
 
 .banner-carousel .slide-title {

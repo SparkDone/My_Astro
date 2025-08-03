@@ -5,36 +5,36 @@
  */
 
 interface BannerImage {
-  src: string;
-  alt: string;
-  title?: string;
-  subtitle?: string;
-  link?: string;
+	src: string;
+	alt: string;
+	title?: string;
+	subtitle?: string;
+	link?: string;
 }
 
 interface Props {
-  images: BannerImage[];
-  autoPlay?: boolean;
-  interval?: number;
-  showDots?: boolean;
-  showArrows?: boolean;
-  height?: string;
-  className?: string;
+	images: BannerImage[];
+	autoPlay?: boolean;
+	interval?: number;
+	showDots?: boolean;
+	showArrows?: boolean;
+	height?: string;
+	className?: string;
 }
 
 const {
-  images = [],
-  autoPlay = true,
-  interval = 5000,
-  showDots = true,
-  showArrows = true,
-  height = "400px",
-  className = ""
+	images = [],
+	autoPlay = true,
+	interval = 5000,
+	showDots = true,
+	showArrows = true,
+	height = "400px",
+	className = "",
 } = Astro.props;
 
 // 如果没有图片，不渲染组件
 if (!images || images.length === 0) {
-  return null;
+	return null;
 }
 
 // 生成唯一ID
@@ -42,57 +42,65 @@ const carouselId = `banner-carousel-${Math.random().toString(36).substr(2, 9)}`;
 
 // 判断是否为外部链接的函数
 function isExternalLink(url: string): boolean {
-  if (!url) return false;
+	if (!url) return false;
 
-  // 检查明确的外部链接格式
-  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('//')) {
-    return true;
-  }
+	// 检查明确的外部链接格式
+	if (
+		url.startsWith("http://") ||
+		url.startsWith("https://") ||
+		url.startsWith("//")
+	) {
+		return true;
+	}
 
-  // 检查纯域名格式（如 baidu.com, google.com）
-  if (url.includes('.') && !url.startsWith('/') && !url.includes(' ')) {
-    return true;
-  }
+	// 检查纯域名格式（如 baidu.com, google.com）
+	if (url.includes(".") && !url.startsWith("/") && !url.includes(" ")) {
+		return true;
+	}
 
-  return false;
+	return false;
 }
 
 // 判断是否为邮箱链接
 function isEmailLink(url: string): boolean {
-  return url.startsWith('mailto:');
+	return url.startsWith("mailto:");
 }
 
 // 判断是否为电话链接
 function isTelLink(url: string): boolean {
-  return url.startsWith('tel:');
+	return url.startsWith("tel:");
 }
 
 // 修正链接格式，为纯域名添加协议
 function fixLinkFormat(url: string): string {
-  if (!url) return url;
+	if (!url) return url;
 
-  // 如果已经有协议，直接返回
-  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('//')) {
-    return url;
-  }
+	// 如果已经有协议，直接返回
+	if (
+		url.startsWith("http://") ||
+		url.startsWith("https://") ||
+		url.startsWith("//")
+	) {
+		return url;
+	}
 
-  // 如果是邮箱或电话链接，直接返回
-  if (url.startsWith('mailto:') || url.startsWith('tel:')) {
-    return url;
-  }
+	// 如果是邮箱或电话链接，直接返回
+	if (url.startsWith("mailto:") || url.startsWith("tel:")) {
+		return url;
+	}
 
-  // 如果是内部链接（以/开头），直接返回
-  if (url.startsWith('/')) {
-    return url;
-  }
+	// 如果是内部链接（以/开头），直接返回
+	if (url.startsWith("/")) {
+		return url;
+	}
 
-  // 如果是纯域名格式，添加https协议
-  if (url.includes('.') && !url.includes(' ')) {
-    return `https://${url}`;
-  }
+	// 如果是纯域名格式，添加https协议
+	if (url.includes(".") && !url.includes(" ")) {
+		return `https://${url}`;
+	}
 
-  // 其他情况直接返回
-  return url;
+	// 其他情况直接返回
+	return url;
 }
 ---
 
@@ -256,10 +264,10 @@ function fixLinkFormat(url: string): string {
     left: 0;
     right: 0;
     height: 70px; /* 固定高度70px */
-    /* 默认隐藏文字和背景 */
-    background-color: transparent;
+    /* 一直显示文字和背景 */
+    background-color: rgba(0, 0, 0, 0.3); /* 默认显示半透明黑色背景 */
     color: white;
-    opacity: 0; /* 默认完全隐藏 */
+    opacity: 1; /* 一直显示 */
     pointer-events: none; /* 防止内容层阻挡链接点击 */
     /* 平滑过渡效果 */
     transition: opacity 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease;
@@ -270,9 +278,9 @@ function fixLinkFormat(url: string): string {
     align-items: flex-start; /* 水平左对齐 */
     padding: 0 20px; /* 左右内边距 */
     border-radius: 0;
-    /* 默认无模糊效果 */
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    /* 默认有轻微模糊效果 */
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
   }
 
   .carousel-slide.active .slide-content {
@@ -295,29 +303,39 @@ function fixLinkFormat(url: string): string {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   }
 
-  /* Banner悬停时显示文字和背景 */
+  /* Banner悬停时增强文字和背景效果 */
   .banner-carousel:hover .slide-content {
-    opacity: 1 !important; /* 悬停时显示文字 */
-    background-color: rgba(0, 0, 0, 0.05) !important;
+    opacity: 1; /* 保持显示 */
+    background-color: rgba(0, 0, 0, 0.5); /* 悬停时加深背景 */
     backdrop-filter: blur(2px) !important;
     -webkit-backdrop-filter: blur(2px) !important;
   }
 
-  /* 动态文字颜色支持 - 悬停时的色块效果 */
+  /* 动态文字颜色支持 - 默认和悬停时的色块效果 */
+  .slide-content[data-text-color="light"] {
+    color: white !important;
+    background-color: rgba(0, 0, 0, 0.3) !important; /* 默认显示黑色背景 */
+  }
+
+  .slide-content[data-text-color="dark"] {
+    color: #1a1a1a !important;
+    background-color: rgba(255, 255, 255, 0.3) !important; /* 默认显示白色背景 */
+  }
+
   .banner-carousel:hover .slide-content[data-text-color="light"] {
     color: white !important;
-    background-color: rgba(0, 0, 0, 0.05) !important; /* 悬停时显示黑色背景 */
+    background-color: rgba(0, 0, 0, 0.5) !important; /* 悬停时加深黑色背景 */
   }
 
   .banner-carousel:hover .slide-content[data-text-color="dark"] {
     color: #1a1a1a !important;
-    background-color: rgba(255, 255, 255, 0.05) !important; /* 悬停时显示白色背景 */
+    background-color: rgba(255, 255, 255, 0.5) !important; /* 悬停时加深白色背景 */
   }
 
   .banner-carousel:hover .slide-content[data-text-color="auto"] {
-    /* 自动模式悬停时显示黑色背景 */
+    /* 自动模式悬停时加深背景 */
     color: white !important;
-    background-color: rgba(0, 0, 0, 0.05) !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
   }
 
   /* 自定义颜色支持 */
