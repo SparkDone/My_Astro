@@ -404,7 +404,7 @@ export async function getCategoryByName(name: string): Promise<StrapiResponse<St
 
 // 获取Index配置信息
 export async function getIndexSettings(): Promise<StrapiResponse<StrapiIndex>> {
-  // 使用具体的populate参数来确保获取Banner中的图片数据
+  // 使用正确的API端点：/api/index 而不是 /api/index-settings
   const url = `/index?populate[0]=logo_light&populate[1]=logo_dark&populate[2]=home_banners.image`;
 
   try {
