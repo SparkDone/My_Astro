@@ -65,7 +65,7 @@ async function fetchArticles() {
 async function fetchSiteConfig() {
   try {
     const endpoints = [
-      '/api/index-settings?populate=*',
+      '/api/index?populate=*',
       '/api/site-config?populate=*',
       '/api/banners?populate=*'
     ];
