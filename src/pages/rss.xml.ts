@@ -17,85 +17,74 @@ function stripInvalidXmlChars(str: string): string {
 }
 
 export async function GET(context: APIContext) {
-	console.log("🔍 RSS API 被调用");
-
 	try {
 		const blog = await getSortedPosts();
-		console.log(`📝 获取到 ${blog.length} 篇文章`);
 
 		// 获取 Strapi 中的站点设置
 		let rssTitle = siteConfig.title;
-		let rssDescription = siteConfig.subtitle || "No description";
+		let rssDesc = siteConfig.description;
 
 		try {
 			const indexSettings = await getIndexSettings();
-			if (indexSettings.data) {
-				if (indexSettings.data.site_title) {
-					rssTitle = indexSettings.data.site_title;
-				}
-				if (indexSettings.data.site_description) {
-					rssDescription = indexSettings.data.site_description;
-				} else if (indexSettings.data.site_subtitle) {
-					rssDescription = indexSettings.data.site_subtitle;
-				}
+			if (indexSettings?.data?.site_title) {
+				rssTitle = indexSettings.data.site_title;
+			}
+			if (indexSettings?.data?.site_description) {
+				rssDesc = indexSettings.data.site_description;
 			}
 		} catch (error) {
-			console.error("获取RSS设置失败，使用默认配置:", error);
+			console.warn("Failed to fetch index settings:", error);
 		}
 
-		const rssContent = rss({
+		return rss({
 			title: rssTitle,
-			description: rssDescription,
-			site: context.site ?? "https://sparkdone.com",
+			description: rssDesc,
+			site: context.site!,
 			items: blog.map((post) => {
-				const content =
-					typeof post.body === "string" ? post.body : String(post.body || "");
-				const cleanedContent = stripInvalidXmlChars(content);
-
-				// 获取作者信息
-				const getAuthorName = (author: any) => {
-					if (typeof author === "string") {
-						return author;
-					}
-					if (author && typeof author === "object" && author.name) {
-						return author.name;
-					}
-					return "SparkDone";
-				};
+				const content = post.body ? parser.render(post.body) : "";
+				const cleanContent = sanitizeHtml(content, {
+					allowedTags: sanitizeHtml.defaults.allowedTags.concat([
+						"img",
+						"video",
+						"audio",
+						"source",
+						"track",
+						"figure",
+						"figcaption",
+						"picture",
+					]),
+					allowedAttributes: {
+						...sanitizeHtml.defaults.allowedAttributes,
+						img: ["src", "alt", "title", "width", "height"],
+						video: ["src", "controls", "width", "height"],
+						audio: ["src", "controls"],
+						source: ["src", "type"],
+						track: ["src", "kind", "srclang", "label"],
+						figure: ["class"],
+						figcaption: ["class"],
+						picture: ["class"],
+					},
+				});
 
 				return {
-					title: post.data.title,
-					pubDate: post.data.published,
-					description: post.data.description || post.data.title,
-					link: `/posts/${post.slug}/`,
-					content: sanitizeHtml(parser.render(cleanedContent), {
-						allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+					title: stripInvalidXmlChars(post.title),
+					pubDate: post.publishedAt ? new Date(post.publishedAt) : new Date(),
+					description: stripInvalidXmlChars(post.excerpt || ""),
+					link: post.slug ? `/${post.slug}/` : "/",
+					content: stripInvalidXmlChars(cleanContent),
+					author: post.author?.name || siteConfig.author,
+					categories: post.categories?.map((cat) => cat.name) || [],
+					...(post.cover && {
+						enclosure: {
+							url: new URL(post.cover.url, context.site!).href,
+							type: post.cover.mime || "image/jpeg",
+						},
 					}),
-					author: getAuthorName(post.data.author),
-					categories: post.data.tags || [],
-					customData: [
-						post.data.category && `<category>${post.data.category}</category>`,
-						post.data.updated &&
-							`<updated>${post.data.updated.toISOString()}</updated>`,
-					]
-						.filter(Boolean)
-						.join(""),
 				};
 			}),
-			customData: `
-				<language>${siteConfig.lang}</language>
-				<managingEditor>admin@sparkdone.com (SparkDone)</managingEditor>
-				<webMaster>admin@sparkdone.com (SparkDone)</webMaster>
-				<generator>Astro v${process.env.npm_package_version || "4.0.0"}</generator>
-				<docs>https://www.rssboard.org/rss-specification</docs>
-				<ttl>60</ttl>
-			`,
 		});
-
-		console.log("✅ RSS 内容生成成功");
-		return rssContent;
 	} catch (error) {
-		console.error("❌ RSS 生成失败:", error);
-		throw error;
+		console.error("RSS generation error:", error);
+		return new Response("RSS generation failed", { status: 500 });
 	}
 }
