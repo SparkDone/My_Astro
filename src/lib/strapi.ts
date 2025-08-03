@@ -279,9 +279,9 @@ export async function getPublishedArticles(): Promise<StrapiResponse<StrapiArtic
 
   return apiCache.get(cacheKey, async () => {
     const fetchFunction = async () => {
-      // 在开发环境下包含草稿文章，生产环境只获取已发布的文章
+      // 临时包含草稿文章以便测试（后续可以改回）
       const isDev = import.meta.env.DEV;
-      const draftFilter = isDev ? '' : '&filters[draft][$eq]=false';
+      const draftFilter = ''; // 临时移除草稿过滤
       
       const result = await fetchAPI(`${API_ENDPOINTS.articles}?populate[0]=image&populate[1]=category&populate[2]=tags&populate[3]=author.avatar${draftFilter}&sort=published:desc`);
 
@@ -326,9 +326,9 @@ export async function getArticlesByCategory(category: string): Promise<StrapiRes
 
   return apiCache.get(cacheKey, async () => {
     const fetchFunction = async () => {
-      // 在开发环境下包含草稿文章，生产环境只获取已发布的文章
+      // 临时包含草稿文章以便测试（后续可以改回）
       const isDev = import.meta.env.DEV;
-      const draftFilter = isDev ? '' : '&filters[draft][$eq]=false';
+      const draftFilter = ''; // 临时移除草稿过滤
       
       return fetchAPI(`/articles?populate[0]=image&populate[1]=category&populate[2]=tags&populate[3]=author.avatar&filters[category][$eq]=${category}${draftFilter}&sort=published:desc`);
     };
@@ -347,9 +347,9 @@ export async function getArticlesByCategory(category: string): Promise<StrapiRes
 
 // 根据标签获取文章
 export async function getArticlesByTag(tag: string): Promise<StrapiResponse<StrapiArticle[]>> {
-  // 在开发环境下包含草稿文章，生产环境只获取已发布的文章
+  // 临时包含草稿文章以便测试（后续可以改回）
   const isDev = import.meta.env.DEV;
-  const draftFilter = isDev ? '' : '&filters[draft][$eq]=false';
+  const draftFilter = ''; // 临时移除草稿过滤
   
   return fetchAPI(`/articles?populate=*&filters[tags][$contains]=${tag}${draftFilter}&sort=published:desc`);
 }
