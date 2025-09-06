@@ -157,7 +157,7 @@ function optimizeImages(html) {
  */
 function addResourceHints(html) {
   // 动态获取Strapi URL - 默认使用你的域名
-  const strapiUrl = process.env.STRAPI_PUBLIC_URL || process.env.STRAPI_URL || 'https://api.sparkdone.com:1337';
+  const strapiUrl = process.env.STRAPI_PUBLIC_URL || process.env.STRAPI_URL || 'http://localhost:1337';
   const strapiDomain = new URL(strapiUrl).hostname;
   const strapiProtocol = new URL(strapiUrl).protocol;
 

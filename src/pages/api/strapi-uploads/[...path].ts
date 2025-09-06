@@ -18,7 +18,7 @@ export const GET: APIRoute = async ({ params, request }) => {
     // 构建Strapi图片URL
     const strapiUrl = import.meta.env.STRAPI_PUBLIC_URL || 
                      import.meta.env.STRAPI_URL || 
-                     'https://api.sparkdone.com';
+                     'http://localhost:1337';
     
     const imageUrl = `${strapiUrl}/uploads/${path}`;
     

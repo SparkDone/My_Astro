@@ -243,7 +243,7 @@ export default defineConfig({
 					target:
 						process.env.STRAPI_PUBLIC_URL ||
 						process.env.STRAPI_URL ||
-						"https://api.sparkdone.com",
+						"http://localhost:1337",
 					changeOrigin: true,
 					rewrite: (path) => path.replace(/^\/api\/strapi-uploads/, "/uploads"),
 					configure: (proxy, _options) => {

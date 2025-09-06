@@ -34,7 +34,7 @@ function generateSrcSet(originalSrc: string, baseWidth: number): string {
   if (originalSrc.startsWith('http')) {
     // 外部图片，尝试生成不同尺寸
     return validSizes.map(size => {
-      if (originalSrc.includes('api.sparkdone.com')) {
+      if (originalSrc.includes('/uploads/')) {
         // Strapi图片，可能有不同尺寸版本
         const filename = originalSrc.split('/').pop();
         if (filename) {
@@ -53,7 +53,7 @@ function generateSrcSet(originalSrc: string, baseWidth: number): string {
 }
 
 // 检查是否为Strapi图片
-const isStrapiImage = src.includes('api.sparkdone.com') || src.includes('/uploads/');
+const isStrapiImage = src.includes('/uploads/');
 
 // 生成WebP和AVIF版本的URL
 function generateModernFormats(originalSrc: string) {

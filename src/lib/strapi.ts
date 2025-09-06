@@ -468,7 +468,7 @@ export async function getPrimaryAuthor(): Promise<any> {
 
         if (avatar.url.startsWith('/')) {
           // 相对路径，需要添加浏览器可访问的Strapi URL
-          const strapiPublicUrl = import.meta.env.STRAPI_PUBLIC_URL || import.meta.env.STRAPI_URL || 'https://api.sparkdone.com';
+          const strapiPublicUrl = import.meta.env.STRAPI_PUBLIC_URL || import.meta.env.STRAPI_URL || 'http://localhost:1337';
           avatarUrl = `${strapiPublicUrl}${avatar.url}`;
         } else {
           // 绝对路径，直接使用

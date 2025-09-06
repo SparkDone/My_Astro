@@ -14,7 +14,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // 配置
-const STRAPI_URL = process.env.STRAPI_URL || process.env.STRAPI_PUBLIC_URL || 'https://api.sparkdone.com';
+const STRAPI_URL = process.env.STRAPI_URL || process.env.STRAPI_PUBLIC_URL || 'http://localhost:1337';
 const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN;
 const OUTPUT_DIR = path.join(__dirname, '../public/images/strapi');
 const MAPPING_FILE = path.join(__dirname, '../src/data/image-mapping.json');

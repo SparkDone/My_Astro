@@ -15,7 +15,7 @@ let friendLinks: any[] = [];
 
 try {
   // 使用配置中的Strapi URL
-  const strapiUrl = import.meta.env.STRAPI_URL || import.meta.env.STRAPI_PUBLIC_URL || 'https://api.sparkdone.com';
+  const strapiUrl = import.meta.env.STRAPI_URL || import.meta.env.STRAPI_PUBLIC_URL || 'http://localhost:1337';
   const apiToken = import.meta.env.STRAPI_API_TOKEN;
 
   const headers: Record<string, string> = {

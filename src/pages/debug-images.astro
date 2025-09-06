@@ -15,9 +15,10 @@ try {
 }
 
 // 测试图片URL
+const strapiUrl = import.meta.env.STRAPI_URL || import.meta.env.STRAPI_PUBLIC_URL || 'http://localhost:1337';
 const testImageUrls = [
   '/uploads/test.jpg',
-  'https://api.sparkdone.com/uploads/test.jpg',
+  `${strapiUrl}/uploads/test.jpg`,
   '/images/strapi/test.jpg'
 ];
 ---

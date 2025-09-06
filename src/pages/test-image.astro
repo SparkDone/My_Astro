@@ -1,6 +1,7 @@
 ---
 // 简单的图片测试页面
-const testImageUrl = "https://api.sparkdone.com/uploads/519556628d594f0db15a565f1d4598d3_6830c9816e.jpeg";
+const strapiUrl = import.meta.env.STRAPI_URL || import.meta.env.STRAPI_PUBLIC_URL || 'http://localhost:1337';
+const testImageUrl = `${strapiUrl}/uploads/519556628d594f0db15a565f1d4598d3_6830c9816e.jpeg`;
 ---
 
 <html lang="zh-CN">
@@ -62,7 +63,7 @@ const testImageUrl = "https://api.sparkdone.com/uploads/519556628d594f0db15a565f
 
   <script>
     // JavaScript测试图片加载
-    const testUrl = "https://api.sparkdone.com/uploads/519556628d594f0db15a565f1d4598d3_6830c9816e.jpeg";
+    const testUrl = `${strapiUrl}/uploads/519556628d594f0db15a565f1d4598d3_6830c9816e.jpeg`;
     const resultDiv = document.getElementById('js-test-result');
     
     const img = new Image();
