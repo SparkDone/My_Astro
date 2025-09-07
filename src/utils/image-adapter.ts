@@ -42,12 +42,24 @@ export function adaptImageUrl(
 
 	// 调试信息已移除
 
-	// 如果已经是完整的HTTP URL，直接返回
+	// 如果是完整的HTTP URL，且与 Strapi 公网域名一致，则尝试转为相对路径以使用本地映射
 	if (
 		strapiImageUrl.startsWith("http://") ||
 		strapiImageUrl.startsWith("https://")
 	) {
-		return strapiImageUrl;
+		try {
+			const publicBase = getStrapiPublicUrl().replace(/\/$/, "");
+			const urlObj = new URL(strapiImageUrl);
+			const absoluteBase = `${urlObj.protocol}//${urlObj.host}`;
+			if (absoluteBase === publicBase && urlObj.pathname.startsWith("/uploads")) {
+				// 转换为相对路径后继续走下面的映射/本地替换逻辑
+				strapiImageUrl = urlObj.pathname;
+			} else {
+				return strapiImageUrl;
+			}
+		} catch {
+			return strapiImageUrl;
+		}
 	}
 
 	// 如果是相对路径，优先使用本地映射
