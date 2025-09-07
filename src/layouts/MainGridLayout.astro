@@ -62,7 +62,7 @@ const mainPanelTop = "5.5rem"; // 固定高度，不再依赖Banner
 
 <!-- Mobile Sidebar Overlay - 移动端抽屉式侧边栏 -->
 <div id="sidebar-overlay" class="fixed inset-0 z-40 opacity-0 pointer-events-none transition-opacity duration-300 bg-black/50">
-    <div id="sidebar-mobile" class="fixed left-0 top-0 z-50 w-[280px] bg-white dark:bg-gray-900 transform -translate-x-full transition-transform duration-300 overflow-y-auto sidebar-scroll" style={`padding-top: 4.5rem; height: 100vh; padding-bottom: 20px; user-select: text;`}>
+    <div id="sidebar-mobile" class="fixed left-0 top-0 z-50 w-[280px] bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-r border-gray-200/20 dark:border-gray-700/20 transform -translate-x-full transition-transform duration-300 overflow-y-auto sidebar-scroll" style={`padding-top: 4.5rem; height: 100vh; padding-bottom: 20px; user-select: text;`}>
         <SideBar class="onload-animation" headings={headings}></SideBar>
     </div>
 </div>
