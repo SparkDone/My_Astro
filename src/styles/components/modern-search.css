@@ -1,0 +1,476 @@
+/**
+ * 现代化搜索框样式 - 2024年最新设计趋势
+ * 简约、优雅、响应式设计
+ */
+
+/* 主搜索容器 */
+.modern-search-container {
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+/* 搜索输入框 - 现代化设计 */
+.modern-search-input {
+  width: 100%;
+  height: 40px;
+  padding: 0 50px 0 40px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  color: var(--text-primary, #1a1a1a);
+  font-size: 14px;
+  font-weight: 400;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* 深色模式搜索框 */
+.dark .modern-search-input {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary-dark, #ffffff);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* 搜索框聚焦状态 */
+.modern-search-input:focus {
+  border-color: transparent;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15);
+  border-radius: 12px;
+}
+
+.dark .modern-search-input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.25);
+}
+
+/* 搜索图标 */
+.modern-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--text-secondary, #6b7280);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.modern-search-input:focus + .modern-search-icon {
+  color: var(--primary-color, #3b82f6);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* 搜索按钮 */
+.modern-search-button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: var(--primary-color, #3b82f6);
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  opacity: 0.8;
+}
+
+.modern-search-button:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.modern-search-button:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.modern-search-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: var(--text-secondary, #6b7280);
+}
+
+.modern-search-button:disabled:hover {
+  transform: translateY(-50%);
+  opacity: 0.4;
+}
+
+/* 清除按钮 */
+.modern-search-clear {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: none;
+  color: var(--text-secondary, #6b7280);
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modern-search-clear.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modern-search-clear:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--text-primary, #1a1a1a);
+}
+
+.dark .modern-search-clear:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary-dark, #ffffff);
+}
+
+/* 搜索建议面板 */
+.modern-search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: -100px;
+  right: 0;
+  margin-top: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: none;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* 兼容原有的 float-panel-closed 类 */
+.modern-search-suggestions.float-panel-closed {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+}
+
+.dark .modern-search-suggestions {
+  background: rgba(17, 24, 39, 0.95);
+  border: none;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modern-search-suggestions.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* 搜索建议项 */
+.modern-search-item {
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.dark .modern-search-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.modern-search-item:last-child {
+  border-bottom: none;
+}
+
+.modern-search-item:hover {
+  background: transparent;
+}
+
+.modern-search-item.active {
+  background: rgba(59, 130, 246, 0.15);
+}
+
+/* 搜索建议图标 */
+.modern-search-item-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--text-secondary, #6b7280);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* 搜索建议内容 */
+.modern-search-item-content {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.modern-search-item-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary, #1a1a1a);
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+  display: block;
+}
+
+.dark .modern-search-item-title {
+  color: var(--text-primary-dark, #ffffff);
+}
+
+.modern-search-item-desc {
+  font-size: 12px;
+  color: var(--text-secondary, #6b7280);
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-align: left;
+  text-indent: 0;
+  margin-left: 0;
+  padding-left: 0;
+  font-family: inherit;
+  direction: ltr;
+}
+
+/* 加载状态 */
+.modern-search-loading {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-secondary, #6b7280);
+  font-size: 14px;
+}
+
+.modern-search-loading::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--text-secondary, #6b7280);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 无结果状态 */
+.modern-search-no-results {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-secondary, #6b7280);
+  font-size: 14px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .modern-search-container {
+    max-width: 100%;
+  }
+  
+  .modern-search-input {
+    height: 44px;
+    font-size: 16px; /* 防止iOS缩放 */
+  }
+  
+  .modern-search-suggestions {
+    margin-top: 4px;
+    border-radius: 12px;
+    position: fixed !important;
+    top: 80px !important;
+    left: 16px !important;
+    right: 16px !important;
+    max-width: calc(100vw - 32px);
+  }
+  
+  .modern-search-item {
+    padding: 16px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modern-search-input {
+    padding: 0 16px 0 44px;
+  }
+  
+  .modern-search-icon {
+    left: 14px;
+    width: 18px;
+    height: 18px;
+  }
+  
+  .modern-search-clear {
+    right: 14px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modern-search-suggestions.visible .modern-search-item {
+  animation: fadeInUp 0.3s ease forwards;
+}
+
+.modern-search-suggestions.visible .modern-search-item:nth-child(1) { animation-delay: 0.05s; }
+.modern-search-suggestions.visible .modern-search-item:nth-child(2) { animation-delay: 0.1s; }
+.modern-search-suggestions.visible .modern-search-item:nth-child(3) { animation-delay: 0.15s; }
+.modern-search-suggestions.visible .modern-search-item:nth-child(4) { animation-delay: 0.2s; }
+.modern-search-suggestions.visible .modern-search-item:nth-child(5) { animation-delay: 0.25s; }
+
+/* 高亮搜索关键词 */
+.modern-search-highlight {
+  background: rgba(59, 130, 246, 0.2);
+  color: var(--primary-color, #3b82f6);
+  font-weight: 500;
+  padding: 1px 2px;
+  border-radius: 2px;
+}
+
+/* 移动端搜索面板样式 - 超简版 */
+.mobile-search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 80px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.mobile-search-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none; /* 保持pointer-events: none，让点击穿透 */
+}
+
+/* 移动端搜索内容区域 - 允许点击 */
+.mobile-search-content {
+  width: calc(100% - 32px);
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: auto; /* 只有内容区域允许点击 */
+}
+
+.mobile-search-content {
+  width: calc(100% - 32px);
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 移动端搜索头部 - 只显示搜索条 */
+.mobile-search-header {
+  padding: 0;
+  border: none;
+}
+
+/* 移动端搜索结果区域 - 不透明背景 */
+.mobile-search-results {
+  background: var(--card-bg, #ffffff);
+  border-radius: 12px;
+  border: none;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 深色模式下的搜索结果区域 - 不透明背景 */
+.dark .mobile-search-results {
+  background: var(--card-bg, #1f2937);
+}
+
+/* 移动端搜索面板内的搜索框容器 */
+.mobile-search-overlay .modern-search-container {
+  max-width: none;
+  width: 100%;
+}
+
+/* 移动端搜索面板内的搜索框 - 不透明背景 */
+.mobile-search-overlay .modern-search-input {
+  width: 100%;
+  max-width: none;
+  background: var(--card-bg, #ffffff);
+  border: none;
+}
+
+.mobile-search-overlay .modern-search-input:focus {
+  background: var(--card-bg, #ffffff);
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+/* 深色模式下的移动端搜索框 - 不透明背景 */
+.dark .mobile-search-overlay .modern-search-input {
+  background: var(--card-bg, #1f2937);
+}
+
+.dark .mobile-search-overlay .modern-search-input:focus {
+  background: var(--card-bg, #1f2937);
+}
+
+/* 移动端搜索面板内的搜索建议项 */
+.mobile-search-overlay .modern-search-item {
+  padding: 10px 12px;
+}
+
+/* 移动端搜索面板内的加载和无结果状态 */
+.mobile-search-overlay .modern-search-loading,
+.mobile-search-overlay .modern-search-no-results {
+  padding: 16px;
+  text-align: center;
+}

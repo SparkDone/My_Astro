@@ -78,10 +78,8 @@ const setPanelVisibility = (show: boolean): void => {
 		searchPanel = document.getElementById("search-panel");
 	}
 
-	if (!searchPanel) {
-		console.error('❌ 搜索面板元素未找到');
-		return;
-	}
+	// 获取移动端搜索面板
+	const mobileSearchPanel = document.getElementById("search-panel-mobile");
 
 	// 避免重复设置相同状态
 	if (panelVisible === show) {
@@ -90,11 +88,34 @@ const setPanelVisibility = (show: boolean): void => {
 
 	panelVisible = show;
 
-	if (show) {
-		searchPanel.classList.remove("float-panel-closed");
-	} else {
-		searchPanel.classList.add("float-panel-closed");
+	// 控制桌面版搜索面板
+	if (searchPanel) {
+		if (show) {
+			searchPanel.classList.remove("float-panel-closed");
+			searchPanel.classList.add("visible");
+		} else {
+			searchPanel.classList.add("float-panel-closed");
+			searchPanel.classList.remove("visible");
+		}
 	}
+
+	// 控制移动端搜索面板 - 只在移动端显示
+	if (mobileSearchPanel) {
+		// 检查是否在移动端（屏幕宽度小于1024px）
+		const isMobile = window.innerWidth < 1024;
+		if (show && isMobile) {
+			mobileSearchPanel.classList.remove("float-panel-closed");
+			mobileSearchPanel.classList.add("visible");
+		} else {
+			mobileSearchPanel.classList.add("float-panel-closed");
+			mobileSearchPanel.classList.remove("visible");
+		}
+	}
+};
+
+// 处理输入事件
+const handleInput = () => {
+    debouncedSearch(keyword);
 };
 
 // 优化的防抖搜索函数
@@ -344,6 +365,9 @@ onMount(() => {
 	}
 
 	// 返回清理函数
+	// 添加点击外部事件监听器
+	document.addEventListener('click', handleClickOutside);
+	
 	return () => {
 		if (searchBar) {
 			searchBar.removeEventListener('search-reinit', handleReinit);
@@ -351,42 +375,161 @@ onMount(() => {
 		if (searchBarMobile) {
 			searchBarMobile.removeEventListener('search-reinit', handleReinit);
 		}
+		// 移除点击外部事件监听器
+		document.removeEventListener('click', handleClickOutside);
 	};
 });
 
+// 手动搜索函数
+const performSearch = () => {
+    if (!keyword.trim()) {
+        return;
+    }
+    
+    console.log('🔍 手动搜索:', keyword);
+    search(keyword);
+    setPanelVisibility(true);
+};
+
+// 点击空白区域关闭搜索面板
+const handleClickOutside = (event: MouseEvent) => {
+    const searchContainer = document.getElementById('search-bar');
+    const searchPanel = document.getElementById('search-panel');
+    const mobileSearchOverlay = document.querySelector('.mobile-search-overlay');
+    const searchSwitch = document.getElementById('search-switch');
+    
+    // 检查点击是否在搜索相关元素外部
+    const isClickInsideSearch = 
+        (searchContainer && searchContainer.contains(event.target as Node)) ||
+        (searchPanel && searchPanel.contains(event.target as Node)) ||
+        (mobileSearchOverlay && mobileSearchOverlay.contains(event.target as Node)) ||
+        (searchSwitch && searchSwitch.contains(event.target as Node));
+    
+    // 检查是否点击了页头导航元素
+    const navbar = document.querySelector('nav');
+    const isClickInsideNavbar = navbar && navbar.contains(event.target as Node);
+    
+    // 如果点击了页头导航，不关闭搜索面板
+    if (isClickInsideNavbar) {
+        return;
+    }
+    
+    if (!isClickInsideSearch) {
+        setPanelVisibility(false);
+        keyword = '';
+        result = [];
+    }
+};
+
 // 移除响应式搜索，避免重复触发
-// 现在只通过用户输入事件触发搜索
+// 现在只通过用户点击搜索按钮或按Enter键触发搜索
 </script>
 
-<!-- search bar for desktop view -->
-<div id="search-bar" data-search-component class="hidden lg:flex transition-all items-center h-11 mr-2 rounded-lg w-48 relative
-      bg-black/[0.04] hover:bg-black/[0.06] focus-within:bg-black/[0.06]
-      dark:bg-white/5 dark:hover:bg-white/10 dark:focus-within:bg-white/10
-">
-    <Icon icon="material-symbols:search" class="absolute left-3 text-[1.25rem] pointer-events-none transition text-black/30 dark:text-white/30 z-10"></Icon>
-    <input placeholder="{i18n(I18nKey.search)}" bind:value={keyword}
-           on:input={() => debouncedSearch(keyword)}
-           on:focus={() => {
-               // 只有在有关键词时才搜索和显示面板
-               if (keyword.trim().length >= 1) {
-                   search(keyword);
-                   setPanelVisibility(true);
-               }
-               // 如果没有关键词，不显示空面板
-           }}
-           on:blur={(e) => {
-               // 延迟隐藏面板，给用户时间点击搜索结果
-               setTimeout(() => {
-                   // 检查焦点是否在搜索面板内
-                   if (searchPanel && !searchPanel.contains(document.activeElement) && !keyword.trim()) {
-                       setPanelVisibility(false);
-                   }
-               }, 150);
-           }}
-           on:keydown={handleKeydown}
-           class="w-full h-full pl-10 pr-4 text-sm bg-transparent outline-0 rounded-lg
-           text-black/90 dark:text-white/90 placeholder:text-black/40 dark:placeholder:text-white/40"
+<!-- 现代化搜索框 - 桌面版 -->
+<div id="search-bar" data-search-component class="modern-search-container hidden lg:block mr-4">
+    <input 
+        type="text"
+        placeholder="{i18n(I18nKey.search)}" 
+        bind:value={keyword}
+        on:input={handleInput}
+        on:keydown={(e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch();
+            } else if (e.key === 'Escape') {
+                setPanelVisibility(false);
+                keyword = '';
+                result = [];
+            }
+        }}
+        on:blur={(e) => {
+            // 延迟隐藏面板，给用户时间点击搜索结果
+            setTimeout(() => {
+                // 检查焦点是否在搜索面板内
+                if (searchPanel && !searchPanel.contains(document.activeElement) && !keyword.trim()) {
+                    setPanelVisibility(false);
+                }
+            }, 150);
+        }}
+        class="modern-search-input"
     >
+    <Icon icon="material-symbols:search" class="modern-search-icon"></Icon>
+    
+    <!-- 搜索按钮 -->
+    <button 
+        type="button"
+        on:click={performSearch}
+        class="modern-search-button"
+        aria-label="搜索"
+        disabled={!keyword.trim()}
+    >
+        <Icon icon="material-symbols:search" class="w-4 h-4"></Icon>
+    </button>
+    
+    {#if keyword.trim()}
+        <button 
+            type="button"
+            on:click={() => {
+                keyword = '';
+                result = [];
+                setPanelVisibility(false);
+            }}
+            class="modern-search-clear visible"
+            aria-label="清除搜索"
+        >
+            <Icon icon="material-symbols:close" class="w-3 h-3"></Icon>
+        </button>
+    {/if}
+    
+    <!-- 搜索面板 - 移到搜索容器内部 -->
+    <div id="search-panel"
+         on:mousedown={(e) => {
+             if (e.target.tagName !== 'INPUT') {
+                 e.preventDefault();
+             }
+         }}
+         on:click={(e) => {
+             e.stopPropagation();
+         }}
+         class="modern-search-suggestions float-panel-closed">
+        
+        <!-- 搜索结果 -->
+        {#if isSearching}
+            <div class="modern-search-loading">
+                正在搜索...
+            </div>
+        {:else if keyword.trim() && keyword.trim().length < 1}
+            <div class="modern-search-no-results">
+                <Icon icon="material-symbols:edit" class="w-8 h-8 mx-auto mb-3 text-gray-400"></Icon>
+                <p class="text-sm mb-1">请输入搜索关键词</p>
+                <p class="text-xs text-gray-500">当前输入: "{keyword}"</p>
+            </div>
+        {:else if result.length === 0 && keyword.trim()}
+            <div class="modern-search-no-results">
+                <Icon icon="material-symbols:search-off" class="w-8 h-8 mx-auto mb-3 text-gray-400"></Icon>
+                <p class="text-sm mb-1">未找到相关结果</p>
+                <p class="text-xs text-gray-500">搜索关键词: "{keyword}"</p>
+            </div>
+        {:else}
+            {#each (showAllResults ? result : result.slice(0, maxDisplayResults)) as item, index}
+                <a href={item.url}
+                   on:click={() => {
+                       console.log('点击了搜索结果:', item.meta.title);
+                       setPanelVisibility(false);
+                       showAllResults = false;
+                       keyword = '';
+                       result = [];
+                   }}
+                   class="modern-search-item">
+                    <Icon icon="material-symbols:article-outline" class="modern-search-item-icon"></Icon>
+                    <div class="modern-search-item-content">
+                        <div class="modern-search-item-title">{@html item.meta.title}</div>
+                        <div class="modern-search-item-desc">{@html item.excerpt}</div>
+                    </div>
+                </a>
+            {/each}
+        {/if}
+    </div>
 </div>
 
 <!-- toggle btn for phone/tablet view -->
@@ -395,179 +538,99 @@ onMount(() => {
     <Icon icon="material-symbols:search" class="text-[1.25rem]"></Icon>
 </button>
 
-<!-- search panel - 美化版本 -->
-<div id="search-panel"
-     on:mousedown={(e) => {
-         // 只对非输入框元素阻止默认行为
-         if (e.target.tagName !== 'INPUT') {
-             e.preventDefault();
-         }
-     }}
-     on:click={(e) => {
-         // 防止事件冒泡
-         e.stopPropagation();
-     }}
-     class="float-panel float-panel-closed search-panel absolute md:w-[32rem]
-     top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-3
-     bg-white/98 dark:bg-gray-900/98 backdrop-blur-md border border-black/10 dark:border-white/15">
-
-    <!-- search bar inside panel for phone/tablet -->
-    <div class="lg:hidden mb-3">
-        <div class="relative h-11 rounded-xl bg-black/[0.04] hover:bg-black/[0.06] focus-within:bg-black/[0.06] dark:bg-white/5 dark:hover:bg-white/10 dark:focus-within:bg-white/10">
-            <Icon icon="material-symbols:search" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-[1.25rem] pointer-events-none text-black/30 dark:text-white/30"></Icon>
-            <input
-                type="text"
-                placeholder="Search"
-                bind:value={keyword}
-                on:input={() => debouncedSearch(keyword)}
-                on:keydown={handleKeydown}
-                class="w-full h-full pl-10 pr-4 text-sm border-0 outline-0 rounded-xl bg-transparent text-black/90 dark:text-white/90 placeholder:text-black/40 dark:placeholder:text-white/40"
-                style="background: transparent !important; color: var(--text-90) !important;"
-            />
-        </div>
-    </div>
-
-    <!-- search results - 美化版本 -->
-    {#if isSearching}
-        <div class="flex items-center justify-center py-6">
-            <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[var(--primary)]"></div>
-            <span class="ml-3 text-sm text-black/60 dark:text-white/60">正在搜索...</span>
-        </div>
-    {:else if keyword.trim() && keyword.trim().length < 1}
-        <div class="flex flex-col items-center justify-center py-6">
-            <Icon icon="material-symbols:edit" class="text-3xl text-black/30 dark:text-white/30 mb-3 mx-auto"></Icon>
-            <p class="text-sm text-black/60 dark:text-white/60 mb-1 text-center">请输入搜索关键词</p>
-            <p class="text-xs text-black/40 dark:text-white/40 text-center">
-                当前输入: "{keyword}"
-            </p>
-        </div>
-    {:else if result.length === 0 && keyword.trim()}
-        <div class="flex flex-col items-center justify-center py-6">
-            <Icon icon="material-symbols:search-off" class="text-3xl text-black/30 dark:text-white/30 mb-3 mx-auto"></Icon>
-            <p class="text-sm text-black/60 dark:text-white/60 mb-1 text-center">未找到相关结果</p>
-            <p class="text-xs text-black/40 dark:text-white/40 text-center">
-                搜索关键词: "{keyword}"
-            </p>
-        </div>
-    {:else}
-        {#each (showAllResults ? result : result.slice(0, maxDisplayResults)) as item, index}
-            <a href={item.url}
-               on:click={() => {
-                   console.log('点击了搜索结果:', item.meta.title);
-
-                   // 不阻止默认行为，让Swup处理导航
-                   // 立即关闭面板，不需要延迟
-                   setPanelVisibility(false);
-                   // 重置显示状态
-                   showAllResults = false;
-                   // 清空搜索关键词
-                   keyword = '';
-                   result = [];
-               }}
-               class="transition first-of-type:mt-2 lg:first-of-type:mt-0 group block
-               rounded-xl px-4 py-3 hover:bg-black/5 dark:hover:bg-white/5
-               active:bg-black/10 dark:active:bg-white/10
-               cursor-pointer">
-                <div class="transition text-black/90 dark:text-white/90 inline-flex items-center font-medium text-sm group-hover:text-[var(--primary)]">
-                    <Icon icon="material-symbols:article-outline" class="text-xs mr-2 opacity-60"></Icon>
-                    <span>{@html item.meta.title}</span>
-                    <Icon icon="fa6-solid:chevron-right" class="transition text-xs translate-x-1 ml-auto opacity-60 group-hover:opacity-100 group-hover:text-[var(--primary)]"></Icon>
-                </div>
-                <div class="transition text-xs text-black/60 dark:text-white/60 mt-1 leading-relaxed line-clamp-2">
-                    {@html item.excerpt}
-                </div>
-            </a>
-        {/each}
-
-        <!-- More/Less 按钮 - 匹配风格样式 -->
-        {#if result.length > maxDisplayResults}
-            <div class="pt-2 mt-2 space-y-2">
-                {#if !showAllResults}
-                    <!-- 展开按钮 -->
-                    <button
-                        on:click={(e) => {
+<!-- 移动端搜索面板 -->
+<div id="search-panel-mobile" class="mobile-search-overlay float-panel-closed">
+    <!-- 移动端搜索内容容器 -->
+    <div class="mobile-search-content">
+        <!-- 移动端搜索框 -->
+        <div class="mobile-search-header">
+            <div class="modern-search-container">
+                <input
+                    type="text"
+                    placeholder="{i18n(I18nKey.search)}"
+                    bind:value={keyword}
+                    on:input={handleInput}
+                    on:keydown={(e) => {
+                        if (e.key === 'Enter') {
                             e.preventDefault();
-                            e.stopPropagation();
-                            showAllResults = true;
-                            // 确保面板保持显示
-                            setPanelVisibility(true);
-                        }}
-                        class="w-full group flex items-center justify-center px-4 py-2
-                               rounded-lg text-xs font-medium transition-all
-                               bg-black/3 hover:bg-black/5 dark:bg-white/5 dark:hover:bg-white/8
-                               text-black/70 dark:text-white/70 hover:text-[var(--primary)]
-                               border border-black/5 dark:border-white/10
-                               hover:border-[var(--primary)]/20 hover:shadow-sm">
-                        <Icon icon="material-symbols:expand-more" class="text-sm mr-1 transition-transform group-hover:scale-110"></Icon>
-                        展开更多
-                        <span class="ml-1 text-[var(--primary)] opacity-60">(+{result.length - maxDisplayResults})</span>
-                    </button>
-
-                    <!-- 查看全部按钮 -->
-                    <a
-                        href={`/search/?q=${encodeURIComponent(keyword)}`}
-                        on:click={() => {
-                            // 关闭搜索面板
+                            performSearch();
+                        } else if (e.key === 'Escape') {
                             setPanelVisibility(false);
-                            // 清空搜索关键词
                             keyword = '';
                             result = [];
-                        }}
-                        class="w-full group flex items-center justify-center px-4 py-2
-                               rounded-lg text-xs font-medium transition-all
-                               bg-[var(--primary)]/10 hover:bg-[var(--primary)]/20
-                               text-[var(--primary)] hover:text-[var(--primary)]
-                               border border-[var(--primary)]/20 hover:border-[var(--primary)]/40
-                               hover:shadow-sm">
-                        <Icon icon="material-symbols:open-in-new" class="text-sm mr-1 transition-transform group-hover:scale-110"></Icon>
-                        查看全部结果
-                        <span class="ml-1 opacity-60">({result.length})</span>
-                    </a>
-                {:else}
-                    <!-- 收起按钮 -->
-                    <button
-                        on:click={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            showAllResults = false;
-                            // 确保面板保持显示
-                            setPanelVisibility(true);
-                        }}
-                        class="w-full group flex items-center justify-center px-4 py-2
-                               rounded-lg text-xs font-medium transition-all
-                               bg-black/3 hover:bg-black/5 dark:bg-white/5 dark:hover:bg-white/8
-                               text-black/70 dark:text-white/70 hover:text-[var(--primary)]
-                               border border-black/5 dark:border-white/10
-                               hover:border-[var(--primary)]/20 hover:shadow-sm">
-                        <Icon icon="material-symbols:expand-less" class="text-sm mr-1 transition-transform group-hover:scale-110"></Icon>
-                        收起结果
-                        <span class="ml-1 text-[var(--primary)] opacity-60">({result.length})</span>
-                    </button>
-
-                    <!-- 查看全部按钮 -->
-                    <a
-                        href={`/search/?q=${encodeURIComponent(keyword)}`}
+                        }
+                    }}
+                    class="modern-search-input"
+                />
+                <Icon icon="material-symbols:search" class="modern-search-icon"></Icon>
+                
+                <!-- 移动端搜索按钮 -->
+                <button 
+                    type="button"
+                    on:click={performSearch}
+                    class="modern-search-button"
+                    aria-label="搜索"
+                    disabled={!keyword.trim()}
+                >
+                    <Icon icon="material-symbols:search" class="w-4 h-4"></Icon>
+                </button>
+                
+                {#if keyword.trim()}
+                    <button 
+                        type="button"
                         on:click={() => {
-                            // 关闭搜索面板
-                            setPanelVisibility(false);
-                            // 清空搜索关键词
                             keyword = '';
                             result = [];
+                            setPanelVisibility(false);
                         }}
-                        class="w-full group flex items-center justify-center px-4 py-2
-                               rounded-lg text-xs font-medium transition-all
-                               bg-[var(--primary)]/10 hover:bg-[var(--primary)]/20
-                               text-[var(--primary)] hover:text-[var(--primary)]
-                               border border-[var(--primary)]/20 hover:border-[var(--primary)]/40
-                               hover:shadow-sm">
-                        <Icon icon="material-symbols:open-in-new" class="text-sm mr-1 transition-transform group-hover:scale-110"></Icon>
-                        查看全部结果
-                        <span class="ml-1 opacity-60">({result.length})</span>
-                    </a>
+                        class="modern-search-clear visible"
+                        aria-label="清除搜索"
+                    >
+                        <Icon icon="material-symbols:close" class="w-3 h-3"></Icon>
+                    </button>
                 {/if}
             </div>
-        {/if}
-    {/if}
+        </div>
+
+        <!-- 移动端搜索结果 -->
+        <div class="mobile-search-results">
+            {#if isSearching}
+                <div class="modern-search-loading">
+                    正在搜索...
+                </div>
+            {:else if keyword.trim() && keyword.trim().length < 1}
+                <div class="modern-search-no-results">
+                    <Icon icon="material-symbols:edit" class="w-8 h-8 mx-auto mb-3 text-gray-400"></Icon>
+                    <p class="text-sm mb-1">请输入搜索关键词</p>
+                    <p class="text-xs text-gray-500">当前输入: "{keyword}"</p>
+                </div>
+            {:else if result.length === 0 && keyword.trim()}
+                <div class="modern-search-no-results">
+                    <Icon icon="material-symbols:search-off" class="w-8 h-8 mx-auto mb-3 text-gray-400"></Icon>
+                    <p class="text-sm mb-1">未找到相关结果</p>
+                    <p class="text-xs text-gray-500">搜索关键词: "{keyword}"</p>
+                </div>
+            {:else}
+                {#each (showAllResults ? result : result.slice(0, maxDisplayResults)) as item, index}
+                    <a href={item.url}
+                       on:click={() => {
+                           console.log('点击了搜索结果:', item.meta.title);
+                           setPanelVisibility(false);
+                           showAllResults = false;
+                           keyword = '';
+                           result = [];
+                       }}
+                       class="modern-search-item">
+                        <Icon icon="material-symbols:article-outline" class="modern-search-item-icon"></Icon>
+                        <div class="modern-search-item-content">
+                            <div class="modern-search-item-title">{@html item.meta.title}</div>
+                            <div class="modern-search-item-desc">{@html item.excerpt}</div>
+                        </div>
+                    </a>
+                {/each}
+            {/if}
+        </div>
+    </div>
 </div>
 
 <style>
