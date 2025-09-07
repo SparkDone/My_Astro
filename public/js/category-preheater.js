@@ -25,8 +25,8 @@ async function preheatCategory(categorySlug) {
   }
   
   try {
-    // 只在开发环境显示详细日志
-    if (window.location.hostname === 'localhost') {
+    // 只在开发环境且详细调试模式下显示日志
+    if (window.location.hostname === 'localhost' && window.location.search.includes('debug=true')) {
       console.log(`🔥 预热分类: ${categorySlug}`);
     }
 
@@ -37,7 +37,7 @@ async function preheatCategory(categorySlug) {
 
     if (response.ok) {
       preheatCache.add(categorySlug);
-      if (window.location.hostname === 'localhost') {
+      if (window.location.hostname === 'localhost' && window.location.search.includes('debug=true')) {
         console.log(`✅ 分类预热成功: ${categorySlug}`);
       }
     }

@@ -39,8 +39,8 @@ export async function getIntegratedConfig(): Promise<IntegratedConfig> {
 		const response = await getIndexSettings();
 		strapiSettings = response.data;
 
-		// 调试信息（仅开发环境且非构建模式）
-		if (import.meta.env.DEV && !import.meta.env.PROD) {
+		// 调试信息（仅在详细调试模式下显示）
+		if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
 			console.log("🔧 Strapi Index Settings 获取成功:", {
 				hasData: !!strapiSettings,
 				title: strapiSettings?.site_title,

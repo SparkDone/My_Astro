@@ -494,8 +494,8 @@ export async function getIndexSettings(): Promise<StrapiResponse<StrapiIndex>> {
 	try {
 		const result = await fetchAPI(url);
 
-		// 调试信息
-		if (import.meta.env.DEV) {
+		// 调试信息（仅在详细调试模式下显示）
+		if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
 			console.log("🔍 Strapi getIndexSettings 调试:", {
 				url: url,
 				result: result,
