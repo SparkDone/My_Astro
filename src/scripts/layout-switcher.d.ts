@@ -1,6 +1,7 @@
 declare const mod: unknown;
 export default mod;
-export const UniversalLayoutSwitcher: unknown;
+declare const UniversalLayoutSwitcher: unknown;
+export { UniversalLayoutSwitcher };
 
 
 
