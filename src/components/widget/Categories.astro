@@ -9,7 +9,12 @@ import WidgetLayout from "./WidgetLayout.astro";
 const categories = await getCategoryList();
 
 // 获取 Strapi 分类数据以获取图标信息
-let strapiCategories: any[] = [];
+let strapiCategories: Array<{
+	id: number;
+	name: string;
+	slug: string;
+	icon?: string;
+}> = [];
 try {
 	const response = await getAllCategories();
 	if (response?.data && Array.isArray(response.data)) {

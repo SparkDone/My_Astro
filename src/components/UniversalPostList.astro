@@ -22,7 +22,7 @@ const shouldCenter = posts.length <= 3;
 
 // 处理不同数据源的统一函数
 async function processPostData(entry: CollectionEntry<"posts">) {
-  let remarkPluginFrontmatter: Record<string, unknown>;
+	let remarkPluginFrontmatter: Record<string, unknown>;
 
 	if (entry.render) {
 		// Astro Content Collection 数据

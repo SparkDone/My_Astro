@@ -104,7 +104,9 @@ if (!category || !categoryName) {
 }
 
 // 使用分类名获取数据
-let categoryPageData;
+let categoryPageData:
+	| Awaited<ReturnType<typeof getCategoryPageData>>
+	| undefined;
 let loadMethod = "slug-mapped";
 
 // 调试信息（仅开发环境且非构建模式）

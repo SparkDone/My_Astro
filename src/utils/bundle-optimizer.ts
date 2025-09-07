@@ -4,7 +4,7 @@
  */
 
 interface ModuleCache {
-	[key: string]: Promise<any>;
+	[key: string]: Promise<unknown>;
 }
 
 interface LoadOptions {
@@ -23,7 +23,7 @@ export class ModuleLoader {
 	/**
 	 * 动态导入模块
 	 */
-	async loadModule<T = any>(
+	async loadModule<T = unknown>(
 		moduleFactory: () => Promise<T>,
 		moduleName: string,
 		options: LoadOptions = {},
@@ -96,7 +96,11 @@ export class ModuleLoader {
 			}
 		}
 
-		throw lastError!;
+		if (lastError) {
+			throw lastError;
+		}
+
+		throw new Error("Module loading failed after all retries");
 	}
 
 	/**
@@ -140,7 +144,7 @@ export class ComponentLoader extends ModuleLoader {
 	/**
 	 * 加载Svelte组件
 	 */
-	async loadSvelteComponent(componentPath: string): Promise<any> {
+	async loadSvelteComponent(componentPath: string): Promise<unknown> {
 		return this.loadModule(
 			() => import(/* @vite-ignore */ componentPath),
 			`svelte:${componentPath}`,
@@ -150,7 +154,7 @@ export class ComponentLoader extends ModuleLoader {
 	/**
 	 * 加载Astro组件
 	 */
-	async loadAstroComponent(componentPath: string): Promise<any> {
+	async loadAstroComponent(componentPath: string): Promise<unknown> {
 		return this.loadModule(
 			() => import(/* @vite-ignore */ componentPath),
 			`astro:${componentPath}`,
@@ -160,7 +164,7 @@ export class ComponentLoader extends ModuleLoader {
 	/**
 	 * 加载工具库
 	 */
-	async loadUtility(utilityPath: string): Promise<any> {
+	async loadUtility(utilityPath: string): Promise<unknown> {
 		return this.loadModule(
 			() => import(/* @vite-ignore */ utilityPath),
 			`utility:${utilityPath}`,
@@ -180,7 +184,7 @@ export class FeatureManager {
 	 */
 	async enableFeature(
 		featureName: string,
-		loader: () => Promise<any>,
+		loader: () => Promise<unknown>,
 	): Promise<void> {
 		if (this.enabledFeatures.has(featureName)) {
 			return;
@@ -234,7 +238,7 @@ export const CodeSplitting = {
 	/**
 	 * 路由级别的代码分割
 	 */
-	async loadPageModule(pageName: string): Promise<any> {
+	async loadPageModule(pageName: string): Promise<unknown> {
 		const loader = new ModuleLoader();
 		return loader.loadModule(
 			() => import(/* @vite-ignore */ `../pages/${pageName}.astro`),
@@ -245,8 +249,8 @@ export const CodeSplitting = {
 	/**
 	 * 功能级别的代码分割
 	 */
-	async loadFeature(featureName: string): Promise<any> {
-		const featureLoaders: Record<string, () => Promise<any>> = {
+	async loadFeature(featureName: string): Promise<unknown> {
+		const featureLoaders: Record<string, () => Promise<unknown>> = {
 			// 注意：移除了不存在的组件引用，避免构建错误
 			// 'photo-gallery': () => import('../components/misc/PhotoGallery.astro'),
 			// 'comment-system': () => import('../components/misc/CommentSystem.astro'),
@@ -266,8 +270,8 @@ export const CodeSplitting = {
 	/**
 	 * 第三方库的代码分割
 	 */
-	async loadLibrary(libraryName: string): Promise<any> {
-		const libraryLoaders: Record<string, () => Promise<any>> = {
+	async loadLibrary(libraryName: string): Promise<unknown> {
+		const libraryLoaders: Record<string, () => Promise<unknown>> = {
 			photoswipe: () => import("photoswipe"),
 			// 'prismjs': () => import('prismjs'),
 			// 'chart': () => import('chart.js'),

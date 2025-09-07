@@ -6,7 +6,7 @@ import type { APIRoute } from "astro";
 import { logger } from "../../../config/api";
 import { apiCache } from "../../../lib/cache";
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async () => {
 	try {
 		// 获取缓存统计信息（清空前）
 		const statsBefore = apiCache.getStats();
@@ -51,7 +51,7 @@ export const POST: APIRoute = async ({ request }) => {
 	}
 };
 
-export const GET: APIRoute = async ({ request }) => {
+export const GET: APIRoute = async () => {
 	try {
 		const stats = apiCache.getStats();
 

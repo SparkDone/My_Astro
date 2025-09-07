@@ -76,15 +76,26 @@ export async function getAllPages(): Promise<StrapiPage[]> {
 
 		const data = await response.json();
 		return (
-			data.data?.map((item: any) => ({
-				id: item.id,
-				title: item.title,
-				slug: item.slug,
-				content: item.content,
-				metaTitle: item.metaTitle,
-				metaDescription: item.metaDescription,
-				isActive: item.isActive,
-			})) || []
+			data.data?.map(
+				(item: {
+					id: number;
+					title: string;
+					slug: string;
+					content: string;
+					metaTitle?: string;
+					metaDescription?: string;
+					publishedAt: string;
+					updatedAt: string;
+				}) => ({
+					id: item.id,
+					title: item.title,
+					slug: item.slug,
+					content: item.content,
+					metaTitle: item.metaTitle,
+					metaDescription: item.metaDescription,
+					isActive: item.isActive,
+				}),
+			) || []
 		);
 	} catch (error) {
 		logger.error("获取所有页面失败:", error);

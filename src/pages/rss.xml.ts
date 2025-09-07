@@ -40,7 +40,7 @@ export async function GET(context: APIContext) {
 		return rss({
 			title: rssTitle,
 			description: rssDesc,
-			site: context.site!,
+			site: context.site || "https://example.com",
 			items: items,
 		});
 	} catch (error) {

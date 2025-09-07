@@ -11,9 +11,9 @@ export function removeDuplicateStyles(html: string): string {
 
 	// 匹配所有style标签
 	const styleRegex = /<style[^>]*>([\s\S]*?)<\/style>/g;
-	let match;
-
-	while ((match = styleRegex.exec(html)) !== null) {
+	let match: RegExpExecArray | null;
+	match = styleRegex.exec(html);
+	while (match !== null) {
 		const styleContent = match[1].trim();
 
 		if (styleBlocks.has(styleContent)) {
@@ -22,6 +22,7 @@ export function removeDuplicateStyles(html: string): string {
 		} else {
 			styleBlocks.add(styleContent);
 		}
+		match = styleRegex.exec(html);
 	}
 
 	// 移除重复的样式块
@@ -94,16 +95,16 @@ export function optimizeInlineCSS(html: string): string {
 	const cssRules = new Map<string, Set<string>>();
 
 	const styleRegex = /<style[^>]*>([\s\S]*?)<\/style>/g;
-	let match;
-
-	while ((match = styleRegex.exec(html)) !== null) {
+	let match: RegExpExecArray | null;
+	match = styleRegex.exec(html);
+	while (match !== null) {
 		const styleContent = match[1];
 
 		// 解析CSS规则
 		const ruleRegex = /([^{]+)\{([^}]+)\}/g;
-		let ruleMatch;
-
-		while ((ruleMatch = ruleRegex.exec(styleContent)) !== null) {
+		let ruleMatch: RegExpExecArray | null;
+		ruleMatch = ruleRegex.exec(styleContent);
+		while (ruleMatch !== null) {
 			const selector = ruleMatch[1].trim();
 			const properties = ruleMatch[2].trim();
 
@@ -118,7 +119,9 @@ export function optimizeInlineCSS(html: string): string {
 					cssRules.get(selector)?.add(trimmedProp);
 				}
 			});
+			ruleMatch = ruleRegex.exec(styleContent);
 		}
+		match = styleRegex.exec(html);
 	}
 
 	// 重新构建优化后的CSS

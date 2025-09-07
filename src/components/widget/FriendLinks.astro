@@ -11,7 +11,15 @@ interface Props {
 const { class: className, style } = Astro.props;
 
 // 获取友情链接数据
-let friendLinks: any[] = [];
+let friendLinks: Array<{
+	id: number;
+	name: string;
+	url: string;
+	description?: string;
+	logo?: string;
+	icon?: string;
+	is_featured?: boolean;
+}> = [];
 
 try {
 	// 使用配置中的Strapi URL

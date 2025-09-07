@@ -6,7 +6,7 @@
 import type { APIRoute } from "astro";
 import { config, logger } from "../config/api";
 
-export const GET: APIRoute = async ({ request }) => {
+export const GET: APIRoute = async () => {
 	const startTime = Date.now();
 
 	try {

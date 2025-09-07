@@ -94,7 +94,12 @@ export function adaptImageUrls(urls: string[]): string[] {
 /**
  * 转换文章封面图片
  */
-export function adaptArticleCover(article: any): string {
+export function adaptArticleCover(article: {
+	cover?: {
+		url: string;
+		alternativeText?: string;
+	};
+}): string {
 	if (!article.cover) {
 		return "https://via.placeholder.com/800x400/f3f4f6/9ca3af?text=Article";
 	}
@@ -105,7 +110,12 @@ export function adaptArticleCover(article: any): string {
 /**
  * 转换Banner图片
  */
-export function adaptBannerImage(banner: any): string {
+export function adaptBannerImage(banner: {
+	image?: {
+		url: string;
+		alternativeText?: string;
+	};
+}): string {
 	if (!banner.image) {
 		return "https://via.placeholder.com/1200x600/4f46e5/ffffff?text=Banner";
 	}
@@ -116,7 +126,12 @@ export function adaptBannerImage(banner: any): string {
 /**
  * 转换作者头像
  */
-export function adaptAuthorAvatar(author: any): string {
+export function adaptAuthorAvatar(author: {
+	avatar?: {
+		url: string;
+		alternativeText?: string;
+	};
+}): string {
 	if (
 		!author.avatar ||
 		!Array.isArray(author.avatar) ||
@@ -191,7 +206,13 @@ export interface ImageMetadata {
 	size?: number;
 }
 
-export function getImageMetadata(strapiImage: any): ImageMetadata {
+export function getImageMetadata(strapiImage: {
+	url: string;
+	width?: number;
+	height?: number;
+	ext?: string;
+	size?: number;
+}): ImageMetadata {
 	const url = adaptImageUrl(strapiImage.url);
 
 	return {

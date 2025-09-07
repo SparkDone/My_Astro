@@ -10,7 +10,7 @@ interface Props {
 	slug: string;
 	pubDate: Date;
 	class: string;
-	author?: string | { name: string; [key: string]: any };
+	author?: string | { name: string; [key: string]: unknown };
 }
 
 const { title, pubDate, author } = Astro.props;

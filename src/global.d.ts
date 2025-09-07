@@ -11,6 +11,14 @@ declare global {
 				}>;
 			}>;
 		};
+		// Layout and theme management
+		customScrollbarInitialized: boolean;
+		layoutInitialized: boolean;
+		swupInitializing: boolean;
+		universalLayoutSwitcherInstance: unknown;
+		initUniversalLayoutSwitcher: (options?: unknown) => void;
+		forceReinitLayoutSwitcher: () => void;
+		reinitThemeSwitch: () => void;
 	}
 }
 

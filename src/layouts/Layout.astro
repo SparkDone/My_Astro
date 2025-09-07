@@ -350,7 +350,7 @@ function loadHue() {
 
 function initCustomScrollbar() {
 	// 防止重复初始化
-	if (window.customScrollbarInitialized) {
+	if ((window as any).customScrollbarInitialized) {
 		return;
 	}
 
@@ -381,7 +381,7 @@ function initCustomScrollbar() {
 				}
 			});
 
-			window.customScrollbarInitialized = true;
+			(window as any).customScrollbarInitialized = true;
 		} catch (error) {
 			console.warn('⚠️ 自定义滚动条初始化失败:', error);
 		}
@@ -454,7 +454,7 @@ function initCustomScrollbar() {
 
 function init() {
 	// 防止重复初始化
-	if (window.layoutInitialized) {
+	if ((window as any).layoutInitialized) {
 		return;
 	}
 
@@ -467,7 +467,7 @@ function init() {
 	//	initCustomScrollbar();
 	// });
 
-	window.layoutInitialized = true;
+	(window as any).layoutInitialized = true;
 }
 
 /* Load settings when entering the site */
@@ -508,10 +508,10 @@ const setup = () => {
 	// window.swup.hooks.on('content:replace', initCustomScrollbar)
 	window.swup.hooks.on('content:replace', () => {
 		// 防止重复初始化
-		if (window.swupInitializing) {
+		if ((window as any).swupInitializing) {
 			return;
 		}
-		window.swupInitializing = true;
+		(window as any).swupInitializing = true;
 
 		// 重新初始化布局切换器
 		setTimeout(() => {
@@ -521,13 +521,13 @@ const setup = () => {
 				const targetSelector = switcher.getAttribute('data-target-selector') || '.universal-post-list';
 
 				// 清除旧实例
-				if (window.universalLayoutSwitcherInstance) {
-					window.universalLayoutSwitcherInstance = null;
+				if ((window as any).universalLayoutSwitcherInstance) {
+					(window as any).universalLayoutSwitcherInstance = null;
 				}
 
 				// 重新初始化 - 添加安全检查
-				if (typeof window.initUniversalLayoutSwitcher === 'function') {
-					window.initUniversalLayoutSwitcher({
+				if (typeof (window as any).initUniversalLayoutSwitcher === 'function') {
+					(window as any).initUniversalLayoutSwitcher({
 						defaultLayout,
 						targetSelector
 					});
@@ -550,11 +550,11 @@ const setup = () => {
 				// 延迟重试 - 重新获取配置
 				setTimeout(() => {
 					const retryswitcher = document.querySelector('.layout-switcher');
-					if (retryswitcher && typeof window.initUniversalLayoutSwitcher === 'function') {
+					if (retryswitcher && typeof (window as any).initUniversalLayoutSwitcher === 'function') {
 						const retryDefaultLayout = retryswitcher.getAttribute('data-default-layout') || 'grid';
 						const retryTargetSelector = retryswitcher.getAttribute('data-target-selector') || '.universal-post-list';
 
-						window.initUniversalLayoutSwitcher({
+						(window as any).initUniversalLayoutSwitcher({
 							defaultLayout: retryDefaultLayout,
 							targetSelector: retryTargetSelector
 						});
@@ -565,7 +565,7 @@ const setup = () => {
 
 			// 重置初始化标志
 			setTimeout(() => {
-				window.swupInitializing = false;
+				(window as any).swupInitializing = false;
 			}, 200);
 		}, 100);
 	})
@@ -598,14 +598,14 @@ const setup = () => {
 			const switcher = document.querySelector('.layout-switcher');
 			const buttons = document.querySelectorAll('.layout-switch-btn');
 
-			if (switcher && buttons.length > 0 && !window.universalLayoutSwitcherInstance) {
-				if (typeof window.forceReinitLayoutSwitcher === 'function') {
-					window.forceReinitLayoutSwitcher();
+			if (switcher && buttons.length > 0 && !(window as any).universalLayoutSwitcherInstance) {
+				if (typeof (window as any).forceReinitLayoutSwitcher === 'function') {
+					(window as any).forceReinitLayoutSwitcher();
 				} else {
 					// 如果函数不存在，等待一段时间后重试
 					setTimeout(() => {
-						if (typeof window.forceReinitLayoutSwitcher === 'function') {
-							window.forceReinitLayoutSwitcher();
+						if (typeof (window as any).forceReinitLayoutSwitcher === 'function') {
+							(window as any).forceReinitLayoutSwitcher();
 						}
 					}, 100);
 				}
@@ -614,8 +614,8 @@ const setup = () => {
 
 		// 确保主题切换器正常工作
 		setTimeout(() => {
-			if (typeof window.reinitThemeSwitch === 'function') {
-				window.reinitThemeSwitch();
+			if (typeof (window as any).reinitThemeSwitch === 'function') {
+				(window as any).reinitThemeSwitch();
 			}
 		}, 50); // 减少延迟，更快重新初始化
 	});
@@ -666,7 +666,7 @@ window.onresize = () => {
 // 移除冲突的全局toggleTheme函数，让Svelte组件处理主题切换
 
 // 全局主题切换器重新初始化函数
-window.reinitThemeSwitch = function() {
+(window as any).reinitThemeSwitch = function() {
 	// 触发Svelte组件重新初始化
 	const themeButton = document.getElementById('scheme-switch');
 	if (themeButton) {

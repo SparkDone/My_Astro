@@ -50,8 +50,11 @@ export class LazyLoader {
 				const element = entry.target as HTMLElement;
 				const callback = element.dataset.lazyCallback;
 
-				if (callback && (window as any)[callback]) {
-					(window as any)[callback](element);
+				if (callback && (window as Record<string, unknown>)[callback]) {
+					const callbackFn = (window as Record<string, unknown>)[callback];
+					if (typeof callbackFn === "function") {
+						callbackFn(element);
+					}
 				}
 
 				// 触发自定义事件
@@ -98,42 +101,41 @@ export class LazyComponentManager {
 	registerComponent(
 		element: HTMLElement,
 		componentName: string,
-		loadFunction: () => Promise<any>,
+		loadFunction: () => Promise<unknown>,
 	) {
 		element.dataset.lazyComponent = componentName;
 		element.dataset.lazyCallback = `loadComponent_${componentName}`;
 
 		// 注册全局加载函数
-		(window as any)[`loadComponent_${componentName}`] = async (
-			el: HTMLElement,
-		) => {
-			if (this.loadedComponents.has(componentName)) {
-				return;
-			}
+		(window as Record<string, unknown>)[`loadComponent_${componentName}`] =
+			async (el: HTMLElement) => {
+				if (this.loadedComponents.has(componentName)) {
+					return;
+				}
 
-			try {
-				el.classList.add("loading");
-				const component = await loadFunction();
+				try {
+					el.classList.add("loading");
+					const component = await loadFunction();
 
-				// 标记为已加载
-				this.loadedComponents.add(componentName);
-				el.classList.remove("loading");
-				el.classList.add("loaded");
+					// 标记为已加载
+					this.loadedComponents.add(componentName);
+					el.classList.remove("loading");
+					el.classList.add("loaded");
 
-				console.log(`✅ 懒加载组件已加载: ${componentName}`);
+					console.log(`✅ 懒加载组件已加载: ${componentName}`);
 
-				// 触发加载完成事件
-				el.dispatchEvent(
-					new CustomEvent("component:loaded", {
-						detail: { componentName, component },
-					}),
-				);
-			} catch (error) {
-				console.error(`❌ 懒加载组件失败: ${componentName}`, error);
-				el.classList.remove("loading");
-				el.classList.add("error");
-			}
-		};
+					// 触发加载完成事件
+					el.dispatchEvent(
+						new CustomEvent("component:loaded", {
+							detail: { componentName, component },
+						}),
+					);
+				} catch (error) {
+					console.error(`❌ 懒加载组件失败: ${componentName}`, error);
+					el.classList.remove("loading");
+					el.classList.add("error");
+				}
+			};
 
 		this.loader.observe(element);
 	}
@@ -143,7 +145,7 @@ export class LazyComponentManager {
 	 */
 	async preloadComponent(
 		componentName: string,
-		loadFunction: () => Promise<any>,
+		loadFunction: () => Promise<unknown>,
 	) {
 		if (this.loadedComponents.has(componentName)) {
 			return;
@@ -173,8 +175,9 @@ export function setupImageLazyLoading() {
 	});
 
 	// 处理图片懒加载
-	document.addEventListener("lazy:load", (event: any) => {
-		const img = event.detail.element as HTMLImageElement;
+	document.addEventListener("lazy:load", (event: Event) => {
+		const customEvent = event as CustomEvent<{ element: HTMLElement }>;
+		const img = customEvent.detail.element as HTMLImageElement;
 		if (img.tagName === "IMG" && img.dataset.src) {
 			const originalSrc = img.dataset.src;
 			img.src = originalSrc;

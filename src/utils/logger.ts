@@ -24,8 +24,8 @@ const currentLogLevel = isDev ? LogLevel.DEBUG : LogLevel.WARN;
 function formatMessage(
 	level: string,
 	message: string,
-	...args: any[]
-): [string, ...any[]] {
+	...args: unknown[]
+): [string, ...unknown[]] {
 	const timestamp = new Date().toLocaleTimeString();
 	return [`[${timestamp}] ${level} ${message}`, ...args];
 }
@@ -34,32 +34,32 @@ function formatMessage(
  * 日志输出函数
  */
 export const logger = {
-	error: (message: string, ...args: any[]) => {
+	error: (message: string, ...args: unknown[]) => {
 		if (currentLogLevel >= LogLevel.ERROR) {
 			console.error(...formatMessage("❌", message, ...args));
 		}
 	},
 
-	warn: (message: string, ...args: any[]) => {
+	warn: (message: string, ...args: unknown[]) => {
 		if (currentLogLevel >= LogLevel.WARN) {
 			console.warn(...formatMessage("⚠️", message, ...args));
 		}
 	},
 
-	info: (message: string, ...args: any[]) => {
+	info: (message: string, ...args: unknown[]) => {
 		if (currentLogLevel >= LogLevel.INFO) {
 			console.info(...formatMessage("ℹ️", message, ...args));
 		}
 	},
 
-	debug: (message: string, ...args: any[]) => {
+	debug: (message: string, ...args: unknown[]) => {
 		if (currentLogLevel >= LogLevel.DEBUG) {
 			console.log(...formatMessage("🔧", message, ...args));
 		}
 	},
 
 	// 特殊的成功日志（总是显示，但在生产环境中简化）
-	success: (message: string, ...args: any[]) => {
+	success: (message: string, ...args: unknown[]) => {
 		if (isDev) {
 			console.log(...formatMessage("✅", message, ...args));
 		} else {
@@ -69,21 +69,21 @@ export const logger = {
 	},
 
 	// 特殊的主题日志（只在开发环境显示）
-	theme: (message: string, ...args: any[]) => {
+	theme: (message: string, ...args: unknown[]) => {
 		if (isDev) {
 			console.log(...formatMessage("🎨", message, ...args));
 		}
 	},
 
 	// 特殊的搜索日志（只在开发环境显示）
-	search: (message: string, ...args: any[]) => {
+	search: (message: string, ...args: unknown[]) => {
 		if (isDev) {
 			console.log(...formatMessage("🔍", message, ...args));
 		}
 	},
 
 	// 特殊的性能日志（只在开发环境显示）
-	perf: (message: string, ...args: any[]) => {
+	perf: (message: string, ...args: unknown[]) => {
 		if (isDev) {
 			console.log(...formatMessage("⚡", message, ...args));
 		}
@@ -97,7 +97,7 @@ const logCache = new Map<string, number>();
 const DEBOUNCE_TIME = 1000; // 1秒内相同消息只输出一次
 
 export const debouncedLogger = {
-	info: (message: string, ...args: any[]) => {
+	info: (message: string, ...args: unknown[]) => {
 		const key = message;
 		const now = Date.now();
 		const lastTime = logCache.get(key) || 0;
@@ -108,7 +108,7 @@ export const debouncedLogger = {
 		}
 	},
 
-	debug: (message: string, ...args: any[]) => {
+	debug: (message: string, ...args: unknown[]) => {
 		const key = message;
 		const now = Date.now();
 		const lastTime = logCache.get(key) || 0;
@@ -119,7 +119,7 @@ export const debouncedLogger = {
 		}
 	},
 
-	theme: (message: string, ...args: any[]) => {
+	theme: (message: string, ...args: unknown[]) => {
 		const key = message;
 		const now = Date.now();
 		const lastTime = logCache.get(key) || 0;

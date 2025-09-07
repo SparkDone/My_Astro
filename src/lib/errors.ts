@@ -106,7 +106,11 @@ export async function retryWithBackoff<T>(
 		}
 	}
 
-	throw lastError!;
+	if (lastError) {
+		throw lastError;
+	}
+
+	throw new Error("Unknown error occurred during retry");
 }
 
 /**

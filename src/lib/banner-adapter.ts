@@ -38,9 +38,21 @@ export async function getHomeBannersFromStrapi(): Promise<BannerImage[]> {
 		}
 
 		const banners = response.data.home_banners
-			.filter((banner: any) => banner.isActive !== false) // 只获取激活的Banner
-			.sort((a: any, b: any) => (a.order || 0) - (b.order || 0)) // 按排序字段排序
-			.map((banner: any) => adaptBannerData(banner)); // 转换数据格式
+			.filter((banner: { isActive?: boolean }) => banner.isActive !== false) // 只获取激活的Banner
+			.sort(
+				(a: { order?: number }, b: { order?: number }) =>
+					(a.order || 0) - (b.order || 0),
+			) // 按排序字段排序
+			.map(
+				(banner: {
+					image?: { url?: string; alternativeText?: string };
+					title?: string;
+					description?: string;
+					link?: string;
+					order?: number;
+					isActive?: boolean;
+				}) => adaptBannerData(banner),
+			); // 转换数据格式
 
 		return banners;
 	} catch (error) {
@@ -64,7 +76,8 @@ export async function isCategoryBannerEnabled(
 
 		// 查找匹配的分类
 		const category = response.data.find(
-			(cat: any) => cat.slug === categorySlug || cat.name === categorySlug,
+			(cat: { slug?: string; name?: string }) =>
+				cat.slug === categorySlug || cat.name === categorySlug,
 		);
 
 		return category?.enable_banner !== false; // 默认启用
@@ -95,7 +108,18 @@ export async function getCategoryBannersFromStrapi(
 
 		// 查找匹配的分类
 		const category = response.data.find(
-			(cat: any) => cat.slug === categorySlug || cat.name === categorySlug,
+			(cat: {
+				slug?: string;
+				name?: string;
+				banners?: Array<{
+					image?: { url?: string; alternativeText?: string };
+					title?: string;
+					description?: string;
+					link?: string;
+					order?: number;
+					isActive?: boolean;
+				}>;
+			}) => cat.slug === categorySlug || cat.name === categorySlug,
 		);
 
 		if (!category?.banners || !Array.isArray(category.banners)) {
@@ -103,9 +127,21 @@ export async function getCategoryBannersFromStrapi(
 		}
 
 		const banners = category.banners
-			.filter((banner: any) => banner.isActive !== false) // 只获取激活的Banner
-			.sort((a: any, b: any) => (a.order || 0) - (b.order || 0)) // 按排序字段排序
-			.map((banner: any) => adaptBannerData(banner)); // 转换数据格式
+			.filter((banner: { isActive?: boolean }) => banner.isActive !== false) // 只获取激活的Banner
+			.sort(
+				(a: { order?: number }, b: { order?: number }) =>
+					(a.order || 0) - (b.order || 0),
+			) // 按排序字段排序
+			.map(
+				(banner: {
+					image?: { url?: string; alternativeText?: string };
+					title?: string;
+					description?: string;
+					link?: string;
+					order?: number;
+					isActive?: boolean;
+				}) => adaptBannerData(banner),
+			); // 转换数据格式
 
 		return banners;
 	} catch (error) {
@@ -117,7 +153,14 @@ export async function getCategoryBannersFromStrapi(
 /**
  * 将Strapi Banner数据转换为前端BannerImage格式
  */
-function adaptBannerData(strapiData: any): BannerImage {
+function adaptBannerData(strapiData: {
+	image?: { url?: string; alternativeText?: string };
+	title?: string;
+	description?: string;
+	link?: string;
+	order?: number;
+	isActive?: boolean;
+}): BannerImage {
 	// 使用图片适配器处理URL
 	const imageUrl = strapiData.image?.url
 		? adaptImageUrl(strapiData.image.url)

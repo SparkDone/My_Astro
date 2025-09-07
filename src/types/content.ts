@@ -109,7 +109,7 @@ export interface ContentStats {
 }
 
 // API响应类型
-export interface APIResponse<T = any> {
+export interface APIResponse<T = unknown> {
 	success: boolean;
 	data?: T;
 	error?: string;
@@ -118,7 +118,7 @@ export interface APIResponse<T = any> {
 }
 
 // Strapi响应类型
-export interface StrapiResponse<T = any> {
+export interface StrapiResponse<T = unknown> {
 	data: T;
 	meta?: {
 		pagination?: {
@@ -189,7 +189,7 @@ export interface ContentManagerOptions {
 }
 
 // 缓存条目类型
-export interface CacheEntry<T = any> {
+export interface CacheEntry<T = unknown> {
 	data: T;
 	timestamp: number;
 	ttl: number;
@@ -212,7 +212,7 @@ export interface CacheStats {
 export interface ErrorInfo {
 	code: string;
 	message: string;
-	details?: any;
+	details?: unknown;
 	timestamp: string;
 	context?: string;
 }
@@ -271,27 +271,49 @@ export interface AppConfig {
 }
 
 // 类型守卫函数
-export function isPostEntry(entry: any): entry is PostEntry {
+export function isPostEntry(entry: unknown): entry is PostEntry {
 	return (
 		entry &&
-		typeof entry.id === "string" &&
-		typeof entry.slug === "string" &&
-		entry.data &&
-		typeof entry.data.title === "string"
+		typeof entry === "object" &&
+		entry !== null &&
+		"id" in entry &&
+		"slug" in entry &&
+		"data" in entry &&
+		typeof (entry as Record<string, unknown>).id === "string" &&
+		typeof (entry as Record<string, unknown>).slug === "string" &&
+		typeof (entry as Record<string, unknown>).data === "object"
 	);
 }
 
-export function isStrapiArticle(article: any): article is StrapiArticle {
+export function isStrapiArticle(article: unknown): article is StrapiArticle {
 	return (
 		article &&
-		typeof article.id === "number" &&
-		article.attributes &&
-		typeof article.attributes.title === "string"
+		typeof article === "object" &&
+		article !== null &&
+		"id" in article &&
+		"attributes" in article &&
+		typeof (article as Record<string, unknown>).id === "number" &&
+		typeof (article as Record<string, unknown>).attributes === "object" &&
+		(article as Record<string, unknown>).attributes !== null &&
+		"title" in
+			((article as Record<string, unknown>).attributes as Record<
+				string,
+				unknown
+			>) &&
+		typeof (
+			(article as Record<string, unknown>).attributes as Record<string, unknown>
+		).title === "string"
 	);
 }
 
-export function isAuthor(author: any): author is Author {
-	return author && typeof author.name === "string";
+export function isAuthor(author: unknown): author is Author {
+	return (
+		author &&
+		typeof author === "object" &&
+		author !== null &&
+		"name" in author &&
+		typeof (author as Record<string, unknown>).name === "string"
+	);
 }
 
 // 工具类型

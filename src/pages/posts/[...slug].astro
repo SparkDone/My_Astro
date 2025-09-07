@@ -48,9 +48,13 @@ if (!entry) {
 }
 
 // 处理不同的数据源（Astro Content Collection vs Strapi）
-let Content;
-let headings;
-let remarkPluginFrontmatter;
+let Content: unknown;
+let headings: Array<{ depth: number; text: string; slug: string }>;
+let remarkPluginFrontmatter: {
+	words: number;
+	minutes: number;
+	excerpt: string;
+};
 
 console.log("🔍 entry.render 存在吗?", !!entry.render);
 console.log("🔍 entry.body 内容:", `${entry.body?.substring(0, 100)}...`);
@@ -135,8 +139,9 @@ if (entry.render) {
 	// 从内容中提取标题信息
 	headings = [];
 	const headingRegex = /^(#{1,3})\s+(.+)$/gm;
-	let match;
-	while ((match = headingRegex.exec(content)) !== null) {
+	let match: RegExpExecArray | null;
+	match = headingRegex.exec(content);
+	while (match !== null) {
 		const depth = match[1].length;
 		const text = match[2].trim();
 		const slug = text
@@ -150,6 +155,7 @@ if (entry.render) {
 			text,
 			slug,
 		});
+		match = headingRegex.exec(content);
 	}
 	remarkPluginFrontmatter = {
 		words: readingTimeStats.words,
@@ -175,12 +181,17 @@ console.log("Author Debug in Article Page:", {
 });
 
 // 获取作者名称，处理不同的数据格式
-const getAuthorName = (author: any) => {
+const getAuthorName = (author: unknown): string => {
 	if (typeof author === "string") {
 		return author;
 	}
-	if (author && typeof author === "object" && author.name) {
-		return author.name;
+	if (
+		author &&
+		typeof author === "object" &&
+		author !== null &&
+		"name" in author
+	) {
+		return (author as { name: string }).name;
 	}
 	return profileConfig.name;
 };

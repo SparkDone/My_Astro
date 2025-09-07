@@ -6,7 +6,26 @@ import { contentManager } from "../lib/content-manager";
 import { getCategoryPageData } from "./unified-data-fetcher";
 
 // 内存缓存
-const categoryCache = new Map<string, any>();
+const categoryCache = new Map<
+	string,
+	{
+		posts: Array<{
+			id: string;
+			slug: string;
+			data: {
+				title: string;
+				description?: string;
+				published: Date;
+				cover?: string;
+				tags?: string[];
+				category?: string;
+			};
+		}>;
+		totalPosts: number;
+		hasMore: boolean;
+		nextPage?: number;
+	}
+>();
 const CACHE_DURATION = 5 * 60 * 1000; // 5分钟缓存
 const cacheTimestamps = new Map<string, number>();
 

@@ -6,7 +6,15 @@ import { Icon } from "astro-icon/components";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 
 // 获取友情链接数据
-let friendLinks: any[] = [];
+let friendLinks: Array<{
+	id: number;
+	name: string;
+	url: string;
+	description?: string;
+	logo?: string;
+	icon?: string;
+	is_featured?: boolean;
+}> = [];
 
 try {
 	// 使用配置中的Strapi URL

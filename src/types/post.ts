@@ -42,8 +42,8 @@ export interface PostEntry {
 	collection: "posts";
 	data: PostData;
 	render: () => Promise<{
-		Content: any;
-		headings: any[];
+		Content: unknown;
+		headings: Array<{ depth: number; text: string; slug: string }>;
 		remarkPluginFrontmatter: {
 			words: number;
 			minutes: number;

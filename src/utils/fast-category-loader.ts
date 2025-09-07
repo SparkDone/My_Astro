@@ -5,7 +5,26 @@
 import { contentManager } from "../lib/content-manager";
 
 // 全局缓存
-const globalCategoryCache = new Map<string, any>();
+const globalCategoryCache = new Map<
+	string,
+	{
+		posts: Array<{
+			id: string;
+			slug: string;
+			data: {
+				title: string;
+				description?: string;
+				published: Date;
+				cover?: string;
+				tags?: string[];
+				category?: string;
+			};
+		}>;
+		totalPosts: number;
+		hasMore: boolean;
+		nextPage?: number;
+	}
+>();
 const globalCacheTimestamps = new Map<string, number>();
 const CACHE_DURATION = import.meta.env.DEV ? 1 * 1000 : 10 * 60 * 1000; // 开发环境1秒，生产环境10分钟缓存
 

@@ -12,7 +12,7 @@ interface CacheEntry<T> {
 }
 
 class MemoryCache {
-	private cache = new Map<string, CacheEntry<any>>();
+	private cache = new Map<string, CacheEntry<unknown>>();
 	private maxSize: number;
 	private defaultTTL: number;
 
@@ -188,7 +188,7 @@ if (typeof setInterval !== "undefined") {
 // 生成缓存键的工具函数
 export function generateCacheKey(
 	prefix: string,
-	params: Record<string, any> = {},
+	params: Record<string, unknown> = {},
 ): string {
 	const sortedParams = Object.keys(params)
 		.sort()
