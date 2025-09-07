@@ -12,13 +12,17 @@ declare global {
 			}>;
 		};
 		// Layout and theme management
-		customScrollbarInitialized: boolean;
-		layoutInitialized: boolean;
-		swupInitializing: boolean;
-		universalLayoutSwitcherInstance: unknown;
-		initUniversalLayoutSwitcher: (options?: unknown) => void;
-		forceReinitLayoutSwitcher: () => void;
-		reinitThemeSwitch: () => void;
+		customScrollbarInitialized?: boolean;
+		layoutInitialized?: boolean;
+		swupInitializing?: boolean;
+		universalLayoutSwitcherInstance?: unknown;
+		initUniversalLayoutSwitcher?: (options?: { defaultLayout?: string; targetSelector?: string }) => void;
+		forceReinitLayoutSwitcher?: () => void;
+		reinitThemeSwitch?: () => void;
+		// MainGridLayout.astro 中使用的自定义属性
+		isAutoCollapsed?: boolean;
+		wasInSmartMode?: boolean;
+		lastLoggedWidth?: number;
 	}
 }
 

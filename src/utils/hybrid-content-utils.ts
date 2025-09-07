@@ -63,7 +63,10 @@ export type Tag = {
 
 // 获取标签列表（使用统一内容管理器）
 export async function getTagList(): Promise<Tag[]> {
-	logger.info("🔍 getTagList 被调用");
+	// 调试信息（仅在详细调试模式下显示）
+	if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
+		logger.info("🔍 getTagList 被调用");
+	}
 
 	try {
 		const posts = await contentManager.getSortedPosts();
@@ -85,7 +88,10 @@ export async function getTagList(): Promise<Tag[]> {
 			}))
 			.sort((a, b) => b.count - a.count);
 
-		logger.success(`✅ 获取到 ${tags.length} 个标签`);
+		// 调试信息（仅在详细调试模式下显示）
+		if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
+			logger.success(`✅ 获取到 ${tags.length} 个标签`);
+		}
 		return tags;
 	} catch (error) {
 		logger.error("❌ 获取标签列表失败:", error);
@@ -102,7 +108,10 @@ export type Category = {
 
 // 获取分类列表（合并CMS和本地文章中的所有分类）
 export async function getCategoryList(): Promise<Category[]> {
-	logger.info("🔍 getCategoryList 被调用");
+	// 调试信息（仅在详细调试模式下显示）
+	if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
+		logger.info("🔍 getCategoryList 被调用");
+	}
 
 	try {
 		// 首先获取所有文章来统计分类文章数量
@@ -139,9 +148,12 @@ export async function getCategoryList(): Promise<Category[]> {
 					// 建立名称到slug的映射，优先使用slug，如果没有则使用名称
 					categorySlugMap.set(category.name, category.slug || category.name);
 				});
-				logger.info(
-					`📋 从Strapi获取到 ${strapiResponse.data.length} 个分类定义`,
-				);
+				// 调试信息（仅在详细调试模式下显示）
+				if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
+					logger.info(
+						`📋 从Strapi获取到 ${strapiResponse.data.length} 个分类定义`,
+					);
+				}
 			}
 		} catch (strapiError) {
 			logger.warn(
@@ -170,9 +182,12 @@ export async function getCategoryList(): Promise<Category[]> {
 				return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
 			});
 
-		logger.success(
-			`✅ 合并获取到 ${categories.length} 个分类（文章中: ${categoryCountMap.size} 个）`,
-		);
+		// 调试信息（仅在详细调试模式下显示）
+		if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
+			logger.success(
+				`✅ 合并获取到 ${categories.length} 个分类（文章中: ${categoryCountMap.size} 个）`,
+			);
+		}
 		return categories;
 	} catch (error) {
 		logger.error("❌ 获取分类列表失败:", error);

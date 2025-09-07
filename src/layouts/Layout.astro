@@ -46,8 +46,8 @@ const strapiSiteTitle = integratedSiteConfig.title;
 const strapiSiteSubtitle = integratedSiteConfig.subtitle;
 const strapiSiteDescription = integratedSiteConfig.description || description;
 
-// 调试信息（仅开发环境且非构建模式）
-if (import.meta.env.DEV && !import.meta.env.PROD) {
+// 调试信息（仅在详细调试模式下显示）
+if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
 	console.log("🔧 Layout.astro 配置调试:", {
 		integratedSiteConfig,
 		strapiSiteTitle,

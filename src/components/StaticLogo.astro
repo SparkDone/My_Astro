@@ -4,8 +4,8 @@ import { getLogoConfig } from "../lib/config-integration";
 // 从Strapi获取LOGO配置
 const logoConfig = await getLogoConfig();
 
-// 调试信息（仅开发环境且非构建模式）
-if (import.meta.env.DEV && !import.meta.env.PROD) {
+// 调试信息（仅在详细调试模式下显示）
+if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
 	console.log("🖼️ StaticLogo 配置调试:", logoConfig);
 }
 ---

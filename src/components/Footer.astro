@@ -9,8 +9,12 @@ const currentYear = new Date().getFullYear();
 // 获取首页设置
 const indexSettings = await getIndexSettings();
 const siteTitle = indexSettings?.data?.site_title || profileConfig.name;
-console.log("🏷️ Index Settings:", indexSettings);
-console.log("🏷️ Site Title:", siteTitle);
+
+// 调试信息（仅在详细调试模式下显示）
+if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
+	console.log("🏷️ Index Settings:", indexSettings);
+	console.log("🏷️ Site Title:", siteTitle);
+}
 ---
 
 <!-- 简洁的Footer区域 -->
