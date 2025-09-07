@@ -125,24 +125,24 @@ const imageStyle = `object-position: ${position}`;
   // 处理图片加载完成事件
   document.addEventListener('DOMContentLoaded', function() {
     // 处理普通img标签
-    const images = document.querySelectorAll('img:not(.astro-image)');
-    images.forEach(img => {
+    const images = document.querySelectorAll('img:not(.astro-image)') as NodeListOf<HTMLImageElement>;
+    images.forEach((img: HTMLImageElement) => {
       if (img.complete) {
         img.parentElement?.classList.add('image-loaded');
       } else {
-        img.addEventListener('load', function() {
+        img.addEventListener('load', function(this: HTMLImageElement) {
           this.parentElement?.classList.add('image-loaded');
         });
       }
     });
     
     // 处理Astro Image组件生成的图片
-    const astroImages = document.querySelectorAll('.astro-image');
-    astroImages.forEach(img => {
+    const astroImages = document.querySelectorAll('.astro-image') as NodeListOf<HTMLImageElement>;
+    astroImages.forEach((img: HTMLImageElement) => {
       if (img.complete) {
         img.parentElement?.classList.add('image-loaded');
       } else {
-        img.addEventListener('load', function() {
+        img.addEventListener('load', function(this: HTMLImageElement) {
           this.parentElement?.classList.add('image-loaded');
         });
       }
@@ -153,12 +153,13 @@ const imageStyle = `object-position: ${position}`;
       mutations.forEach(function(mutation) {
         mutation.addedNodes.forEach(function(node) {
           if (node.nodeType === 1) { // Element node
-            const images = node.querySelectorAll ? node.querySelectorAll('img') : [];
-            images.forEach(img => {
+            const element = node as Element;
+            const images = element.querySelectorAll ? element.querySelectorAll('img') as NodeListOf<HTMLImageElement> : [];
+            images.forEach((img: HTMLImageElement) => {
               if (img.complete) {
                 img.parentElement?.classList.add('image-loaded');
               } else {
-                img.addEventListener('load', function() {
+                img.addEventListener('load', function(this: HTMLImageElement) {
                   this.parentElement?.classList.add('image-loaded');
                 });
               }

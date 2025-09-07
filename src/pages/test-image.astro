@@ -66,20 +66,25 @@ const testImageUrl = `${strapiUrl}/uploads/519556628d594f0db15a565f1d4598d3_6830
 
   <script>
     // JavaScript测试图片加载
+    const strapiUrl = 'http://localhost:1337';
     const testUrl = `${strapiUrl}/uploads/519556628d594f0db15a565f1d4598d3_6830c9816e.jpeg`;
     const resultDiv = document.getElementById('js-test-result');
     
     const img = new Image();
-    img.onload = function() {
-      resultDiv.innerHTML = `
-        <p style="color: green;">✅ JavaScript加载成功</p>
-        <p>尺寸: ${this.naturalWidth} x ${this.naturalHeight}</p>
-        <img src="${testUrl}" alt="JS加载的图片" class="test-image success" />
-      `;
+    img.onload = function(this: HTMLImageElement) {
+      if (resultDiv) {
+        resultDiv.innerHTML = `
+          <p style="color: green;">✅ JavaScript加载成功</p>
+          <p>尺寸: ${this.naturalWidth} x ${this.naturalHeight}</p>
+          <img src="${testUrl}" alt="JS加载的图片" class="test-image success" />
+        `;
+      }
       console.log('✅ JavaScript图片加载成功:', testUrl);
     };
     img.onerror = function() {
-      resultDiv.innerHTML = '<p style="color: red;">❌ JavaScript加载失败</p>';
+      if (resultDiv) {
+        resultDiv.innerHTML = '<p style="color: red;">❌ JavaScript加载失败</p>';
+      }
       console.error('❌ JavaScript图片加载失败:', testUrl);
     };
     img.src = testUrl;

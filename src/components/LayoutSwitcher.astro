@@ -53,5 +53,7 @@ const {
 
 <script>
   // 引入布局切换器脚本
-  import('../scripts/layout-switcher.js');
+  import('../scripts/layout-switcher.js').catch(() => {
+    // 忽略导入错误，脚本可能不存在
+  });
 </script>
