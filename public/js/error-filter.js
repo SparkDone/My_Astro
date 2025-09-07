@@ -3,9 +3,7 @@
  * 过滤Chrome扩展和其他不相关的错误
  */
 
-(function() {
-    'use strict';
-    
+(() => {
     // 检查是否为开发环境
     const isDev = window.location.hostname === 'localhost' || 
                   window.location.hostname === '127.0.0.1' ||
@@ -97,14 +95,14 @@
     };
     
     // 添加事件监听器版本（作为备用）
-    window.addEventListener('error', function(event) {
+    window.addEventListener('error', (event) => {
         if (isExtensionError(event.message, event.filename, event.error)) {
             event.stopPropagation();
             event.preventDefault();
         }
     }, true);
     
-    window.addEventListener('unhandledrejection', function(event) {
+    window.addEventListener('unhandledrejection', (event) => {
         if (isExtensionError(null, null, event.reason)) {
             event.stopPropagation();
             event.preventDefault();
@@ -115,10 +113,8 @@
     if (!isDev) {
         // 生产环境下减少控制台输出
         const originalConsoleLog = console.log;
-        const originalConsoleInfo = console.info;
-        const originalConsoleDebug = console.debug;
         
-        console.log = function(...args) {
+        console.log = (...args) => {
             // 只显示重要的日志
             const message = args.join(' ');
             if (message.includes('✅') || message.includes('❌') || message.includes('⚠️')) {
@@ -126,11 +122,11 @@
             }
         };
         
-        console.info = function(...args) {
+        console.info = () => {
             // 生产环境下静默info日志
         };
         
-        console.debug = function(...args) {
+        console.debug = () => {
             // 生产环境下静默debug日志
         };
     }

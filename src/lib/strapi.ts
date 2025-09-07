@@ -96,7 +96,7 @@ export interface StrapiArticle {
 		caption?: string;
 		width: number;
 		height: number;
-		formats?: any;
+		formats?: Record<string, unknown>;
 		hash: string;
 		ext: string;
 		mime: string;
@@ -104,7 +104,7 @@ export interface StrapiArticle {
 		url: string;
 		previewUrl?: string;
 		provider: string;
-		provider_metadata?: any;
+		provider_metadata?: Record<string, unknown>;
 		createdAt: string;
 		updatedAt: string;
 	} | null;
@@ -177,7 +177,7 @@ export interface StrapiResponse<T> {
 async function fetchAPI(
 	endpoint: string,
 	options: RequestInit = {},
-): Promise<any> {
+): Promise<Record<string, unknown>> {
 	const url = `${API_BASE}${endpoint}`;
 
 	// 创建AbortController用于超时控制
@@ -532,7 +532,7 @@ export async function searchArticles(
 }
 
 // 获取主要作者信息（用于侧边栏显示）
-export async function getPrimaryAuthor(): Promise<any> {
+export async function getPrimaryAuthor(): Promise<Record<string, unknown>> {
 	try {
 		const result = await fetchAPI(
 			"/authors?populate=avatar&sort=id:asc&pagination[limit]=1",
@@ -583,7 +583,7 @@ export async function getPrimaryAuthor(): Promise<any> {
 }
 
 // 获取友情链接
-export async function getFriendLinks(): Promise<StrapiResponse<any[]>> {
+export async function getFriendLinks(): Promise<StrapiResponse<Record<string, unknown>[]>> {
 	const cacheKey = generateCacheKey("friend-links");
 
 	return apiCache.get(

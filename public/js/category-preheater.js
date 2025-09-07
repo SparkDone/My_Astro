@@ -2,9 +2,7 @@
  * 分类预热器 - 客户端预热即将访问的分类
  */
 
-(function() {
-  'use strict';
-
+(() => {
   // 防止重复加载
   if (window.categoryPreheaterLoaded) {
     return;
@@ -68,9 +66,9 @@ function initializeCategoryPreheater() {
       // 延迟200ms开始预热，避免快速划过时的无效预热
       hoverTimer = setTimeout(() => {
         const href = link.getAttribute('href');
-        const match = href.match(/\/categories\/([^\/]+)/);
+        const match = href.match(/\/categories\/([^/]+)/);
         
-        if (match && match[1]) {
+        if (match?.[1]) {
           const categorySlug = decodeURIComponent(match[1]);
           preheatCategory(categorySlug);
         }
@@ -88,9 +86,9 @@ function initializeCategoryPreheater() {
     // 移动端触摸预热
     link.addEventListener('touchstart', () => {
       const href = link.getAttribute('href');
-      const match = href.match(/\/categories\/([^\/]+)/);
+      const match = href.match(/\/categories\/([^/]+)/);
       
-      if (match && match[1]) {
+      if (match?.[1]) {
         const categorySlug = decodeURIComponent(match[1]);
         preheatCategory(categorySlug);
       }
@@ -118,7 +116,7 @@ async function preheatPopularCategories() {
       .slice(0, 3) // 只预热前3个热门分类
       .map(link => {
         const href = link.getAttribute('href');
-        const match = href.match(/\/categories\/([^\/]+)/);
+        const match = href.match(/\/categories\/([^/]+)/);
         return match ? decodeURIComponent(match[1]) : null;
       })
       .filter(Boolean);

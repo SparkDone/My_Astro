@@ -11,6 +11,14 @@ declare global {
 				}>;
 			}>;
 		};
+		// Layout.astro 中使用的自定义属性
+		customScrollbarInitialized?: boolean;
+		layoutInitialized?: boolean;
+		swupInitializing?: boolean;
+		universalLayoutSwitcherInstance?: unknown;
+		initUniversalLayoutSwitcher?: (options?: { defaultLayout?: string; targetSelector?: string }) => void;
+		forceReinitLayoutSwitcher?: () => void;
+		reinitThemeSwitch?: () => void;
 	}
 }
 

@@ -7,7 +7,7 @@ import type { APIRoute } from "astro";
 
 export const prerender = false; // 动态API端点
 
-export const GET: APIRoute = async ({ params, request }) => {
+export const GET: APIRoute = async ({ params }) => {
 	try {
 		const { path } = params;
 
