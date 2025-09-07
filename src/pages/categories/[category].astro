@@ -269,6 +269,12 @@ const jsonLd = {
   <!-- 为 SwupA11yPlugin 添加主标题 -->
   <h1 class="sr-only">分类: {categoryDisplayName}</h1>
   
+  <!-- 分类页面标题 -->
+  <div class="category-page-header">
+    <h1 class="category-title">{categoryDisplayName}</h1>
+    <p class="category-subtitle">共 {categoryPosts.length} 篇文章</p>
+  </div>
+  
   {page.data.length > 0 ? (
     <>
       <!-- Banner轮播 - 条件渲染 -->
@@ -309,6 +315,12 @@ const jsonLd = {
     </>
   ) : (
     <div class="empty-category-state">
+      <!-- 空分类状态标题 -->
+      <div class="category-page-header">
+        <h1 class="category-title">{categoryDisplayName}</h1>
+        <p class="category-subtitle">该分类暂无文章</p>
+      </div>
+      
       <div class="empty-category-content">
         <div class="empty-category-icon">
           <svg class="w-16 h-16 text-gray-400 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -326,7 +338,7 @@ const jsonLd = {
             </svg>
             返回首页
           </a>
-          <a href="/categories/" class="empty-category-btn-secondary">
+          <a href="/archive/" class="empty-category-btn-secondary">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
             </svg>
