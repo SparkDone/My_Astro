@@ -71,11 +71,11 @@ const testImageUrl = `${strapiUrl}/uploads/519556628d594f0db15a565f1d4598d3_6830
     const resultDiv = document.getElementById('js-test-result');
     
     const img = new Image();
-    img.onload = function(this: HTMLImageElement) {
+    img.onload = function() {
       if (resultDiv) {
         resultDiv.innerHTML = `
           <p style="color: green;">✅ JavaScript加载成功</p>
-          <p>尺寸: ${this.naturalWidth} x ${this.naturalHeight}</p>
+          <p>尺寸: ${img.naturalWidth} x ${img.naturalHeight}</p>
           <img src="${testUrl}" alt="JS加载的图片" class="test-image success" />
         `;
       }

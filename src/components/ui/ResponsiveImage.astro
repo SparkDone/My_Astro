@@ -171,7 +171,7 @@ const containerClasses = [
       if (img.tagName === 'IMG' && img.classList.contains('responsive-image')) {
         img.classList.add('loaded');
         // 移除占位符
-        const placeholder = img.parentElement?.querySelector('.skeleton-placeholder, .blur-placeholder');
+        const placeholder = img.parentElement?.querySelector('.skeleton-placeholder, .blur-placeholder') as HTMLElement;
         if (placeholder) {
           placeholder.style.opacity = '0';
           setTimeout(() => placeholder.remove(), 300);
