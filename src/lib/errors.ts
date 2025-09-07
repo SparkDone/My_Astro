@@ -80,7 +80,7 @@ export async function retryWithBackoff<T>(
 	maxRetries = 3,
 	baseDelay = 1000,
 ): Promise<T> {
-	let lastError: Error;
+	let lastError: Error | undefined;
 
 	for (let attempt = 0; attempt <= maxRetries; attempt++) {
 		try {

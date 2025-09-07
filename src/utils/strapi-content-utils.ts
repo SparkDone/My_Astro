@@ -51,7 +51,7 @@ export async function getPostBySlug(slug: string): Promise<PostEntry | null> {
 export async function getAllPostSlugs(): Promise<string[]> {
 	try {
 		const response = await getPublishedArticles();
-		return response.data.map((article) => article.attributes.slug);
+		return response.data.map((article) => article.slug);
 	} catch (error) {
 		console.error("Error fetching post slugs from Strapi:", error);
 		return [];

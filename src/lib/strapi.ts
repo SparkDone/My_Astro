@@ -31,6 +31,23 @@ export interface StrapiCategory {
 		height: number;
 	};
 	banner_position?: "top" | "center" | "bottom";
+	// 添加缺失的属性
+	enable_banner?: boolean;
+	banners?: Array<{
+		id: number;
+		title?: string;
+		subtitle?: string;
+		description?: string;
+		link?: string;
+		order?: number;
+		isActive?: boolean;
+		textColor?: string;
+		textColorCustom?: string;
+		image?: {
+			url?: string;
+			alternativeText?: string;
+		};
+	}>;
 }
 
 export interface StrapiIndex {
@@ -52,6 +69,23 @@ export interface StrapiIndex {
 	};
 	banner_position?: "top" | "center" | "bottom";
 	banner_credit_enable?: boolean;
+	// 添加缺失的属性
+	enable_home_banner?: boolean;
+	home_banners?: Array<{
+		id: number;
+		title?: string;
+		subtitle?: string;
+		description?: string;
+		link?: string;
+		order?: number;
+		isActive?: boolean;
+		textColor?: string;
+		textColorCustom?: string;
+		image?: {
+			url?: string;
+			alternativeText?: string;
+		};
+	}>;
 	banner_credit_text?: string;
 	banner_credit_url?: string;
 	show_author_section?: boolean;
@@ -77,6 +111,46 @@ export interface StrapiTag {
 	slug: string;
 	description?: string;
 	color: string;
+}
+
+// 作者数据类型
+export interface AuthorData {
+	id: number;
+	name: string;
+	slug: string;
+	email?: string;
+	bio?: string;
+	website?: string;
+	github?: string;
+	twitter?: string;
+	linkedin?: string;
+	avatar?: Array<{
+		id: number;
+		name: string;
+		url: string;
+		width: number;
+		height: number;
+	}>;
+	createdAt: string;
+	updatedAt: string;
+}
+
+// 友情链接数据类型
+export interface FriendLinkData {
+	id: number;
+	name: string;
+	url: string;
+	description?: string;
+	logo?: {
+		id: number;
+		name: string;
+		url: string;
+		width: number;
+		height: number;
+	};
+	sort_order?: number;
+	createdAt: string;
+	updatedAt: string;
 }
 
 // Strapi v5 扁平化数据结构
@@ -186,10 +260,10 @@ export interface StrapiResponse<T> {
 }
 
 // API 请求函数，支持认证、超时和错误处理
-async function fetchAPI(
+async function fetchAPI<T = unknown>(
 	endpoint: string,
 	options: RequestInit = {},
-): Promise<unknown> {
+): Promise<T> {
 	const url = `${API_BASE}${endpoint}`;
 
 	// 创建AbortController用于超时控制
@@ -234,7 +308,7 @@ async function fetchAPI(
 							meta: {
 								pagination: { page: 1, pageSize: 25, pageCount: 0, total: 0 },
 							},
-						};
+						} as T;
 					}
 					if (endpoint.includes("/categories")) {
 						return {
@@ -242,10 +316,10 @@ async function fetchAPI(
 							meta: {
 								pagination: { page: 1, pageSize: 25, pageCount: 0, total: 0 },
 							},
-						};
+						} as T;
 					}
 					if (endpoint.includes("/index")) {
-						return { data: null };
+						return { data: null } as T;
 					}
 					if (endpoint.includes("/authors")) {
 						return {
@@ -253,9 +327,9 @@ async function fetchAPI(
 							meta: {
 								pagination: { page: 1, pageSize: 25, pageCount: 0, total: 0 },
 							},
-						};
+						} as T;
 					}
-					return { data: null };
+					return { data: null } as T;
 				}
 
 				// 生产环境仍然抛出错误
@@ -301,14 +375,14 @@ export async function getAllArticles(): Promise<
 	StrapiResponse<StrapiArticle[]>
 > {
 	if (!config.features.enableRetry) {
-		return fetchAPI(
+		return fetchAPI<StrapiResponse<StrapiArticle[]>>(
 			`${API_ENDPOINTS.articles}?populate[0]=image&populate[1]=category&populate[2]=tags&populate[3]=author.avatar&sort=published:desc`,
 		);
 	}
 
 	return retryWithBackoff(
 		async () => {
-			return fetchAPI(
+			return fetchAPI<StrapiResponse<StrapiArticle[]>>(
 				`${API_ENDPOINTS.articles}?populate[0]=image&populate[1]=category&populate[2]=tags&populate[3]=author.avatar&sort=published:desc`,
 			);
 		},
@@ -326,10 +400,9 @@ export async function getPublishedArticles(): Promise<
 	return apiCache.get(cacheKey, async () => {
 		const fetchFunction = async () => {
 			// 临时包含草稿文章以便测试（后续可以改回）
-			const _isDev = import.meta.env.DEV;
 			const draftFilter = ""; // 临时移除草稿过滤
 
-			const result = await fetchAPI(
+			const result = await fetchAPI<StrapiResponse<StrapiArticle[]>>(
 				`${API_ENDPOINTS.articles}?populate[0]=image&populate[1]=category&populate[2]=tags&populate[3]=author.avatar${draftFilter}&sort=published:desc`,
 			);
 
@@ -371,7 +444,7 @@ export async function getArticleBySlug(
 ): Promise<StrapiResponse<StrapiArticle[]>> {
 	// 添加时间戳参数来破坏缓存，确保获取最新数据
 	const timestamp = Date.now();
-	return fetchAPI(
+	return fetchAPI<StrapiResponse<StrapiArticle[]>>(
 		`/articles?populate[0]=image&populate[1]=category&populate[2]=tags&populate[3]=author.avatar&filters[slug][$eq]=${slug}&_t=${timestamp}`,
 	);
 }
@@ -387,10 +460,9 @@ export async function getArticlesByCategory(
 		async () => {
 			const fetchFunction = async () => {
 				// 临时包含草稿文章以便测试（后续可以改回）
-				const _isDev = import.meta.env.DEV;
 				const draftFilter = ""; // 临时移除草稿过滤
 
-				return fetchAPI(
+				return fetchAPI<StrapiResponse<StrapiArticle[]>>(
 					`/articles?populate[0]=image&populate[1]=category&populate[2]=tags&populate[3]=author.avatar&filters[category][$eq]=${category}${draftFilter}&sort=published:desc`,
 				);
 			};
@@ -414,10 +486,9 @@ export async function getArticlesByTag(
 	tag: string,
 ): Promise<StrapiResponse<StrapiArticle[]>> {
 	// 临时包含草稿文章以便测试（后续可以改回）
-	const _isDev = import.meta.env.DEV;
 	const draftFilter = ""; // 临时移除草稿过滤
 
-	return fetchAPI(
+	return fetchAPI<StrapiResponse<StrapiArticle[]>>(
 		`/articles?populate=*&filters[tags][$contains]=${tag}${draftFilter}&sort=published:desc`,
 	);
 }
@@ -432,7 +503,7 @@ export async function getAllCategories(): Promise<
 		cacheKey,
 		async () => {
 			const fetchFunction = async () => {
-				return fetchAPI(
+				return fetchAPI<StrapiResponse<StrapiCategory[]>>(
 					"/categories?populate[banners][populate]=image&sort=sortOrder:asc,name:asc",
 				);
 			};
@@ -458,12 +529,12 @@ export async function getCategoryBySlug(
 	const url = `/categories?filters[slug][$eq]=${encodeURIComponent(slug)}`;
 
 	try {
-		const result = await fetchAPI(url);
+		const result = await fetchAPI<StrapiResponse<StrapiCategory[]>>(url);
 
 		// 在客户端进行精确匹配，因为 Strapi 过滤器可能不够精确
 		if (result.data && result.data.length > 0) {
 			const exactMatch = result.data.filter(
-				(category) => category.slug === slug,
+				(category: StrapiCategory) => category.slug === slug,
 			);
 
 			return {
@@ -488,7 +559,7 @@ export async function getCategoryByName(
 	console.log(`📡 请求URL: ${url}`);
 
 	try {
-		const result = await fetchAPI(url);
+		const result = await fetchAPI<StrapiResponse<StrapiCategory[]>>(url);
 		console.log("✅ getCategoryByName 响应:", result);
 		return result;
 	} catch (error) {
@@ -504,7 +575,7 @@ export async function getIndexSettings(): Promise<StrapiResponse<StrapiIndex>> {
 		"/index?populate[0]=logo_light&populate[1]=logo_dark&populate[2]=home_banners.image";
 
 	try {
-		const result = await fetchAPI(url);
+		const result = await fetchAPI<StrapiResponse<StrapiIndex>>(url);
 
 		// 调试信息
 		if (import.meta.env.DEV) {
@@ -527,7 +598,7 @@ export async function getIndexSettings(): Promise<StrapiResponse<StrapiIndex>> {
 export async function getFeaturedArticles(): Promise<
 	StrapiResponse<StrapiArticle[]>
 > {
-	return fetchAPI(
+	return fetchAPI<StrapiResponse<StrapiArticle[]>>(
 		"/articles?populate=*&filters[featured][$eq]=true&filters[draft][$eq]=false&sort=published:desc",
 	);
 }
@@ -537,58 +608,27 @@ export async function searchArticles(
 	query: string,
 ): Promise<StrapiResponse<StrapiArticle[]>> {
 	const encodedQuery = encodeURIComponent(query);
-	return fetchAPI(
+	return fetchAPI<StrapiResponse<StrapiArticle[]>>(
 		`/articles?populate=*&filters[$or][0][title][$containsi]=${encodedQuery}&filters[$or][1][description][$containsi]=${encodedQuery}&filters[$or][2][content][$containsi]=${encodedQuery}&filters[draft][$eq]=false&sort=published:desc`,
 	);
 }
 
 // 获取主要作者信息（用于侧边栏显示）
-export async function getPrimaryAuthor(): Promise<{
-	id: number;
-	name: string;
-	email?: string;
-	avatar?: {
-		id: number;
-		name: string;
-		url: string;
-		width: number;
-		height: number;
-	};
-	bio?: string;
-	createdAt: string;
-	updatedAt: string;
-} | null> {
+export async function getPrimaryAuthor(): Promise<AuthorData | null> {
 	try {
-		const result = await fetchAPI(
-			"/authors?populate=avatar&sort=id:asc&pagination[limit]=1",
+		const result = await fetchAPI<StrapiResponse<AuthorData[]>>(
+			"/authors?populate=*&filters[publishedAt][$notNull]=true&sort=id:asc&pagination[limit]=1",
 		);
 		if (result.data && result.data.length > 0) {
 			const authorData = result.data[0]; // Strapi v5 扁平化结构
 
-			// 处理头像URL - Strapi v5结构，头像是数组
-			let avatarUrl = null;
-
-			if (
-				authorData.avatar &&
-				Array.isArray(authorData.avatar) &&
-				authorData.avatar.length > 0
-			) {
-				const avatar = authorData.avatar[0];
-
-				if (avatar.url.startsWith("/")) {
-					// 相对路径，需要添加浏览器可访问的Strapi URL
-					const strapiPublicUrl =
-						import.meta.env.STRAPI_PUBLIC_URL ||
-						import.meta.env.STRAPI_URL ||
-						"http://localhost:1337";
-					avatarUrl = `${strapiPublicUrl}${avatar.url}`;
-				} else {
-					// 绝对路径，直接使用
-					avatarUrl = avatar.url;
-				}
+			// DEV 调试：打印作者数据结构
+			if (import.meta.env.DEV) {
+				console.log("🧩 getPrimaryAuthor 原始数据:", authorData);
 			}
 
 			return {
+				id: authorData.id,
 				name: authorData.name,
 				slug: authorData.slug,
 				bio: authorData.bio,
@@ -597,7 +637,9 @@ export async function getPrimaryAuthor(): Promise<{
 				github: authorData.github,
 				twitter: authorData.twitter,
 				linkedin: authorData.linkedin,
-				avatar: avatarUrl,
+				avatar: authorData.avatar,
+				createdAt: authorData.createdAt,
+				updatedAt: authorData.updatedAt,
 			};
 		}
 		return null;
@@ -609,24 +651,7 @@ export async function getPrimaryAuthor(): Promise<{
 
 // 获取友情链接
 export async function getFriendLinks(): Promise<
-	StrapiResponse<
-		Array<{
-			id: number;
-			name: string;
-			url: string;
-			description?: string;
-			logo?: {
-				id: number;
-				name: string;
-				url: string;
-				width: number;
-				height: number;
-			};
-			sort_order?: number;
-			createdAt: string;
-			updatedAt: string;
-		}>
-	>
+	StrapiResponse<FriendLinkData[]>
 > {
 	const cacheKey = generateCacheKey("friend-links");
 
@@ -634,7 +659,7 @@ export async function getFriendLinks(): Promise<
 		cacheKey,
 		async () => {
 			const fetchFunction = async () => {
-				return await fetchAPI(
+				return await fetchAPI<StrapiResponse<FriendLinkData[]>>(
 					`${API_ENDPOINTS.friendLinks}?populate=*&sort=sort_order:asc,createdAt:desc&filters[publishedAt][$notNull]=true`,
 				);
 			};
@@ -643,13 +668,12 @@ export async function getFriendLinks(): Promise<
 				return fetchFunction();
 			}
 
-			return retryWithBackoff(fetchFunction, {
-				maxRetries: config.api.maxRetries,
-				baseDelay: config.api.retryDelay,
-				maxDelay: config.api.maxRetryDelay,
-				backoffFactor: config.api.backoffFactor,
-			});
+			return retryWithBackoff(
+				fetchFunction,
+				config.api.maxRetries,
+				config.api.retryDelay,
+			);
 		},
-		config.cache.defaultTTL,
+		config.cache.ttl,
 	);
 }

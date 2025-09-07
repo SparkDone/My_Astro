@@ -102,7 +102,7 @@ const containerClasses = [
     class={imageClasses}
     data-fallback={fallback}
     onload="this.parentElement.classList.add('image-loaded'); this.parentElement.querySelector('.skeleton-placeholder, .blur-placeholder')?.remove(); this.classList.add('loaded')"
-    onerror="this.src = this.dataset.fallback; this.classList.add('error')"
+    onerror="this.setAttribute('src', this.dataset.fallback || this.src); this.classList.add('error')"
   />
 </div>
 

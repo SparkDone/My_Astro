@@ -4,9 +4,9 @@ import Footer from "@components/Footer.astro";
 import Navbar from "@components/Navbar.astro";
 import SideBar from "@components/widget/SideBar.astro";
 import type { MarkdownHeading } from "astro";
-import { Icon } from "astro-icon/components";
+// import { Icon } from "astro-icon/components"; // 未使用
 
-import { siteConfig } from "../config";
+// import { siteConfig } from "../config"; // 未使用
 // Banner常量导入已删除
 // import {
 //	BANNER_HEIGHT,
@@ -41,7 +41,7 @@ const {
 // const hasBannerCredit = showBanner && banner.creditText;
 // const hasBannerLink = showBanner && banner.creditUrl;
 
-const mainPanelTop = "5.5rem"; // 固定高度，不再依赖Banner
+// const mainPanelTop = "5.5rem"; // 固定高度，不再依赖Banner（未使用）
 ---
 
 <Layout title={title} description={description} lang={lang} setOGTypeArticle={setOGTypeArticle} author={author}>
@@ -133,16 +133,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 智能折叠状态：根据窗口宽度初始化
     const currentWidth = window.innerWidth;
-    window.isAutoCollapsed = currentWidth < 1500;
-    window.wasInSmartMode = currentWidth >= 1200 && currentWidth < 1500;
-    console.log('🎯 初始化智能侧边栏系统，窗口宽度:', currentWidth, '折叠状态:', window.isAutoCollapsed);
+    (window as any).isAutoCollapsed = currentWidth < 1500;
+    (window as any).wasInSmartMode = currentWidth >= 1200 && currentWidth < 1500;
+    console.log('🎯 初始化智能侧边栏系统，窗口宽度:', currentWidth, '折叠状态:', (window as any).isAutoCollapsed);
 
     // 打开侧边栏
     function openSidebar() {
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') console.log('📂 执行打开侧边栏');
-        sidebarOverlay.classList.remove('opacity-0', 'pointer-events-none');
-        sidebarOverlay.classList.add('opacity-100');
-        sidebarMobile.classList.remove('-translate-x-full');
+        sidebarOverlay?.classList.remove('opacity-0', 'pointer-events-none');
+        sidebarOverlay?.classList.add('opacity-100');
+        sidebarMobile?.classList.remove('-translate-x-full');
         document.body.style.overflow = 'hidden';
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') console.log('✅ 侧边栏已打开');
     }
@@ -150,9 +150,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // 关闭侧边栏
     function closeSidebar() {
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') console.log('📁 执行关闭侧边栏');
-        sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
-        sidebarOverlay.classList.remove('opacity-100');
-        sidebarMobile.classList.add('-translate-x-full');
+        sidebarOverlay?.classList.add('opacity-0', 'pointer-events-none');
+        sidebarOverlay?.classList.remove('opacity-100');
+        sidebarMobile?.classList.add('-translate-x-full');
         document.body.style.overflow = '';
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') console.log('✅ 侧边栏已关闭');
     }
@@ -166,9 +166,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (currentWidth >= 1200 && currentWidth < 1500) {
             // 1200-1500px：智能折叠模式
-            if (window.isAutoCollapsed) {
+            if ((window as any).isAutoCollapsed) {
                 // 当前是折叠状态，点击展开
-                window.isAutoCollapsed = false;
+                (window as any).isAutoCollapsed = false;
                 sidebarDesktop.classList.remove('sidebar-hidden');
                 sidebarDesktop.classList.add('sidebar-visible');
                 // 移除任何内联样式，让CSS类生效
@@ -193,15 +193,16 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('click', function(e) {
         const currentWidth = window.innerWidth;
 
-        if (currentWidth >= 1200 && currentWidth < 1500 && !window.isAutoCollapsed) {
+        if (currentWidth >= 1200 && currentWidth < 1500 && !(window as any).isAutoCollapsed) {
             // 检查点击的是否是侧边栏或其子元素
-            if (!sidebarDesktop.contains(e.target) && !mobileToggle.contains(e.target)) {
+            const target = e.target as Node;
+            if (!sidebarDesktop?.contains(target) && !mobileToggle?.contains(target)) {
                 console.log('🔒 点击空白区域，自动折叠侧边栏');
-                window.isAutoCollapsed = true;
-                sidebarDesktop.classList.remove('sidebar-visible');
-                sidebarDesktop.classList.add('sidebar-hidden');
-                sidebarDesktop.style.removeProperty('display');
-                mobileToggle.style.display = 'flex'; // 显示折叠按钮
+                (window as any).isAutoCollapsed = true;
+                sidebarDesktop?.classList.remove('sidebar-visible');
+                sidebarDesktop?.classList.add('sidebar-hidden');
+                sidebarDesktop?.style.removeProperty('display');
+                mobileToggle?.style.setProperty('display', 'flex'); // 显示折叠按钮
             }
         }
     });
@@ -210,16 +211,17 @@ document.addEventListener('DOMContentLoaded', function() {
     sidebarDesktop.addEventListener('click', function(e) {
         const currentWidth = window.innerWidth;
 
-        if (currentWidth >= 1200 && currentWidth < 1500 && !window.isAutoCollapsed) {
+        if (currentWidth >= 1200 && currentWidth < 1500 && !(window as any).isAutoCollapsed) {
             // 检查点击的是否是链接
-            if (e.target.tagName === 'A' || e.target.closest('a')) {
+            const target = e.target as HTMLElement;
+            if (target?.tagName === 'A' || target?.closest('a')) {
                 console.log('🔗 点击侧边栏链接，自动折叠');
                 setTimeout(() => {
-                    window.isAutoCollapsed = true;
-                    sidebarDesktop.classList.remove('sidebar-visible');
-                    sidebarDesktop.classList.add('sidebar-hidden');
-                    sidebarDesktop.style.removeProperty('display');
-                    mobileToggle.style.display = 'flex';
+                    (window as any).isAutoCollapsed = true;
+                    sidebarDesktop?.classList.remove('sidebar-visible');
+                    sidebarDesktop?.classList.add('sidebar-hidden');
+                    sidebarDesktop?.style.removeProperty('display');
+                    mobileToggle?.style.setProperty('display', 'flex');
                 }, 100); // 延迟一点让导航先执行
             }
         }
@@ -247,14 +249,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentWidth = window.innerWidth;
 
         // 只在开发环境且详细调试模式下输出日志
-        if ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.search.includes('debug=true') && Math.abs(currentWidth - (window.lastLoggedWidth || 0)) > 100) {
-            console.log(`🔍 窗口宽度: ${currentWidth}px, 当前折叠状态: ${window.isAutoCollapsed}, 智能模式标记: ${window.wasInSmartMode}`);
-            window.lastLoggedWidth = currentWidth;
+        if ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.search.includes('debug=true') && Math.abs(currentWidth - ((window as any).lastLoggedWidth || 0)) > 100) {
+            console.log(`🔍 窗口宽度: ${currentWidth}px, 当前折叠状态: ${(window as any).isAutoCollapsed}, 智能模式标记: ${(window as any).wasInSmartMode}`);
+            (window as any).lastLoggedWidth = currentWidth;
         }
 
         if (currentWidth >= 1500) {
             // ≥1500px：始终显示侧边栏，隐藏按钮
-            window.isAutoCollapsed = false;
+            (window as any).isAutoCollapsed = false;
             if (sidebarDesktop) {
                 sidebarDesktop.classList.remove('sidebar-hidden');
                 sidebarDesktop.classList.add('sidebar-visible');
@@ -277,43 +279,43 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (currentWidth >= 1200) {
             // 1200-1500px：智能折叠模式
             // 重要修复：进入智能模式时，如果之前不是智能模式，则重置为折叠状态
-            if (!window.wasInSmartMode) {
-                window.isAutoCollapsed = true;
-                window.wasInSmartMode = true;
+            if (!(window as any).wasInSmartMode) {
+                (window as any).isAutoCollapsed = true;
+                (window as any).wasInSmartMode = true;
                 if (window.location.hostname === 'localhost') {
                     console.log('🧠 进入智能折叠模式，重置为折叠状态');
                 }
             }
 
-            if (window.isAutoCollapsed) {
+            if ((window as any).isAutoCollapsed) {
                 // 折叠状态：隐藏侧边栏，显示按钮
-                sidebarDesktop.classList.remove('sidebar-visible');
-                sidebarDesktop.classList.add('sidebar-hidden');
-                sidebarDesktop.style.removeProperty('display');
-                mobileToggle.style.display = 'flex';
+                sidebarDesktop?.classList.remove('sidebar-visible');
+                sidebarDesktop?.classList.add('sidebar-hidden');
+                sidebarDesktop?.style.removeProperty('display');
+                mobileToggle?.style.setProperty('display', 'flex');
                 if (window.location.hostname === 'localhost') {
                     console.log('🔒 智能模式：侧边栏已折叠');
                 }
             } else {
                 // 展开状态：显示侧边栏，隐藏按钮
-                sidebarDesktop.classList.remove('sidebar-hidden');
-                sidebarDesktop.classList.add('sidebar-visible');
+                sidebarDesktop?.classList.remove('sidebar-hidden');
+                sidebarDesktop?.classList.add('sidebar-visible');
                 // 移除任何内联样式，让CSS类生效
-                sidebarDesktop.style.removeProperty('display');
-                mobileToggle.style.display = 'none';
+                sidebarDesktop?.style.removeProperty('display');
+                mobileToggle?.style.setProperty('display', 'none');
                 console.log('🔓 智能模式：侧边栏已展开');
             }
             if (sidebarOverlay) {
                 sidebarOverlay.style.display = 'none';
             }
             // 只在移动端侧边栏打开时才关闭
-            if (!sidebarMobile.classList.contains('-translate-x-full')) {
+            if (!sidebarMobile?.classList.contains('-translate-x-full')) {
                 closeSidebar();
             }
         } else {
             // <1200px：移动端模式
-            window.isAutoCollapsed = true;
-            window.wasInSmartMode = false;
+            (window as any).isAutoCollapsed = true;
+            (window as any).wasInSmartMode = false;
             if (sidebarDesktop) {
                 // 使用专用CSS类隐藏，保持fixed定位
                 sidebarDesktop.classList.remove('sidebar-visible');
@@ -342,12 +344,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 在大屏模式下，标记不在智能模式
         if (currentWidth >= 1500) {
-            window.wasInSmartMode = false;
+            (window as any).wasInSmartMode = false;
         }
     }
 
     // 优化的resize事件处理 - 立即响应 + 防抖优化
-    let resizeTimer;
+    let resizeTimer: number | undefined;
     let lastWidth = window.innerWidth;
 
     window.addEventListener('resize', function() {
@@ -374,7 +376,7 @@ document.addEventListener('DOMContentLoaded', function() {
             resizeTimer = setTimeout(() => {
                 updateSidebarDisplay();
                 lastWidth = window.innerWidth;
-            }, 150); // 增加防抖时间，减少频繁触发
+            }, 150) as unknown as number; // 增加防抖时间，减少频繁触发
         }
     });
 
@@ -391,7 +393,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 只在强制验证或调试模式下输出日志
         if (force || window.location.search.includes('debug=sidebar')) {
-            console.log(`🔧 状态验证 - 宽度:${currentWidth}px, 侧边栏可见:${isVisible}, 按钮可见:${buttonVisible}, 折叠状态:${window.isAutoCollapsed}`);
+            console.log(`🔧 状态验证 - 宽度:${currentWidth}px, 侧边栏可见:${isVisible}, 按钮可见:${buttonVisible}, 折叠状态:${(window as any).isAutoCollapsed}`);
         }
 
         // 检查状态是否正确
@@ -402,7 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!isVisible || buttonVisible) needsUpdate = true;
         } else if (currentWidth >= 1200) {
             // 智能模式：根据折叠状态
-            if (window.isAutoCollapsed) {
+            if ((window as any).isAutoCollapsed) {
                 if (isVisible || !buttonVisible) needsUpdate = true;
             } else {
                 if (!isVisible || buttonVisible) needsUpdate = true;

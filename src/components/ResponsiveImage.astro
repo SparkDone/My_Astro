@@ -12,7 +12,6 @@ export interface Props {
 	class?: string;
 	loading?: "lazy" | "eager";
 	sizes?: string;
-	quality?: number;
 }
 
 const {
@@ -23,7 +22,6 @@ const {
 	class: className = "",
 	loading = "lazy",
 	sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw",
-	quality = 80,
 } = Astro.props;
 
 // 生成不同尺寸的图片URL
@@ -114,6 +112,7 @@ const srcSet = generateSrcSet(src, width);
     decoding="async"
     onload="this.style.opacity='1'"
     style="opacity: 0;"
+    onerror="if(this.dataset && this.dataset.fallback){ this.setAttribute('src', this.dataset.fallback); } this.classList.add('error')"
   />
 </picture>
 

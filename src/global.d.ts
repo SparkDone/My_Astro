@@ -1,9 +1,14 @@
-import type { AstroIntegration } from "@swup/astro";
+export {};
 
 declare global {
+	// 允许直接导入 .svelte（无类型声明时）
+	declare module "*.svelte" {
+		const component: unknown;
+		export default component;
+	}
 	interface Window {
 		// type from '@swup/astro' is incorrect
-		swup: AstroIntegration;
+		swup: unknown;
 		pagefind: {
 			search: (query: string) => Promise<{
 				results: Array<{
@@ -27,6 +32,30 @@ declare global {
 		wasInSmartMode?: boolean;
 		lastLoggedWidth?: number;
 	}
+}
+
+// 为特定无类型 JS 模块提供最小声明
+declare module "@/scripts/article-sorter.js" {
+	export function sortArticlesWithFeatured(articles: unknown[]): unknown[];
+}
+
+declare module "*.js" {
+	const mod: unknown;
+	export default mod;
+}
+
+declare module "@/scripts/layout-switcher.js" {
+	const mod: unknown;
+	export default mod;
+}
+
+declare module "../scripts/layout-switcher.js" {
+	const mod: unknown;
+	export default mod;
+}
+
+declare module "../scripts/article-sorter.js" {
+	export function sortArticlesWithFeatured(articles: unknown[]): unknown[];
 }
 
 interface SearchResult {

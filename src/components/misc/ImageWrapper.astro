@@ -8,13 +8,20 @@ interface Props {
 	alt?: string;
 	position?: string;
 	basePath?: string;
+	fallback?: string;
 }
 
 import { Image } from "astro:assets";
 import { adaptImageUrlSync } from "../../utils/image-adapter";
-import { url } from "../../utils/url-utils";
 
-const { id, src, alt, position = "center", basePath = "/" } = Astro.props;
+const {
+	id,
+	src,
+	alt,
+	position = "center",
+	basePath = "/",
+	fallback = "",
+} = Astro.props;
 const className = Astro.props.class;
 
 // 确保 src 是字符串，如果不是则使用空字符串
@@ -29,7 +36,6 @@ const isLocal = !(
 	srcString.startsWith("https") ||
 	srcString.startsWith("data:")
 );
-const isPublic = srcString.startsWith("/");
 const isNetwork = srcString.startsWith("http") || srcString.startsWith("https");
 
 // TODO temporary workaround for images dynamic import
@@ -116,6 +122,8 @@ const imageStyle = `object-position: ${position}`;
         decoding={isBanner ? "sync" : "async"}
         crossorigin={isNetwork ? "anonymous" : undefined}
         referrerpolicy={isNetwork ? "no-referrer-when-downgrade" : undefined}
+        data-fallback={fallback}
+        onerror="if(this.dataset.fallback){ this.setAttribute('src', this.dataset.fallback); } this.parentElement.classList.add('image-loaded')"
         onload="this.parentElement.classList.add('image-loaded')"
     />}
 </div>

@@ -11,7 +11,7 @@ import { getHomeBannersFromStrapi } from "../lib/banner-adapter";
 import { getLayoutConfig, getSiteConfig } from "../lib/config-integration";
 import { contentManager } from "../lib/content-manager";
 import { preloadPopularCategories } from "../utils/category-preloader";
-import { preheatAllCategories } from "../utils/fast-category-loader";
+// import { preheatAllCategories } from "../utils/fast-category-loader";
 import {
 	getIndexPageData,
 	resetRequestCache,
@@ -34,22 +34,17 @@ const [indexPageData, firstPagePosts, bannerImages, layoutConfig] =
 		getLayoutConfig(),
 	]);
 
-// 异步预热所有分类（不阻塞页面渲染）
-Promise.all([
-	preloadPopularCategories().catch((error) => {
-		console.warn("⚠️ 预加载热门分类失败:", error);
-	}),
-	preheatAllCategories().catch((error) => {
-		console.warn("⚠️ 预热所有分类失败:", error);
-	}),
-]);
+// 异步预热（不阻塞页面渲染）
+preloadPopularCategories().catch((error: unknown) => {
+	console.warn("⚠️ 预加载热门分类失败:", error);
+});
 
 const { indexSettings } = indexPageData;
-const { posts: data, total: totalPosts } = firstPagePosts;
+const { posts: data } = firstPagePosts;
 
 // 计算分页数据
-const totalPages = Math.ceil(totalPosts / PAGE_SIZE);
-const currentPage = 1;
+// const totalPages = Math.ceil(totalPosts / PAGE_SIZE); // 未直接使用
+// const currentPage = 1; // 未直接使用
 const defaultLayout = (
 	layoutConfig.defaultHomepageLayout === "list"
 		? "grid"
@@ -64,7 +59,11 @@ if (import.meta.env.DEV) {
 		indexSettings,
 		defaultLayout,
 		hasIndexSettings: !!indexSettings,
-		settingsLayout: indexSettings?.default_homepage_layout,
+		settingsLayout: (
+			indexSettings as
+				| import("../utils/unified-data-fetcher").IndexSettings
+				| undefined
+		)?.default_homepage_layout,
 	});
 }
 

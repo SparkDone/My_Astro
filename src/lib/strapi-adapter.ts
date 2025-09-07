@@ -132,10 +132,11 @@ export async function addNavigationInfo(
 	articles: PostEntry[],
 ): Promise<PostEntry[]> {
 	// 使用新的排序逻辑：featured文章优先，然后按时间排序
+	// @ts-ignore: JS模块无类型声明
 	const { sortArticlesWithFeatured } = await import(
-		"@/scripts/article-sorter.js"
+		/* @vite-ignore */ "../scripts/article-sorter.js"
 	);
-	const sortedArticles = sortArticlesWithFeatured(articles);
+	const sortedArticles = sortArticlesWithFeatured(articles) as PostEntry[];
 
 	for (let i = 1; i < sortedArticles.length; i++) {
 		sortedArticles[i].data.nextSlug = sortedArticles[i - 1].slug;
@@ -147,7 +148,7 @@ export async function addNavigationInfo(
 		sortedArticles[i].data.prevTitle = sortedArticles[i + 1].data.title;
 	}
 
-	return sortedArticles;
+	return sortedArticles as PostEntry[];
 }
 
 // 获取标签列表和计数

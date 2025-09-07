@@ -50,8 +50,13 @@ export class LazyLoader {
 				const element = entry.target as HTMLElement;
 				const callback = element.dataset.lazyCallback;
 
-				if (callback && (window as Record<string, unknown>)[callback]) {
-					const callbackFn = (window as Record<string, unknown>)[callback];
+				if (
+					callback &&
+					(window as unknown as Record<string, unknown>)[callback]
+				) {
+					const callbackFn = (window as unknown as Record<string, unknown>)[
+						callback
+					];
 					if (typeof callbackFn === "function") {
 						callbackFn(element);
 					}
@@ -107,35 +112,36 @@ export class LazyComponentManager {
 		element.dataset.lazyCallback = `loadComponent_${componentName}`;
 
 		// 注册全局加载函数
-		(window as Record<string, unknown>)[`loadComponent_${componentName}`] =
-			async (el: HTMLElement) => {
-				if (this.loadedComponents.has(componentName)) {
-					return;
-				}
+		(window as unknown as Record<string, unknown>)[
+			`loadComponent_${componentName}`
+		] = async (el: HTMLElement) => {
+			if (this.loadedComponents.has(componentName)) {
+				return;
+			}
 
-				try {
-					el.classList.add("loading");
-					const component = await loadFunction();
+			try {
+				el.classList.add("loading");
+				const component = await loadFunction();
 
-					// 标记为已加载
-					this.loadedComponents.add(componentName);
-					el.classList.remove("loading");
-					el.classList.add("loaded");
+				// 标记为已加载
+				this.loadedComponents.add(componentName);
+				el.classList.remove("loading");
+				el.classList.add("loaded");
 
-					console.log(`✅ 懒加载组件已加载: ${componentName}`);
+				console.log(`✅ 懒加载组件已加载: ${componentName}`);
 
-					// 触发加载完成事件
-					el.dispatchEvent(
-						new CustomEvent("component:loaded", {
-							detail: { componentName, component },
-						}),
-					);
-				} catch (error) {
-					console.error(`❌ 懒加载组件失败: ${componentName}`, error);
-					el.classList.remove("loading");
-					el.classList.add("error");
-				}
-			};
+				// 触发加载完成事件
+				el.dispatchEvent(
+					new CustomEvent("component:loaded", {
+						detail: { componentName, component },
+					}),
+				);
+			} catch (error) {
+				console.error(`❌ 懒加载组件失败: ${componentName}`, error);
+				el.classList.remove("loading");
+				el.classList.add("error");
+			}
+		};
 
 		this.loader.observe(element);
 	}

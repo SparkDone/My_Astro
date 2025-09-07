@@ -1,8 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
 import { profileConfig } from "../../config";
+import type { AuthorData } from "../../lib/strapi";
 import { getIndexSettings, getPrimaryAuthor } from "../../lib/strapi";
-import type { AuthorData } from "../../types/config";
 import { url } from "../../utils/url-utils";
 import ImageWrapper from "../misc/ImageWrapper.astro";
 
@@ -53,31 +53,41 @@ if (authorInfo) {
 		});
 	}
 	if (authorInfo.website) {
+		const w = authorInfo.website;
+		const websiteUrl = w.startsWith("http") ? w : `https://${w}`;
 		socialLinks.push({
 			name: "Website",
 			icon: "material-symbols:language",
-			url: authorInfo.website,
+			url: websiteUrl,
 		});
 	}
 	if (authorInfo.github) {
+		const g = authorInfo.github;
+		const githubUrl = g.startsWith("http") ? g : `https://github.com/${g}`;
 		socialLinks.push({
 			name: "GitHub",
 			icon: "fa6-brands:github",
-			url: `https://github.com/${authorInfo.github}`,
+			url: githubUrl,
 		});
 	}
 	if (authorInfo.twitter) {
+		const t = authorInfo.twitter;
+		const twitterUrl = t.startsWith("http") ? t : `https://twitter.com/${t}`;
 		socialLinks.push({
 			name: "Twitter",
 			icon: "fa6-brands:twitter",
-			url: `https://twitter.com/${authorInfo.twitter}`,
+			url: twitterUrl,
 		});
 	}
 	if (authorInfo.linkedin) {
+		const l = authorInfo.linkedin;
+		const linkedinUrl = l.startsWith("http")
+			? l
+			: `https://linkedin.com/in/${l}`;
 		socialLinks.push({
 			name: "LinkedIn",
 			icon: "fa6-brands:linkedin",
-			url: `https://linkedin.com/in/${authorInfo.linkedin}`,
+			url: linkedinUrl,
 		});
 	}
 } else {
@@ -97,7 +107,33 @@ if (authorInfo) {
                   class="transition opacity-0 scale-90 group-hover:scale-100 group-hover:opacity-100 text-white text-5xl">
             </Icon>
         </div>
-        <ImageWrapper src={authorInfo?.avatar || config.avatar || ""} alt="Profile Image of the Author" class="mx-auto lg:w-full h-full lg:mt-0 "></ImageWrapper>
+        {(() => {
+          const a = authorInfo?.avatar as unknown;
+          let fromAuthor = '' as string;
+          if (typeof a === 'string') {
+            fromAuthor = a;
+          } else if (Array.isArray(a)) {
+            fromAuthor = a[0]?.url ?? '';
+          } else if (a && typeof a === 'object' && (a as { url?: string }).url) {
+            fromAuthor = (a as { url?: string }).url || '';
+          }
+          // 规范化相对路径为绝对URL（从环境变量读取Strapi基址）
+          if (fromAuthor && fromAuthor.startsWith('/')) {
+            const base = (import.meta.env.STRAPI_PUBLIC_URL || import.meta.env.STRAPI_URL || '').replace(/\/$/, '');
+            if (base) fromAuthor = `${base}${fromAuthor}`;
+          }
+          const defaultFallback = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%236366f1"/><stop offset="100%" stop-color="%2394a3ff"/></linearGradient></defs><rect width="256" height="256" rx="24" fill="url(%23g)"/><g fill="white" opacity="0.9"><circle cx="128" cy="100" r="44"/><path d="M40 212c0-42 36-68 88-68s88 26 88 68v12H40z"/></g></svg>';
+          const avatarFromConfig = typeof (config as any).avatar === 'string' ? (config as any).avatar as string : '';
+          const avatarSrc: string = fromAuthor || avatarFromConfig || defaultFallback;
+
+          if (import.meta.env.DEV) {
+            console.log("👤 Strapi作者信息:", authorInfo);
+            console.log("🖼️ 最终头像URL:", avatarSrc);
+          }
+          return (
+            <ImageWrapper src={avatarSrc} fallback={defaultFallback} alt="Profile Image of the Author" class="mx-auto lg:w-full h-full lg:mt-0 "></ImageWrapper>
+          );
+        })()}
     </a>
     <div class="px-2">
         <div class="font-bold text-xl text-center mb-1 dark:text-neutral-50 transition">{authorInfo?.name || config.name}</div>
@@ -105,13 +141,13 @@ if (authorInfo) {
         <div class="text-center text-neutral-400 mb-2.5 transition">{authorInfo?.bio || config.bio}</div>
         <div class="flex gap-2 justify-center mb-1">
             {socialLinks.length > 1 && socialLinks.map(item =>
-                    <a rel="me" aria-label={item.name} href={item.url} target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90">
-                        <Icon name={item.icon} class="text-[1.5rem]"></Icon>
+                    <a rel="me" aria-label={item.name} href={item.url} target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90 grid place-items-center">
+                        <Icon name={item.icon} class="text-base md:text-[1.1rem]"></Icon>
                     </a>
             )}
             {socialLinks.length == 1 && <a rel="me" aria-label={socialLinks[0].name} href={socialLinks[0].url} target="_blank"
-                                            class="btn-regular rounded-lg h-10 gap-2 px-3 font-bold active:scale-95">
-                <Icon name={socialLinks[0].icon} class="text-[1.5rem]"></Icon>
+                                            class="btn-regular rounded-lg h-10 gap-2 px-3 font-bold active:scale-95 inline-flex items-center">
+                <Icon name={socialLinks[0].icon} class="text-base md:text-[1.1rem]"></Icon>
                 {socialLinks[0].name}
             </a>}
         </div>

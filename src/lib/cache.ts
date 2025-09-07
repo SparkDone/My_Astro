@@ -45,7 +45,7 @@ class MemoryCache {
 			if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
 				logger.info(`Cache hit for key: ${key}`);
 			}
-			return cached.data;
+			return cached.data as T;
 		}
 
 		// 缓存未命中或已过期，获取新数据
@@ -62,7 +62,7 @@ class MemoryCache {
 			// 如果获取新数据失败，且有过期的缓存数据，返回过期数据
 			if (cached) {
 				logger.warn(`Using stale cache data for key: ${key}`);
-				return cached.data;
+				return cached.data as T;
 			}
 			throw error;
 		}

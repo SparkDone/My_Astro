@@ -1,16 +1,13 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import path from "node:path";
 import { Icon } from "astro-icon/components";
-import I18nKey from "../i18n/i18nKey";
-import { i18n } from "../i18n/translation";
+import type { PostEntry } from "@/types/post";
 import { getDir, getPostUrlBySlug, getTagUrl } from "../utils/url-utils";
 import ImageWrapper from "./misc/ImageWrapper.astro";
-import PostMetadata from "./PostMeta.astro";
 import "../styles/components/universal-post-list.css";
 
 interface Props {
-	posts: CollectionEntry<"posts">[];
+	posts: PostEntry[];
 	defaultLayout?: "grid" | "masonry";
 	class?: string;
 }
@@ -21,7 +18,7 @@ const { posts, defaultLayout = "grid", class: className = "" } = Astro.props;
 const shouldCenter = posts.length <= 3;
 
 // 处理不同数据源的统一函数
-async function processPostData(entry: CollectionEntry<"posts">) {
+async function processPostData(entry: PostEntry) {
 	let remarkPluginFrontmatter: Record<string, unknown>;
 
 	if (entry.render) {
@@ -103,7 +100,7 @@ const processedPosts = await Promise.all(
               <Icon name="material-symbols:chevron-right-rounded" class="chevron-icon" />
             </div>
             <ImageWrapper
-              src={entry.data.image}
+              src={entry.data.image || ""}
               basePath={path.join("content/posts/", getDir(entry.id))}
               alt={`Cover image for ${entry.data.title}`}
               class="post-cover-image"

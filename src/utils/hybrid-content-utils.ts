@@ -298,7 +298,7 @@ export async function getCategoryLayoutType(
 			console.log(
 				`✅ 获取到分类 ${categoryIdentifier} 的布局类型: ${layoutType}`,
 			);
-			return layoutType;
+			return layoutType as "grid" | "masonry";
 		}
 		console.log(`⚠️ 未找到分类 ${categoryIdentifier}，使用默认布局`);
 	} catch (error) {

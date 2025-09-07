@@ -464,3 +464,6 @@ if (document.readyState === "loading") {
 } else {
 	initLayoutSwitcherDelayed();
 }
+
+// 导出类以便TypeScript识别
+export { UniversalLayoutSwitcher };

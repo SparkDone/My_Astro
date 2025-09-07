@@ -3,7 +3,7 @@
  * 解决API调用重复问题，提供批量数据获取功能
  */
 
-import type { CollectionEntry } from "astro:content";
+import type { PostEntry } from "@/types/post";
 import { logger } from "../config/api";
 import { contentManager } from "../lib/content-manager";
 import {
@@ -14,9 +14,9 @@ import {
 
 // 缓存接口
 interface DataCache {
-	posts?: CollectionEntry<"posts">[];
-	indexSettings?: Record<string, unknown>;
-	categories?: Map<string, Record<string, unknown>>;
+	posts?: PostEntry[];
+	indexSettings?: unknown;
+	categories?: Map<string, unknown>;
 }
 
 // 请求级别的缓存（每次页面请求重置）
@@ -30,6 +30,11 @@ export function resetRequestCache() {
 /**
  * 统一获取首页所需的所有数据
  */
+export type IndexSettings = {
+	default_homepage_layout?: string;
+	[key: string]: unknown;
+};
+
 export async function getIndexPageData() {
 	// 调试信息（仅在详细调试模式下显示）
 	if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
@@ -71,16 +76,22 @@ export async function getCategoryPageData(categorySlugOrName: string) {
 	]);
 
 	// 确保 categoryPosts 不为 undefined
-	const safeCategoryPosts = categoryPosts || [];
-	const layoutType = categoryData?.layout_type || "grid";
+	const safeCategoryPosts = (categoryPosts || []) as PostEntry[];
+	const categoryObj = (categoryData ?? {}) as {
+		layout_type?: string;
+		name?: string;
+		slug?: string;
+	};
+	const layoutType =
+		(categoryObj.layout_type as "grid" | "masonry" | undefined) || "grid";
 
 	return {
 		posts: safeCategoryPosts,
-		categoryData,
+		categoryData: categoryObj,
 		layoutType,
 		totalPosts: safeCategoryPosts.length,
-		categoryName: categoryData?.name || categorySlugOrName,
-		categorySlug: categoryData?.slug || categorySlugOrName,
+		categoryName: categoryObj.name || categorySlugOrName,
+		categorySlug: categoryObj.slug || categorySlugOrName,
 	};
 }
 
@@ -117,7 +128,7 @@ export async function getPostPageData(slug: string) {
 
 // ============ 缓存辅助函数 ============
 
-async function getCachedPosts(): Promise<CollectionEntry<"posts">[]> {
+async function getCachedPosts(): Promise<PostEntry[]> {
 	if (!requestCache.posts) {
 		// 调试信息（仅在详细调试模式下显示）
 		if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
@@ -138,7 +149,7 @@ async function getCachedIndexSettings() {
 		}
 		try {
 			const response = await getIndexSettings();
-			requestCache.indexSettings = response.data;
+			requestCache.indexSettings = response.data as unknown;
 		} catch (error) {
 			logger.error("获取首页设置失败，使用默认配置:", error);
 			// 当Strapi不可用时，使用默认配置
@@ -180,7 +191,10 @@ async function getCachedCategoryData(categorySlugOrName: string) {
 				const localCategoryData = createLocalCategoryData(categorySlugOrName);
 				requestCache.categories.set(categorySlugOrName, localCategoryData);
 			} else {
-				requestCache.categories.set(categorySlugOrName, categoryData);
+				requestCache.categories.set(
+					categorySlugOrName,
+					categoryData as unknown,
+				);
 			}
 		} catch (error) {
 			logger.warn(
@@ -239,7 +253,7 @@ function createLocalCategoryData(categorySlugOrName: string) {
 // function extractBannerFromIndexSettings(indexSettings: any): BannerData | null { ... }
 // function extractBannerFromCategoryData(categoryData: any): BannerData | null { ... }
 
-function extractCategoriesFromPosts(posts: CollectionEntry<"posts">[]) {
+function extractCategoriesFromPosts(posts: PostEntry[]) {
 	if (!posts || !Array.isArray(posts)) {
 		return [];
 	}
@@ -257,24 +271,21 @@ function extractCategoriesFromPosts(posts: CollectionEntry<"posts">[]) {
 	}));
 }
 
-function extractTagsFromPosts(posts: CollectionEntry<"posts">[]) {
+function extractTagsFromPosts(posts: PostEntry[]) {
 	if (!posts || !Array.isArray(posts)) {
 		return [];
 	}
 
 	const tagMap = new Map<string, number>();
 	posts.forEach((post) => {
-		post.data.tags?.forEach((tag) => {
+		post.data.tags?.forEach((tag: string) => {
 			tagMap.set(tag, (tagMap.get(tag) || 0) + 1);
 		});
 	});
 	return Array.from(tagMap.entries()).map(([name, count]) => ({ name, count }));
 }
 
-function findPreviousPost(
-	posts: CollectionEntry<"posts">[],
-	currentSlug: string,
-) {
+function findPreviousPost(posts: PostEntry[], currentSlug: string) {
 	if (!posts || !Array.isArray(posts)) {
 		return null;
 	}
@@ -282,7 +293,7 @@ function findPreviousPost(
 	return currentIndex > 0 ? posts[currentIndex - 1] : null;
 }
 
-function findNextPost(posts: CollectionEntry<"posts">[], currentSlug: string) {
+function findNextPost(posts: PostEntry[], currentSlug: string) {
 	if (!posts || !Array.isArray(posts)) {
 		return null;
 	}

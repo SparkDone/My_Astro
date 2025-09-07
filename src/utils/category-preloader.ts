@@ -65,7 +65,12 @@ export async function preloadPopularCategories() {
 		const preloadPromises = popularCategories.map(async (category) => {
 			try {
 				const data = await getCategoryPageData(category);
-				categoryCache.set(category, data);
+				categoryCache.set(category, {
+					posts: data.posts,
+					totalPosts: data.totalPosts,
+					hasMore: false,
+					nextPage: undefined,
+				});
 				cacheTimestamps.set(category, Date.now());
 				if (import.meta.env.DEV) {
 					console.log(`✅ 预加载分类成功: ${category}`);
@@ -115,7 +120,12 @@ export async function getCachedCategoryData(category: string) {
 		const data = await getCategoryPageData(category);
 		const loadTime = Date.now() - startTime;
 
-		categoryCache.set(category, data);
+		categoryCache.set(category, {
+			posts: data.posts,
+			totalPosts: data.totalPosts,
+			hasMore: false,
+			nextPage: undefined,
+		});
 		cacheTimestamps.set(category, now);
 
 		if (import.meta.env.DEV) {
@@ -137,7 +147,12 @@ export async function preheatCategory(category: string) {
 		console.log(`🔥 预热分类: ${category}`);
 		try {
 			const data = await getCategoryPageData(category);
-			categoryCache.set(category, data);
+			categoryCache.set(category, {
+				posts: data.posts,
+				totalPosts: data.totalPosts,
+				hasMore: false,
+				nextPage: undefined,
+			});
 			cacheTimestamps.set(category, Date.now());
 		} catch (error) {
 			console.warn(`⚠️ 预热分类失败: ${category}`, error);

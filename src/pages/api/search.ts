@@ -29,7 +29,18 @@ export const GET: APIRoute = async ({ url }) => {
 		}
 
 		const searchTerm = query.toLowerCase().trim();
-		let allResults = [];
+		type StrapiTag = { name: string } | string;
+		type UnifiedArticle = {
+			id?: number | string;
+			title: string;
+			slug: string;
+			description?: string;
+			content?: string;
+			published?: string | Date;
+			category?: { name?: string };
+			tags?: StrapiTag[];
+		};
+		let allResults: UnifiedArticle[] = [];
 
 		// 方法1：尝试Strapi搜索
 		try {
@@ -37,7 +48,16 @@ export const GET: APIRoute = async ({ url }) => {
 			const strapiResponse = await searchArticles(query);
 			console.log("📊 Strapi搜索响应:", strapiResponse);
 
-			const strapiArticles = strapiResponse.data || [];
+			const strapiArticles = (strapiResponse.data || []).map((a) => ({
+				id: a.id,
+				title: a.title,
+				slug: a.slug,
+				description: a.description,
+				content: a.content,
+				published: a.published,
+				category: { name: a.category?.name },
+				tags: (a.tags || []).map((t) => (typeof t === "string" ? t : t.name)),
+			})) as UnifiedArticle[];
 			console.log(`✅ 从Strapi获取到 ${strapiArticles.length} 个搜索结果`);
 
 			if (strapiArticles.length > 0) {
@@ -165,7 +185,7 @@ export const GET: APIRoute = async ({ url }) => {
 				excerpt: highlightKeyword(excerpt, searchTerm),
 				category: article.category?.name || "",
 				tags:
-					article.tags?.map((tag) =>
+					article.tags?.map((tag: StrapiTag) =>
 						typeof tag === "string" ? tag : tag.name,
 					) || [],
 				published: article.published,
@@ -208,7 +228,7 @@ export const GET: APIRoute = async ({ url }) => {
 				success: false,
 				error: "Strapi搜索服务暂时不可用",
 				data: [],
-				debug: import.meta.env.DEV ? error.message : undefined,
+				debug: import.meta.env.DEV ? (error as Error).message : undefined,
 			}),
 			{
 				status: 200, // 改为200，避免前端显示网络错误

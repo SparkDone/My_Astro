@@ -5,11 +5,17 @@
  */
 
 interface BannerImage {
+	id?: number;
 	src: string;
 	alt: string;
 	title?: string;
 	subtitle?: string;
+	description?: string;
 	link?: string;
+	order?: number;
+	isActive?: boolean;
+	textColor?: "light" | "dark" | "auto";
+	textColorCustom?: string;
 }
 
 interface Props {
@@ -38,7 +44,7 @@ if (!images || images.length === 0) {
 }
 
 // 生成唯一ID
-const carouselId = `banner-carousel-${Math.random().toString(36).substr(2, 9)}`;
+const carouselId = `banner-carousel-${Math.random().toString(36).slice(2, 11)}`;
 
 // 判断是否为外部链接的函数
 function isExternalLink(url: string): boolean {
@@ -60,48 +66,6 @@ function isExternalLink(url: string): boolean {
 
 	return false;
 }
-
-// 判断是否为邮箱链接
-function isEmailLink(url: string): boolean {
-	return url.startsWith("mailto:");
-}
-
-// 判断是否为电话链接
-function isTelLink(url: string): boolean {
-	return url.startsWith("tel:");
-}
-
-// 修正链接格式，为纯域名添加协议
-function fixLinkFormat(url: string): string {
-	if (!url) return url;
-
-	// 如果已经有协议，直接返回
-	if (
-		url.startsWith("http://") ||
-		url.startsWith("https://") ||
-		url.startsWith("//")
-	) {
-		return url;
-	}
-
-	// 如果是邮箱或电话链接，直接返回
-	if (url.startsWith("mailto:") || url.startsWith("tel:")) {
-		return url;
-	}
-
-	// 如果是内部链接（以/开头），直接返回
-	if (url.startsWith("/")) {
-		return url;
-	}
-
-	// 如果是纯域名格式，添加https协议
-	if (url.includes(".") && !url.includes(" ")) {
-		return `https://${url}`;
-	}
-
-	// 其他情况直接返回
-	return url;
-}
 ---
 
 <div 
@@ -122,7 +86,7 @@ function fixLinkFormat(url: string): string {
         >
           {image.link ? (
             <a
-              href={fixLinkFormat(image.link)}
+              href={isExternalLink(image.link) ? (image.link.startsWith('http') || image.link.startsWith('//') ? image.link : `https://${image.link}`) : image.link}
               class="slide-link"
               target={isExternalLink(image.link) ? "_blank" : "_self"}
               rel={isExternalLink(image.link) ? "noopener noreferrer" : undefined}
@@ -518,7 +482,7 @@ function fixLinkFormat(url: string): string {
       this.boundHandlers.set('next', nextHandler);
       this.boundHandlers.set('mouseenter', mouseEnterHandler);
       this.boundHandlers.set('mouseleave', mouseLeaveHandler);
-      this.boundHandlers.set('keydown', keydownHandler);
+      this.boundHandlers.set('keydown', keydownHandler as EventListener);
 
       // 绑定事件
       this.prevBtn?.addEventListener('click', prevHandler);
@@ -632,8 +596,8 @@ function fixLinkFormat(url: string): string {
       };
 
       // 存储触摸事件处理器
-      this.boundHandlers.set('touchstart', touchStartHandler);
-      this.boundHandlers.set('touchend', touchEndHandler);
+      this.boundHandlers.set('touchstart', touchStartHandler as EventListener);
+      this.boundHandlers.set('touchend', touchEndHandler as EventListener);
 
       this.container.addEventListener('touchstart', touchStartHandler, { passive: true });
       this.container.addEventListener('touchend', touchEndHandler, { passive: true });
@@ -689,7 +653,7 @@ function fixLinkFormat(url: string): string {
   // 初始化所有轮播组件
   function initBannerCarousels() {
     // 清理旧实例
-    carouselInstances.forEach((instance, element) => {
+    carouselInstances.forEach((instance) => {
       instance.destroy();
     });
     carouselInstances.clear();
@@ -722,17 +686,17 @@ function fixLinkFormat(url: string): string {
   }
 
   // Swup页面切换支持
-  if (window.swup) {
+  if ((window as any).swup) {
     // 页面切换前清理
-    window.swup.hooks.on('content:replace', destroyBannerCarousels, { before: true });
+    (window as any).swup.hooks.on('content:replace', destroyBannerCarousels, { before: true });
     // 页面切换后重新初始化
-    window.swup.hooks.on('page:view', initBannerCarousels);
+    (window as any).swup.hooks.on('page:view', initBannerCarousels);
   } else {
     // 如果Swup还没加载，监听Swup启用事件
     document.addEventListener('swup:enable', () => {
-      if (window.swup) {
-        window.swup.hooks.on('content:replace', destroyBannerCarousels, { before: true });
-        window.swup.hooks.on('page:view', initBannerCarousels);
+      if ((window as any).swup) {
+        (window as any).swup.hooks.on('content:replace', destroyBannerCarousels, { before: true });
+        (window as any).swup.hooks.on('page:view', initBannerCarousels);
       }
     });
   }

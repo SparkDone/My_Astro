@@ -72,9 +72,7 @@ export interface Tag {
 }
 
 // 扩展的文章条目类型
-export interface ExtendedPostEntry extends PostEntry {
-	data: PostData;
-}
+export type ExtendedPostEntry = PostEntry;
 
 // 分页结果类型
 export interface PaginatedResult<T> {
@@ -272,47 +270,38 @@ export interface AppConfig {
 
 // 类型守卫函数
 export function isPostEntry(entry: unknown): entry is PostEntry {
-	return (
-		entry &&
-		typeof entry === "object" &&
-		entry !== null &&
-		"id" in entry &&
-		"slug" in entry &&
-		"data" in entry &&
-		typeof (entry as Record<string, unknown>).id === "string" &&
-		typeof (entry as Record<string, unknown>).slug === "string" &&
-		typeof (entry as Record<string, unknown>).data === "object"
+	const e = entry as Record<string, unknown> | null;
+	return Boolean(
+		e &&
+			typeof e === "object" &&
+			"id" in e &&
+			"slug" in e &&
+			"data" in e &&
+			typeof e.id === "string" &&
+			typeof e.slug === "string" &&
+			typeof e.data === "object",
 	);
 }
 
 export function isStrapiArticle(article: unknown): article is StrapiArticle {
-	return (
-		article &&
-		typeof article === "object" &&
-		article !== null &&
-		"id" in article &&
-		"attributes" in article &&
-		typeof (article as Record<string, unknown>).id === "number" &&
-		typeof (article as Record<string, unknown>).attributes === "object" &&
-		(article as Record<string, unknown>).attributes !== null &&
-		"title" in
-			((article as Record<string, unknown>).attributes as Record<
-				string,
-				unknown
-			>) &&
-		typeof (
-			(article as Record<string, unknown>).attributes as Record<string, unknown>
-		).title === "string"
+	const a = article as Record<string, unknown> | null;
+	const attrs = (a?.attributes as Record<string, unknown> | null) ?? null;
+	return Boolean(
+		a &&
+			typeof a === "object" &&
+			"id" in a &&
+			"attributes" in a &&
+			typeof a.id === "number" &&
+			attrs &&
+			"title" in attrs &&
+			typeof attrs.title === "string",
 	);
 }
 
 export function isAuthor(author: unknown): author is Author {
-	return (
-		author &&
-		typeof author === "object" &&
-		author !== null &&
-		"name" in author &&
-		typeof (author as Record<string, unknown>).name === "string"
+	const a = author as Record<string, unknown> | null;
+	return Boolean(
+		a && typeof a === "object" && "name" in a && typeof a.name === "string",
 	);
 }
 

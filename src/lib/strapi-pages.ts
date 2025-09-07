@@ -75,27 +75,25 @@ export async function getAllPages(): Promise<StrapiPage[]> {
 		if (!response.ok) throw new Error(`API错误: ${response.status}`);
 
 		const data = await response.json();
+		type RawPage = {
+			id: number;
+			title: string;
+			slug: string;
+			content: string;
+			metaTitle?: string;
+			metaDescription?: string;
+			isActive?: boolean;
+		};
 		return (
-			data.data?.map(
-				(item: {
-					id: number;
-					title: string;
-					slug: string;
-					content: string;
-					metaTitle?: string;
-					metaDescription?: string;
-					publishedAt: string;
-					updatedAt: string;
-				}) => ({
-					id: item.id,
-					title: item.title,
-					slug: item.slug,
-					content: item.content,
-					metaTitle: item.metaTitle,
-					metaDescription: item.metaDescription,
-					isActive: item.isActive,
-				}),
-			) || []
+			(data.data as RawPage[] | undefined)?.map((item) => ({
+				id: item.id,
+				title: item.title,
+				slug: item.slug,
+				content: item.content,
+				metaTitle: item.metaTitle,
+				metaDescription: item.metaDescription,
+				isActive: item.isActive ?? true,
+			})) || []
 		);
 	} catch (error) {
 		logger.error("获取所有页面失败:", error);

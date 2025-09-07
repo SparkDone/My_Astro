@@ -3,6 +3,7 @@
  */
 
 import { contentManager } from "../lib/content-manager";
+import type { PostEntry } from "../types/post";
 
 // 全局缓存
 const globalCategoryCache = new Map<
@@ -31,7 +32,9 @@ const CACHE_DURATION = import.meta.env.DEV ? 1 * 1000 : 10 * 60 * 1000; // 开�
 /**
  * 快速获取分类文章（优化版）
  */
-export async function getFastCategoryPosts(categorySlugOrName: string) {
+export async function getFastCategoryPosts(
+	categorySlugOrName: string,
+): Promise<PostEntry[]> {
 	const cacheKey = `posts_${categorySlugOrName}`;
 	const now = Date.now();
 	const cacheTime = globalCacheTimestamps.get(cacheKey);
@@ -45,7 +48,10 @@ export async function getFastCategoryPosts(categorySlugOrName: string) {
 		if (import.meta.env.DEV) {
 			console.log(`⚡ 快速缓存命中: ${categorySlugOrName}`);
 		}
-		return globalCategoryCache.get(cacheKey);
+		const cached = globalCategoryCache.get(cacheKey) as
+			| { posts: PostEntry[] }
+			| undefined;
+		return cached?.posts || [];
 	}
 
 	try {
@@ -83,7 +89,12 @@ export async function getFastCategoryPosts(categorySlugOrName: string) {
 		const loadTime = Date.now() - startTime;
 
 		// 缓存结果
-		globalCategoryCache.set(cacheKey, categoryPosts);
+		globalCategoryCache.set(cacheKey, {
+			posts: categoryPosts,
+			totalPosts: categoryPosts.length,
+			hasMore: false,
+			nextPage: undefined,
+		});
 		globalCacheTimestamps.set(cacheKey, now);
 
 		if (import.meta.env.DEV) {
@@ -150,10 +161,10 @@ export async function getFastCategoryPageData(categorySlugOrName: string) {
 		};
 
 		const result = {
-			posts: categoryPosts,
+			posts: (categoryPosts || []) as typeof categoryPosts,
 			categoryData,
 			layoutType: "grid",
-			totalPosts: categoryPosts.length,
+			totalPosts: (categoryPosts || []).length,
 			categoryName: categorySlugOrName,
 			categorySlug: categorySlugOrName,
 		};
@@ -161,7 +172,12 @@ export async function getFastCategoryPageData(categorySlugOrName: string) {
 		const loadTime = Date.now() - startTime;
 
 		// 缓存结果
-		globalCategoryCache.set(cacheKey, result);
+		globalCategoryCache.set(cacheKey, {
+			posts: result.posts as PostEntry[],
+			totalPosts: result.totalPosts,
+			hasMore: false,
+			nextPage: undefined,
+		});
 		globalCacheTimestamps.set(cacheKey, now);
 
 		if (import.meta.env.DEV) {
@@ -173,76 +189,4 @@ export async function getFastCategoryPageData(categorySlugOrName: string) {
 		console.error(`❌ 快速获取分类页面数据失败: ${categorySlugOrName}`, error);
 		throw error;
 	}
-}
-
-/**
- * 预热所有分类数据
- */
-export async function preheatAllCategories() {
-	try {
-		if (import.meta.env.DEV) {
-			console.log("🔥 开始预热所有分类数据...");
-		}
-
-		const startTime = Date.now();
-
-		// 获取所有文章
-		const allPosts = await contentManager.getSortedPosts();
-
-		// 提取所有分类
-		const categories = new Set<string>();
-		allPosts.forEach((post) => {
-			const category = post.data.category;
-			if (category) {
-				categories.add(category);
-			}
-		});
-
-		// 并行预热所有分类
-		const preheatPromises = Array.from(categories).map((category) =>
-			getFastCategoryPageData(category).catch((error) => {
-				console.warn(`⚠️ 预热分类失败: ${category}`, error);
-			}),
-		);
-
-		await Promise.all(preheatPromises);
-
-		const loadTime = Date.now() - startTime;
-
-		if (import.meta.env.DEV) {
-			console.log(
-				`🎉 所有分类预热完成: ${categories.size}个分类 (${loadTime}ms)`,
-			);
-		}
-	} catch (error) {
-		console.error("❌ 预热所有分类失败:", error);
-	}
-}
-
-/**
- * 清除过期缓存
- */
-export function clearExpiredFastCache() {
-	const now = Date.now();
-	const expiredKeys: string[] = [];
-
-	globalCacheTimestamps.forEach((timestamp, key) => {
-		if (now - timestamp > CACHE_DURATION) {
-			expiredKeys.push(key);
-		}
-	});
-
-	expiredKeys.forEach((key) => {
-		globalCategoryCache.delete(key);
-		globalCacheTimestamps.delete(key);
-	});
-
-	if (expiredKeys.length > 0 && import.meta.env.DEV) {
-		console.log(`🧹 清除过期快速缓存: ${expiredKeys.length}个条目`);
-	}
-}
-
-// 定期清理缓存
-if (typeof setInterval !== "undefined") {
-	setInterval(clearExpiredFastCache, 2 * 60 * 1000); // 每2分钟清理一次
 }

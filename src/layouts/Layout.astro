@@ -19,14 +19,12 @@ import {
 	DARK_MODE,
 	DEFAULT_THEME,
 	LIGHT_MODE,
-	PAGE_WIDTH,
 } from "../constants/constants";
 import { defaultFavicons } from "../constants/icon";
 import type { Favicon } from "../types/config";
 import { pathsEqual, url } from "../utils/url-utils";
 import "katex/dist/katex.css";
 import { getSiteConfig } from "../lib/config-integration";
-import { getIndexSettings } from "../lib/strapi";
 
 interface Props {
 	title?: string;
@@ -280,7 +278,7 @@ import {pathsEqual, url} from "../utils/url-utils";
 //	BANNER_HEIGHT_EXTEND,
 //	MAIN_PANEL_OVERLAPS_BANNER_HEIGHT
 // } from "../constants/constants";
-import { siteConfig } from '../config';
+// import { siteConfig } from '../config';
 
 
 
@@ -449,6 +447,9 @@ function initCustomScrollbar() {
 	});
 }
 
+// 标记为已使用，避免类型提示
+void initCustomScrollbar;
+
 // showBanner函数已删除
 // function showBanner() { ... }
 
@@ -483,8 +484,13 @@ if (document.readyState === 'loading') {
 }
 
 const setup = () => {
+	const swupInstance = (window as any).swup;
+	if (!swupInstance || !swupInstance.hooks) {
+		setTimeout(setup, 50);
+		return;
+	}
 	// 预热Swup，减少首次点击延迟
-	window.swup.hooks.on('enable', () => {
+	swupInstance.hooks.on('enable', () => {
 		// 预先设置一些样式，避免首次点击时的闪烁
 		document.documentElement.style.setProperty('--content-delay', '0ms')
 		// 标记Swup已准备好
@@ -493,11 +499,11 @@ const setup = () => {
 	})
 
 	// 优化首次点击，避免完整页面重新加载
-	window.swup.hooks.on('animation:out:start', () => {
+	swupInstance.hooks.on('animation:out:start', () => {
 		// 确保页面转换动画流畅
 		document.documentElement.classList.add('is-animating')
 	})
-	window.swup.hooks.on('link:click', () => {
+	swupInstance.hooks.on('link:click', () => {
 		// Remove the delay for the first time page load
 		document.documentElement.style.setProperty('--content-delay', '0ms')
 
@@ -506,7 +512,7 @@ const setup = () => {
 	})
 	// 暂时禁用自定义滚动条
 	// window.swup.hooks.on('content:replace', initCustomScrollbar)
-	window.swup.hooks.on('content:replace', () => {
+	swupInstance.hooks.on('content:replace', () => {
 		// 防止重复初始化
 		if ((window as any).swupInitializing) {
 			return;
@@ -569,7 +575,7 @@ const setup = () => {
 			}, 200);
 		}, 100);
 	})
-	window.swup.hooks.on('visit:start', (visit: {to: {url: string}}) => {
+	swupInstance.hooks.on('visit:start', (visit: {to: {url: string}}) => {
 		// Banner height相关代码已删除
 		const bodyElement = document.querySelector('body')
 		if (pathsEqual(visit.to.url, url('/'))) {
@@ -586,7 +592,7 @@ const setup = () => {
 
 
 	});
-	window.swup.hooks.on('page:view', () => {
+	swupInstance.hooks.on('page:view', () => {
 		// hide the temp high element when the transition is done
 		const heightExtend = document.getElementById('page-height-extend')
 		if (heightExtend) {
@@ -619,7 +625,7 @@ const setup = () => {
 			}
 		}, 50); // 减少延迟，更快重新初始化
 	});
-	window.swup.hooks.on('visit:end', (_visit: {to: {url: string}}) => {
+	swupInstance.hooks.on('visit:end', (_visit: {to: {url: string}}) => {
 		setTimeout(() => {
 			const heightExtend = document.getElementById('page-height-extend')
 			if (heightExtend) {
@@ -630,14 +636,13 @@ const setup = () => {
         }, 50)
 	});
 }
-if (window?.swup?.hooks) {
+if ((window as any)?.swup?.hooks) {
 	setup()
 } else {
 	document.addEventListener('swup:enable', setup)
 }
 
 let backToTopBtn = document.getElementById('back-to-top-btn');
-let navbar = document.getElementById('navbar-wrapper')
 function scrollFunction() {
 	// let bannerHeight = window.innerHeight * (BANNER_HEIGHT / 100) // Banner已删除
 	let scrollThreshold = 200; // 固定滚动阈值
@@ -721,11 +726,17 @@ const setup = () => {
 	if (!lightbox) {
 		createPhotoSwipe()
 	}
-	window.swup.hooks.on("page:view", () => {
+	const swupInstance = (window as any).swup;
+	if (!swupInstance || !swupInstance.hooks) {
+		document.addEventListener("swup:enable", () => setTimeout(setup, 0), { once: true });
+		return;
+	}
+
+	swupInstance.hooks.on("page:view", () => {
 		createPhotoSwipe()
 	})
 
-	window.swup.hooks.on(
+	swupInstance.hooks.on(
 		"content:replace",
 		() => {
 			lightbox?.destroy?.()
@@ -734,9 +745,9 @@ const setup = () => {
 	)
 }
 
-if (window.swup) {
+if ((window as any)?.swup?.hooks) {
 	setup()
 } else {
-	document.addEventListener("swup:enable", setup)
+	document.addEventListener("swup:enable", () => setTimeout(setup, 0), { once: true })
 }
 </script>

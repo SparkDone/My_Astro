@@ -197,8 +197,8 @@ export function optimizeHTML(
 		removeDuplicates = true,
 		removeDebug = true,
 		compress = false, // 默认关闭，因为可能影响可读性
-		addResourceHints = true,
-		optimizeImages = true,
+		addResourceHints: shouldAddResourceHints = true,
+		optimizeImages: shouldOptimizeImages = true,
 	} = options;
 
 	if (removeDuplicates) {
@@ -209,11 +209,11 @@ export function optimizeHTML(
 		optimizedHtml = removeDebugContent(optimizedHtml);
 	}
 
-	if (addResourceHints) {
+	if (shouldAddResourceHints) {
 		optimizedHtml = addResourceHints(optimizedHtml);
 	}
 
-	if (optimizeImages) {
+	if (shouldOptimizeImages) {
 		optimizedHtml = optimizeImages(optimizedHtml);
 	}
 

@@ -5,7 +5,7 @@
 
 // 检查是否为开发环境
 const isDev = import.meta.env.DEV || import.meta.env.MODE === "development";
-const _isDebug = import.meta.env.DEBUG === "true";
+// const _isDebug = import.meta.env.DEBUG === "true"; // 未使用
 
 // 日志级别
 export enum LogLevel {

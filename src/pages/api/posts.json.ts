@@ -4,7 +4,7 @@ import { getSortedPosts } from "../../utils/hybrid-content-utils";
 // 动态API端点 - 支持分页查询
 export const prerender = false;
 
-export async function GET({ url }) {
+export async function GET({ url }: { url: URL }) {
 	try {
 		// 从查询参数获取页码
 		const pageParam = url.searchParams.get("page") || "1";

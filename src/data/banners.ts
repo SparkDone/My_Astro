@@ -6,11 +6,15 @@
 import { getHomeBannersFromStrapi } from "../lib/banner-adapter";
 
 export interface BannerImage {
+	id?: number;
 	src: string;
 	alt: string;
 	title?: string;
 	subtitle?: string;
+	description?: string;
 	link?: string;
+	order?: number;
+	isActive?: boolean;
 	textColor?: "light" | "dark" | "auto";
 	textColorCustom?: string;
 }

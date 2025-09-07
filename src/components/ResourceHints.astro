@@ -4,7 +4,7 @@
  */
 
 // 获取站点配置
-import { siteConfig } from "@/config";
+// import { siteConfig } from "@/config"; // 未使用，移除避免控制台提示
 
 // 获取环境变量中的Strapi URL - 使用环境变量或默认值
 const strapiUrl =
@@ -30,20 +30,15 @@ const isProd = import.meta.env.PROD;
 
 // 关键CSS文件 - 移除硬编码的文件名，让Astro自动处理
 // 这些文件名在每次构建时都会变化，硬编码会导致404错误
-const criticalCSS = [];
+const criticalCSS: string[] = [];
 // 注释：Astro会自动处理CSS的预加载和优化
 
-// 根据页面类型决定是否预加载JavaScript
-const currentPath = Astro.url.pathname;
-const isHomePage = currentPath === "/";
-const isPostPage = currentPath.startsWith("/posts/");
-const isArchivePage = currentPath.startsWith("/archive");
-const isCategoryPage = currentPath.startsWith("/categories/");
+// 根据页面类型决定是否预加载JavaScript（移除未使用变量）
 
 // 简化预加载策略：不预加载易变的JavaScript文件
 // 这些文件名在每次构建时都会变化，预加载它们容易导致404错误
 // 让浏览器自然加载这些文件，现代浏览器的缓存机制已经足够高效
-const criticalJS = [];
+const criticalJS: string[] = [];
 // 移除JavaScript预加载，避免构建后文件名变化导致的404错误
 
 // 第三方域名预连接
@@ -134,10 +129,10 @@ const thirdPartyDomains = ["fonts.googleapis.com", "fonts.gstatic.com"];
       const preloadLinks = document.querySelectorAll('link[rel="preload"]');
       preloadLinks.forEach(link => {
         link.addEventListener('load', () => {
-          console.log('✅ 预加载成功:', link.href);
+          console.log('✅ 预加载成功:', (link as HTMLLinkElement).href);
         });
         link.addEventListener('error', () => {
-          console.warn('❌ 预加载失败:', link.href);
+          console.warn('❌ 预加载失败:', (link as HTMLLinkElement).href);
         });
       });
     });

@@ -8,10 +8,10 @@ import {
 	getCategorySlug,
 } from "../../config/category-slugs";
 import { PAGE_SIZE } from "../../constants/constants";
-import { defaultBanner, getCategoryBanners } from "../../data/banners";
+import { getCategoryBanners } from "../../data/banners";
 import MainGridLayout from "../../layouts/MainGridLayout.astro";
-import { getCachedCategoryData } from "../../utils/category-preloader";
-import { getFastCategoryPageData } from "../../utils/fast-category-loader";
+// import { getCachedCategoryData } from "../../utils/category-preloader"; // 未使用
+// import { getFastCategoryPageData } from "../../utils/fast-category-loader"; // 未使用
 import {
 	getCategoryPageData,
 	resetRequestCache,
@@ -126,11 +126,12 @@ try {
 		posts: [],
 		categoryData: {
 			name: categoryName,
-			count: 0,
-			url: `/categories/${category}/`,
+			slug: category.toLowerCase(),
 		},
-		layoutType: "list",
+		layoutType: "grid",
 		categoryName: categoryName,
+		totalPosts: 0,
+		categorySlug: category.toLowerCase(),
 	};
 }
 
@@ -138,15 +139,19 @@ const loadTime = Date.now() - startTime;
 
 if (import.meta.env.NODE_ENV !== "production") {
 	console.log(
-		`✅ 分类数据获取完成: ${category} (${categoryPageData.posts.length}篇, ${loadTime}ms, 方法: ${loadMethod})`,
+		`✅ 分类数据获取完成: ${category} (${categoryPageData?.posts.length || 0}篇, ${loadTime}ms, 方法: ${loadMethod})`,
 	);
+}
+
+if (!categoryPageData) {
+	console.error("❌ 分类数据获取失败");
+	return Astro.redirect("/404/");
 }
 
 const {
 	posts: categoryPosts,
 	categoryData,
 	layoutType,
-	categoryName: originalCategoryName,
 } = categoryPageData;
 
 // 使用我们解析的分类名，而不是数据获取器返回的
@@ -226,24 +231,37 @@ const jsonLd = {
 	mainEntity: {
 		"@type": "ItemList",
 		numberOfItems: categoryPosts.length,
-		itemListElement: data.map((post, index) => ({
-			"@type": "ListItem",
-			position: index + 1,
-			item: {
-				"@type": "BlogPosting",
-				headline: post.data.title,
-				description: post.data.description || "",
-				url: `${Astro.site?.href || "https://sparkdone.com"}posts/${post.slug}/`,
-				datePublished: post.data.published.toISOString(),
-				author: {
-					"@type": "Person",
-					name:
-						typeof post.data.author === "string"
-							? post.data.author
-							: post.data.author?.name || "Admin",
+		itemListElement: data.map(
+			(
+				post: {
+					slug: string;
+					data: {
+						title: string;
+						description?: string;
+						published: Date;
+						author?: string | { name?: string };
+					};
 				},
-			},
-		})),
+				index: number,
+			) => ({
+				"@type": "ListItem",
+				position: index + 1,
+				item: {
+					"@type": "BlogPosting",
+					headline: post.data.title,
+					description: post.data.description || "",
+					url: `${Astro.site?.href || "https://sparkdone.com"}posts/${post.slug}/`,
+					datePublished: post.data.published.toISOString(),
+					author: {
+						"@type": "Person",
+						name:
+							typeof post.data.author === "string"
+								? post.data.author
+								: post.data.author?.name || "Admin",
+					},
+				},
+			}),
+		),
 	},
 };
 // decodedCategory 已在上面定义，这里不需要重复声明
@@ -316,13 +334,13 @@ const jsonLd = {
 
       <!-- 布局切换控件 -->
       <div class="flex justify-end items-center mb-6 onload-animation">
-        <LayoutSwitcher defaultLayout={layoutType} targetSelector=".universal-post-list" />
+        <LayoutSwitcher defaultLayout={layoutType as "grid" | "masonry"} targetSelector=".universal-post-list" />
       </div>
 
       <!-- 统一文章列表 - 只渲染一次 -->
       <UniversalPostList
         posts={page.data}
-        defaultLayout={layoutType}
+        defaultLayout={layoutType as "grid" | "masonry"}
         class="onload-animation"
       />
 
@@ -330,7 +348,7 @@ const jsonLd = {
       {totalPages > 1 && (
         <Pagination
           class="mx-auto onload-animation mt-8"
-          page={page}
+          page={page as any}
           style={`animation-delay: calc(var(--content-delay) + ${page.data.length * 50}ms)`}
         />
       )}

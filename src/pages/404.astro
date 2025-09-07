@@ -100,7 +100,7 @@ const pageDescription = "抱歉，您访问的页面不存在。";
     }
     
     // Backspace 键返回上页
-    if (e.key === 'Backspace' && !e.target.matches('input, textarea')) {
+    if (e.key === 'Backspace' && !(e.target as HTMLElement)?.matches('input, textarea')) {
       e.preventDefault();
       history.back();
     }
@@ -111,13 +111,13 @@ const pageDescription = "抱歉，您访问的页面不存在。";
     const elements = document.querySelectorAll('.animate-fade-in');
     elements.forEach((el, index) => {
       setTimeout(() => {
-        el.style.opacity = '1';
-        el.style.transform = 'translateY(0)';
+        (el as HTMLElement).style.opacity = '1';
+        (el as HTMLElement).style.transform = 'translateY(0)';
       }, index * 100);
     });
 
     // 添加卡片入场动画
-    const card = document.querySelector('.page-404-card');
+    const card = document.querySelector('.page-404-card') as HTMLElement;
     if (card) {
       card.style.opacity = '0';
       card.style.transform = 'translateY(20px)';

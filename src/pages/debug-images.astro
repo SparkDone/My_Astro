@@ -3,14 +3,40 @@
 import { getPublishedArticles } from "../lib/strapi";
 import { adaptImageUrl, imageConfig } from "../utils/image-adapter";
 
-let articles = [];
-let error = null;
+type ImgObj = { url?: string };
+type FlattenArticle = {
+	id: number;
+	title?: string;
+	image?: ImgObj | ImgObj[];
+	cover?: ImgObj;
+	featured_image?: ImgObj;
+	thumbnail?: ImgObj;
+};
+let articles: FlattenArticle[] = [];
+let error: string | null = null;
 
 try {
 	const response = await getPublishedArticles();
-	articles = response.data || [];
+	const raw = (response.data || []) as Array<{
+		id: number;
+		attributes?: {
+			title?: string;
+			image?: ImgObj | ImgObj[];
+			cover?: ImgObj;
+			featured_image?: ImgObj;
+			thumbnail?: ImgObj;
+		};
+	}>;
+	articles = raw.map((a) => ({
+		id: a.id,
+		title: a.attributes?.title,
+		image: a.attributes?.image,
+		cover: a.attributes?.cover,
+		featured_image: a.attributes?.featured_image,
+		thumbnail: a.attributes?.thumbnail,
+	}));
 } catch (e) {
-	error = e.message;
+	error = (e as Error).message;
 	console.error("获取文章失败:", e);
 }
 
@@ -132,11 +158,11 @@ const testImageUrls = [
         {article.image && Array.isArray(article.image) && article.image.length > 0 ? (
           <div>
             <p><strong>图片类型:</strong> 数组，第一张图片</p>
-            <p><strong>原始图片URL:</strong> {article.image[0].url}</p>
-            <p><strong>转换后URL:</strong> {adaptImageUrl(article.image[0].url)}</p>
+            <p><strong>原始图片URL:</strong> {article.image[0].url || ''}</p>
+            <p><strong>转换后URL:</strong> {adaptImageUrl(article.image[0].url || '')}</p>
             <img
-              src={adaptImageUrl(article.image[0].url)}
-              alt={article.title}
+              src={adaptImageUrl(article.image[0].url || '')}
+              alt={article.title || ''}
               onerror="this.style.border='2px solid red'; this.alt='❌ 加载失败';"
               onload="this.style.border='2px solid green';"
             />
@@ -145,22 +171,22 @@ const testImageUrls = [
         article.image && !Array.isArray(article.image) && article.image.url ? (
           <div>
             <p><strong>图片类型:</strong> 单个对象</p>
-            <p><strong>原始图片URL:</strong> {article.image.url}</p>
-            <p><strong>转换后URL:</strong> {adaptImageUrl(article.image.url)}</p>
+            <p><strong>原始图片URL:</strong> {article.image.url || ''}</p>
+            <p><strong>转换后URL:</strong> {adaptImageUrl(article.image.url || '')}</p>
             <img
-              src={adaptImageUrl(article.image.url)}
-              alt={article.title}
+              src={adaptImageUrl(article.image.url || '')}
+              alt={article.title || ''}
               onerror="this.style.border='2px solid red'; this.alt='❌ 加载失败';"
               onload="this.style.border='2px solid green';"
             />
           </div>
         ) : article.cover ? (
           <div>
-            <p><strong>封面图片URL:</strong> {article.cover.url}</p>
-            <p><strong>转换后URL:</strong> {adaptImageUrl(article.cover.url)}</p>
+            <p><strong>封面图片URL:</strong> {article.cover?.url || ''}</p>
+            <p><strong>转换后URL:</strong> {adaptImageUrl(article.cover?.url || '')}</p>
             <img
-              src={adaptImageUrl(article.cover.url)}
-              alt={article.title}
+              src={adaptImageUrl(article.cover?.url || '')}
+              alt={article.title || ''}
               onerror="this.style.border='2px solid red'; this.alt='❌ 加载失败';"
               onload="this.style.border='2px solid green';"
             />
@@ -192,8 +218,9 @@ const testImageUrls = [
     
     // 监听图片加载错误
     document.addEventListener('error', function(e) {
-      if (e.target.tagName === 'IMG') {
-        console.error('图片加载失败:', e.target.src);
+      const target = e.target as HTMLElement;
+      if (target?.tagName === 'IMG') {
+        console.error('图片加载失败:', (target as HTMLImageElement).src);
       }
     }, true);
   </script>

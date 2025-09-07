@@ -199,7 +199,7 @@ export class ContentManager {
 				} else {
 					logger.warn(`未找到文章: ${slug}`);
 				}
-				return post;
+				return post || undefined;
 			},
 			undefined,
 			"fetchStrapiPostBySlug",

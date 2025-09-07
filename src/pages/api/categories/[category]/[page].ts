@@ -4,7 +4,11 @@ import { getPostsByCategory } from "../../../../utils/hybrid-content-utils";
 // 禁用预渲染，支持动态分类API
 export const prerender = false;
 
-export async function GET({ params }) {
+export async function GET({
+	params,
+}: {
+	params: { category: string; page: string };
+}) {
 	try {
 		const { category, page: pageParam } = params;
 		const page = Number.parseInt(pageParam);

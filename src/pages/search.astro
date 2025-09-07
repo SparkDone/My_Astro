@@ -56,7 +56,7 @@ const title = query ? `搜索结果: ${query}` : "搜索";
 
 <script>
   // 搜索功能
-  let searchTimeout;
+  // 过去的定时器逻辑已移除
   let isSearching = false; // 防止重复搜索
   let lastSearchQuery = ''; // 记录上次搜索的关键词
   let lastSearchTime = 0; // 记录上次搜索的时间
@@ -74,7 +74,7 @@ const title = query ? `搜索结果: ${query}` : "搜索";
 
   
   // 执行搜索
-  async function performSearch(query) {
+  async function performSearch(query: string) {
     const currentTime = Date.now();
 
     // 防重复搜索检查
@@ -120,11 +120,11 @@ const title = query ? `搜索结果: ${query}` : "搜索";
 
     try {
       // 方法1：尝试Pagefind搜索
-      if (typeof window !== 'undefined' && window.pagefind && typeof window.pagefind.search === 'function') {
+      if (typeof window !== 'undefined' && (window as any).pagefind && typeof (window as any).pagefind.search === 'function') {
         console.log('🔍 使用Pagefind搜索:', query);
         searchMethod = 'pagefind';
 
-        const pagefindResponse = await window.pagefind.search(query, {
+        const pagefindResponse = await (window as any).pagefind.search(query, {
           excerpt_length: 100,
           fuzzy: true,
           partial: true
@@ -135,7 +135,7 @@ const title = query ? `搜索结果: ${query}` : "搜索";
             console.log('✅ Pagefind找到结果:', pagefindResponse.results.length, '个');
           }
           const pagefindResults = await Promise.all(
-            pagefindResponse.results.slice(0, 50).map(item => item.data())
+            pagefindResponse.results.slice(0, 50).map((item: any) => item.data())
           );
 
           // 转换Pagefind结果格式
@@ -181,7 +181,7 @@ const title = query ? `搜索结果: ${query}` : "搜索";
         if (import.meta.env.DEV) {
           console.log(`✅ 最终显示 ${searchResults.length} 个搜索结果 (方法: ${searchMethod})`);
         }
-        showResults(searchResults, query);
+        showResults(searchResults);
       } else {
         if (import.meta.env.DEV) {
           console.log('❌ 所有搜索方法都未找到结果');
@@ -234,7 +234,7 @@ const title = query ? `搜索结果: ${query}` : "搜索";
     if (resultsList) resultsList.classList.add('hidden');
   }
   
-  function showResults(results, query) {
+  function showResults(results: any[]) {
     if (import.meta.env.DEV) {
       console.log('🎨 渲染搜索结果:', results.length, '个');
     }
@@ -253,7 +253,7 @@ const title = query ? `搜索结果: ${query}` : "搜索";
 
     try {
       // 渲染结果
-      const resultsHtml = results.map((item, index) => {
+      const resultsHtml = results.map((item: any, index: number) => {
         // 安全地获取各个字段
         const title = item.title || `结果 ${index + 1}`;
         const url = item.url || '#';
@@ -370,7 +370,7 @@ const title = query ? `搜索结果: ${query}` : "搜索";
   // Pagefind初始化
   async function initializePagefind() {
     try {
-      if (typeof window !== 'undefined' && !window.pagefind) {
+      if (typeof window !== 'undefined' && !(window as any).pagefind) {
         if (import.meta.env.DEV) {
           console.log('🔍 尝试初始化Pagefind...');
         }
@@ -380,8 +380,8 @@ const title = query ? `搜索结果: ${query}` : "搜索";
           const script = document.createElement('script');
           script.src = '/pagefind/pagefind.js';
           script.onload = () => {
-            if (window.pagefind) {
-              resolve(window.pagefind);
+            if ((window as any).pagefind) {
+              resolve((window as any).pagefind);
             } else {
               reject(new Error('Pagefind未正确加载'));
             }
@@ -390,7 +390,7 @@ const title = query ? `搜索结果: ${query}` : "搜索";
           document.head.appendChild(script);
         });
 
-        await pagefindModule.options({
+        await (pagefindModule as any).options({
           excerptLength: 100,
           highlightParam: 'mark'
         });
@@ -403,7 +403,7 @@ const title = query ? `搜索结果: ${query}` : "搜索";
       if (import.meta.env.DEV) {
         console.warn('⚠️ Pagefind初始化失败，将使用API搜索:', error);
       }
-      window.pagefind = null;
+      (window as any).pagefind = null;
     }
   }
 
@@ -419,7 +419,7 @@ const title = query ? `搜索结果: ${query}` : "搜索";
   });
 
   // 简化的浏览器历史记录监听
-  window.addEventListener('popstate', (event) => {
+  window.addEventListener('popstate', () => {
     if (window.location.pathname === '/search/') {
       console.log('🔄 浏览器历史记录变化，重新执行搜索');
       setTimeout(() => {
@@ -430,11 +430,11 @@ const title = query ? `搜索结果: ${query}` : "搜索";
 
   // 监听Swup页面转换事件
   function setupSwupListeners() {
-    if (window.swup && window.swup.hooks) {
+    if ((window as any).swup && (window as any).swup.hooks) {
       console.log('🔄 设置Swup事件监听器');
 
       // 简化的页面转换监听
-      window.swup.hooks.on('page:view', () => {
+      (window as any).swup.hooks.on('page:view', () => {
         if (window.location.pathname === '/search/') {
           console.log('🔄 Swup页面转换完成，执行搜索');
           setTimeout(() => {
@@ -446,7 +446,7 @@ const title = query ? `搜索结果: ${query}` : "搜索";
   }
 
   // 如果Swup已经加载，立即设置监听器
-  if (window.swup) {
+  if ((window as any).swup) {
     setupSwupListeners();
   } else {
     // 否则等待Swup加载完成

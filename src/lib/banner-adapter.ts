@@ -156,10 +156,13 @@ export async function getCategoryBannersFromStrapi(
 function adaptBannerData(strapiData: {
 	image?: { url?: string; alternativeText?: string };
 	title?: string;
+	subtitle?: string;
 	description?: string;
 	link?: string;
 	order?: number;
 	isActive?: boolean;
+	textColor?: string;
+	textColorCustom?: string;
 }): BannerImage {
 	// 使用图片适配器处理URL
 	const imageUrl = strapiData.image?.url
@@ -172,7 +175,9 @@ function adaptBannerData(strapiData: {
 		title: strapiData.title,
 		subtitle: strapiData.subtitle,
 		link: strapiData.link,
-		textColor: strapiData.textColor || "light",
+		textColor:
+			(strapiData.textColor as "light" | "dark" | "auto" | undefined) ||
+			"light",
 		textColorCustom: strapiData.textColorCustom,
 	};
 }

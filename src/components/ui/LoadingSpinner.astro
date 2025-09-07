@@ -105,8 +105,8 @@ const containerClass = fullscreen
       if (container.classList.contains('fixed')) {
         window.addEventListener('load', () => {
           setTimeout(() => {
-            container.style.opacity = '0';
-            container.style.transition = 'opacity 0.3s ease-out';
+            (container as HTMLElement).style.opacity = '0';
+            (container as HTMLElement).style.transition = 'opacity 0.3s ease-out';
             setTimeout(() => {
               container.remove();
             }, 300);

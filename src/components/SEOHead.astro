@@ -92,7 +92,7 @@ const jsonLd = article
 {article && tags.map(tag => <meta property="article:tag" content={tag}>)}
 
 <!-- 结构化数据 -->
-<script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
 
 <!-- 预加载关键资源 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
