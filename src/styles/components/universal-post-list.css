@@ -278,6 +278,7 @@
   aspect-ratio: 16/9;
   overflow: hidden;
   background: var(--card-bg);
+  border-radius: var(--radius-large) var(--radius-large) 0 0 !important; /* 上方圆角，下方直角，使用!important */
 }
 
 .universal-post-list[data-layout="grid"] .post-cover-image {
@@ -285,6 +286,7 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.2s ease;
+  border-radius: var(--radius-large) var(--radius-large) 0 0 !important; /* 上方圆角，下方直角 */
 }
 
 .universal-post-list[data-layout="grid"] .image-link:hover .post-cover-image {
@@ -494,6 +496,7 @@
   /* 确保图片容器高度自适应 */
   height: auto;
   min-height: auto;
+  border-radius: var(--radius-large) var(--radius-large) 0 0 !important; /* 上方圆角，下方直角，使用!important */
 }
 
 .universal-post-list[data-layout="masonry"] .post-cover-image {
@@ -506,6 +509,7 @@
   padding: 0;
   /* 确保图片高度自适应 */
   min-height: auto;
+  border-radius: var(--radius-large) var(--radius-large) 0 0 !important; /* 上方圆角，下方直角 */
 }
 
 .universal-post-list[data-layout="masonry"] .image-link:hover .post-cover-image {

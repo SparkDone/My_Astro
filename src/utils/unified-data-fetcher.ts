@@ -36,17 +36,19 @@ export async function getIndexPageData() {
     getCachedIndexSettings()
   ]);
 
+  // 确保 posts 不为 undefined
+  const safePosts = posts || [];
 
   // const banner = extractBannerFromIndexSettings(indexSettings);
 
   return {
-    posts,
+    posts: safePosts,
     indexSettings,
 
     // 计算衍生数据
-    totalPosts: posts.length,
-    categories: extractCategoriesFromPosts(posts),
-    tags: extractTagsFromPosts(posts)
+    totalPosts: safePosts.length,
+    categories: extractCategoriesFromPosts(safePosts),
+    tags: extractTagsFromPosts(safePosts)
   };
 }
 
@@ -63,13 +65,15 @@ export async function getCategoryPageData(categorySlugOrName: string) {
     getCachedCategoryData(categorySlugOrName)
   ]);
 
+  // 确保 categoryPosts 不为 undefined
+  const safeCategoryPosts = categoryPosts || [];
   const layoutType = categoryData?.layout_type || 'grid';
 
   return {
-    posts: categoryPosts,
+    posts: safeCategoryPosts,
     categoryData,
     layoutType,
-    totalPosts: categoryPosts.length,
+    totalPosts: safeCategoryPosts.length,
     categoryName: categoryData?.name || categorySlugOrName,
     categorySlug: categoryData?.slug || categorySlugOrName
   };
@@ -82,24 +86,26 @@ export async function getPostPageData(slug: string) {
   logger.info(`📄 获取文章页面统一数据: ${slug}`);
   
   const posts = await getCachedPosts();
-  const post = posts.find(p => p.slug === slug);
+  // 确保 posts 不为 undefined
+  const safePosts = posts || [];
+  const post = safePosts.find(p => p.slug === slug);
   
   if (!post) {
     return null;
   }
 
   // 获取相关文章（同分类）
-  const relatedPosts = posts
+  const relatedPosts = safePosts
     .filter(p => p.slug !== slug && p.data.category === post.data.category)
     .slice(0, 3);
 
   return {
     post,
     relatedPosts,
-    allPosts: posts,
+    allPosts: safePosts,
     navigation: {
-      prev: findPreviousPost(posts, slug),
-      next: findNextPost(posts, slug)
+      prev: findPreviousPost(safePosts, slug),
+      next: findNextPost(safePosts, slug)
     }
   };
 }
@@ -109,9 +115,11 @@ export async function getPostPageData(slug: string) {
 async function getCachedPosts(): Promise<CollectionEntry<'posts'>[]> {
   if (!requestCache.posts) {
     logger.info('📚 缓存未命中，获取文章数据');
-    requestCache.posts = await contentManager.getSortedPosts();
+    const posts = await contentManager.getSortedPosts();
+    // 确保 posts 不为 undefined
+    requestCache.posts = posts || [];
   }
-  return requestCache.posts;
+  return requestCache.posts || [];
 }
 
 async function getCachedIndexSettings() {
@@ -213,6 +221,10 @@ function createLocalCategoryData(categorySlugOrName: string) {
 
 
 function extractCategoriesFromPosts(posts: CollectionEntry<'posts'>[]) {
+  if (!posts || !Array.isArray(posts)) {
+    return [];
+  }
+  
   const categoryMap = new Map<string, number>();
   posts.forEach(post => {
     const category = post.data.category;
@@ -224,6 +236,10 @@ function extractCategoriesFromPosts(posts: CollectionEntry<'posts'>[]) {
 }
 
 function extractTagsFromPosts(posts: CollectionEntry<'posts'>[]) {
+  if (!posts || !Array.isArray(posts)) {
+    return [];
+  }
+  
   const tagMap = new Map<string, number>();
   posts.forEach(post => {
     post.data.tags?.forEach(tag => {
@@ -234,11 +250,17 @@ function extractTagsFromPosts(posts: CollectionEntry<'posts'>[]) {
 }
 
 function findPreviousPost(posts: CollectionEntry<'posts'>[], currentSlug: string) {
+  if (!posts || !Array.isArray(posts)) {
+    return null;
+  }
   const currentIndex = posts.findIndex(post => post.slug === currentSlug);
   return currentIndex > 0 ? posts[currentIndex - 1] : null;
 }
 
 function findNextPost(posts: CollectionEntry<'posts'>[], currentSlug: string) {
+  if (!posts || !Array.isArray(posts)) {
+    return null;
+  }
   const currentIndex = posts.findIndex(post => post.slug === currentSlug);
   return currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
 }

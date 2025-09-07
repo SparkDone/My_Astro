@@ -46,11 +46,11 @@
 /* 空分类状态样式 */
 .empty-category-state {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  min-height: 50vh;
+  justify-content: center;
+  min-height: 60vh;
   padding: 2rem;
+  padding-right: 140px;
 }
 
 .empty-category-content {

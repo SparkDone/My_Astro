@@ -62,7 +62,12 @@ const containerClasses = [
 ].filter(Boolean).join(' ');
 ---
 
-<div class={containerClasses}>
+<div class={`${containerClasses} image-loading-container`}>
+  <!-- 简约的加载动画 -->
+  <div class="image-loading-overlay">
+    <span class="image-loading-text">LOADING</span>
+  </div>
+  
   <!-- 占位符 -->
   {placeholder === 'skeleton' && (
     <div class="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700 animate-pulse skeleton-placeholder">
@@ -87,14 +92,9 @@ const containerClasses = [
     decoding="async"
     class={imageClasses}
     data-fallback={fallback}
-    onload="this.parentElement.querySelector('.skeleton-placeholder, .blur-placeholder')?.remove(); this.classList.add('loaded')"
+    onload="this.parentElement.classList.add('image-loaded'); this.parentElement.querySelector('.skeleton-placeholder, .blur-placeholder')?.remove(); this.classList.add('loaded')"
     onerror="this.src = this.dataset.fallback; this.classList.add('error')"
   />
-
-  <!-- 加载状态指示器 -->
-  <div class="absolute inset-0 flex items-center justify-center loading-indicator">
-    <div class="w-8 h-8 border-2 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
-  </div>
 </div>
 
 

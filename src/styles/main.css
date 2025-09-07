@@ -10,6 +10,7 @@
 @import './components/search-box.css';
 @import './components/modern-search.css';
 @import './components/empty-category.css';
+@import './components/image-loading.css';
 @import './components/layout-switch.css';
 @import './components/layout-switcher.css';
 @import './components/mobile-navigation.css';

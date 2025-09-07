@@ -82,14 +82,19 @@ const imageClass = isBanner ? "w-full h-full object-cover" : "w-full h-full obje
 const imageStyle = `object-position: ${position}`;
 ---
 {hasValidSrc && (
-<div id={id} class:list={[className, 'overflow-hidden relative']}>
+<div id={id} class:list={[className, 'overflow-hidden relative image-loading-container']}>
+    <!-- 加载动画覆盖层 -->
+    <div class="image-loading-overlay">
+        <span class="image-loading-text">LOADING</span>
+    </div>
+    
     <!-- 移除Banner的叠加层，保持其他图片的叠加层 -->
     {!isBanner && <div class="transition absolute inset-0 dark:bg-black/10 bg-opacity-50 pointer-events-none"></div>}
 
     {isLocal && img && <Image
         src={img}
         alt={alt || ""}
-        class={imageClass}
+        class={`${imageClass} astro-image`}
         style={imageStyle}
         quality={isBanner ? 95 : 80}
         format="webp"
@@ -107,6 +112,61 @@ const imageStyle = `object-position: ${position}`;
         decoding={isBanner ? "sync" : "async"}
         crossorigin={isNetwork ? "anonymous" : undefined}
         referrerpolicy={isNetwork ? "no-referrer-when-downgrade" : undefined}
+        onload="this.parentElement.classList.add('image-loaded')"
     />}
 </div>
 )}
+
+<script>
+  // 处理图片加载完成事件
+  document.addEventListener('DOMContentLoaded', function() {
+    // 处理普通img标签
+    const images = document.querySelectorAll('img:not(.astro-image)');
+    images.forEach(img => {
+      if (img.complete) {
+        img.parentElement?.classList.add('image-loaded');
+      } else {
+        img.addEventListener('load', function() {
+          this.parentElement?.classList.add('image-loaded');
+        });
+      }
+    });
+    
+    // 处理Astro Image组件生成的图片
+    const astroImages = document.querySelectorAll('.astro-image');
+    astroImages.forEach(img => {
+      if (img.complete) {
+        img.parentElement?.classList.add('image-loaded');
+      } else {
+        img.addEventListener('load', function() {
+          this.parentElement?.classList.add('image-loaded');
+        });
+      }
+    });
+    
+    // 使用MutationObserver监听动态添加的图片
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        mutation.addedNodes.forEach(function(node) {
+          if (node.nodeType === 1) { // Element node
+            const images = node.querySelectorAll ? node.querySelectorAll('img') : [];
+            images.forEach(img => {
+              if (img.complete) {
+                img.parentElement?.classList.add('image-loaded');
+              } else {
+                img.addEventListener('load', function() {
+                  this.parentElement?.classList.add('image-loaded');
+                });
+              }
+            });
+          }
+        });
+      });
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  });
+</script>

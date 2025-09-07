@@ -269,14 +269,14 @@ const jsonLd = {
   <!-- 为 SwupA11yPlugin 添加主标题 -->
   <h1 class="sr-only">分类: {categoryDisplayName}</h1>
   
-  <!-- 分类页面标题 -->
-  <div class="category-page-header">
-    <h1 class="category-title">{categoryDisplayName}</h1>
-    <p class="category-subtitle">共 {categoryPosts.length} 篇文章</p>
-  </div>
-  
   {page.data.length > 0 ? (
     <>
+      <!-- 分类页面标题 - 只在有文章时显示 -->
+      <div class="category-page-header">
+        <h1 class="category-title">{categoryDisplayName}</h1>
+        <p class="category-subtitle">共 {categoryPosts.length} 篇文章</p>
+      </div>
+      
       <!-- Banner轮播 - 条件渲染 -->
       {showBanner && (
         <div class="mb-8 onload-animation">
@@ -315,12 +315,6 @@ const jsonLd = {
     </>
   ) : (
     <div class="empty-category-state">
-      <!-- 空分类状态标题 -->
-      <div class="category-page-header">
-        <h1 class="category-title">{categoryDisplayName}</h1>
-        <p class="category-subtitle">该分类暂无文章</p>
-      </div>
-      
       <div class="empty-category-content">
         <div class="empty-category-icon">
           <svg class="w-16 h-16 text-gray-400 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
