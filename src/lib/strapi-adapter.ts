@@ -7,6 +7,7 @@ import type { PostEntry } from "../types/post";
 import { adaptImageUrl } from "../utils/image-adapter";
 import { getCategoryUrl } from "../utils/url-utils";
 import type { StrapiArticle } from "./strapi";
+import { config } from "../config/api";
 
 // 将 Strapi 文章转换为 Astro 文章格式
 export function adaptStrapiArticle(strapiArticle: StrapiArticle): PostEntry {
@@ -67,8 +68,7 @@ export function adaptStrapiArticle(strapiArticle: StrapiArticle): PostEntry {
 						) {
 							const avatar = avatarData[0];
 							if (avatar.url.startsWith("/")) {
-								// 使用Strapi URL
-								return `http://localhost:1337${avatar.url}`;
+								return `${config.strapi.url}${avatar.url}`;
 							}
 							return avatar.url;
 						}
