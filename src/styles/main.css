@@ -331,12 +331,12 @@
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
         /* 备用背景色，当backdrop-filter不支持时使用 */
-        background-color: rgba(255, 255, 255, 0.9) !important;
+        background-color: rgba(255, 255, 255, 0.7) !important;
     }
     
     /* 暗色模式下的移动端侧边栏 */
     .dark #sidebar-mobile {
-        background-color: rgba(17, 24, 39, 0.9) !important;
+        background-color: rgba(17, 24, 39, 0.7) !important;
     }
 
     /* 确保侧边栏固定定位 */
@@ -352,12 +352,12 @@
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
         /* 备用背景色，当backdrop-filter不支持时使用 */
-        background-color: rgba(255, 255, 255, 0.9) !important;
+        background-color: rgba(255, 255, 255, 0.7) !important;
     }
     
     /* 暗色模式下的桌面端侧边栏 */
     .dark #sidebar-desktop {
-        background-color: rgba(17, 24, 39, 0.9) !important;
+        background-color: rgba(17, 24, 39, 0.7) !important;
     }
 
     /* 侧边栏专用隐藏类 - 保持fixed定位 */
