@@ -31,7 +31,10 @@ export function resetRequestCache() {
  * 统一获取首页所需的所有数据
  */
 export async function getIndexPageData() {
-	logger.info("🏠 获取首页统一数据");
+	// 调试信息（仅在详细调试模式下显示）
+	if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
+		logger.info("🏠 获取首页统一数据");
+	}
 
 	const [posts, indexSettings] = await Promise.all([
 		getCachedPosts(),
@@ -116,7 +119,10 @@ export async function getPostPageData(slug: string) {
 
 async function getCachedPosts(): Promise<CollectionEntry<"posts">[]> {
 	if (!requestCache.posts) {
-		logger.info("📚 缓存未命中，获取文章数据");
+		// 调试信息（仅在详细调试模式下显示）
+		if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
+			logger.info("📚 缓存未命中，获取文章数据");
+		}
 		const posts = await contentManager.getSortedPosts();
 		// 确保 posts 不为 undefined
 		requestCache.posts = posts || [];
@@ -126,7 +132,10 @@ async function getCachedPosts(): Promise<CollectionEntry<"posts">[]> {
 
 async function getCachedIndexSettings() {
 	if (!requestCache.indexSettings) {
-		logger.info("🏠 缓存未命中，获取首页设置");
+		// 调试信息（仅在详细调试模式下显示）
+		if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
+			logger.info("🏠 缓存未命中，获取首页设置");
+		}
 		try {
 			const response = await getIndexSettings();
 			requestCache.indexSettings = response.data;

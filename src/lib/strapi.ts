@@ -321,11 +321,12 @@ export async function getPublishedArticles(): Promise<
 				`${API_ENDPOINTS.articles}?populate[0]=image&populate[1]=category&populate[2]=tags&populate[3]=author.avatar${draftFilter}&sort=published:desc`,
 			);
 
-			// 调试：检查第一篇文章的 SEO 字段
+			// 调试：检查第一篇文章的 SEO 字段（仅在详细调试模式下显示）
 			if (
 				result.data &&
 				result.data.length > 0 &&
-				config.development.enableDebugLogs
+				import.meta.env.DEV && 
+				import.meta.env.DEBUG === "true"
 			) {
 				const firstArticle = result.data[0];
 				logger.info("SEO Fields Debug:", {

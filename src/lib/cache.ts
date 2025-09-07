@@ -41,12 +41,18 @@ class MemoryCache {
 
 		// 检查缓存是否存在且未过期
 		if (cached && now - cached.timestamp < cached.ttl) {
-			logger.info(`Cache hit for key: ${key}`);
+			// 调试信息（仅在详细调试模式下显示）
+			if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
+				logger.info(`Cache hit for key: ${key}`);
+			}
 			return cached.data;
 		}
 
 		// 缓存未命中或已过期，获取新数据
-		logger.info(`Cache miss for key: ${key}`);
+		// 调试信息（仅在详细调试模式下显示）
+		if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
+			logger.info(`Cache miss for key: ${key}`);
+		}
 
 		try {
 			const data = await fetcher();
