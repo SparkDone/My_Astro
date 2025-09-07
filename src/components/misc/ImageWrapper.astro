@@ -11,19 +11,17 @@ interface Props {
 }
 
 import { Image } from "astro:assets";
-import { url } from "../../utils/url-utils";
 import { adaptImageUrlSync } from "../../utils/image-adapter";
+import { url } from "../../utils/url-utils";
 
 const { id, src, alt, position = "center", basePath = "/" } = Astro.props;
 const className = Astro.props.class;
 
 // 确保 src 是字符串，如果不是则使用空字符串
-const srcString = typeof src === 'string' ? src : '';
+const srcString = typeof src === "string" ? src : "";
 
 // 检查是否有有效的图片源
-const hasValidSrc = srcString && srcString.trim() !== '';
-
-
+const hasValidSrc = srcString && srcString.trim() !== "";
 
 const isLocal = !(
 	srcString.startsWith("/") ||
@@ -33,8 +31,6 @@ const isLocal = !(
 );
 const isPublic = srcString.startsWith("/");
 const isNetwork = srcString.startsWith("http") || srcString.startsWith("https");
-
-
 
 // TODO temporary workaround for images dynamic import
 // https://github.com/withastro/astro/issues/3373
@@ -46,16 +42,22 @@ if (isLocal) {
 	});
 
 	// 处理不同的路径格式
-	let normalizedPath;
+        let normalizedPath: string;
 	if (srcString.startsWith("src/")) {
 		// 如果路径以 src/ 开头，直接使用
-		normalizedPath = path.normalize(path.join("../../", srcString)).replace(/\\/g, "/");
+		normalizedPath = path
+			.normalize(path.join("../../", srcString))
+			.replace(/\\/g, "/");
 	} else if (srcString.startsWith("assets/")) {
 		// 如果路径以 assets/ 开头，添加 src/ 前缀
-		normalizedPath = path.normalize(path.join("../../src/", srcString)).replace(/\\/g, "/");
+		normalizedPath = path
+			.normalize(path.join("../../src/", srcString))
+			.replace(/\\/g, "/");
 	} else {
 		// 其他情况，使用 basePath
-		normalizedPath = path.normalize(path.join("../../", basePath, srcString)).replace(/\\/g, "/");
+		normalizedPath = path
+			.normalize(path.join("../../", basePath, srcString))
+			.replace(/\\/g, "/");
 	}
 
 	// 只在开发模式下打印调试信息
@@ -70,15 +72,17 @@ if (isLocal) {
 			console.error(
 				`\n[ERROR] Image file not found: ${normalizedPath.replace("../../", "src/")}`,
 			);
-			console.log(`🖼️ 可用文件列表:`, Object.keys(files).slice(0, 10));
+			console.log("🖼️ 可用文件列表:", Object.keys(files).slice(0, 10));
 		}
 	} else {
 		img = await file();
 	}
 }
 
-const isBanner = id === 'banner';
-const imageClass = isBanner ? "w-full h-full object-cover" : "w-full h-full object-cover";
+const isBanner = id === "banner";
+const imageClass = isBanner
+	? "w-full h-full object-cover"
+	: "w-full h-full object-cover";
 const imageStyle = `object-position: ${position}`;
 ---
 {hasValidSrc && (

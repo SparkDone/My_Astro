@@ -10,56 +10,52 @@ import PostMetadata from "./PostMeta.astro";
 import "../styles/components/universal-post-list.css";
 
 interface Props {
-  posts: CollectionEntry<"posts">[];
-  defaultLayout?: 'grid' | 'masonry';
-  class?: string;
+	posts: CollectionEntry<"posts">[];
+	defaultLayout?: "grid" | "masonry";
+	class?: string;
 }
 
-const {
-  posts,
-  defaultLayout = 'grid',
-  class: className = ''
-} = Astro.props;
+const { posts, defaultLayout = "grid", class: className = "" } = Astro.props;
 
 // 判断是否需要居中显示（文章数量少于等于3篇时）
 const shouldCenter = posts.length <= 3;
 
 // 处理不同数据源的统一函数
 async function processPostData(entry: CollectionEntry<"posts">) {
-  let remarkPluginFrontmatter;
+  let remarkPluginFrontmatter: any;
 
-  if (entry.render) {
-    // Astro Content Collection 数据
-    const renderResult = await entry.render();
-    remarkPluginFrontmatter = renderResult.remarkPluginFrontmatter;
-  } else {
-    // Strapi 数据 - 使用 reading-time 插件自动计算
-    const getReadingTime = (await import('reading-time')).default;
-    const content = entry.body || '';
-    const readingTimeStats = getReadingTime(content);
+	if (entry.render) {
+		// Astro Content Collection 数据
+		const renderResult = await entry.render();
+		remarkPluginFrontmatter = renderResult.remarkPluginFrontmatter;
+	} else {
+		// Strapi 数据 - 使用 reading-time 插件自动计算
+		const getReadingTime = (await import("reading-time")).default;
+		const content = entry.body || "";
+		const readingTimeStats = getReadingTime(content);
 
-    remarkPluginFrontmatter = {
-      words: readingTimeStats.words,
-      minutes: Math.max(1, Math.round(readingTimeStats.minutes)),
-      excerpt: entry.data.description || content.substring(0, 150) + '...'
-    };
-  }
+		remarkPluginFrontmatter = {
+			words: readingTimeStats.words,
+			minutes: Math.max(1, Math.round(readingTimeStats.minutes)),
+			excerpt: entry.data.description || `${content.substring(0, 150)}...`,
+		};
+	}
 
-  return remarkPluginFrontmatter;
+	return remarkPluginFrontmatter;
 }
 
 // 预处理所有文章数据
 const processedPosts = await Promise.all(
-  posts.map(async (entry, index) => {
-    const remarkPluginFrontmatter = await processPostData(entry);
-    return {
-      entry,
-      remarkPluginFrontmatter,
-      index,
-      url: getPostUrlBySlug(entry.slug),
-      hasCover: entry.data.image && entry.data.image.trim() !== ""
-    };
-  })
+	posts.map(async (entry, index) => {
+		const remarkPluginFrontmatter = await processPostData(entry);
+		return {
+			entry,
+			remarkPluginFrontmatter,
+			index,
+			url: getPostUrlBySlug(entry.slug),
+			hasCover: entry.data.image && entry.data.image.trim() !== "",
+		};
+	}),
 );
 ---
 
@@ -158,7 +154,7 @@ const processedPosts = await Promise.all(
             <!-- 标签 -->
             {entry.data.tags && entry.data.tags.length > 0 && (
               <>
-                {entry.data.tags.map((tag) => (
+                {entry.data.tags.map((tag: string) => (
                   <>
                     <span class="meta-separator">·</span>
                     <a href={getTagUrl(tag)} class="post-tag-link">

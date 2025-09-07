@@ -7,15 +7,15 @@
 import "../styles/components/layout-switcher.css";
 
 export interface Props {
-  className?: string;
-  defaultLayout?: 'grid' | 'masonry';
-  targetSelector?: string;
+	className?: string;
+	defaultLayout?: "grid" | "masonry";
+	targetSelector?: string;
 }
 
 const {
-  className = '',
-  defaultLayout = 'grid',
-  targetSelector = '.universal-post-list'
+	className = "",
+	defaultLayout = "grid",
+	targetSelector = ".universal-post-list",
 } = Astro.props;
 ---
 

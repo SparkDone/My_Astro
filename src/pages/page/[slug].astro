@@ -6,34 +6,34 @@
 
 import Markdown from "@components/misc/Markdown.astro";
 import MainGridLayout from "../../layouts/MainGridLayout.astro";
-import { getPageBySlug, getAllPages } from "../../lib/strapi-pages";
+import { getAllPages, getPageBySlug } from "../../lib/strapi-pages";
 
 // 静态构建模式下启用预渲染
 export const prerender = true;
 
 export async function getStaticPaths() {
-  try {
-    // 获取所有页面来生成静态路径
-    const pages = await getAllPages();
-    return pages.map(page => ({
-      params: { slug: page.slug }
-    }));
-  } catch (error) {
-    console.error('Error generating static paths for pages:', error);
-    return []; // 如果获取失败，返回空数组
-  }
+	try {
+		// 获取所有页面来生成静态路径
+		const pages = await getAllPages();
+		return pages.map((page) => ({
+			params: { slug: page.slug },
+		}));
+	} catch (error) {
+		console.error("Error generating static paths for pages:", error);
+		return []; // 如果获取失败，返回空数组
+	}
 }
 
 const { slug } = Astro.params;
 
 if (!slug) {
-  return Astro.redirect('/404/');
+	return Astro.redirect("/404/");
 }
 
 const page = await getPageBySlug(slug);
 
 if (!page) {
-  return Astro.redirect('/404/');
+	return Astro.redirect("/404/");
 }
 
 const title = page.metaTitle || page.title;

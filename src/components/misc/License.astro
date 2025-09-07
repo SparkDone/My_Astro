@@ -21,9 +21,10 @@ const postUrl = decodeURIComponent(Astro.url.toString());
 
 // 获取作者名称，优先使用传入的作者信息，否则使用配置文件中的名称
 const authorName = (() => {
-	if (typeof author === 'string') {
+	if (typeof author === "string") {
 		return author;
-	} else if (author && typeof author === 'object' && author.name) {
+	}
+	if (author && typeof author === "object" && author.name) {
 		return author.name;
 	}
 	return profileConf.name;

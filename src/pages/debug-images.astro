@@ -1,25 +1,28 @@
 ---
 // 图片调试页面
-import { getPublishedArticles } from '../lib/strapi';
-import { adaptImageUrl, imageConfig } from '../utils/image-adapter';
+import { getPublishedArticles } from "../lib/strapi";
+import { adaptImageUrl, imageConfig } from "../utils/image-adapter";
 
 let articles = [];
 let error = null;
 
 try {
-  const response = await getPublishedArticles();
-  articles = response.data || [];
+	const response = await getPublishedArticles();
+	articles = response.data || [];
 } catch (e) {
-  error = e.message;
-  console.error('获取文章失败:', e);
+	error = e.message;
+	console.error("获取文章失败:", e);
 }
 
 // 测试图片URL
-const strapiUrl = import.meta.env.STRAPI_URL || import.meta.env.STRAPI_PUBLIC_URL || 'http://localhost:1337';
+const strapiUrl =
+	import.meta.env.STRAPI_URL ||
+	import.meta.env.STRAPI_PUBLIC_URL ||
+	"http://localhost:1337";
 const testImageUrls = [
-  '/uploads/test.jpg',
-  `${strapiUrl}/uploads/test.jpg`,
-  '/images/strapi/test.jpg'
+	"/uploads/test.jpg",
+	`${strapiUrl}/uploads/test.jpg`,
+	"/images/strapi/test.jpg",
 ];
 ---
 

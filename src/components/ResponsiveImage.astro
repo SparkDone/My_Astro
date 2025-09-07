@@ -5,75 +5,77 @@
  */
 
 export interface Props {
-  src: string;
-  alt: string;
-  width?: number;
-  height?: number;
-  class?: string;
-  loading?: 'lazy' | 'eager';
-  sizes?: string;
-  quality?: number;
+	src: string;
+	alt: string;
+	width?: number;
+	height?: number;
+	class?: string;
+	loading?: "lazy" | "eager";
+	sizes?: string;
+	quality?: number;
 }
 
 const {
-  src,
-  alt,
-  width = 800,
-  height = 600,
-  class: className = '',
-  loading = 'lazy',
-  sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
-  quality = 80
+	src,
+	alt,
+	width = 800,
+	height = 600,
+	class: className = "",
+	loading = "lazy",
+	sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw",
+	quality = 80,
 } = Astro.props;
 
 // 生成不同尺寸的图片URL
 function generateSrcSet(originalSrc: string, baseWidth: number): string {
-  const sizes = [320, 640, 768, 1024, 1280, 1920];
-  const validSizes = sizes.filter(size => size <= baseWidth * 2); // 不超过原图2倍
-  
-  if (originalSrc.startsWith('http')) {
-    // 外部图片，尝试生成不同尺寸
-    return validSizes.map(size => {
-      if (originalSrc.includes('/uploads/')) {
-        // Strapi图片，可能有不同尺寸版本
-        const filename = originalSrc.split('/').pop();
-        if (filename) {
-          const baseUrl = originalSrc.replace(filename, '');
-          return `${baseUrl}${filename} ${size}w`;
-        }
-      }
-      return `${originalSrc} ${size}w`;
-    }).join(', ');
-  } else {
-    // 本地图片，生成不同尺寸
-    const ext = originalSrc.split('.').pop();
-    const basePath = originalSrc.replace(`.${ext}`, '');
-    return validSizes.map(size => `${basePath}-${size}w.${ext} ${size}w`).join(', ');
-  }
+	const sizes = [320, 640, 768, 1024, 1280, 1920];
+	const validSizes = sizes.filter((size) => size <= baseWidth * 2); // 不超过原图2倍
+
+	if (originalSrc.startsWith("http")) {
+		// 外部图片，尝试生成不同尺寸
+		return validSizes
+			.map((size) => {
+				if (originalSrc.includes("/uploads/")) {
+					// Strapi图片，可能有不同尺寸版本
+					const filename = originalSrc.split("/").pop();
+					if (filename) {
+						const baseUrl = originalSrc.replace(filename, "");
+						return `${baseUrl}${filename} ${size}w`;
+					}
+				}
+				return `${originalSrc} ${size}w`;
+			})
+			.join(", ");
+	}
+	// 本地图片，生成不同尺寸
+	const ext = originalSrc.split(".").pop();
+	const basePath = originalSrc.replace(`.${ext}`, "");
+	return validSizes
+		.map((size) => `${basePath}-${size}w.${ext} ${size}w`)
+		.join(", ");
 }
 
 // 检查是否为Strapi图片
-const isStrapiImage = src.includes('/uploads/');
+const isStrapiImage = src.includes("/uploads/");
 
 // 生成WebP和AVIF版本的URL
 function generateModernFormats(originalSrc: string) {
-  if (originalSrc.startsWith('http') && isStrapiImage) {
-    // Strapi图片，保持原格式
-    return {
-      avif: originalSrc,
-      webp: originalSrc,
-      fallback: originalSrc
-    };
-  } else {
-    // 本地图片，生成现代格式
-    const ext = originalSrc.split('.').pop();
-    const basePath = originalSrc.replace(`.${ext}`, '');
-    return {
-      avif: `${basePath}.avif`,
-      webp: `${basePath}.webp`,
-      fallback: originalSrc
-    };
-  }
+	if (originalSrc.startsWith("http") && isStrapiImage) {
+		// Strapi图片，保持原格式
+		return {
+			avif: originalSrc,
+			webp: originalSrc,
+			fallback: originalSrc,
+		};
+	}
+	// 本地图片，生成现代格式
+	const ext = originalSrc.split(".").pop();
+	const basePath = originalSrc.replace(`.${ext}`, "");
+	return {
+		avif: `${basePath}.avif`,
+		webp: `${basePath}.webp`,
+		fallback: originalSrc,
+	};
 }
 
 const formats = generateModernFormats(src);

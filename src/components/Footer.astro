@@ -1,16 +1,16 @@
 ---
 
 import { profileConfig } from "../config";
-import { url } from "../utils/url-utils";
 import { getIndexSettings } from "../lib/strapi";
+import { url } from "../utils/url-utils";
 
 const currentYear = new Date().getFullYear();
 
 // 获取首页设置
 const indexSettings = await getIndexSettings();
 const siteTitle = indexSettings?.data?.site_title || profileConfig.name;
-console.log('🏷️ Index Settings:', indexSettings);
-console.log('🏷️ Site Title:', siteTitle);
+console.log("🏷️ Index Settings:", indexSettings);
+console.log("🏷️ Site Title:", siteTitle);
 ---
 
 <!-- 简洁的Footer区域 -->

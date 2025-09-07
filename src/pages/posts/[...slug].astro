@@ -28,59 +28,65 @@ export async function getStaticPaths() {
 
 // 在服务器模式下，总是直接获取最新的文章数据，避免缓存问题
 const { slug } = Astro.params;
-console.log('🚀🚀🚀 [SLUG].ASTRO 文章页面开始执行，slug:', slug);
-console.log('🚀🚀🚀 当前时间:', new Date().toISOString());
+console.log("🚀🚀🚀 [SLUG].ASTRO 文章页面开始执行，slug:", slug);
+console.log("🚀🚀🚀 当前时间:", new Date().toISOString());
 
 // 使用现有的 getSortedPosts 函数来获取文章
 const allPosts = await getSortedPosts();
-const entry = allPosts.find(post => post.slug === slug);
+const entry = allPosts.find((post) => post.slug === slug);
 
-console.log('🔍 从所有文章中找到的文章:', entry ? entry.data.title : '未找到');
-console.log('🔍 entry.body 内容长度:', entry?.body?.length || 0);
-console.log('🔍 entry.body 内容预览:', entry?.body?.substring(0, 200) || '无内容');
+console.log("🔍 从所有文章中找到的文章:", entry ? entry.data.title : "未找到");
+console.log("🔍 entry.body 内容长度:", entry?.body?.length || 0);
+console.log(
+	"🔍 entry.body 内容预览:",
+	entry?.body?.substring(0, 200) || "无内容",
+);
 
 if (!entry) {
 	// 如果找不到文章，返回 404
-	return Astro.redirect('/404/');
+	return Astro.redirect("/404/");
 }
 
-
-
 // 处理不同的数据源（Astro Content Collection vs Strapi）
-let Content, headings, remarkPluginFrontmatter;
+let Content;
+let headings;
+let remarkPluginFrontmatter;
 
-console.log('🔍 entry.render 存在吗?', !!entry.render);
-console.log('🔍 entry.body 内容:', entry.body?.substring(0, 100) + '...');
+console.log("🔍 entry.render 存在吗?", !!entry.render);
+console.log("🔍 entry.body 内容:", `${entry.body?.substring(0, 100)}...`);
 
 if (entry.render) {
 	// 强制调用 render() 函数来获取内容和统计信息
-	console.log('📞 调用 entry.render() 函数...');
+	console.log("📞 调用 entry.render() 函数...");
 	const renderResult = await entry.render();
 	Content = renderResult.Content;
 	headings = renderResult.headings;
 	remarkPluginFrontmatter = renderResult.remarkPluginFrontmatter;
 
-	console.log('✅ render() 调用完成，Content 类型:', typeof Content);
-	console.log('✅ remarkPluginFrontmatter:', remarkPluginFrontmatter);
+	console.log("✅ render() 调用完成，Content 类型:", typeof Content);
+	console.log("✅ remarkPluginFrontmatter:", remarkPluginFrontmatter);
 } else {
 	// Strapi 数据（服务器模式）
-	console.log('🔍 处理 Strapi 数据，文章内容:', entry.body?.substring(0, 100) + '...');
+	console.log(
+		"🔍 处理 Strapi 数据，文章内容:",
+		`${entry.body?.substring(0, 100)}...`,
+	);
 
 	// 动态导入 reading-time 插件
-	const getReadingTime = (await import('reading-time')).default;
+	const getReadingTime = (await import("reading-time")).default;
 
 	// 计算字数和阅读时间
-	const content = entry.body || '';
+	const content = entry.body || "";
 	const readingTimeStats = getReadingTime(content);
 
-	console.log('📊 自动计算的阅读统计:', {
+	console.log("📊 自动计算的阅读统计:", {
 		words: readingTimeStats.words,
-		minutes: Math.max(1, Math.round(readingTimeStats.minutes))
+		minutes: Math.max(1, Math.round(readingTimeStats.minutes)),
 	});
 
 	// 创建一个能正确渲染 Markdown 的 Content 组件
-	console.log('📝 原始内容长度:', content.length);
-	console.log('📝 原始内容预览:', content.substring(0, 200) + '...');
+	console.log("📝 原始内容长度:", content.length);
+	console.log("📝 原始内容预览:", `${content.substring(0, 200)}...`);
 
 	// 使用 Astro 的内置 Markdown 处理
 	Content = () => {
@@ -88,28 +94,40 @@ if (entry.render) {
 		const generateId = (text: string) => {
 			return text
 				.toLowerCase()
-				.replace(/[^\w\s-]/g, '') // 移除特殊字符
-				.replace(/\s+/g, '-')     // 空格替换为连字符
+				.replace(/[^\w\s-]/g, "") // 移除特殊字符
+				.replace(/\s+/g, "-") // 空格替换为连字符
 				.trim();
 		};
 
 		// 简单的 Markdown 转换：处理基本格式
 		let htmlContent = content
-			.replace(/\n\n/g, '</p><p>')  // 段落
-			.replace(/\n/g, '<br>')       // 换行
-			.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')  // 粗体
-			.replace(/\*(.*?)\*/g, '<em>$1</em>')              // 斜体
-			.replace(/`(.*?)`/g, '<code>$1</code>')            // 代码
-			.replace(/^# (.*$)/gm, (match, title) => `<h1 id="${generateId(title)}">${title}</h1>`)             // H1 with ID
-			.replace(/^## (.*$)/gm, (match, title) => `<h2 id="${generateId(title)}">${title}</h2>`)            // H2 with ID
-			.replace(/^### (.*$)/gm, (match, title) => `<h3 id="${generateId(title)}">${title}</h3>`);          // H3 with ID
+			.replace(/\n\n/g, "</p><p>") // 段落
+			.replace(/\n/g, "<br>") // 换行
+			.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // 粗体
+			.replace(/\*(.*?)\*/g, "<em>$1</em>") // 斜体
+			.replace(/`(.*?)`/g, "<code>$1</code>") // 代码
+			.replace(
+				/^# (.*$)/gm,
+				(_match, title) => `<h1 id="${generateId(title)}">${title}</h1>`,
+			) // H1 with ID
+			.replace(
+				/^## (.*$)/gm,
+				(_match, title) => `<h2 id="${generateId(title)}">${title}</h2>`,
+			) // H2 with ID
+			.replace(
+				/^### (.*$)/gm,
+				(_match, title) => `<h3 id="${generateId(title)}">${title}</h3>`,
+			); // H3 with ID
 
 		// 包装在段落标签中
-		if (!htmlContent.startsWith('<')) {
-			htmlContent = '<p>' + htmlContent + '</p>';
+		if (!htmlContent.startsWith("<")) {
+			htmlContent = `<p>${htmlContent}</p>`;
 		}
 
-		console.log('🎨 转换后的 HTML 预览:', htmlContent.substring(0, 200) + '...');
+		console.log(
+			"🎨 转换后的 HTML 预览:",
+			`${htmlContent.substring(0, 200)}...`,
+		);
 
 		return htmlContent;
 	};
@@ -123,44 +141,45 @@ if (entry.render) {
 		const text = match[2].trim();
 		const slug = text
 			.toLowerCase()
-			.replace(/[^\w\s-]/g, '')
-			.replace(/\s+/g, '-')
+			.replace(/[^\w\s-]/g, "")
+			.replace(/\s+/g, "-")
 			.trim();
 
 		headings.push({
 			depth,
 			text,
-			slug
+			slug,
 		});
 	}
 	remarkPluginFrontmatter = {
 		words: readingTimeStats.words,
 		minutes: Math.max(1, Math.round(readingTimeStats.minutes)),
-		excerpt: entry.data.description || content.substring(0, 150) + '...'
+		excerpt: entry.data.description || `${content.substring(0, 150)}...`,
 	};
 }
-
 
 // const banner = await getBannerForPage('post', entry.data.category);
 // console.log('📄 文章页面Banner:', banner);
 
 // SEO 数据处理
 const seoTitle = entry.data.metaTitle || entry.data.title;
-const seoDescription = entry.data.metaDescription || entry.data.description || entry.data.title;
-const seoKeywords = entry.data.keywords || entry.data.tags?.join(', ') || '';
+const seoDescription =
+	entry.data.metaDescription || entry.data.description || entry.data.title;
+const seoKeywords = entry.data.keywords || entry.data.tags?.join(", ") || "";
 
 // Author 调试
-console.log('Author Debug in Article Page:', {
-  'entry.data.author': entry.data.author,
-  'typeof entry.data.author': typeof entry.data.author,
-  'entry.data keys': Object.keys(entry.data)
+console.log("Author Debug in Article Page:", {
+	"entry.data.author": entry.data.author,
+	"typeof entry.data.author": typeof entry.data.author,
+	"entry.data keys": Object.keys(entry.data),
 });
 
 // 获取作者名称，处理不同的数据格式
 const getAuthorName = (author: any) => {
-	if (typeof author === 'string') {
+	if (typeof author === "string") {
 		return author;
-	} else if (author && typeof author === 'object' && author.name) {
+	}
+	if (author && typeof author === "object" && author.name) {
 		return author.name;
 	}
 	return profileConfig.name;

@@ -3,25 +3,25 @@ import { Icon } from "astro-icon/components";
 import "../../styles/components/error-boundary.css";
 
 interface Props {
-  error?: Error;
-  title?: string;
-  message?: string;
-  showRetry?: boolean;
-  showHome?: boolean;
-  showSearch?: boolean;
-  variant?: 'default' | 'minimal' | 'illustration';
-  class?: string;
+	error?: Error;
+	title?: string;
+	message?: string;
+	showRetry?: boolean;
+	showHome?: boolean;
+	showSearch?: boolean;
+	variant?: "default" | "minimal" | "illustration";
+	class?: string;
 }
 
 const {
-  error,
-  title = "出现了一些问题",
-  message = "我们正在努力解决这个问题，请稍后再试。",
-  showRetry = true,
-  showHome = true,
-  showSearch = false,
-  variant = 'default',
-  class: className = ""
+	error,
+	title = "出现了一些问题",
+	message = "我们正在努力解决这个问题，请稍后再试。",
+	showRetry = true,
+	showHome = true,
+	showSearch = false,
+	variant = "default",
+	class: className = "",
 } = Astro.props;
 
 // 根据错误类型显示不同的消息和图标
@@ -30,19 +30,19 @@ let errorIcon = "material-symbols:error-outline";
 let errorColor = "text-red-500";
 
 if (error) {
-  if (error.message.includes('fetch') || error.message.includes('network')) {
-    displayMessage = "网络连接出现问题，请检查您的网络设置后重试。";
-    errorIcon = "material-symbols:wifi-off";
-    errorColor = "text-orange-500";
-  } else if (error.message.includes('timeout')) {
-    displayMessage = "请求超时，请稍后再试。";
-    errorIcon = "material-symbols:schedule";
-    errorColor = "text-yellow-500";
-  } else if (error.message.includes('404')) {
-    displayMessage = "请求的内容不存在。";
-    errorIcon = "material-symbols:search-off";
-    errorColor = "text-blue-500";
-  }
+	if (error.message.includes("fetch") || error.message.includes("network")) {
+		displayMessage = "网络连接出现问题，请检查您的网络设置后重试。";
+		errorIcon = "material-symbols:wifi-off";
+		errorColor = "text-orange-500";
+	} else if (error.message.includes("timeout")) {
+		displayMessage = "请求超时，请稍后再试。";
+		errorIcon = "material-symbols:schedule";
+		errorColor = "text-yellow-500";
+	} else if (error.message.includes("404")) {
+		displayMessage = "请求的内容不存在。";
+		errorIcon = "material-symbols:search-off";
+		errorColor = "text-blue-500";
+	}
 }
 ---
 

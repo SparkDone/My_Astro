@@ -42,7 +42,7 @@ export function applyThemeToDocument(theme: LIGHT_DARK_MODE) {
 	}
 
 	// 添加过渡动画类
-	html.classList.add('theme-transitioning');
+	html.classList.add("theme-transitioning");
 
 	// 使用requestAnimationFrame确保动画流畅
 	requestAnimationFrame(() => {
@@ -63,7 +63,7 @@ export function applyThemeToDocument(theme: LIGHT_DARK_MODE) {
 
 		// 动画完成后移除过渡类 - 加快速度
 		setTimeout(() => {
-			html.classList.remove('theme-transitioning');
+			html.classList.remove("theme-transitioning");
 		}, 30); // 调整为30ms，与CSS动画时间匹配
 	});
 }

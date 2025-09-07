@@ -7,18 +7,21 @@
 import { siteConfig } from "@/config";
 
 // 获取环境变量中的Strapi URL - 使用环境变量或默认值
-const strapiUrl = import.meta.env.STRAPI_PUBLIC_URL || import.meta.env.STRAPI_URL || 'http://localhost:1337';
+const strapiUrl =
+	import.meta.env.STRAPI_PUBLIC_URL ||
+	import.meta.env.STRAPI_URL ||
+	"http://localhost:1337";
 
 // 解析URL获取域名和协议
-let strapiDomain = 'localhost:1337';
-let strapiProtocol = 'http:';
+let strapiDomain = "localhost:1337";
+let strapiProtocol = "http:";
 
 try {
-  const url = new URL(strapiUrl);
-  strapiDomain = url.host; // 包含端口号
-  strapiProtocol = url.protocol;
+	const url = new URL(strapiUrl);
+	strapiDomain = url.host; // 包含端口号
+	strapiProtocol = url.protocol;
 } catch (error) {
-  console.warn('解析Strapi URL失败，使用默认值:', error);
+	console.warn("解析Strapi URL失败，使用默认值:", error);
 }
 
 // 根据环境判断是否需要预加载
@@ -32,10 +35,10 @@ const criticalCSS = [];
 
 // 根据页面类型决定是否预加载JavaScript
 const currentPath = Astro.url.pathname;
-const isHomePage = currentPath === '/';
-const isPostPage = currentPath.startsWith('/posts/');
-const isArchivePage = currentPath.startsWith('/archive');
-const isCategoryPage = currentPath.startsWith('/categories/');
+const isHomePage = currentPath === "/";
+const isPostPage = currentPath.startsWith("/posts/");
+const isArchivePage = currentPath.startsWith("/archive");
+const isCategoryPage = currentPath.startsWith("/categories/");
 
 // 简化预加载策略：不预加载易变的JavaScript文件
 // 这些文件名在每次构建时都会变化，预加载它们容易导致404错误
@@ -44,11 +47,7 @@ const criticalJS = [];
 // 移除JavaScript预加载，避免构建后文件名变化导致的404错误
 
 // 第三方域名预连接
-const thirdPartyDomains = [
-  'fonts.googleapis.com',
-  'fonts.gstatic.com'
-];
-
+const thirdPartyDomains = ["fonts.googleapis.com", "fonts.gstatic.com"];
 ---
 
 <!-- 高级资源预加载优化 - 环境感知 -->

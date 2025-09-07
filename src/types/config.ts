@@ -18,7 +18,6 @@ export type SiteConfig = {
 	//	credit: { enable: boolean; text: string; url?: string; };
 	// };
 
-
 	favicon: Favicon[];
 };
 

@@ -18,7 +18,7 @@ export function getPostUrlBySlug(slug: string): string {
 
 export function getTagUrl(tag: string | null | undefined): string {
 	// 确保 tag 是字符串类型
-	const tagStr = typeof tag === 'string' ? tag : String(tag || '');
+	const tagStr = typeof tag === "string" ? tag : String(tag || "");
 
 	if (!tagStr || tagStr.trim() === "") return url("/archive/");
 	return url(`/archive/?tag=${encodeURIComponent(tagStr.trim())}`);
@@ -26,12 +26,14 @@ export function getTagUrl(tag: string | null | undefined): string {
 
 export function getCategoryUrl(category: string | null | undefined): string {
 	// 确保 category 是字符串类型
-	const categoryStr = typeof category === 'string' ? category : String(category || '');
+	const categoryStr =
+		typeof category === "string" ? category : String(category || "");
 
 	if (
 		!categoryStr ||
 		categoryStr.trim() === "" ||
-		categoryStr.trim().toLowerCase() === i18n(I18nKey.uncategorized).toLowerCase()
+		categoryStr.trim().toLowerCase() ===
+			i18n(I18nKey.uncategorized).toLowerCase()
 	)
 		return url("/archive/?uncategorized=true");
 	return url(`/archive/?category=${encodeURIComponent(categoryStr.trim())}`);

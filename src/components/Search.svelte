@@ -16,7 +16,7 @@ let searchTimeout: number;
 let showAllResults = false;
 let maxDisplayResults = 3;
 let panelVisible = false;
-let lastSearchKeyword = '';
+let lastSearchKeyword = "";
 
 // 缓存DOM元素，避免重复查询
 let searchPanel: HTMLElement | null = null;
@@ -27,15 +27,15 @@ const fakeResult: SearchResult[] = [
 		meta: {
 			title: "第一个搜索结果 - 测试中文",
 		},
-		excerpt:
-			"这是一个包含 <mark>搜索关键词</mark> 的中文测试结果。",
+		excerpt: "这是一个包含 <mark>搜索关键词</mark> 的中文测试结果。",
 	},
 	{
 		url: url("/"),
 		meta: {
 			title: "Second Search Result - English Test",
 		},
-		excerpt: "This is an English test result with <mark>search keywords</mark>.",
+		excerpt:
+			"This is an English test result with <mark>search keywords</mark>.",
 	},
 	{
 		url: url("/"),
@@ -49,7 +49,8 @@ const fakeResult: SearchResult[] = [
 		meta: {
 			title: "Fourth Result - More Content",
 		},
-		excerpt: "Additional test content to demonstrate the <mark>more button</mark> functionality.",
+		excerpt:
+			"Additional test content to demonstrate the <mark>more button</mark> functionality.",
 	},
 	{
 		url: url("/"),
@@ -63,7 +64,8 @@ const fakeResult: SearchResult[] = [
 		meta: {
 			title: "Sixth Search Result",
 		},
-		excerpt: "Even more content to test the <mark>expand/collapse</mark> feature.",
+		excerpt:
+			"Even more content to test the <mark>expand/collapse</mark> feature.",
 	},
 ];
 
@@ -115,11 +117,11 @@ const setPanelVisibility = (show: boolean): void => {
 
 // 处理输入事件
 const handleInput = () => {
-    debouncedSearch(keyword);
+	debouncedSearch(keyword);
 };
 
 // 优化的防抖搜索函数
-const debouncedSearch = (searchKeyword: string, delay: number = 500): void => {
+const debouncedSearch = (searchKeyword: string, delay = 500): void => {
 	clearTimeout(searchTimeout);
 
 	// 如果关键词为空，立即清空结果并隐藏面板
@@ -149,28 +151,30 @@ const debouncedSearch = (searchKeyword: string, delay: number = 500): void => {
 
 // 优化的键盘导航处理
 const handleKeydown = (event: KeyboardEvent): void => {
-	if (event.key === 'Escape') {
+	if (event.key === "Escape") {
 		// ESC键关闭搜索面板并重置状态
 		setPanelVisibility(false);
-		keyword = '';
+		keyword = "";
 		result = [];
 		showAllResults = false;
-		lastSearchKeyword = '';
+		lastSearchKeyword = "";
 	}
 };
 
 // 优化搜索关键词处理 - 兼容中英文
 const normalizeKeyword = (keyword: string): string => {
-	return keyword
-		.trim()
-		.toLowerCase()
-		// 移除多余空格
-		.replace(/\s+/g, ' ')
-		// 处理中文标点符号
-		.replace(/[，。！？；：""''（）【】]/g, ' ')
-		// 处理英文标点符号
-		.replace(/[,\.!\?;:"'\(\)\[\]]/g, ' ')
-		.trim();
+	return (
+		keyword
+			.trim()
+			.toLowerCase()
+			// 移除多余空格
+			.replace(/\s+/g, " ")
+			// 处理中文标点符号
+			.replace(/[，。！？；：""''（）【】]/g, " ")
+			// 处理英文标点符号
+			.replace(/[,.!?;:"'()[\]\\]/g, " ")
+			.trim()
+	);
 };
 
 const search = async (searchKeyword: string): Promise<void> => {
@@ -180,7 +184,7 @@ const search = async (searchKeyword: string): Promise<void> => {
 		setPanelVisibility(false);
 		result = [];
 		showAllResults = false;
-		lastSearchKeyword = '';
+		lastSearchKeyword = "";
 		return;
 	}
 
@@ -208,7 +212,7 @@ const search = async (searchKeyword: string): Promise<void> => {
 					// 支持模糊匹配
 					fuzzy: true,
 					// 支持部分匹配
-					partial: true
+					partial: true,
 				});
 				searchResults = await Promise.all(
 					response.results.map((item) => item.data()),
@@ -216,9 +220,9 @@ const search = async (searchKeyword: string): Promise<void> => {
 			} catch (pagefindError) {
 				// 在生产环境中隐藏详细的WASM错误信息，只显示友好的提示
 				if (import.meta.env.PROD) {
-					console.log('🔍 搜索完成：未找到相关内容');
+					console.log("🔍 搜索完成：未找到相关内容");
 				} else {
-					console.warn('⚠️ Pagefind搜索失败，显示无结果:', pagefindError);
+					console.warn("⚠️ Pagefind搜索失败，显示无结果:", pagefindError);
 				}
 				// Pagefind失败时，显示空结果
 				searchResults = [];
@@ -228,50 +232,54 @@ const search = async (searchKeyword: string): Promise<void> => {
 			try {
 				// 使用混合模式搜索API（支持Strapi和本地内容）
 				const apiUrl = `/api/search/?q=${encodeURIComponent(normalizedKeyword)}&limit=20`;
-				console.log('🔍 发送搜索请求:', apiUrl);
+				console.log("🔍 发送搜索请求:", apiUrl);
 
 				const response = await fetch(apiUrl);
-				console.log('📡 搜索API响应状态:', response.status);
+				console.log("📡 搜索API响应状态:", response.status);
 
 				if (response.ok) {
 					const data = await response.json();
-					console.log('📊 搜索API响应数据:', data);
+					console.log("📊 搜索API响应数据:", data);
 
 					if (data.success && data.data) {
-						console.log('✅ API返回成功，数据条数:', data.data.length);
-						console.log('📊 搜索数据来源:', data.source || 'unknown');
+						console.log("✅ API返回成功，数据条数:", data.data.length);
+						console.log("📊 搜索数据来源:", data.source || "unknown");
 						// 转换API响应格式为搜索组件期望的格式
-						searchResults = data.data.map(post => ({
+						searchResults = data.data.map((post) => ({
 							url: post.url,
 							meta: {
 								title: post.title, // 已经包含高亮的标题
 							},
 							excerpt: post.excerpt, // 已经包含高亮的摘要
 						}));
-						console.log('🔄 转换后的搜索结果:', searchResults);
+						console.log("🔄 转换后的搜索结果:", searchResults);
 					} else {
-						console.error('❌ 搜索API返回错误:', data.error || '未知错误');
-						console.log('📋 完整响应数据:', data);
+						console.error("❌ 搜索API返回错误:", data.error || "未知错误");
+						console.log("📋 完整响应数据:", data);
 						searchResults = [];
 					}
 				} else {
-					console.error('❌ 搜索API请求失败:', response.status, response.statusText);
+					console.error(
+						"❌ 搜索API请求失败:",
+						response.status,
+						response.statusText,
+					);
 					const errorText = await response.text();
-					console.error('❌ 错误详情:', errorText);
+					console.error("❌ 错误详情:", errorText);
 					searchResults = [];
 				}
 			} catch (apiError) {
-				console.error('搜索API错误:', apiError);
+				console.error("搜索API错误:", apiError);
 				// 如果API也失败，使用假数据作为最后的降级
-				searchResults = fakeResult.map(item => ({
+				searchResults = fakeResult.map((item) => ({
 					...item,
-					excerpt: item.excerpt.replace(/搜索关键词|search keywords|关键词|more button|更多按钮|expand\/collapse/g,
-						(match) => `<mark>${match}</mark>`)
+					excerpt: item.excerpt.replace(
+						/搜索关键词|search keywords|关键词|more button|更多按钮|expand\/collapse/g,
+						(match) => `<mark>${match}</mark>`,
+					),
 				}));
 			}
 		}
-
-
 
 		result = searchResults;
 		// 不重置显示状态，保持用户的展开选择
@@ -280,13 +288,18 @@ const search = async (searchKeyword: string): Promise<void> => {
 
 		// 调试信息
 		if (import.meta.env.DEV) {
-			console.log('搜索关键词:', normalizedKeyword);
-			console.log('搜索结果:', result.length, '个结果');
-			console.log('是否显示More按钮:', result.length > maxDisplayResults);
-			console.log('当前搜索状态 - keyword:', keyword);
-			console.log('面板可见性:', panelVisible, 'result.length > 0:', result.length > 0);
+			console.log("搜索关键词:", normalizedKeyword);
+			console.log("搜索结果:", result.length, "个结果");
+			console.log("是否显示More按钮:", result.length > maxDisplayResults);
+			console.log("当前搜索状态 - keyword:", keyword);
+			console.log(
+				"面板可见性:",
+				panelVisible,
+				"result.length > 0:",
+				result.length > 0,
+			);
 			if (result.length > 0) {
-				console.log('第一个结果:', result[0]);
+				console.log("第一个结果:", result[0]);
 			}
 		}
 	} catch (error) {
@@ -313,24 +326,20 @@ onMount(() => {
 
 	// 监听重新初始化事件
 	const handleReinit = () => {
-		console.log('🔄 收到搜索组件重新初始化事件');
+		console.log("🔄 收到搜索组件重新初始化事件");
 		initialized = false;
 		// 重置所有状态
 		result = [];
 		showAllResults = false;
-		lastSearchKeyword = '';
+		lastSearchKeyword = "";
 		panelVisible = false;
 		isSearching = false;
 		// 重新初始化
 		initializeSearch();
 	};
 
-
-
 	if (import.meta.env.DEV) {
-		console.log(
-			"开发环境：使用搜索API进行真实内容搜索",
-		);
+		console.log("开发环境：使用搜索API进行真实内容搜索");
 		initializeSearch();
 	} else {
 		document.addEventListener("pagefindready", () => {
@@ -354,71 +363,71 @@ onMount(() => {
 	}
 
 	// 绑定重新初始化事件监听器
-	const searchBar = document.getElementById('search-bar');
-	const searchBarMobile = document.getElementById('search-bar-inside');
+	const searchBar = document.getElementById("search-bar");
+	const searchBarMobile = document.getElementById("search-bar-inside");
 
 	if (searchBar) {
-		searchBar.addEventListener('search-reinit', handleReinit);
+		searchBar.addEventListener("search-reinit", handleReinit);
 	}
 	if (searchBarMobile) {
-		searchBarMobile.addEventListener('search-reinit', handleReinit);
+		searchBarMobile.addEventListener("search-reinit", handleReinit);
 	}
 
 	// 返回清理函数
 	// 添加点击外部事件监听器
-	document.addEventListener('click', handleClickOutside);
-	
+	document.addEventListener("click", handleClickOutside);
+
 	return () => {
 		if (searchBar) {
-			searchBar.removeEventListener('search-reinit', handleReinit);
+			searchBar.removeEventListener("search-reinit", handleReinit);
 		}
 		if (searchBarMobile) {
-			searchBarMobile.removeEventListener('search-reinit', handleReinit);
+			searchBarMobile.removeEventListener("search-reinit", handleReinit);
 		}
 		// 移除点击外部事件监听器
-		document.removeEventListener('click', handleClickOutside);
+		document.removeEventListener("click", handleClickOutside);
 	};
 });
 
 // 手动搜索函数
 const performSearch = () => {
-    if (!keyword.trim()) {
-        return;
-    }
-    
-    console.log('🔍 手动搜索:', keyword);
-    search(keyword);
-    setPanelVisibility(true);
+	if (!keyword.trim()) {
+		return;
+	}
+
+	console.log("🔍 手动搜索:", keyword);
+	search(keyword);
+	setPanelVisibility(true);
 };
 
 // 点击空白区域关闭搜索面板
 const handleClickOutside = (event: MouseEvent) => {
-    const searchContainer = document.getElementById('search-bar');
-    const searchPanel = document.getElementById('search-panel');
-    const mobileSearchOverlay = document.querySelector('.mobile-search-overlay');
-    const searchSwitch = document.getElementById('search-switch');
-    
-    // 检查点击是否在搜索相关元素外部
-    const isClickInsideSearch = 
-        (searchContainer && searchContainer.contains(event.target as Node)) ||
-        (searchPanel && searchPanel.contains(event.target as Node)) ||
-        (mobileSearchOverlay && mobileSearchOverlay.contains(event.target as Node)) ||
-        (searchSwitch && searchSwitch.contains(event.target as Node));
-    
-    // 检查是否点击了页头导航元素
-    const navbar = document.querySelector('nav');
-    const isClickInsideNavbar = navbar && navbar.contains(event.target as Node);
-    
-    // 如果点击了页头导航，不关闭搜索面板
-    if (isClickInsideNavbar) {
-        return;
-    }
-    
-    if (!isClickInsideSearch) {
-        setPanelVisibility(false);
-        keyword = '';
-        result = [];
-    }
+	const searchContainer = document.getElementById("search-bar");
+	const searchPanel = document.getElementById("search-panel");
+	const mobileSearchOverlay = document.querySelector(".mobile-search-overlay");
+	const searchSwitch = document.getElementById("search-switch");
+
+	// 检查点击是否在搜索相关元素外部
+	const isClickInsideSearch =
+		searchContainer?.contains(event.target as Node) ||
+		searchPanel?.contains(event.target as Node) ||
+		mobileSearchOverlay?.contains(event.target as Node) ||
+		searchSwitch?.contains(event.target as Node);
+
+	// 检查是否点击了页头导航元素
+	const navbar = document.querySelector("nav");
+	const isClickInsideNavbar = navbar?.contains(event.target as Node);
+
+	// 如果点击了页头导航，不关闭搜索面板
+	if (isClickInsideNavbar) {
+		return;
+	}
+
+	if (!isClickInsideSearch) {
+		setPanelVisibility(false);
+		keyword = "";
+		result = [];
+	}
 };
 
 // 移除响应式搜索，避免重复触发

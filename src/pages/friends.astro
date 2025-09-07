@@ -9,17 +9,17 @@ import MainGridLayout from "../layouts/MainGridLayout.astro";
 let friendLinks: any[] = [];
 
 try {
-  // 使用配置中的Strapi URL
-  const strapiUrl = import.meta.env.STRAPI_URL || 'http://localhost:1337';
-  const url = `${strapiUrl}/api/friend-links?populate=*&sort=sort_order:asc,createdAt:desc&filters[publishedAt][$notNull]=true`;
-  const response = await fetch(url);
-  const data = await response.json();
+	// 使用配置中的Strapi URL
+	const strapiUrl = import.meta.env.STRAPI_URL || "http://localhost:1337";
+	const url = `${strapiUrl}/api/friend-links?populate=*&sort=sort_order:asc,createdAt:desc&filters[publishedAt][$notNull]=true`;
+	const response = await fetch(url);
+	const data = await response.json();
 
-  if (data && data.data && Array.isArray(data.data)) {
-    friendLinks = data.data;
-  }
+	if (data?.data && Array.isArray(data.data)) {
+		friendLinks = data.data;
+	}
 } catch (error) {
-  console.error('获取友情链接失败:', error);
+	console.error("获取友情链接失败:", error);
 }
 
 const title = "友情链接";
@@ -27,25 +27,25 @@ const description = `我的朋友们 (${friendLinks.length}个链接)`;
 
 // 友情链接页面结构化数据
 const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  name: "友情链接",
-  description: description,
-  url: Astro.url.href,
-  mainEntity: {
-    "@type": "ItemList",
-    numberOfItems: friendLinks.length,
-    itemListElement: friendLinks.map((link, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
-        "@type": "WebSite",
-        name: link.name,
-        url: link.url,
-        description: link.description || ""
-      }
-    }))
-  }
+	"@context": "https://schema.org",
+	"@type": "CollectionPage",
+	name: "友情链接",
+	description: description,
+	url: Astro.url.href,
+	mainEntity: {
+		"@type": "ItemList",
+		numberOfItems: friendLinks.length,
+		itemListElement: friendLinks.map((link, index) => ({
+			"@type": "ListItem",
+			position: index + 1,
+			item: {
+				"@type": "WebSite",
+				name: link.name,
+				url: link.url,
+				description: link.description || "",
+			},
+		})),
+	},
 };
 ---
 

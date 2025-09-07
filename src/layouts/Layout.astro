@@ -8,8 +8,8 @@ import "../styles/markdown-extend.css";
 import "../styles/components/layout.css";
 
 import ConfigCarrier from "@components/ConfigCarrier.astro";
-import ResourceHints from "@components/ResourceHints.astro";
 import FontPreloader from "@components/FontPreloader.astro";
+import ResourceHints from "@components/ResourceHints.astro";
 import { profileConfig, siteConfig } from "@/config";
 import {
 	AUTO_MODE,
@@ -25,8 +25,8 @@ import { defaultFavicons } from "../constants/icon";
 import type { Favicon } from "../types/config";
 import { pathsEqual, url } from "../utils/url-utils";
 import "katex/dist/katex.css";
-import { getIndexSettings } from "../lib/strapi";
 import { getSiteConfig } from "../lib/config-integration";
+import { getIndexSettings } from "../lib/strapi";
 
 interface Props {
 	title?: string;
@@ -37,7 +37,8 @@ interface Props {
 	author?: string;
 }
 
-let { title, /* banner, */ description, lang, setOGTypeArticle, author } = Astro.props;
+let { title, /* banner, */ description, lang, setOGTypeArticle, author } =
+	Astro.props;
 
 // 获取整合后的站点配置（Strapi + config.ts）
 const integratedSiteConfig = await getSiteConfig();
@@ -47,12 +48,12 @@ const strapiSiteDescription = integratedSiteConfig.description || description;
 
 // 调试信息（仅开发环境且非构建模式）
 if (import.meta.env.DEV && !import.meta.env.PROD) {
-  console.log('🔧 Layout.astro 配置调试:', {
-    integratedSiteConfig,
-    strapiSiteTitle,
-    strapiSiteSubtitle,
-    strapiSiteDescription
-  });
+	console.log("🔧 Layout.astro 配置调试:", {
+		integratedSiteConfig,
+		strapiSiteTitle,
+		strapiSiteSubtitle,
+		strapiSiteDescription,
+	});
 }
 
 // apply a class to the body element to decide the height of the banner, only used for initial page load
@@ -76,7 +77,7 @@ if (title) {
 	pageTitle = `${title} - ${strapiSiteTitle}`;
 } else {
 	// 首页：网站名称 - 网站副标题（如果有副标题的话）
-	if (strapiSiteSubtitle && strapiSiteSubtitle.trim() !== '') {
+	if (strapiSiteSubtitle && strapiSiteSubtitle.trim() !== "") {
 		pageTitle = `${strapiSiteTitle} - ${strapiSiteSubtitle}`;
 	} else {
 		pageTitle = strapiSiteTitle;

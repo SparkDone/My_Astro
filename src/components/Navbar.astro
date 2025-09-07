@@ -3,36 +3,37 @@ import { Icon } from "astro-icon/components";
 import { navBarConfig, siteConfig } from "../config";
 import { config } from "../config/api";
 import { LinkPresets } from "../constants/link-presets";
+import { getAdaptedMainNavigation } from "../lib/custom-navigation";
 import { LinkPreset, type NavBarLink } from "../types/config";
 import { url } from "../utils/url-utils";
 import LightDarkSwitch from "./LightDarkSwitch.svelte";
 import Search from "./Search.svelte";
+import StaticLogo from "./StaticLogo.astro";
 import DisplaySettings from "./widget/DisplaySettings.svelte";
 import NavMenuPanel from "./widget/NavMenuPanel.astro";
-import { getAdaptedMainNavigation } from "../lib/custom-navigation";
-import StaticLogo from "./StaticLogo.astro";
 
 const className = Astro.props.class;
 
 // 获取导航链接
-const getStaticLinks = () => navBarConfig.links.map((item: NavBarLink | LinkPreset): NavBarLink => {
-  if (typeof item === "number") {
-    return LinkPresets[item];
-  }
-  return item;
-});
+const getStaticLinks = () =>
+	navBarConfig.links.map((item: NavBarLink | LinkPreset): NavBarLink => {
+		if (typeof item === "number") {
+			return LinkPresets[item];
+		}
+		return item;
+	});
 
 let links: NavBarLink[] = [];
 
 if (config.features.useStrapi) {
-  try {
-    links = await getAdaptedMainNavigation();
-  } catch (error) {
-    console.error('获取动态导航失败，使用静态导航:', error);
-    links = getStaticLinks();
-  }
+	try {
+		links = await getAdaptedMainNavigation();
+	} catch (error) {
+		console.error("获取动态导航失败，使用静态导航:", error);
+		links = getStaticLinks();
+	}
 } else {
-  links = getStaticLinks();
+	links = getStaticLinks();
 }
 ---
 <div id="navbar" class="z-50 onload-animation w-full fixed top-0 left-0 right-0">

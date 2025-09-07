@@ -4,280 +4,299 @@
  */
 
 class ModuleManager {
-    constructor() {
-        this.loadedModules = new Set();
-        this.loadingModules = new Map();
-        this.moduleConfig = {
-            // 关键模块 - 立即加载
-            critical: [
-                'theme-manager',
-                'error-handler'
-            ],
-            // 重要模块 - 页面加载后立即加载
-            important: [
-                'font-loader',
-                'layout-switcher'
-            ],
-            // 延迟模块 - 用户交互时加载
-            deferred: [
-                'search-system'
-            ],
-            // 条件模块 - 按需加载
-            conditional: {
-                'image-wrapper': () => document.querySelector('img[data-src]'),
-                'markdown-renderer': () => document.querySelector('.prose')
-                // 移除performance-monitor，因为它通过script标签直接加载
-            }
-        };
-        
-        this.init();
-    }
+	constructor() {
+		this.loadedModules = new Set();
+		this.loadingModules = new Map();
+		this.moduleConfig = {
+			// 关键模块 - 立即加载
+			critical: ["theme-manager", "error-handler"],
+			// 重要模块 - 页面加载后立即加载
+			important: ["font-loader", "layout-switcher"],
+			// 延迟模块 - 用户交互时加载
+			deferred: ["search-system"],
+			// 条件模块 - 按需加载
+			conditional: {
+				"image-wrapper": () => document.querySelector("img[data-src]"),
+				"markdown-renderer": () => document.querySelector(".prose"),
+				// 移除performance-monitor，因为它通过script标签直接加载
+			},
+		};
 
-    /**
-     * 初始化模块管理器
-     */
-    init() {
-        // 防止重复初始化
-        if (window.moduleManagerInitialized) {
-            if ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && !window.location.hostname.includes('pages.dev')) {
-                console.log('⚠️ 模块管理器已初始化，跳过重复初始化');
-            }
-            return;
-        }
+		this.init();
+	}
 
-        window.moduleManagerInitialized = true;
+	/**
+	 * 初始化模块管理器
+	 */
+	init() {
+		// 防止重复初始化
+		if (window.moduleManagerInitialized) {
+			if (
+				(window.location.hostname === "localhost" ||
+					window.location.hostname === "127.0.0.1") &&
+				!window.location.hostname.includes("pages.dev")
+			) {
+				console.log("⚠️ 模块管理器已初始化，跳过重复初始化");
+			}
+			return;
+		}
 
-        if ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && !window.location.hostname.includes('pages.dev')) {
-            console.log('🚀 模块管理器初始化');
-        }
-        
-        // 立即加载关键模块
-        this.loadCriticalModules();
-        
-        // DOM加载完成后加载重要模块
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                this.loadImportantModules();
-                this.setupDeferredLoading();
-                this.checkConditionalModules();
-            });
-        } else {
-            this.loadImportantModules();
-            this.setupDeferredLoading();
-            this.checkConditionalModules();
-        }
-    }
+		window.moduleManagerInitialized = true;
 
-    /**
-     * 加载关键模块
-     */
-    async loadCriticalModules() {
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') console.log('⚡ 加载关键模块');
+		if (
+			(window.location.hostname === "localhost" ||
+				window.location.hostname === "127.0.0.1") &&
+			!window.location.hostname.includes("pages.dev")
+		) {
+			console.log("🚀 模块管理器初始化");
+		}
 
-        for (const moduleName of this.moduleConfig.critical) {
-            try {
-                await this.loadModule(moduleName);
-            } catch (error) {
-                console.error(`❌ 关键模块加载失败: ${moduleName}`, error);
-            }
-        }
-    }
+		// 立即加载关键模块
+		this.loadCriticalModules();
 
-    /**
-     * 加载重要模块
-     */
-    async loadImportantModules() {
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') console.log('📦 加载重要模块');
+		// DOM加载完成后加载重要模块
+		if (document.readyState === "loading") {
+			document.addEventListener("DOMContentLoaded", () => {
+				this.loadImportantModules();
+				this.setupDeferredLoading();
+				this.checkConditionalModules();
+			});
+		} else {
+			this.loadImportantModules();
+			this.setupDeferredLoading();
+			this.checkConditionalModules();
+		}
+	}
 
-        // 并行加载重要模块
-        const loadPromises = this.moduleConfig.important.map(moduleName =>
-            this.loadModule(moduleName).catch(error => {
-                console.warn(`⚠️ 重要模块加载失败: ${moduleName}`, error);
-            })
-        );
+	/**
+	 * 加载关键模块
+	 */
+	async loadCriticalModules() {
+		if (
+			window.location.hostname === "localhost" ||
+			window.location.hostname === "127.0.0.1"
+		)
+			console.log("⚡ 加载关键模块");
 
-        await Promise.allSettled(loadPromises);
-    }
+		for (const moduleName of this.moduleConfig.critical) {
+			try {
+				await this.loadModule(moduleName);
+			} catch (error) {
+				console.error(`❌ 关键模块加载失败: ${moduleName}`, error);
+			}
+		}
+	}
 
-    /**
-     * 设置延迟加载
-     */
-    setupDeferredLoading() {
-        console.log('⏰ 设置延迟加载');
-        
-        // 用户交互时加载延迟模块
-        const loadDeferredModules = () => {
-            this.moduleConfig.deferred.forEach(moduleName => {
-                this.loadModule(moduleName).catch(error => {
-                    console.warn(`⚠️ 延迟模块加载失败: ${moduleName}`, error);
-                });
-            });
-            
-            // 移除事件监听器
-            document.removeEventListener('click', loadDeferredModules, { once: true });
-            document.removeEventListener('scroll', loadDeferredModules, { once: true });
-            document.removeEventListener('keydown', loadDeferredModules, { once: true });
-        };
+	/**
+	 * 加载重要模块
+	 */
+	async loadImportantModules() {
+		if (
+			window.location.hostname === "localhost" ||
+			window.location.hostname === "127.0.0.1"
+		)
+			console.log("📦 加载重要模块");
 
-        // 监听用户交互
-        document.addEventListener('click', loadDeferredModules, { once: true });
-        document.addEventListener('scroll', loadDeferredModules, { once: true });
-        document.addEventListener('keydown', loadDeferredModules, { once: true });
-        
-        // 3秒后自动加载（兜底策略）
-        setTimeout(loadDeferredModules, 3000);
-    }
+		// 并行加载重要模块
+		const loadPromises = this.moduleConfig.important.map((moduleName) =>
+			this.loadModule(moduleName).catch((error) => {
+				console.warn(`⚠️ 重要模块加载失败: ${moduleName}`, error);
+			}),
+		);
 
-    /**
-     * 检查条件模块
-     */
-    checkConditionalModules() {
-        console.log('🔍 检查条件模块');
-        
-        Object.entries(this.moduleConfig.conditional).forEach(([moduleName, condition]) => {
-            if (condition()) {
-                console.log(`✅ 条件满足，加载模块: ${moduleName}`);
-                this.loadModule(moduleName).catch(error => {
-                    console.warn(`⚠️ 条件模块加载失败: ${moduleName}`, error);
-                });
-            }
-        });
-    }
+		await Promise.allSettled(loadPromises);
+	}
 
-    /**
-     * 加载单个模块
-     */
-    async loadModule(moduleName) {
-        // 检查是否已加载
-        if (this.loadedModules.has(moduleName)) {
-            return;
-        }
+	/**
+	 * 设置延迟加载
+	 */
+	setupDeferredLoading() {
+		console.log("⏰ 设置延迟加载");
 
-        // 检查是否正在加载
-        if (this.loadingModules.has(moduleName)) {
-            return this.loadingModules.get(moduleName);
-        }
+		// 用户交互时加载延迟模块
+		const loadDeferredModules = () => {
+			this.moduleConfig.deferred.forEach((moduleName) => {
+				this.loadModule(moduleName).catch((error) => {
+					console.warn(`⚠️ 延迟模块加载失败: ${moduleName}`, error);
+				});
+			});
 
-        if (import.meta.env.DEV) {
-            console.log(`📥 开始加载模块: ${moduleName}`);
-        }
-        
-        const loadPromise = this.importModule(moduleName);
-        this.loadingModules.set(moduleName, loadPromise);
+			// 移除事件监听器
+			document.removeEventListener("click", loadDeferredModules, {
+				once: true,
+			});
+			document.removeEventListener("scroll", loadDeferredModules, {
+				once: true,
+			});
+			document.removeEventListener("keydown", loadDeferredModules, {
+				once: true,
+			});
+		};
 
-        try {
-            const module = await loadPromise;
-            this.loadedModules.add(moduleName);
-            this.loadingModules.delete(moduleName);
-            
-            if (import.meta.env.DEV) {
-                console.log(`✅ 模块加载完成: ${moduleName}`);
-            }
-            
-            // 触发模块加载完成事件
-            document.dispatchEvent(new CustomEvent('module:loaded', {
-                detail: { moduleName, module }
-            }));
-            
-            return module;
-        } catch (error) {
-            this.loadingModules.delete(moduleName);
-            console.error(`❌ 模块加载失败: ${moduleName}`, error);
-            throw error;
-        }
-    }
+		// 监听用户交互
+		document.addEventListener("click", loadDeferredModules, { once: true });
+		document.addEventListener("scroll", loadDeferredModules, { once: true });
+		document.addEventListener("keydown", loadDeferredModules, { once: true });
 
-    /**
-     * 动态导入模块
-     */
-    async importModule(moduleName) {
-        const moduleMap = {
-            'theme-manager': () => import('./theme-manager.js'),
-            'error-handler': () => import('./error-handler.js'),
-            'font-loader': () => import('./font-loader.js'),
-            'layout-switcher': () => import('./layout-switcher.js'),
-            'search-system': () => import('../components/Search.svelte'),
-            'image-wrapper': () => import('../components/misc/ImageWrapper.astro'),
-            'markdown-renderer': () => import('../components/misc/Markdown.astro'),
+		// 3秒后自动加载（兜底策略）
+		setTimeout(loadDeferredModules, 3000);
+	}
 
-            'lazy-loader': () => import('../utils/lazy-loader.ts'),
-            'bundle-optimizer': () => import('../utils/bundle-optimizer.ts')
-        };
+	/**
+	 * 检查条件模块
+	 */
+	checkConditionalModules() {
+		console.log("🔍 检查条件模块");
 
-        const moduleLoader = moduleMap[moduleName];
-        if (!moduleLoader) {
-            console.warn(`⚠️ 未知模块: ${moduleName}，跳过加载`);
-            return null;
-        }
+		Object.entries(this.moduleConfig.conditional).forEach(
+			([moduleName, condition]) => {
+				if (condition()) {
+					console.log(`✅ 条件满足，加载模块: ${moduleName}`);
+					this.loadModule(moduleName).catch((error) => {
+						console.warn(`⚠️ 条件模块加载失败: ${moduleName}`, error);
+					});
+				}
+			},
+		);
+	}
 
-        return moduleLoader();
-    }
+	/**
+	 * 加载单个模块
+	 */
+	async loadModule(moduleName) {
+		// 检查是否已加载
+		if (this.loadedModules.has(moduleName)) {
+			return;
+		}
 
-    /**
-     * 手动加载模块
-     */
-    async loadModuleManually(moduleName) {
-        return this.loadModule(moduleName);
-    }
+		// 检查是否正在加载
+		if (this.loadingModules.has(moduleName)) {
+			return this.loadingModules.get(moduleName);
+		}
 
-    /**
-     * 预加载模块
-     */
-    preloadModule(moduleName) {
-        // 使用link标签预加载模块
-        const link = document.createElement('link');
-        link.rel = 'modulepreload';
-        link.href = this.getModulePath(moduleName);
-        document.head.appendChild(link);
-        
-        console.log(`🚀 预加载模块: ${moduleName}`);
-    }
+		if (import.meta.env.DEV) {
+			console.log(`📥 开始加载模块: ${moduleName}`);
+		}
 
-    /**
-     * 获取模块路径
-     */
-    getModulePath(moduleName) {
-        const pathMap = {
-            'theme-manager': '/src/scripts/theme-manager.js',
-            'error-handler': '/src/scripts/error-handler.js',
-            'font-loader': '/src/scripts/font-loader.js',
-            'layout-switcher': '/src/scripts/layout-switcher.js',
-            'search-system': '/src/components/Search.svelte',
-            'image-wrapper': '/src/components/misc/ImageWrapper.astro',
-            'markdown-renderer': '/src/components/misc/Markdown.astro',
+		const loadPromise = this.importModule(moduleName);
+		this.loadingModules.set(moduleName, loadPromise);
 
-            'lazy-loader': '/src/utils/lazy-loader.ts',
-            'bundle-optimizer': '/src/utils/bundle-optimizer.ts'
-        };
+		try {
+			const module = await loadPromise;
+			this.loadedModules.add(moduleName);
+			this.loadingModules.delete(moduleName);
 
-        return pathMap[moduleName] || `/src/utils/${moduleName}.js`;
-    }
+			if (import.meta.env.DEV) {
+				console.log(`✅ 模块加载完成: ${moduleName}`);
+			}
 
-    /**
-     * 获取加载状态
-     */
-    getLoadStatus() {
-        return {
-            loaded: Array.from(this.loadedModules),
-            loading: Array.from(this.loadingModules.keys()),
-            total: Object.keys(this.moduleConfig).reduce((total, category) => {
-                if (Array.isArray(this.moduleConfig[category])) {
-                    return total + this.moduleConfig[category].length;
-                } else if (typeof this.moduleConfig[category] === 'object') {
-                    return total + Object.keys(this.moduleConfig[category]).length;
-                }
-                return total;
-            }, 0)
-        };
-    }
+			// 触发模块加载完成事件
+			document.dispatchEvent(
+				new CustomEvent("module:loaded", {
+					detail: { moduleName, module },
+				}),
+			);
 
-    /**
-     * 卸载模块
-     */
-    unloadModule(moduleName) {
-        this.loadedModules.delete(moduleName);
-        console.log(`🗑️ 模块已卸载: ${moduleName}`);
-    }
+			return module;
+		} catch (error) {
+			this.loadingModules.delete(moduleName);
+			console.error(`❌ 模块加载失败: ${moduleName}`, error);
+			throw error;
+		}
+	}
+
+	/**
+	 * 动态导入模块
+	 */
+	async importModule(moduleName) {
+		const moduleMap = {
+			"theme-manager": () => import("./theme-manager.js"),
+			"error-handler": () => import("./error-handler.js"),
+			"font-loader": () => import("./font-loader.js"),
+			"layout-switcher": () => import("./layout-switcher.js"),
+			"search-system": () => import("../components/Search.svelte"),
+			"image-wrapper": () => import("../components/misc/ImageWrapper.astro"),
+			"markdown-renderer": () => import("../components/misc/Markdown.astro"),
+
+			"lazy-loader": () => import("../utils/lazy-loader.ts"),
+			"bundle-optimizer": () => import("../utils/bundle-optimizer.ts"),
+		};
+
+		const moduleLoader = moduleMap[moduleName];
+		if (!moduleLoader) {
+			console.warn(`⚠️ 未知模块: ${moduleName}，跳过加载`);
+			return null;
+		}
+
+		return moduleLoader();
+	}
+
+	/**
+	 * 手动加载模块
+	 */
+	async loadModuleManually(moduleName) {
+		return this.loadModule(moduleName);
+	}
+
+	/**
+	 * 预加载模块
+	 */
+	preloadModule(moduleName) {
+		// 使用link标签预加载模块
+		const link = document.createElement("link");
+		link.rel = "modulepreload";
+		link.href = this.getModulePath(moduleName);
+		document.head.appendChild(link);
+
+		console.log(`🚀 预加载模块: ${moduleName}`);
+	}
+
+	/**
+	 * 获取模块路径
+	 */
+	getModulePath(moduleName) {
+		const pathMap = {
+			"theme-manager": "/src/scripts/theme-manager.js",
+			"error-handler": "/src/scripts/error-handler.js",
+			"font-loader": "/src/scripts/font-loader.js",
+			"layout-switcher": "/src/scripts/layout-switcher.js",
+			"search-system": "/src/components/Search.svelte",
+			"image-wrapper": "/src/components/misc/ImageWrapper.astro",
+			"markdown-renderer": "/src/components/misc/Markdown.astro",
+
+			"lazy-loader": "/src/utils/lazy-loader.ts",
+			"bundle-optimizer": "/src/utils/bundle-optimizer.ts",
+		};
+
+		return pathMap[moduleName] || `/src/utils/${moduleName}.js`;
+	}
+
+	/**
+	 * 获取加载状态
+	 */
+	getLoadStatus() {
+		return {
+			loaded: Array.from(this.loadedModules),
+			loading: Array.from(this.loadingModules.keys()),
+			total: Object.keys(this.moduleConfig).reduce((total, category) => {
+				if (Array.isArray(this.moduleConfig[category])) {
+					return total + this.moduleConfig[category].length;
+				}
+				if (typeof this.moduleConfig[category] === "object") {
+					return total + Object.keys(this.moduleConfig[category]).length;
+				}
+				return total;
+			}, 0),
+		};
+	}
+
+	/**
+	 * 卸载模块
+	 */
+	unloadModule(moduleName) {
+		this.loadedModules.delete(moduleName);
+		console.log(`🗑️ 模块已卸载: ${moduleName}`);
+	}
 }
 
 // 创建全局实例

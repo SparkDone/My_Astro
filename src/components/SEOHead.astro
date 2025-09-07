@@ -1,65 +1,67 @@
 ---
 // SEO 头部组件 - 统一管理所有 SEO 相关的 meta 标签
 export interface Props {
-  title?: string;
-  description?: string;
-  image?: string;
-  article?: boolean;
-  publishedTime?: string;
-  modifiedTime?: string;
-  author?: string;
-  tags?: string[];
-  category?: string;
+	title?: string;
+	description?: string;
+	image?: string;
+	article?: boolean;
+	publishedTime?: string;
+	modifiedTime?: string;
+	author?: string;
+	tags?: string[];
+	category?: string;
 }
 
 const {
-  title,
-  description,
-  image,
-  article = false,
-  publishedTime,
-  modifiedTime,
-  author,
-  tags = [],
-  category
+	title,
+	description,
+	image,
+	article = false,
+	publishedTime,
+	modifiedTime,
+	author,
+	tags = [],
+	category,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = image ? new URL(image, Astro.site) : null;
 
 // 生成结构化数据
-const jsonLd = article ? {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  headline: title,
-  description: description,
-  image: socialImageURL?.href,
-  url: canonicalURL.href,
-  datePublished: publishedTime,
-  dateModified: modifiedTime || publishedTime,
-  author: {
-    "@type": "Person",
-    name: author || "Admin"
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "SparkDone",
-    url: Astro.site?.href
-  },
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": canonicalURL.href
-  },
-  keywords: tags.join(", "),
-  articleSection: category
-} : {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  name: title,
-  description: description,
-  url: canonicalURL.href,
-  image: socialImageURL?.href
-};
+const jsonLd = article
+	? {
+			"@context": "https://schema.org",
+			"@type": "BlogPosting",
+			headline: title,
+			description: description,
+			image: socialImageURL?.href,
+			url: canonicalURL.href,
+			datePublished: publishedTime,
+			dateModified: modifiedTime || publishedTime,
+			author: {
+				"@type": "Person",
+				name: author || "Admin",
+			},
+			publisher: {
+				"@type": "Organization",
+				name: "SparkDone",
+				url: Astro.site?.href,
+			},
+			mainEntityOfPage: {
+				"@type": "WebPage",
+				"@id": canonicalURL.href,
+			},
+			keywords: tags.join(", "),
+			articleSection: category,
+		}
+	: {
+			"@context": "https://schema.org",
+			"@type": "WebPage",
+			name: title,
+			description: description,
+			url: canonicalURL.href,
+			image: socialImageURL?.href,
+		};
 ---
 
 <!-- 基础 SEO -->

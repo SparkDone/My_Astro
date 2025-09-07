@@ -6,60 +6,69 @@ import "../../styles/components/responsive-image.css";
  */
 
 interface Props {
-  src: string;
-  alt: string;
-  width?: number;
-  height?: number;
-  sizes?: string;
-  loading?: 'lazy' | 'eager';
-  priority?: boolean;
-  placeholder?: 'blur' | 'empty' | 'skeleton';
-  fallback?: string;
-  class?: string;
-  objectFit?: 'cover' | 'contain' | 'fill' | 'scale-down' | 'none';
-  rounded?: boolean;
-  shadow?: boolean;
+	src: string;
+	alt: string;
+	width?: number;
+	height?: number;
+	sizes?: string;
+	loading?: "lazy" | "eager";
+	priority?: boolean;
+	placeholder?: "blur" | "empty" | "skeleton";
+	fallback?: string;
+	class?: string;
+	objectFit?: "cover" | "contain" | "fill" | "scale-down" | "none";
+	rounded?: boolean;
+	shadow?: boolean;
 }
 
 const {
-  src,
-  alt,
-  width,
-  height,
-  sizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
-  loading = 'lazy',
-  priority = false,
-  placeholder = 'blur',
-  fallback = '/images/placeholder.jpg',
-  class: className = '',
-  objectFit = 'cover',
-  rounded = false,
-  shadow = false
+	src,
+	alt,
+	width,
+	height,
+	sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
+	loading = "lazy",
+	priority = false,
+	placeholder = "blur",
+	fallback = "/images/placeholder.jpg",
+	class: className = "",
+	objectFit = "cover",
+	rounded = false,
+	shadow = false,
 } = Astro.props;
 
 // 生成不同尺寸的图片URL（如果支持）
 const generateSrcSet = (baseSrc: string) => {
-  const sizes = [320, 640, 768, 1024, 1280, 1920];
-  return sizes.map(size => `${baseSrc}?w=${size} ${size}w`).join(', ');
+	const sizes = [320, 640, 768, 1024, 1280, 1920];
+	return sizes.map((size) => `${baseSrc}?w=${size} ${size}w`).join(", ");
 };
 
 const imageClasses = [
-  'responsive-image',
-  'transition-all duration-300',
-  objectFit === 'cover' ? 'object-cover' : 
-  objectFit === 'contain' ? 'object-contain' :
-  objectFit === 'fill' ? 'object-fill' :
-  objectFit === 'scale-down' ? 'object-scale-down' : 'object-none',
-  rounded ? 'rounded-lg' : '',
-  shadow ? 'shadow-lg hover:shadow-xl' : '',
-  className
-].filter(Boolean).join(' ');
+	"responsive-image",
+	"transition-all duration-300",
+	objectFit === "cover"
+		? "object-cover"
+		: objectFit === "contain"
+			? "object-contain"
+			: objectFit === "fill"
+				? "object-fill"
+				: objectFit === "scale-down"
+					? "object-scale-down"
+					: "object-none",
+	rounded ? "rounded-lg" : "",
+	shadow ? "shadow-lg hover:shadow-xl" : "",
+	className,
+]
+	.filter(Boolean)
+	.join(" ");
 
 const containerClasses = [
-  'relative overflow-hidden',
-  'bg-gray-100 dark:bg-gray-800',
-  rounded ? 'rounded-lg' : ''
-].filter(Boolean).join(' ');
+	"relative overflow-hidden",
+	"bg-gray-100 dark:bg-gray-800",
+	rounded ? "rounded-lg" : "",
+]
+	.filter(Boolean)
+	.join(" ");
 ---
 
 <div class={`${containerClasses} image-loading-container`}>

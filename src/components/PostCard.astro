@@ -1,9 +1,9 @@
 ---
-import type { PostEntry } from "../types/post";
 import path from "node:path";
 import { Icon } from "astro-icon/components";
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
+import type { PostEntry } from "../types/post";
 import { getDir } from "../utils/url-utils";
 import ImageWrapper from "./misc/ImageWrapper.astro";
 import PostMetadata from "./PostMeta.astro";
@@ -41,7 +41,7 @@ const hasCover = image !== undefined && image !== null && image !== "";
 const coverWidth = "28%";
 
 // 处理不同的数据源（Astro Content Collection vs Strapi）
-let remarkPluginFrontmatter;
+let remarkPluginFrontmatter: any;
 
 if (entry.render) {
 	// Astro Content Collection 数据
@@ -49,14 +49,14 @@ if (entry.render) {
 	remarkPluginFrontmatter = renderResult.remarkPluginFrontmatter;
 } else {
 	// Strapi 数据 - 使用 reading-time 插件自动计算
-	const getReadingTime = (await import('reading-time')).default;
-	const content = entry.body || '';
+	const getReadingTime = (await import("reading-time")).default;
+	const content = entry.body || "";
 	const readingTimeStats = getReadingTime(content);
 
 	remarkPluginFrontmatter = {
 		words: readingTimeStats.words,
 		minutes: Math.max(1, Math.round(readingTimeStats.minutes)),
-		excerpt: entry.data.description || content.substring(0, 150) + '...'
+		excerpt: entry.data.description || `${content.substring(0, 150)}...`,
 	};
 }
 ---

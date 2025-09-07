@@ -29,19 +29,19 @@ function initializeThemeSwitch() {
 
 	mode = storedTheme;
 	isInitialized = true;
-	console.log('🎨 主题切换器已初始化，当前模式:', mode);
+	console.log("🎨 主题切换器已初始化，当前模式:", mode);
 }
 
 onMount(() => {
 	// 确保在客户端环境中初始化
-	if (typeof window === 'undefined') return;
+	if (typeof window === "undefined") return;
 
 	initializeThemeSwitch();
 
 	// 监听重新初始化事件
 	const handleReinit = () => {
 		if (import.meta.env.DEV) {
-			console.log('🎨 收到主题切换器重新初始化事件');
+			console.log("🎨 收到主题切换器重新初始化事件");
 		}
 		isInitialized = false;
 		setTimeout(() => {
@@ -51,13 +51,13 @@ onMount(() => {
 
 	// 监听自定义重新初始化事件
 	const setupThemeButton = () => {
-		const themeButton = document.getElementById('scheme-switch');
+		const themeButton = document.getElementById("scheme-switch");
 		if (themeButton) {
 			// 移除旧的事件监听器，避免重复绑定
-			themeButton.removeEventListener('theme-switch-reinit', handleReinit);
-			themeButton.addEventListener('theme-switch-reinit', handleReinit);
+			themeButton.removeEventListener("theme-switch-reinit", handleReinit);
+			themeButton.addEventListener("theme-switch-reinit", handleReinit);
 			if (import.meta.env.DEV) {
-				console.log('🎨 主题切换器事件监听器已绑定');
+				console.log("🎨 主题切换器事件监听器已绑定");
 			}
 			return themeButton;
 		}
@@ -79,15 +79,15 @@ onMount(() => {
 
 	// 监听Swup页面切换事件，重新初始化组件
 	const setupSwupListeners = () => {
-		if (window.swup && window.swup.hooks) {
+		if (window.swup?.hooks) {
 			if (import.meta.env.DEV) {
-				console.log('🎨 设置主题切换器Swup事件监听');
+				console.log("🎨 设置主题切换器Swup事件监听");
 			}
 
 			// 页面切换后重新初始化
-			window.swup.hooks.on('page:view', () => {
+			window.swup.hooks.on("page:view", () => {
 				if (import.meta.env.DEV) {
-					console.log('🎨 Swup页面切换完成，重新初始化主题切换器');
+					console.log("🎨 Swup页面切换完成，重新初始化主题切换器");
 				}
 				// 延迟重新初始化，确保DOM完全更新
 				setTimeout(() => {
@@ -96,9 +96,9 @@ onMount(() => {
 			});
 
 			// 内容替换时也重新初始化
-			window.swup.hooks.on('content:replace', () => {
+			window.swup.hooks.on("content:replace", () => {
 				if (import.meta.env.DEV) {
-					console.log('🎨 Swup内容替换，重新初始化主题切换器');
+					console.log("🎨 Swup内容替换，重新初始化主题切换器");
 				}
 				setTimeout(() => {
 					handleReinit();
@@ -112,15 +112,15 @@ onMount(() => {
 		setupSwupListeners();
 	} else {
 		// 否则等待Swup加载完成
-		document.addEventListener('swup:enable', setupSwupListeners);
+		document.addEventListener("swup:enable", setupSwupListeners);
 	}
 
 	// 定期检查按钮是否存在，如果消失则重新初始化
 	const checkButtonExistence = () => {
-		const themeButton = document.getElementById('scheme-switch');
+		const themeButton = document.getElementById("scheme-switch");
 		if (!themeButton && isInitialized) {
 			if (import.meta.env.DEV) {
-				console.log('🎨 检测到主题切换按钮消失，重新初始化');
+				console.log("🎨 检测到主题切换按钮消失，重新初始化");
 			}
 			isInitialized = false;
 			setTimeout(() => {
@@ -135,16 +135,16 @@ onMount(() => {
 	// 清理函数
 	return () => {
 		clearInterval(existenceCheckInterval);
-		const themeButton = document.getElementById('scheme-switch');
+		const themeButton = document.getElementById("scheme-switch");
 		if (themeButton) {
-			themeButton.removeEventListener('theme-switch-reinit', handleReinit);
+			themeButton.removeEventListener("theme-switch-reinit", handleReinit);
 		}
 	};
 });
 
 function switchScheme(newMode: LIGHT_DARK_MODE) {
 	if (import.meta.env.DEV) {
-		console.log('🎨 应用新主题:', newMode);
+		console.log("🎨 应用新主题:", newMode);
 	}
 	mode = newMode;
 	setTheme(newMode);
@@ -179,16 +179,16 @@ function toggleTheme(event) {
 	}
 	const newMode = seq[(i + 1) % seq.length];
 	if (import.meta.env.DEV) {
-		console.log('🎨 直接切换主题:', mode, '->', newMode);
+		console.log("🎨 直接切换主题:", mode, "->", newMode);
 	}
 	switchScheme(newMode);
 
 	// 添加按钮点击反馈
-	const themeButton = document.getElementById('scheme-switch');
+	const themeButton = document.getElementById("scheme-switch");
 	if (themeButton) {
-		themeButton.style.transform = 'scale(0.95)';
+		themeButton.style.transform = "scale(0.95)";
 		setTimeout(() => {
-			themeButton.style.transform = 'scale(1)';
+			themeButton.style.transform = "scale(1)";
 		}, 30); // 调整为30ms，与主题切换动画保持一致
 	}
 }

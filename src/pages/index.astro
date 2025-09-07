@@ -2,44 +2,46 @@
 // 混合模式：首页静态预渲染
 export const prerender = true;
 
-import UniversalPostList from "../components/UniversalPostList.astro";
 import LayoutSwitcher from "../components/LayoutSwitcher.astro";
+import UniversalPostList from "../components/UniversalPostList.astro";
 import BannerCarousel from "../components/ui/BannerCarousel.astro";
-import { getHomeBannersFromStrapi } from "../lib/banner-adapter";
-
-
-
 import { PAGE_SIZE } from "../constants/constants";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
-import { getIndexPageData, resetRequestCache } from "../utils/unified-data-fetcher";
-import { contentManager } from "../lib/content-manager";
+import { getHomeBannersFromStrapi } from "../lib/banner-adapter";
 import { getLayoutConfig, getSiteConfig } from "../lib/config-integration";
+import { contentManager } from "../lib/content-manager";
 import { preloadPopularCategories } from "../utils/category-preloader";
 import { preheatAllCategories } from "../utils/fast-category-loader";
+import {
+	getIndexPageData,
+	resetRequestCache,
+} from "../utils/unified-data-fetcher";
+
 // import { getHomeBanners } from "../data/banners"; // 不再需要，使用动态组件
 
 // 🚀 优化：只获取首页需要的数据
 resetRequestCache();
 
 // 并行获取数据以提高性能
-const [indexPageData, firstPagePosts, bannerImages, layoutConfig] = await Promise.all([
-  getIndexPageData(),
-  // 只获取首页需要的文章数量，减少数据传输
-  contentManager.getPaginatedPosts(1, PAGE_SIZE),
-  // 获取首页Banner数据
-  getHomeBannersFromStrapi(),
-  // 获取整合后的布局配置
-  getLayoutConfig()
-]);
+const [indexPageData, firstPagePosts, bannerImages, layoutConfig] =
+	await Promise.all([
+		getIndexPageData(),
+		// 只获取首页需要的文章数量，减少数据传输
+		contentManager.getPaginatedPosts(1, PAGE_SIZE),
+		// 获取首页Banner数据
+		getHomeBannersFromStrapi(),
+		// 获取整合后的布局配置
+		getLayoutConfig(),
+	]);
 
 // 异步预热所有分类（不阻塞页面渲染）
 Promise.all([
-  preloadPopularCategories().catch(error => {
-    console.warn('⚠️ 预加载热门分类失败:', error);
-  }),
-  preheatAllCategories().catch(error => {
-    console.warn('⚠️ 预热所有分类失败:', error);
-  })
+	preloadPopularCategories().catch((error) => {
+		console.warn("⚠️ 预加载热门分类失败:", error);
+	}),
+	preheatAllCategories().catch((error) => {
+		console.warn("⚠️ 预热所有分类失败:", error);
+	}),
 ]);
 
 const { indexSettings } = indexPageData;
@@ -48,18 +50,22 @@ const { posts: data, total: totalPosts } = firstPagePosts;
 // 计算分页数据
 const totalPages = Math.ceil(totalPosts / PAGE_SIZE);
 const currentPage = 1;
-const defaultLayout = layoutConfig.defaultHomepageLayout;
+const defaultLayout = (
+	layoutConfig.defaultHomepageLayout === "list"
+		? "grid"
+		: layoutConfig.defaultHomepageLayout
+) as "grid" | "masonry";
 
 // Banner显示逻辑
 const showBanner = bannerImages && bannerImages.length > 0;
 
 if (import.meta.env.DEV) {
-  console.log('🎨 首页调试信息:', {
-    indexSettings,
-    defaultLayout,
-    hasIndexSettings: !!indexSettings,
-    settingsLayout: indexSettings?.default_homepage_layout
-  });
+	console.log("🎨 首页调试信息:", {
+		indexSettings,
+		defaultLayout,
+		hasIndexSettings: !!indexSettings,
+		settingsLayout: indexSettings?.default_homepage_layout,
+	});
 }
 
 // 首页不设置特定标题，让 Layout 使用默认的 "网站名称 - 网站副标题" 格式
@@ -68,28 +74,29 @@ const title = undefined;
 // 获取整合后的站点配置用于结构化数据
 const siteConfigData = await getSiteConfig();
 const strapiSiteTitle = siteConfigData.title;
-const strapiSiteDescription = siteConfigData.description || siteConfigData.subtitle;
+const strapiSiteDescription =
+	siteConfigData.description || siteConfigData.subtitle;
 
 // 首页结构化数据
 const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: strapiSiteTitle,
-  description: strapiSiteDescription,
-  url: Astro.site?.href || "https://sparkdone.com",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${Astro.site?.href || "https://sparkdone.com"}search?q={search_term_string}`
-    },
-    "query-input": "required name=search_term_string"
-  },
-  publisher: {
-    "@type": "Organization",
-    name: strapiSiteTitle,
-    url: Astro.site?.href || "https://sparkdone.com"
-  }
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	name: strapiSiteTitle,
+	description: strapiSiteDescription,
+	url: Astro.site?.href || "https://sparkdone.com",
+	potentialAction: {
+		"@type": "SearchAction",
+		target: {
+			"@type": "EntryPoint",
+			urlTemplate: `${Astro.site?.href || "https://sparkdone.com"}search?q={search_term_string}`,
+		},
+		"query-input": "required name=search_term_string",
+	},
+	publisher: {
+		"@type": "Organization",
+		name: strapiSiteTitle,
+		url: Astro.site?.href || "https://sparkdone.com",
+	},
 };
 ---
 
@@ -181,7 +188,7 @@ const jsonLd = {
                 const imageObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            const img = entry.target;
+                            const img = entry.target as HTMLImageElement;
                             if (img.dataset.src) {
                                 img.src = img.dataset.src;
                                 img.removeAttribute('data-src');

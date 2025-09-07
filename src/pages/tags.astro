@@ -3,10 +3,10 @@
 export const prerender = true;
 
 import { Icon } from "astro-icon/components";
+import ButtonTag from "../components/control/ButtonTag.astro";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 import { getTagList } from "../utils/hybrid-content-utils";
 import { getTagUrl } from "../utils/url-utils";
-import ButtonTag from "../components/control/ButtonTag.astro";
 
 // 获取所有标签
 const tags = await getTagList();
@@ -19,25 +19,25 @@ const description = `浏览所有标签 (${tags.length}个)`;
 
 // Tags页面结构化数据
 const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  name: "标签页面",
-  description: description,
-  url: Astro.url.href,
-  mainEntity: {
-    "@type": "ItemList",
-    numberOfItems: tags.length,
-    itemListElement: tags.map((tag, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
-        "@type": "Thing",
-        name: tag.name,
-        url: `${Astro.site?.href || "https://sparkdone.com"}${getTagUrl(tag.name)}`,
-        description: `${tag.count} 篇文章`
-      }
-    }))
-  }
+	"@context": "https://schema.org",
+	"@type": "CollectionPage",
+	name: "标签页面",
+	description: description,
+	url: Astro.url.href,
+	mainEntity: {
+		"@type": "ItemList",
+		numberOfItems: tags.length,
+		itemListElement: tags.map((tag, index) => ({
+			"@type": "ListItem",
+			position: index + 1,
+			item: {
+				"@type": "Thing",
+				name: tag.name,
+				url: `${Astro.site?.href || "https://sparkdone.com"}${getTagUrl(tag.name)}`,
+				description: `${tag.count} 篇文章`,
+			},
+		})),
+	},
 };
 ---
 
