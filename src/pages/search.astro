@@ -265,7 +265,7 @@ const title = query ? `搜索结果: ${query}` : "搜索";
         return `
           <article class="bg-white/50 dark:bg-black/20 rounded-lg p-6 border border-black/5 dark:border-white/5 hover:border-[var(--primary)]/20 transition-all hover:shadow-lg">
             <h3 class="text-lg font-semibold mb-2">
-              <a href="${url}" class="text-black/90 dark:text-white/90 hover:text-[var(--primary)] transition-colors">
+              <a href="${url}" class="text-black/90 dark:text-white/90 hover:text-[var(--primary)] transition-colors" data-swup-link>
                 ${title}
               </a>
             </h3>
@@ -290,6 +290,13 @@ const title = query ? `搜索结果: ${query}` : "搜索";
       `;
 
       resultsList.innerHTML = statsHtml + resultsHtml;
+      
+      // 重新初始化Swup链接监听器
+      if (window.swup && window.swup.hooks) {
+        console.log('🔄 重新初始化Swup链接监听');
+        window.swup.hooks.call('content:replace', resultsList);
+      }
+      
       if (import.meta.env.DEV) {
         console.log('✅ 搜索结果渲染完成');
       }
