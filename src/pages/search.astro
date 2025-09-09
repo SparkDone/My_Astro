@@ -1,6 +1,6 @@
 ---
-// 静态预渲染搜索页面
-export const prerender = true;
+// 动态搜索页面，支持Swup
+export const prerender = false;
 
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
@@ -291,14 +291,30 @@ const title = query ? `搜索结果: ${query}` : "搜索";
 
       resultsList.innerHTML = statsHtml + resultsHtml;
       
-      // 重新初始化Swup链接监听器
-      if (window.swup && window.swup.hooks) {
-        console.log('🔄 重新初始化Swup链接监听');
-        window.swup.hooks.call('content:replace', resultsList);
-      }
-      
+      // 调试Swup链接处理
       if (import.meta.env.DEV) {
         console.log('✅ 搜索结果渲染完成');
+        console.log('🔍 检查Swup状态:', {
+          swup: !!window.swup,
+          hooks: !!(window.swup && window.swup.hooks),
+          links: resultsList.querySelectorAll('a').length
+        });
+      }
+      
+      // 重新初始化Swup链接监听器
+      if (window.swup) {
+        console.log('🔄 重新初始化Swup链接监听');
+        
+        // 手动重新绑定所有链接的点击事件
+        const links = resultsList.querySelectorAll('a[data-swup-link]');
+        console.log('🔍 找到链接数量:', links.length);
+        
+        links.forEach(link => {
+          // 移除可能存在的旧事件监听器
+          link.removeEventListener('click', handleSwupClick);
+          // 添加新的事件监听器
+          link.addEventListener('click', handleSwupClick);
+        });
       }
 
     } catch (error) {
@@ -414,6 +430,20 @@ const title = query ? `搜索结果: ${query}` : "搜索";
     }
   }
 
+  // Swup链接点击处理函数
+  function handleSwupClick(e) {
+    e.preventDefault();
+    const href = e.currentTarget.getAttribute('href');
+    console.log('🔄 Swup链接点击:', href);
+    
+    if (href && window.swup) {
+      window.swup.navigate(href);
+    } else {
+      // 如果Swup不可用，使用普通导航
+      window.location.href = href;
+    }
+  }
+
   // 页面加载完成后的初始化
   document.addEventListener('DOMContentLoaded', async () => {
     if (import.meta.env.DEV) {
@@ -422,6 +452,12 @@ const title = query ? `搜索结果: ${query}` : "搜索";
 
     // 先初始化Pagefind，然后执行搜索
     await initializePagefind();
+    
+    // 添加调试信息
+    if (import.meta.env.DEV) {
+      console.log('🔍 开始执行搜索，URL参数:', window.location.search);
+    }
+    
     searchFromUrl();
   });
 

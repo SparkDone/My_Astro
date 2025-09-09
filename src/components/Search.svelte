@@ -140,11 +140,12 @@ const debouncedSearch = (searchKeyword: string, delay = 500): void => {
 		return;
 	}
 
-	// 显示面板并开始搜索
-	setPanelVisibility(true);
-
 	// 延迟搜索，避免每个字符都触发搜索
 	searchTimeout = setTimeout(() => {
+		// 在搜索前确保面板可见
+		if (!panelVisible) {
+			setPanelVisibility(true);
+		}
 		search(searchKeyword);
 	}, delay);
 };
@@ -522,8 +523,20 @@ const handleClickOutside = (event: MouseEvent) => {
         {:else}
             {#each (showAllResults ? result : result.slice(0, maxDisplayResults)) as item, index}
                 <a href={item.url}
-                   on:click={() => {
+                   data-swup-link
+                   on:click={(e) => {
                        console.log('点击了搜索结果:', item.meta.title);
+                       console.log('Swup状态:', !!window.swup);
+                       
+                       // 如果Swup可用，使用Swup导航
+                       if (window.swup) {
+                           e.preventDefault();
+                           console.log('使用Swup导航到:', item.url);
+                           window.swup.navigate(item.url);
+                       } else {
+                           console.log('Swup不可用，使用普通导航');
+                       }
+                       
                        setPanelVisibility(false);
                        showAllResults = false;
                        keyword = '';
@@ -645,8 +658,20 @@ const handleClickOutside = (event: MouseEvent) => {
             {:else}
                 {#each (showAllResults ? result : result.slice(0, maxDisplayResults)) as item, index}
                     <a href={item.url}
-                       on:click={() => {
+                       data-swup-link
+                       on:click={(e) => {
                            console.log('点击了搜索结果:', item.meta.title);
+                           console.log('Swup状态:', !!window.swup);
+                           
+                           // 如果Swup可用，使用Swup导航
+                           if (window.swup) {
+                               e.preventDefault();
+                               console.log('使用Swup导航到:', item.url);
+                               window.swup.navigate(item.url);
+                           } else {
+                               console.log('Swup不可用，使用普通导航');
+                           }
+                           
                            setPanelVisibility(false);
                            showAllResults = false;
                            keyword = '';
