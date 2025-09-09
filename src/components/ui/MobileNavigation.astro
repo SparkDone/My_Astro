@@ -207,10 +207,25 @@ const navItems = [
       // 遮罩点击关闭
       this.overlay.addEventListener('click', () => this.closeMenu());
       
-      // 导航链接点击关闭（组件内现有链接）
+      // 导航链接点击关闭
       this.menu.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-          setTimeout(() => this.closeMenu(), 100);
+        link.addEventListener('click', (ev) => {
+          const a = link as HTMLAnchorElement;
+          const href = a.getAttribute('href') || '/';
+          const isInternal = href.startsWith('/');
+
+          // 阻止立即跳转，先关闭抽屉，待动画结束后再导航
+          ev.preventDefault();
+          this.closeMenu();
+
+          const delay = 280; // 与 CSS transition 保持一致（300ms 略减一点）
+          setTimeout(() => {
+            if (isInternal && (window as any)?.swup) {
+              (window as any).swup.navigate(href);
+            } else {
+              window.location.href = href;
+            }
+          }, delay);
         });
       });
 
@@ -219,8 +234,12 @@ const navItems = [
         if (!this.isOpen) return;
         const target = e.target as HTMLElement;
         const link = target.closest('a[href^="/"]') as HTMLAnchorElement | null;
+        if (link && this.menu.contains(link)) {
+          // 已由上面的专用处理覆盖
+          return;
+        }
         if (link) {
-          // 延迟一点让导航先发生
+          // 其它情况下，尽量先关闭，交给 Swup 默认处理
           setTimeout(() => this.closeMenu(), 100);
         }
       }, { capture: true });
