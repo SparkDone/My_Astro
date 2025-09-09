@@ -7,15 +7,15 @@
 const LIGHT_MODE = "light";
 const DARK_MODE = "dark";
 const AUTO_MODE = "auto";
-const DEFAULT_THEME = "dark"; // 默认暗黑模式
+const DEFAULT_THEME = "light"; // 默认白日模式
 
 export function initializeTheme(configHue = 260) {
-	// Load the theme from local storage, 默认为暗黑模式
+	// Load the theme from local storage, 默认为白日模式
 	const theme = localStorage.getItem("theme") || DEFAULT_THEME;
 
-	// 如果是首次访问且没有设置主题，设置为暗黑模式
+	// 如果是首次访问且没有设置主题，设置为白日模式
 	if (!localStorage.getItem("theme")) {
-		localStorage.setItem("theme", DARK_MODE);
+		localStorage.setItem("theme", LIGHT_MODE);
 	}
 
 	switch (theme) {
@@ -33,9 +33,9 @@ export function initializeTheme(configHue = 260) {
 			}
 			break;
 		default:
-			// 默认情况下使用暗黑模式
-			document.documentElement.classList.add("dark");
-			localStorage.setItem("theme", DARK_MODE);
+			// 默认情况下使用白日模式
+			document.documentElement.classList.remove("dark");
+			localStorage.setItem("theme", LIGHT_MODE);
 	}
 
 	// Load the hue from local storage

@@ -548,11 +548,34 @@ const handleClickOutside = (event: MouseEvent) => {
 </button>
 
 <!-- 移动端搜索面板 -->
-<div id="search-panel-mobile" class="mobile-search-overlay float-panel-closed">
+<div id="search-panel-mobile" class="mobile-search-overlay float-panel-closed"
+     on:click={(e) => {
+         // 如果点击的是背景遮罩，关闭搜索面板
+         if (e.target === e.currentTarget) {
+             setPanelVisibility(false);
+             keyword = '';
+             result = [];
+         }
+     }}>
     <!-- 移动端搜索内容容器 -->
     <div class="mobile-search-content">
-        <!-- 移动端搜索框 -->
+        <!-- 移动端搜索头部 - 包含关闭按钮 -->
         <div class="mobile-search-header">
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">搜索</h3>
+                <button 
+                    type="button"
+                    on:click={() => {
+                        setPanelVisibility(false);
+                        keyword = '';
+                        result = [];
+                    }}
+                    class="btn-plain scale-animation rounded-lg w-8 h-8 active:scale-90"
+                    aria-label="关闭搜索"
+                >
+                    <Icon icon="material-symbols:close" class="text-lg"></Icon>
+                </button>
+            </div>
             <div class="modern-search-container">
                 <input
                     type="text"

@@ -12,7 +12,7 @@ import { onMount } from "svelte";
 import type { LIGHT_DARK_MODE } from "@/types/config.ts";
 
 const seq: LIGHT_DARK_MODE[] = [LIGHT_MODE, DARK_MODE]; // 只保留黑白两色
-let mode: LIGHT_DARK_MODE = $state(DARK_MODE);
+let mode: LIGHT_DARK_MODE = $state(LIGHT_MODE);
 
 let isInitialized = false;
 
@@ -21,10 +21,10 @@ function initializeThemeSwitch() {
 
 	let storedTheme = getStoredTheme();
 
-	// 如果存储的是系统模式，转换为暗色模式
+	// 如果存储的是系统模式，转换为白日模式
 	if (storedTheme === AUTO_MODE) {
-		storedTheme = DARK_MODE;
-		setTheme(DARK_MODE);
+		storedTheme = LIGHT_MODE;
+		setTheme(LIGHT_MODE);
 	}
 
 	mode = storedTheme;

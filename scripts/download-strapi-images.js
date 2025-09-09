@@ -67,6 +67,7 @@ async function fetchSiteConfig() {
     const endpoints = [
       '/api/index?populate=*',
       '/api/site-config?populate=*',
+      '/api/authors?populate=*',
       '/api/banners?populate=*'
     ];
     

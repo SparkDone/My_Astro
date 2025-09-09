@@ -90,16 +90,16 @@ export function setTheme(theme: LIGHT_DARK_MODE): void {
 export function getStoredTheme(): LIGHT_DARK_MODE {
 	const storedTheme = localStorage.getItem("theme") as LIGHT_DARK_MODE;
 
-	// 如果没有存储的主题，设置默认为暗黑模式
+	// 如果没有存储的主题，设置默认为白日模式
 	if (!storedTheme) {
 		localStorage.setItem("theme", DEFAULT_THEME);
 		return DEFAULT_THEME;
 	}
 
-	// 如果存储的是系统模式，转换为暗黑模式（不再支持系统模式）
+	// 如果存储的是系统模式，转换为白日模式（不再支持系统模式）
 	if (storedTheme === AUTO_MODE) {
-		localStorage.setItem("theme", DARK_MODE);
-		return DARK_MODE;
+		localStorage.setItem("theme", LIGHT_MODE);
+		return LIGHT_MODE;
 	}
 
 	return storedTheme;

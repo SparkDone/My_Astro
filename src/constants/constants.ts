@@ -3,7 +3,7 @@ export const PAGE_SIZE = 20; // 增加每页显示数量，确保能显示所有
 export const LIGHT_MODE = "light",
 	DARK_MODE = "dark",
 	AUTO_MODE = "auto";
-export const DEFAULT_THEME = DARK_MODE;
+export const DEFAULT_THEME = LIGHT_MODE;
 
 // Banner相关常量已删除
 // export const BANNER_HEIGHT = 35;
