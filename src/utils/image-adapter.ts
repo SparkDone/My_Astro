@@ -42,7 +42,7 @@ export function adaptImageUrl(
 
 	// 调试信息已移除
 
-	// 如果是完整的HTTP URL，直接返回（使用Strapi服务器图片）
+	// 如果是完整的HTTP URL，直接返回
 	if (
 		strapiImageUrl.startsWith("http://") ||
 		strapiImageUrl.startsWith("https://")
@@ -50,7 +50,7 @@ export function adaptImageUrl(
 		return strapiImageUrl;
 	}
 
-	// 如果是相对路径，直接使用Strapi服务器URL
+	// 如果是相对路径，优先使用本地映射
 	if (strapiImageUrl.startsWith("/")) {
 		// 如果已经是本地静态资源路径，直接返回
 		if (strapiImageUrl.startsWith("/images/strapi/")) {
@@ -62,7 +62,12 @@ export function adaptImageUrl(
 			return strapiImageUrl;
 		}
 
-		// 直接使用Strapi服务器URL
+		// 检查是否有本地映射（构建时下载的图片）
+		if (imageMapping?.[strapiImageUrl]) {
+			return imageMapping[strapiImageUrl];
+		}
+
+		// 如果没有本地映射，使用Strapi服务器URL
 		const strapiPublicUrl = getStrapiPublicUrl();
 		return `${strapiPublicUrl}${strapiImageUrl}`;
 	}
