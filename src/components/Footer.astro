@@ -21,9 +21,9 @@ if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
 <div class="w-full py-8">
     <div class="max-w-[var(--page-width)] mx-auto px-6">
         <!-- 单行Footer内容 -->
-        <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <div class="flex items-center justify-center gap-x-3 text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap overflow-x-auto no-scrollbar">
             <!-- 版权信息 -->
-            <div>
+            <div class="shrink-0">
                 &copy; <span id="copyright-year">{currentYear}</span> {siteTitle}. All Rights Reserved.
             </div>
 
@@ -31,15 +31,13 @@ if (import.meta.env.DEV && import.meta.env.DEBUG === "true") {
             <span class="text-gray-300 dark:text-gray-600">•</span>
 
             <!-- 链接 -->
-            <a class="text-[var(--primary)] hover:text-[var(--primary)]/80 transition-colors"
+            <a class="text-[var(--primary)] hover:text-[var(--primary)]/80 transition-colors shrink-0"
                target="_blank" href={url('rss.xml')}>RSS</a>
 
             <span class="text-gray-300 dark:text-gray-600">•</span>
 
-            <a class="text-[var(--primary)] hover:text-[var(--primary)]/80 transition-colors"
+            <a class="text-[var(--primary)] hover:text-[var(--primary)]/80 transition-colors shrink-0"
                target="_blank" href={url('sitemap-index.xml')}>Sitemap</a>
-
-
         </div>
     </div>
 </div>

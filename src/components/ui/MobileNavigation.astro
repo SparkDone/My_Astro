@@ -207,12 +207,37 @@ const navItems = [
       // 遮罩点击关闭
       this.overlay.addEventListener('click', () => this.closeMenu());
       
-      // 导航链接点击关闭
+      // 导航链接点击关闭（组件内现有链接）
       this.menu.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
-          setTimeout(() => this.closeMenu(), 150);
+          setTimeout(() => this.closeMenu(), 100);
         });
       });
+
+      // 新增：全局监听内部链接点击（含动态渲染/Swup生成的链接）
+      document.addEventListener('click', (e) => {
+        if (!this.isOpen) return;
+        const target = e.target as HTMLElement;
+        const link = target.closest('a[href^="/"]') as HTMLAnchorElement | null;
+        if (link) {
+          // 延迟一点让导航先发生
+          setTimeout(() => this.closeMenu(), 100);
+        }
+      }, { capture: true });
+
+      // 与 Swup 集成：在开始访问或页面视图后强制关闭
+      const swupInstance = (window as any)?.swup;
+      if (swupInstance?.hooks) {
+        swupInstance.hooks.on('link:click', () => {
+          if (this.isOpen) this.closeMenu();
+        });
+        swupInstance.hooks.on('visit:start', () => {
+          if (this.isOpen) this.closeMenu();
+        });
+        swupInstance.hooks.on('page:view', () => {
+          if (this.isOpen) this.closeMenu();
+        });
+      }
 
       // 主题切换
       const themeToggle = document.getElementById('mobile-theme-toggle');

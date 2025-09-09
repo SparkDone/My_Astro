@@ -15,18 +15,52 @@ const links = Astro.props.links;
             hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
         "
            target={link.external ? "_blank" : null}
+           data-swup-link
         >
-            <div class="transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)]">
+            <span class="text-[1rem] font-bold group-hover:text-[var(--primary)]">
                 {link.name}
-            </div>
-            {!link.external && <Icon name="material-symbols:chevron-right-rounded"
-                  class="transition text-[1.25rem] text-[var(--primary)]"
-            >
-            </Icon>}
-            {link.external && <Icon name="fa6-solid:arrow-up-right-from-square"
-                  class="transition text-[0.75rem] text-black/25 dark:text-white/25 -translate-x-1"
-            >
-            </Icon>}
+            </span>
+            <span class="btn-plain scale-animation rounded-lg h-9 w-9 active:scale-95">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 opacity-50 group-hover:opacity-100">
+                    <path d="M9 18l6-6-6-6"></path>
+                </svg>
+            </span>
         </a>
     ))}
 </div>
+
+<script>
+// 仅在客户端运行：为折叠菜单链接绑定点击事件
+if (typeof window !== 'undefined') {
+    const panel = document.getElementById('nav-menu-panel');
+    const bind = () => {
+        if (!panel) return;
+        panel.querySelectorAll('a[href]')?.forEach((a) => {
+            a.addEventListener('click', (e) => {
+                const isMobile = window.innerWidth < 1024;
+                if (isMobile) {
+                    // 先收起面板
+                    panel.classList.add('float-panel-closed');
+                }
+                const href = (a as HTMLAnchorElement).getAttribute('href') || '/';
+                const isExternal = (a as HTMLAnchorElement).target === '_blank' || /^(https?:)?\/\//.test(href);
+                if (!isExternal && (window as any)?.swup) {
+                    // 使用 Swup，避免整页刷新
+                    e.preventDefault();
+                    (window as any).swup.navigate(href);
+                }
+            }, { once: false });
+        });
+    };
+
+    // 初次绑定
+    document.addEventListener('DOMContentLoaded', bind, { once: true });
+
+    // 与 Swup 集成：内容替换后重新绑定
+    const sw = (window as any)?.swup;
+    if (sw?.hooks) {
+        sw.hooks.on('content:replace', bind);
+        sw.hooks.on('page:view', bind);
+    }
+}
+</script>

@@ -234,6 +234,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // 新增：点击移动端侧边栏中的链接后，自动关闭侧边栏
+    sidebarMobile.addEventListener('click', function(e) {
+        const target = e.target as HTMLElement;
+        if (target?.tagName === 'A' || target?.closest('a')) {
+            // 仅在移动端模式下执行
+            if (window.innerWidth < 1200) {
+                closeSidebar();
+            }
+        }
+    });
+
     // ESC键关闭侧边栏
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && !sidebarOverlay.classList.contains('opacity-0')) {
