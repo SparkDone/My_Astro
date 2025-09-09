@@ -42,27 +42,15 @@ export function adaptImageUrl(
 
 	// 调试信息已移除
 
-	// 如果是完整的HTTP URL，且与 Strapi 公网域名一致，则尝试转为相对路径以使用本地映射
+	// 如果是完整的HTTP URL，直接返回（使用Strapi服务器图片）
 	if (
 		strapiImageUrl.startsWith("http://") ||
 		strapiImageUrl.startsWith("https://")
 	) {
-		try {
-			const publicBase = getStrapiPublicUrl().replace(/\/$/, "");
-			const urlObj = new URL(strapiImageUrl);
-			const absoluteBase = `${urlObj.protocol}//${urlObj.host}`;
-			if (absoluteBase === publicBase && urlObj.pathname.startsWith("/uploads")) {
-				// 转换为相对路径后继续走下面的映射/本地替换逻辑
-				strapiImageUrl = urlObj.pathname;
-			} else {
-				return strapiImageUrl;
-			}
-		} catch {
-			return strapiImageUrl;
-		}
+		return strapiImageUrl;
 	}
 
-	// 如果是相对路径，优先使用本地映射
+	// 如果是相对路径，直接使用Strapi服务器URL
 	if (strapiImageUrl.startsWith("/")) {
 		// 如果已经是本地静态资源路径，直接返回
 		if (strapiImageUrl.startsWith("/images/strapi/")) {
@@ -74,17 +62,7 @@ export function adaptImageUrl(
 			return strapiImageUrl;
 		}
 
-		// 检查是否有本地映射
-		if (imageMapping?.[strapiImageUrl]) {
-			return imageMapping[strapiImageUrl];
-		}
-
-		// 静态构建：优先使用本地映射，否则使用远程URL
-		if (imageMapping?.[strapiImageUrl]) {
-			return imageMapping[strapiImageUrl];
-		}
-
-		// 如果没有本地映射，直接使用Strapi URL（需要配置CORS）
+		// 直接使用Strapi服务器URL
 		const strapiPublicUrl = getStrapiPublicUrl();
 		return `${strapiPublicUrl}${strapiImageUrl}`;
 	}
