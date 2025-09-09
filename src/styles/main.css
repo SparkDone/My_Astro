@@ -839,3 +839,12 @@ html, body {
     height: 0 !important;
     overflow: hidden !important;
 }
+
+/* Utility: hide scrollbars (used for mobile footer row) */
+.no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
