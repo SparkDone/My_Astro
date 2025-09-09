@@ -214,18 +214,27 @@ const navItems = [
           const href = a.getAttribute('href') || '/';
           const isInternal = href.startsWith('/');
 
-          // 阻止立即跳转，先关闭抽屉，待动画结束后再导航
           ev.preventDefault();
+
+          // 关闭抽屉
           this.closeMenu();
 
-          const delay = 280; // 与 CSS transition 保持一致（300ms 略减一点）
-          setTimeout(() => {
+          // 等待过渡结束后再导航，避免视觉错乱
+          const navigate = () => {
             if (isInternal && (window as any)?.swup) {
               (window as any).swup.navigate(href);
             } else {
               window.location.href = href;
             }
-          }, delay);
+          };
+
+          const fallback = setTimeout(navigate, this.getTransitionMs(this.menu));
+          const onEnd = () => {
+            clearTimeout(fallback);
+            this.menu.removeEventListener('transitionend', onEnd);
+            navigate();
+          };
+          this.menu.addEventListener('transitionend', onEnd, { once: true });
         });
       });
 
@@ -235,12 +244,10 @@ const navItems = [
         const target = e.target as HTMLElement;
         const link = target.closest('a[href^="/"]') as HTMLAnchorElement | null;
         if (link && this.menu.contains(link)) {
-          // 已由上面的专用处理覆盖
-          return;
+          return; // 已由上面处理
         }
         if (link) {
-          // 其它情况下，尽量先关闭，交给 Swup 默认处理
-          setTimeout(() => this.closeMenu(), 100);
+          setTimeout(() => this.closeMenu(), 50);
         }
       }, { capture: true });
 
@@ -415,6 +422,21 @@ const navItems = [
       
       // 这里可以集成搜索功能
       console.log('搜索:', query);
+    }
+
+    private getTransitionMs(el: HTMLElement): number {
+      try {
+        const cs = getComputedStyle(el);
+        // transition-duration 可能为多个值，用第一个；单位为 s 或 ms
+        const durRaw = (cs.transitionDuration || '0s').split(',')[0].trim();
+        const delRaw = (cs.transitionDelay || '0s').split(',')[0].trim();
+        const toMs = (v: string) => v.endsWith('ms') ? parseFloat(v) : parseFloat(v) * 1000;
+        const ms = Math.max(0, toMs(durRaw) + toMs(delRaw));
+        // 安全冗余 +30ms
+        return (Number.isFinite(ms) ? ms : 280) + 30;
+      } catch {
+        return 310;
+      }
     }
   }
 
