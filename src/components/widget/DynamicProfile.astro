@@ -4,6 +4,7 @@ import { profileConfig } from "../../config";
 import type { AuthorData } from "../../lib/strapi";
 import { getIndexSettings, getPrimaryAuthor } from "../../lib/strapi";
 import { url } from "../../utils/url-utils";
+import { adaptImageUrl } from "../../utils/image-adapter";
 import ImageWrapper from "../misc/ImageWrapper.astro";
 
 // 获取 Index Settings 来检查是否显示作者小分区
@@ -117,14 +118,14 @@ if (authorInfo) {
           } else if (a && typeof a === 'object' && (a as { url?: string }).url) {
             fromAuthor = (a as { url?: string }).url || '';
           }
-          // 规范化相对路径为绝对URL（从环境变量读取Strapi基址）
-          if (fromAuthor && fromAuthor.startsWith('/')) {
-            const base = (import.meta.env.STRAPI_PUBLIC_URL || import.meta.env.STRAPI_URL || '').replace(/\/$/, '');
-            if (base) fromAuthor = `${base}${fromAuthor}`;
-          }
+          
           const defaultFallback = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%236366f1"/><stop offset="100%" stop-color="%2394a3ff"/></linearGradient></defs><rect width="256" height="256" rx="24" fill="url(%23g)"/><g fill="white" opacity="0.9"><circle cx="128" cy="100" r="44"/><path d="M40 212c0-42 36-68 88-68s88 26 88 68v12H40z"/></g></svg>';
           const avatarFromConfig = typeof (config as any).avatar === 'string' ? (config as any).avatar as string : '';
-          const avatarSrc: string = fromAuthor || avatarFromConfig || defaultFallback;
+          
+          // 使用图片适配器处理URL
+          const avatarSrc: string = fromAuthor 
+            ? adaptImageUrl(fromAuthor, defaultFallback)
+            : (avatarFromConfig || defaultFallback);
 
           if (import.meta.env.DEV) {
             console.log("👤 Strapi作者信息:", authorInfo);

@@ -50,7 +50,7 @@ export function adaptImageUrl(
 		return strapiImageUrl;
 	}
 
-	// 如果是相对路径，优先使用本地映射
+	// 如果是相对路径，根据环境决定使用策略
 	if (strapiImageUrl.startsWith("/")) {
 		// 如果已经是本地静态资源路径，直接返回
 		if (strapiImageUrl.startsWith("/images/strapi/")) {
@@ -62,7 +62,13 @@ export function adaptImageUrl(
 			return strapiImageUrl;
 		}
 
-		// 检查是否有本地映射（构建时下载的图片）
+		// 开发模式：始终使用Strapi服务器图片
+		if (import.meta.env.DEV) {
+			const strapiPublicUrl = getStrapiPublicUrl();
+			return `${strapiPublicUrl}${strapiImageUrl}`;
+		}
+
+		// 生产模式：优先使用本地映射（构建时下载的图片）
 		if (imageMapping?.[strapiImageUrl]) {
 			return imageMapping[strapiImageUrl];
 		}
