@@ -575,3 +575,24 @@
 .dark .mobile-search-overlay .modern-search-no-results {
   background: rgba(255, 255, 255, 0.02);
 }
+
+/* 移动端隐藏原生清除(X)按钮，避免与自定义清除按钮冲突 */
+@media (max-width: 1024px) {
+  .modern-search-input::-webkit-search-cancel-button,
+  .modern-search-input::-webkit-clear-button {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+  }
+  /* 兼容旧版浏览器/平台 */
+  .modern-search-input::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* 移动端：隐藏自定义清除按钮，避免与右侧搜索按钮并排（影响布局） */
+  .modern-search-clear {
+    display: none !important;
+  }
+}
