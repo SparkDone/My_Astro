@@ -1,10 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
 import { profileConfig } from "../../config";
-import type { AuthorData } from "../../lib/strapi";
-import { getIndexSettings, getPrimaryAuthor } from "../../lib/strapi";
-import { url } from "../../utils/url-utils";
+import { type AuthorData, getIndexSettings, getPrimaryAuthor } from "../../lib/strapi";
 import { adaptImageUrl } from "../../utils/image-adapter";
+import { url } from "../../utils/url-utils";
 import ImageWrapper from "../misc/ImageWrapper.astro";
 
 // 获取 Index Settings 来检查是否显示作者小分区

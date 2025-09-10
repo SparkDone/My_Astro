@@ -4,7 +4,19 @@ import { i18n } from "@i18n/translation";
 import Icon from "@iconify/svelte";
 import { url } from "@utils/url-utils.ts";
 import { onMount } from "svelte";
-import type { SearchResult } from "@/global";
+
+// 本地声明类型，避免外部未导出导致的错误
+type SearchResult = {
+    url: string;
+    meta: { title: string };
+    excerpt: string;
+};
+
+type ApiPost = {
+    url: string;
+    title: string;
+    excerpt: string;
+};
 
 // 统一状态管理
 let keyword = ""; // 统一的搜索关键词
@@ -12,7 +24,7 @@ let result: SearchResult[] = [];
 let isSearching = false;
 let pagefindLoaded = false;
 let initialized = false;
-let searchTimeout: number;
+let searchTimeout: ReturnType<typeof setTimeout>;
 let showAllResults = false;
 let maxDisplayResults = 3;
 let panelVisible = false;
@@ -206,15 +218,7 @@ const search = async (searchKeyword: string): Promise<void> => {
 
 		if (import.meta.env.PROD && pagefindLoaded && window.pagefind) {
 			try {
-				// 使用优化的搜索参数
-				const response = await window.pagefind.search(normalizedKeyword, {
-					// 提高搜索结果的相关性
-					excerpt_length: 100,
-					// 支持模糊匹配
-					fuzzy: true,
-					// 支持部分匹配
-					partial: true,
-				});
+				const response = await window.pagefind.search(normalizedKeyword);
 				searchResults = await Promise.all(
 					response.results.map((item) => item.data()),
 				);
@@ -246,7 +250,7 @@ const search = async (searchKeyword: string): Promise<void> => {
 						console.log("✅ API返回成功，数据条数:", data.data.length);
 						console.log("📊 搜索数据来源:", data.source || "unknown");
 						// 转换API响应格式为搜索组件期望的格式
-						searchResults = data.data.map((post) => ({
+						searchResults = data.data.map((post: ApiPost) => ({
 							url: post.url,
 							meta: {
 								title: post.title, // 已经包含高亮的标题
@@ -276,7 +280,7 @@ const search = async (searchKeyword: string): Promise<void> => {
 					...item,
 					excerpt: item.excerpt.replace(
 						/搜索关键词|search keywords|关键词|more button|更多按钮|expand\/collapse/g,
-						(match) => `<mark>${match}</mark>`,
+						(match: string) => `<mark>${match}</mark>`,
 					),
 				}));
 			}
@@ -493,15 +497,23 @@ const handleClickOutside = (event: MouseEvent) => {
     
     <!-- 搜索面板 - 移到搜索容器内部 -->
     <div id="search-panel"
+         role="listbox"
+         tabindex="0"
          on:mousedown={(e) => {
-             if (e.target.tagName !== 'INPUT') {
-                 e.preventDefault();
-             }
+            const target = e.target as HTMLElement | null;
+            if (target && target.tagName !== 'INPUT') {
+                e.preventDefault();
+            }
          }}
          on:click={(e) => {
              e.stopPropagation();
          }}
-         class="modern-search-suggestions float-panel-closed">
+         on:keydown={(e) => {
+             if (e.key === 'Escape') {
+                 setPanelVisibility(false);
+             }
+         }}
+         class="modern-search-suggestions search-panel float-panel-closed">
         
         <!-- 搜索结果 -->
         {#if isSearching}
@@ -532,7 +544,7 @@ const handleClickOutside = (event: MouseEvent) => {
                        if (window.swup) {
                            e.preventDefault();
                            console.log('使用Swup导航到:', item.url);
-                           window.swup.navigate(item.url);
+                           (window.swup as { navigate: (url: string) => void }).navigate(item.url);
                        } else {
                            console.log('Swup不可用，使用普通导航');
                        }
@@ -562,6 +574,14 @@ const handleClickOutside = (event: MouseEvent) => {
 
 <!-- 移动端搜索面板 -->
 <div id="search-panel-mobile" class="mobile-search-overlay float-panel-closed"
+     role="dialog" aria-modal="true" tabindex="0"
+     on:keydown={(e) => {
+         if (e.key === 'Escape') {
+             setPanelVisibility(false);
+             keyword = '';
+             result = [];
+         }
+     }}
      on:click={(e) => {
          // 如果点击的是背景遮罩，关闭搜索面板
          if (e.target === e.currentTarget) {
@@ -623,10 +643,18 @@ const handleClickOutside = (event: MouseEvent) => {
                 {#if keyword.trim()}
                     <button 
                         type="button"
-                        on:click={() => {
+                        on:click={(e) => {
+                            e.stopPropagation();
                             keyword = '';
                             result = [];
-                            setPanelVisibility(false);
+                            // 移动端仅清空并保持面板打开，同时聚焦输入框
+                            try {
+                                const inputEl = (e.currentTarget as HTMLElement)
+                                    ?.parentElement
+                                    ?.querySelector('input.modern-search-input') as HTMLInputElement | null;
+                                inputEl?.focus();
+                            } catch {}
+                            setPanelVisibility(true);
                         }}
                         class="modern-search-clear visible"
                         aria-label="清除搜索"
@@ -667,7 +695,7 @@ const handleClickOutside = (event: MouseEvent) => {
                            if (window.swup) {
                                e.preventDefault();
                                console.log('使用Swup导航到:', item.url);
-                               window.swup.navigate(item.url);
+                               (window.swup as { navigate: (url: string) => void }).navigate(item.url);
                            } else {
                                console.log('Swup不可用，使用普通导航');
                            }
@@ -681,7 +709,7 @@ const handleClickOutside = (event: MouseEvent) => {
                         <Icon icon="material-symbols:article-outline" class="modern-search-item-icon"></Icon>
                         <div class="modern-search-item-content">
                             <div class="modern-search-item-title">{@html item.meta.title}</div>
-                            <div class="modern-search-item-desc">{@html item.excerpt}</div>
+                            <div class="modern-search-item-desc line-clamp-2">{@html item.excerpt}</div>
                         </div>
                     </a>
                 {/each}
@@ -716,7 +744,7 @@ const handleClickOutside = (event: MouseEvent) => {
     border-radius: 3px;
   }
 
-  .dark .search-panel::-webkit-scrollbar-thumb {
+  :global(.dark) .search-panel::-webkit-scrollbar-thumb {
     background-color: rgba(255, 255, 255, 0.2);
   }
 
@@ -726,6 +754,7 @@ const handleClickOutside = (event: MouseEvent) => {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    line-clamp: 2;
   }
 
   /* 搜索高亮样式优化 */

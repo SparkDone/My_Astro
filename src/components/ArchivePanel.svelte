@@ -129,7 +129,7 @@ onMount(async () => {
 
                         <!-- post title -->
                         <div
-                                class="flex-1 md:flex-1 text-left font-bold
+                                class="flex-1 md:flex-1 text-left
                      group-hover:translate-x-1 transition-all group-hover:text-[var(--primary)]
                      text-90 pr-4 md:pr-8 overflow-hidden"
                         >
