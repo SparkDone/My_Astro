@@ -3,11 +3,11 @@
  * 将 Strapi API 数据转换为 Astro 内容格式
  */
 
+import { config } from "../config/api";
 import type { PostEntry } from "../types/post";
 import { adaptImageUrl } from "../utils/image-adapter";
 import { getCategoryUrl } from "../utils/url-utils";
 import type { StrapiArticle } from "./strapi";
-import { config } from "../config/api";
 
 // 将 Strapi 文章转换为 Astro 文章格式
 export function adaptStrapiArticle(strapiArticle: StrapiArticle): PostEntry {
